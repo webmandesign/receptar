@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.1
  *
  * CONTENT:
  * -   1) Required files
@@ -1033,7 +1033,7 @@
 	 * //fonts.googleapis.com/css?family=Alegreya+Sans:300,400|Exo+2:400,700|Allan&subset=latin,latin-ext
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.1
 	 *
 	 * @param  array $fonts Fallback fonts.
 	 */
@@ -1044,7 +1044,7 @@
 				$family = array();
 				$subset = get_theme_mod( 'font-subset' );
 
-				$fonts_setup = array_filter( (array) apply_filters( 'wmhook_wm_google_fonts_url_fonts_setup', array() ) );
+				$fonts_setup = array_unique( array_filter( (array) apply_filters( 'wmhook_wm_google_fonts_url_fonts_setup', array() ) ) );
 
 				if ( empty( $fonts_setup ) && ! empty( $fonts ) ) {
 					$fonts_setup = (array) $fonts;
@@ -1064,10 +1064,10 @@
 				}
 
 				if ( ! empty( $family ) ) {
-					$output = add_query_arg( array(
+					$output = esc_url( add_query_arg( array(
 							'family' => implode( '|', (array) array_unique( $family ) ),
 							'subset' => implode( ',', (array) $subset ), //Subset can be array if multiselect Customizer input field used
-						), '//fonts.googleapis.com/css' );
+						), '//fonts.googleapis.com/css' ) );
 				}
 
 			//Output

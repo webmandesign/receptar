@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.1
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -149,7 +149,7 @@
 	 * Theme setup
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.1
 	 */
 	if ( ! function_exists( 'wm_setup' ) ) {
 		function wm_setup() {
@@ -160,8 +160,8 @@
 				//WordPress visual editor CSS stylesheets
 					$visual_editor_css = array_filter( (array) apply_filters( 'wmhook_wm_setup_visual_editor_css', array(
 							str_replace( ',', '%2C', wm_google_fonts_url() ),
-							add_query_arg( array( 'ver' => WM_THEME_VERSION ), wm_get_stylesheet_directory_uri( 'genericons/genericons.css' ) ),
-							add_query_arg( array( 'ver' => WM_THEME_VERSION ), wm_get_stylesheet_directory_uri( 'css/editor-style.css' ) ),
+							esc_url( add_query_arg( array( 'ver' => WM_THEME_VERSION ), wm_get_stylesheet_directory_uri( 'genericons/genericons.css' ) ) ),
+							esc_url( add_query_arg( array( 'ver' => WM_THEME_VERSION ), wm_get_stylesheet_directory_uri( 'css/editor-style.css' ) ) ),
 						) ) );
 
 			/**
@@ -1481,7 +1481,7 @@
 		 * Pagination
 		 *
 		 * @since    1.0
-		 * @version  1.0
+		 * @version  1.1
 		 */
 		if ( ! function_exists( 'wm_pagination' ) ) {
 			function wm_pagination() {
@@ -1497,10 +1497,6 @@
 					$output = '';
 
 					$pagination = array(
-							'base'      => @add_query_arg( 'paged', '%#%' ),
-							'format'    => '',
-							'current'   => max( 1, get_query_var( 'paged' ) ),
-							'total'     => $wp_query->max_num_pages,
 							'prev_text' => '&laquo;',
 							'next_text' => '&raquo;',
 						);
