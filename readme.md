@@ -8,7 +8,7 @@
 
 ## Description
 
-**Receptar** is simple, modern, responsive, high-DPI, fully customizable blog WordPress theme. It features split-screen book-like design inspired by a modern cook book with emphasize on beautiful imagery and typography. Supports Beaver Builder page builder and Jetpack plugin, Schema.org markup, Theme Hook Alliance action hooks, translation-ready code, front page slideshow, customizable colors, and other cool features.
+**Receptar** is simple, modern, responsive, high-DPI, fully customizable, stylish blog WordPress theme. It features split-screen book-like design inspired by a modern cook book with emphasize on beautiful imagery and typography. Supports Beaver Builder page builder and Jetpack plugin, Schema.org markup, Theme Hook Alliance action hooks, translation-ready code, front page slideshow, customizable colors, and other cool features.
 
 Thank you for using one of WebMan's themes (more cool WordPress themes can be found at www.webmandesign.eu).
 
@@ -80,7 +80,7 @@ http://www.google.com/fonts/specimen/Alegreya
 ### Images copyright
 
 **Default header.jpg, featured.jpg image and images used in screenshot.jpg**
-Copyright (c) 2014 Daniel Nanescu, SplitShire.com
-License: http://foodiesfeed.com/faq/
-http://foodiesfeed.com/minimal-sushi-on-a-wooden-background/
-http://foodiesfeed.com/
+Copyright (c) jill111, http://pixabay.com/en/users/jill111-334088/
+License: CC0, http://creativecommons.org/publicdomain/zero/1.0/deed.en, http://pixabay.com/en/service/terms/
+http://pixabay.com/en/fruits-still-life-pitcher-food-562357/
+http://pixabay.com/

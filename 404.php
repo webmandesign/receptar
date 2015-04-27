@@ -19,11 +19,11 @@ get_header();
 
 		<header class="page-header">
 
-			<h1 class="page-title"><?php _e( 'Oops! That page can not be found.', 'wm_domain' ); ?></h1>
+			<h1 class="page-title"><?php _e( 'Oops! That page can not be found.', 'receptar' ); ?></h1>
 
 		</header>
 
-		<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'wm_domain' ); ?></p>
+		<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'receptar' ); ?></p>
 
 		<?php get_search_form(); ?>
 

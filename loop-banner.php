@@ -11,7 +11,7 @@
 
 ?>
 
-<div id="site-banner" class="site-banner<?php if ( ( is_front_page() || is_home() ) && wm_has_banner_posts( 2 ) ) { echo ' enable-slider'; } else { echo ' no-slider'; } ?>"<?php do_action( 'wmhook_site_banner_container_atts' ); ?>>
+<div id="site-banner" class="site-banner<?php if ( ( is_front_page() || is_home() ) && receptar_has_banner_posts( 2 ) ) { echo ' enable-slider'; } else { echo ' no-slider'; } ?>"<?php do_action( 'wmhook_site_banner_container_atts' ); ?>>
 
 	<div class="site-banner-inner">
 
@@ -24,10 +24,10 @@
 			//Display custom banner first
 				echo $banner;
 
-		} elseif ( wm_has_banner_posts( 1 ) ) {
+		} elseif ( receptar_has_banner_posts( 1 ) ) {
 
 			//Display featured posts (only on homepage)
-				$featured_posts = wm_get_banner_posts();
+				$featured_posts = receptar_get_banner_posts();
 
 				foreach ( (array) $featured_posts as $order => $post ) {
 

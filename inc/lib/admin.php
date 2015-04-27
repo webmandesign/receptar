@@ -27,17 +27,17 @@
 	 */
 
 		//Styles and scripts
-			add_action( 'admin_enqueue_scripts', 'wm_assets_admin' );
+			add_action( 'admin_enqueue_scripts', 'receptar_assets_admin' );
 		//Posts list table
 			//Posts
-				add_action( 'manage_post_posts_columns',                    'wm_post_columns_register', 10    );
-				add_action( 'manage_post_posts_custom_column',              'wm_post_columns_render',   10, 2 );
+				add_action( 'manage_post_posts_columns',                    'receptar_post_columns_register', 10    );
+				add_action( 'manage_post_posts_custom_column',              'receptar_post_columns_render',   10, 2 );
 			//Pages
-				add_action( 'manage_pages_columns',                         'wm_post_columns_register', 10    );
-				add_action( 'manage_pages_custom_column',                   'wm_post_columns_render',   10, 2 );
+				add_action( 'manage_pages_columns',                         'receptar_post_columns_register', 10    );
+				add_action( 'manage_pages_custom_column',                   'receptar_post_columns_render',   10, 2 );
 			//Jetpack Portfolio posts
-				add_action( 'manage_edit-jetpack-portfolio_columns',        'wm_post_columns_register', 10    );
-				add_action( 'manage_jetpack-portfolio_posts_custom_column', 'wm_post_columns_render',   10, 2 );
+				add_action( 'manage_edit-jetpack-portfolio_columns',        'receptar_post_columns_register', 10    );
+				add_action( 'manage_jetpack-portfolio_posts_custom_column', 'receptar_post_columns_render',   10, 2 );
 
 
 
@@ -53,8 +53,8 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_assets_admin' ) ) {
-		function wm_assets_admin() {
+	if ( ! function_exists( 'receptar_assets_admin' ) ) {
+		function receptar_assets_admin() {
 			//Helper variables
 				global $current_screen;
 
@@ -64,8 +64,8 @@
 				if ( in_array( $current_screen->base, array( 'edit', 'post' ) ) ) {
 					//Styles
 						wp_enqueue_style(
-								'wm-admin-styles',
-								wm_get_stylesheet_directory_uri( 'css/admin.css' ),
+								'receptar-admin-styles',
+								receptar_get_stylesheet_directory_uri( 'css/admin.css' ),
 								false,
 								WM_SCRIPTS_VERSION,
 								'screen'
@@ -75,11 +75,14 @@
 						$custom_styles .= '#post-' . get_option( 'page_on_front' ) . ' { background: #d7eef4; }';
 						$custom_styles .= '#post-' . get_option( 'page_for_posts' ) . ' { background: #d7f4e3; }';
 
-						wp_add_inline_style( 'wm-admin-styles', apply_filters( 'wmhook_esc_css', $custom_styles ) );
+						wp_add_inline_style(
+								'receptar-admin-styles',
+								apply_filters( 'wmhook_esc_css', $custom_styles )
+							);
 
 				}
 		}
-	} // /wm_assets_admin
+	} // /receptar_assets_admin
 
 
 
@@ -97,20 +100,20 @@
 	 *
 	 * @param  array $columns
 	 */
-	if ( ! function_exists( 'wm_post_columns_register' ) ) {
-		function wm_post_columns_register( $columns ) {
+	if ( ! function_exists( 'receptar_post_columns_register' ) ) {
+		function receptar_post_columns_register( $columns ) {
 			//Preparing output
 				if ( 'jetpack-portfolio' == get_post_type() ) {
 					unset( $columns['thumbnail'] );
 				}
 
 				$add             = array_slice( $columns, 0, 1 );
-				$add['wm-thumb'] = __( 'Image', 'wm_domain' );
+				$add['wm-thumb'] = __( 'Image', 'receptar' );
 
 			//Output
-				return apply_filters( 'wmhook_wm_post_columns_register_output', array_merge( $add, array_slice( $columns, 1 ) ) );
+				return apply_filters( 'wmhook_receptar_post_columns_register_output', array_merge( $add, array_slice( $columns, 1 ) ) );
 		}
-	} // /wm_post_columns_register
+	} // /receptar_post_columns_register
 
 
 
@@ -123,8 +126,8 @@
 	 * @param  string $column
 	 * @param  absint $post_id
 	 */
-	if ( ! function_exists( 'wm_post_columns_render' ) ) {
-		function wm_post_columns_render( $column, $post_id ) {
+	if ( ! function_exists( 'receptar_post_columns_render' ) ) {
+		function receptar_post_columns_render( $column, $post_id ) {
 			//Thumbnail renderer
 				if ( 'wm-thumb' === $column ) {
 
@@ -148,6 +151,6 @@
 
 				}
 		}
-	} // /wm_post_columns_render
+	} // /receptar_post_columns_render
 
 ?>

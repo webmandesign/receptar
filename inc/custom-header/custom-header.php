@@ -37,7 +37,7 @@
 	 */
 
 		//Display the featured area
-			add_action( 'wmhook_header_after', 'wm_banner_area', 10 );
+			add_action( 'wmhook_header_after', 'receptar_banner_area', 10 );
 
 
 
@@ -46,7 +46,7 @@
 	 */
 
 		//NS Featured Posts plugin support
-			add_filter( 'wm_get_banner_posts', 'wm_nsfp_get_banner_posts', 98 );
+			add_filter( 'receptar_get_banner_posts', 'receptar_nsfp_get_banner_posts', 98 );
 
 
 
@@ -66,11 +66,11 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_get_banner_posts' ) ) {
-		function wm_get_banner_posts() {
-			return apply_filters( 'wm_get_banner_posts', array() );
+	if ( ! function_exists( 'receptar_get_banner_posts' ) ) {
+		function receptar_get_banner_posts() {
+			return apply_filters( 'receptar_get_banner_posts', array() );
 		}
-	} // /wm_get_banner_posts
+	} // /receptar_get_banner_posts
 
 
 
@@ -84,14 +84,14 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_has_banner_posts' ) ) {
-		function wm_has_banner_posts( $minimum = 1 ) {
+	if ( ! function_exists( 'receptar_has_banner_posts' ) ) {
+		function receptar_has_banner_posts( $minimum = 1 ) {
 			if ( is_paged() ) {
 				return false;
 			}
 
 			$minimum        = absint( $minimum );
-			$featured_posts = apply_filters( 'wm_get_banner_posts', array() );
+			$featured_posts = apply_filters( 'receptar_get_banner_posts', array() );
 
 			if ( ! is_array( $featured_posts ) || $minimum > count( $featured_posts ) ) {
 				return false;
@@ -99,7 +99,7 @@
 
 			return true;
 		}
-	} // /wm_has_banner_posts
+	} // /receptar_has_banner_posts
 
 
 
@@ -109,17 +109,17 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_banner_area' ) ) {
-		function wm_banner_area() {
+	if ( ! function_exists( 'receptar_banner_area' ) ) {
+		function receptar_banner_area() {
 			if (
 					( is_front_page() || is_home() )
 					&& ! is_paged()
-					&& apply_filters( 'wmhook_wm_banner_area_enabled', true )
+					&& apply_filters( 'wmhook_receptar_banner_area_enabled', true )
 				) {
 				get_template_part( 'loop', 'banner' );
 			}
 		}
-	} // /wm_banner_area
+	} // /receptar_banner_area
 
 
 
@@ -135,8 +135,8 @@
 		 *
 		 * @param  array $featured_posts
 		 */
-		if ( ! function_exists( 'wm_nsfp_get_banner_posts' ) ) {
-			function wm_nsfp_get_banner_posts( $featured_posts ) {
+		if ( ! function_exists( 'receptar_nsfp_get_banner_posts' ) ) {
+			function receptar_nsfp_get_banner_posts( $featured_posts ) {
 				//Requirements check
 					if ( ! class_exists( 'NS_Featured_Posts' ) ) {
 						return $featured_posts;
@@ -169,6 +169,6 @@
 				//Output
 					return $featured_posts;
 			}
-		} // /wm_nsfp_get_banner_posts
+		} // /receptar_nsfp_get_banner_posts
 
 ?>

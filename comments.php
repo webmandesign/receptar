@@ -40,12 +40,12 @@ if (
 		<h2 id="comments-title" class="comments-title"><?php
 
 			printf(
-					_nx( '1 comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', get_comments_number(), 'Comments list title.', 'wm_domain' ),
+					_nx( '1 comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', get_comments_number(), 'Comments list title.', 'receptar' ),
 					number_format_i18n( get_comments_number() ),
 					'<span>' . get_the_title() . '</span>'
 				);
 
-			echo '<a href="#respond" class="add-comment-link">' . _x( 'Add yours &rarr;', 'Add new comment link text.', 'wm_domain' ) . '</a>';
+			echo '<a href="#respond" class="add-comment-link">' . _x( 'Add yours &rarr;', 'Add new comment link text.', 'receptar' ) . '</a>';
 
 		?></h2>
 
@@ -60,7 +60,7 @@ if (
 
 				?>
 
-				<h3 class="comments-closed"><?php _e( 'Comments are closed. You can not add new comments.', 'wm_domain' ); ?></h3>
+				<h3 class="comments-closed"><?php _e( 'Comments are closed. You can not add new comments.', 'receptar' ); ?></h3>
 
 				<?php
 
@@ -84,14 +84,14 @@ if (
 
 					<nav id="comment-nav-below" class="comment-navigation" role="navigation">
 
-						<h3 class="screen-reader-text"><?php _e( 'Comment navigation', 'wm_domain' ); ?></h3>
+						<h3 class="screen-reader-text"><?php _e( 'Comment navigation', 'receptar' ); ?></h3>
 
 						<div class="nav-previous">
-							<?php previous_comments_link( __( '&larr; Older comments', 'wm_domain' ) ); ?>
+							<?php previous_comments_link( __( '&larr; Older comments', 'receptar' ) ); ?>
 						</div>
 
 						<div class="nav-next">
-							<?php next_comments_link( __( 'Newer comments &rarr;', 'wm_domain' ) ); ?>
+							<?php next_comments_link( __( 'Newer comments &rarr;', 'receptar' ) ); ?>
 						</div>
 
 					</nav>

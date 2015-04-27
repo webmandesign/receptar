@@ -16,7 +16,7 @@
 /**
  * Textarea
  */
-class WM_Customizer_Textarea extends WP_Customize_Control {
+class Receptar_Customizer_Textarea extends WP_Customize_Control {
 
 	public $type = 'textarea';
 
@@ -32,6 +32,6 @@ class WM_Customizer_Textarea extends WP_Customize_Control {
 		<?php
 	}
 
-} // /WM_Customizer_Textarea
+} // /Receptar_Customizer_Textarea
 
 ?>

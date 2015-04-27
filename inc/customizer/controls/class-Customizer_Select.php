@@ -16,7 +16,7 @@
 /**
  * Select (with optgroups)
  */
-class WM_Customizer_Select extends WP_Customize_Control {
+class Receptar_Customizer_Select extends WP_Customize_Control {
 
 	public function render_content() {
 		if ( ! empty( $this->choices ) && is_array( $this->choices ) ) {
@@ -52,6 +52,6 @@ class WM_Customizer_Select extends WP_Customize_Control {
 		}
 	}
 
-} // /WM_Customizer_Select
+} // /Receptar_Customizer_Select
 
 ?>

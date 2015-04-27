@@ -30,58 +30,58 @@
 	 */
 
 		//Styles and scripts
-			add_action( 'init',               'wm_register_assets',           10 );
-			add_action( 'wp_enqueue_scripts', 'wm_enqueue_assets',           100 );
-			add_action( 'wp_enqueue_scripts', 'wm_singular_featured_image',  110 );
-			add_action( 'wp_footer',          'wm_footer_custom_scripts',   9998 );
+			add_action( 'init',               'receptar_register_assets',           10 );
+			add_action( 'wp_enqueue_scripts', 'receptar_enqueue_assets',           100 );
+			add_action( 'wp_enqueue_scripts', 'receptar_singular_featured_image',  110 );
+			add_action( 'wp_footer',          'receptar_footer_custom_scripts',   9998 );
 		//Customizer assets
-			add_action( 'customize_controls_enqueue_scripts', 'wm_customizer_enqueue_assets'             );
-			add_action( 'customize_preview_init',             'wm_customizer_preview_enqueue_assets', 10 );
+			add_action( 'customize_controls_enqueue_scripts', 'receptar_customizer_enqueue_assets'             );
+			add_action( 'customize_preview_init',             'receptar_customizer_preview_enqueue_assets', 10 );
 		//Theme setup
-			add_action( 'after_setup_theme', 'wm_setup', 10 );
+			add_action( 'after_setup_theme', 'receptar_setup', 10 );
 		//Register widget areas
-			add_action( 'widgets_init', 'wm_register_widget_areas', 1 );
+			add_action( 'widgets_init', 'receptar_register_widget_areas', 1 );
 		//Sticky posts
-			add_action( 'pre_get_posts', 'wm_posts_query_ignore_sticky_posts' );
+			add_action( 'pre_get_posts', 'receptar_posts_query_ignore_sticky_posts' );
 		//Pagination fallback
-			add_action( 'wmhook_postslist_after', 'wm_pagination', 10 );
+			add_action( 'wmhook_postslist_after', 'receptar_pagination', 10 );
 		//Visual Editor addons
-			add_action( 'init',                                      'wm_visual_editor',                  999 );
-			add_filter( 'wmhook_wm_custom_mce_format_style_formats', 'wm_visual_editor_custom_mce_format'     );
+			add_action( 'init',                                            'receptar_visual_editor',                  999 );
+			add_filter( 'wmhook_receptar_custom_mce_format_style_formats', 'receptar_visual_editor_custom_mce_format'     );
 		//Display Settings > Media recommended images sizes notice
-			add_action( 'admin_init', 'wm_image_size_notice' );
+			add_action( 'admin_init', 'receptar_image_size_notice' );
 		//Website sections
 			//DOCTYPE
-				add_action( 'wmhook_html_before',               'wm_doctype',          10 );
+				add_action( 'wmhook_html_before',               'receptar_doctype',          10 );
 			//HEAD
-				add_action( 'wp_head',                          'wm_head',              1 );
+				add_action( 'wp_head',                          'receptar_head',              1 );
 			//Body
-				add_action( 'wmhook_body_top',                  'wm_site_top',         10 );
-				add_action( 'wmhook_body_bottom',               'wm_site_bottom',     100 );
+				add_action( 'wmhook_body_top',                  'receptar_site_top',         10 );
+				add_action( 'wmhook_body_bottom',               'receptar_site_bottom',     100 );
 			//Header
-				add_action( 'wmhook_header_top',                'wm_header_top',       10 );
-				add_action( 'wmhook_header',                    'wm_logo',             10 );
-				add_action( 'wmhook_header',                    'get_sidebar',         20 );
-				add_action( 'wmhook_header',                    'wm_header_widgets',   30 );
-				add_action( 'wmhook_header_bottom',             'wm_header_bottom',    10 );
-				add_action( 'wmhook_secondary_content_top',     'wm_logo',             10 );
-				add_action( 'wmhook_secondary_controls_bottom', 'wm_post_nav',         10 );
-				add_action( 'wmhook_secondary_controls_bottom', 'wm_menu_social',      20 );
+				add_action( 'wmhook_header_top',                'receptar_header_top',       10 );
+				add_action( 'wmhook_header',                    'receptar_logo',             10 );
+				add_action( 'wmhook_header',                    'get_sidebar',               20 );
+				add_action( 'wmhook_header',                    'receptar_header_widgets',   30 );
+				add_action( 'wmhook_header_bottom',             'receptar_header_bottom',    10 );
+				add_action( 'wmhook_secondary_content_top',     'receptar_logo',             10 );
+				add_action( 'wmhook_secondary_controls_bottom', 'receptar_post_nav',         10 );
+				add_action( 'wmhook_secondary_controls_bottom', 'receptar_menu_social',      20 );
 			//Content
-				add_action( 'wmhook_content_top',               'wm_content_top',      10 );
-				add_action( 'wmhook_entry_top',                 'wm_entry_top',        10 );
-				add_action( 'wmhook_entry_top',                 'wm_post_title',       20 );
-				add_action( 'wmhook_entry_top',                 'wm_breadcrumbs',      30 );
-				add_action( 'wmhook_entry_bottom',              'wm_entry_bottom',     10 );
-				add_action( 'wmhook_comments_before',           'wm_comments_before',  10 );
-				add_action( 'wmhook_comments_after',            'wm_comments_after',   10 );
-				add_action( 'wmhook_content_bottom',            'wm_content_bottom',  100 );
-				add_action( 'wmhook_postslist_before',          'wm_breadcrumbs',      10 );
-				add_action( 'wmhook_postslist_before',          'wm_breadcrumbs_off',  20 );
+				add_action( 'wmhook_content_top',               'receptar_content_top',      10 );
+				add_action( 'wmhook_entry_top',                 'receptar_entry_top',        10 );
+				add_action( 'wmhook_entry_top',                 'receptar_post_title',       20 );
+				add_action( 'wmhook_entry_top',                 'receptar_breadcrumbs',      30 );
+				add_action( 'wmhook_entry_bottom',              'receptar_entry_bottom',     10 );
+				add_action( 'wmhook_comments_before',           'receptar_comments_before',  10 );
+				add_action( 'wmhook_comments_after',            'receptar_comments_after',   10 );
+				add_action( 'wmhook_content_bottom',            'receptar_content_bottom',  100 );
+				add_action( 'wmhook_postslist_before',          'receptar_breadcrumbs',      10 );
+				add_action( 'wmhook_postslist_before',          'receptar_breadcrumbs_off',  20 );
 			//Footer
-				add_action( 'wmhook_footer_top',                'wm_footer_top',      100 );
-				add_action( 'wmhook_footer',                    'wm_footer',          100 );
-				add_action( 'wmhook_footer_bottom',             'wm_footer_bottom',   100 );
+				add_action( 'wmhook_footer_top',                'receptar_footer_top',      100 );
+				add_action( 'wmhook_footer',                    'receptar_footer',          100 );
+				add_action( 'wmhook_footer_bottom',             'receptar_footer_bottom',   100 );
 
 
 
@@ -92,30 +92,30 @@
 		//Disable TGMPA - not needed
 			add_filter( 'wmhook_enable_plugins_integration', '__return_false' );
 		//Set up image sizes
-			add_filter( 'wmhook_wm_setup_image_sizes', 'wm_image_sizes' );
+			add_filter( 'wmhook_receptar_setup_image_sizes', 'receptar_image_sizes' );
 		//Set required Google Fonts
-			add_filter( 'wmhook_wm_google_fonts_url_fonts_setup', 'wm_google_fonts' );
+			add_filter( 'wmhook_receptar_google_fonts_url_fonts_setup', 'receptar_google_fonts' );
 		//BODY classes
-			add_filter( 'body_class', 'wm_body_classes', 98 );
+			add_filter( 'body_class', 'receptar_body_classes', 98 );
 		//Post classes
-			add_filter( 'post_class', 'wm_post_classes', 98 );
+			add_filter( 'post_class', 'receptar_post_classes', 98 );
 		//Navigation improvements
-			add_filter( 'walker_nav_menu_start_el', 'wm_nav_item_process', 10, 4 );
+			add_filter( 'walker_nav_menu_start_el', 'receptar_nav_item_process', 10, 4 );
 		//Excerpt modifications
-			add_filter( 'the_excerpt',                        'wm_remove_shortcodes',        10 );
-			add_filter( 'the_excerpt',                        'wm_excerpt',                  20 );
-			add_filter( 'excerpt_length',                     'wm_excerpt_length',           10 );
-			add_filter( 'excerpt_more',                       'wm_excerpt_more',             10 );
-			add_filter( 'wmhook_wm_excerpt_continue_reading', 'wm_excerpt_continue_reading', 10 );
+			add_filter( 'the_excerpt',                              'receptar_remove_shortcodes',        10 );
+			add_filter( 'the_excerpt',                              'receptar_excerpt',                  20 );
+			add_filter( 'excerpt_length',                           'receptar_excerpt_length',           10 );
+			add_filter( 'excerpt_more',                             'receptar_excerpt_more',             10 );
+			add_filter( 'wmhook_receptar_excerpt_continue_reading', 'receptar_excerpt_continue_reading', 10 );
 		//Entry HTML attributes
-			add_filter( 'wmhook_entry_container_atts', 'wm_entry_container_atts', 10 );
+			add_filter( 'wmhook_entry_container_atts', 'receptar_entry_container_atts', 10 );
 		//Post thumbnail
-			add_filter( 'wmhook_entry_featured_image_size',         'wm_post_thumbnail_size'               );
-			add_filter( 'wmhook_wm-thumb_size',                     'wm_post_thumbnail_size'               );
-			add_filter( 'wmhook_entry_featured_image_fallback_url', 'wm_entry_featured_image_fallback_url' );
+			add_filter( 'wmhook_entry_featured_image_size',         'receptar_post_thumbnail_size'               );
+			add_filter( 'wmhook_wm-thumb_size',                     'receptar_post_thumbnail_size'               );
+			add_filter( 'wmhook_entry_featured_image_fallback_url', 'receptar_entry_featured_image_fallback_url' );
 		//Comments form
-			add_filter( 'comment_form_default_fields', 'wm_comments_form_placeholders' );
-			add_filter( 'comment_form_field_comment',  'wm_comments_form_placeholders' );
+			add_filter( 'comment_form_default_fields', 'receptar_comments_form_placeholders' );
+			add_filter( 'comment_form_field_comment',  'receptar_comments_form_placeholders' );
 
 
 
@@ -151,17 +151,17 @@
 	 * @since    1.0
 	 * @version  1.1
 	 */
-	if ( ! function_exists( 'wm_setup' ) ) {
-		function wm_setup() {
+	if ( ! function_exists( 'receptar_setup' ) ) {
+		function receptar_setup() {
 
 			//Helper variables
-				$image_sizes = array_filter( apply_filters( 'wmhook_wm_setup_image_sizes', array() ) );
+				$image_sizes = array_filter( apply_filters( 'wmhook_receptar_setup_image_sizes', array() ) );
 
 				//WordPress visual editor CSS stylesheets
-					$visual_editor_css = array_filter( (array) apply_filters( 'wmhook_wm_setup_visual_editor_css', array(
-							str_replace( ',', '%2C', wm_google_fonts_url() ),
-							esc_url( add_query_arg( array( 'ver' => WM_THEME_VERSION ), wm_get_stylesheet_directory_uri( 'genericons/genericons.css' ) ) ),
-							esc_url( add_query_arg( array( 'ver' => WM_THEME_VERSION ), wm_get_stylesheet_directory_uri( 'css/editor-style.css' ) ) ),
+					$visual_editor_css = array_filter( (array) apply_filters( 'wmhook_receptar_setup_visual_editor_css', array(
+							str_replace( ',', '%2C', receptar_google_fonts_url() ),
+							esc_url( add_query_arg( array( 'ver' => WM_THEME_VERSION ), receptar_get_stylesheet_directory_uri( 'genericons/genericons.css' ) ) ),
+							esc_url( add_query_arg( array( 'ver' => WM_THEME_VERSION ), receptar_get_stylesheet_directory_uri( 'css/editor-style.css' ) ) ),
 						) ) );
 
 			/**
@@ -171,13 +171,13 @@
 			 */
 
 				//wp-content/languages/theme-name/it_IT.mo
-					load_theme_textdomain( 'wm_domain', trailingslashit( WP_LANG_DIR ) . 'themes/' . WM_THEME_SHORTNAME );
+					load_theme_textdomain( 'receptar', trailingslashit( WP_LANG_DIR ) . 'themes/' . WM_THEME_SHORTNAME );
 
 				//wp-content/themes/child-theme-name/languages/it_IT.mo
-					load_theme_textdomain( 'wm_domain', get_stylesheet_directory() . '/languages' );
+					load_theme_textdomain( 'receptar', get_stylesheet_directory() . '/languages' );
 
 				//wp-content/themes/theme-name/languages/it_IT.mo
-					load_theme_textdomain( 'wm_domain', get_template_directory() . '/languages' );
+					load_theme_textdomain( 'receptar', get_template_directory() . '/languages' );
 
 			//Title tag
 				add_theme_support( 'title-tag' );
@@ -199,14 +199,14 @@
 
 			//Custom menus
 				add_theme_support( 'menus' );
-				register_nav_menus( apply_filters( 'wmhook_wm_setup_menus', array(
-						'primary' => __( 'Primary Menu', 'wm_domain' ),
-						'social'  => __( 'Social Links Menu', 'wm_domain' ),
+				register_nav_menus( apply_filters( 'wmhook_receptar_setup_menus', array(
+						'primary' => __( 'Primary Menu', 'receptar' ),
+						'social'  => __( 'Social Links Menu', 'receptar' ),
 					) ) );
 
 			//Custom header
-				add_theme_support( 'custom-header', apply_filters( 'wmhook_wm_setup_custom_background_args', array(
-						'default-image' => wm_get_stylesheet_directory_uri( 'images/header.jpg' ),
+				add_theme_support( 'custom-header', apply_filters( 'wmhook_receptar_setup_custom_background_args', array(
+						'default-image' => receptar_get_stylesheet_directory_uri( 'images/header.jpg' ),
 						'header-text'   => false,
 						'width'         => 1920,
 						'height'        => 640, //Approx. 62% of desktop viewport height (16:9)
@@ -215,7 +215,7 @@
 					) ) );
 
 			//Custom background
-				add_theme_support( 'custom-background', apply_filters( 'wmhook_wm_setup_custom_background_args', array(
+				add_theme_support( 'custom-background', apply_filters( 'wmhook_receptar_setup_custom_background_args', array(
 						'default-color' => 'f5f7f9',
 					) ) );
 
@@ -236,7 +236,7 @@
 
 							if (
 									in_array( $size, array( 'thumbnail', 'medium', 'large' ) )
-									&& ! get_option( 'wm-' . WM_THEME_SHORTNAME . '-image-size-' . $size )
+									&& ! get_option( 'receptar-' . WM_THEME_SHORTNAME . '-image-size-' . $size )
 								) {
 
 								/**
@@ -254,7 +254,7 @@
 									update_option( $size . '_crop', $image_sizes[ $size ][2] );
 								}
 
-								update_option( 'wm-' . WM_THEME_SHORTNAME . '-image-size-' . $size, true );
+								update_option( 'receptar-' . WM_THEME_SHORTNAME . '-image-size-' . $size, true );
 
 							} else {
 
@@ -267,7 +267,7 @@
 					}
 
 		}
-	} // /wm_setup
+	} // /receptar_setup
 
 
 
@@ -279,8 +279,8 @@
 	 *
 	 * @param  array $image_sizes
 	 */
-	if ( ! function_exists( 'wm_image_sizes' ) ) {
-		function wm_image_sizes( $image_sizes ) {
+	if ( ! function_exists( 'receptar_image_sizes' ) ) {
+		function receptar_image_sizes( $image_sizes ) {
 			//Helper variables
 				global $content_width;
 
@@ -298,7 +298,7 @@
 								480,
 								640,
 								true,
-								__( 'In posts list.', 'wm_domain' )
+								__( 'In posts list.', 'receptar' )
 							),
 						'medium' => array(
 								absint( $content_width * .62 ),
@@ -309,26 +309,26 @@
 								absint( $content_width ),
 								9999,
 								false,
-								__( 'In single post page.', 'wm_domain' )
+								__( 'In single post page.', 'receptar' )
 							),
 						'banner' => array(
 								1920,
 								640, //Approx. 62% of desktop viewport height (16:9)
 								true,
-								__( 'In front (and blog) page banner.', 'wm_domain' )
+								__( 'In front (and blog) page banner.', 'receptar' )
 							),
 						'featured' => array(
 								absint( $content_width ),
 								absint( $content_width / 3 * 2 ),
 								true,
-								__( 'In single post page on mobile devices only.', 'wm_domain' )
+								__( 'In single post page on mobile devices only.', 'receptar' )
 							),
 					);
 
 			//Output
 				return $image_sizes;
 		}
-	} // /wm_image_sizes
+	} // /receptar_image_sizes
 
 
 
@@ -338,15 +338,15 @@
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_image_size_notice' ) ) {
-			function wm_image_size_notice() {
+		if ( ! function_exists( 'receptar_image_size_notice' ) ) {
+			function receptar_image_size_notice() {
 				add_settings_field(
 						//$id
 						'recommended-image-sizes',
 						//$title
 						'',
 						//$callback
-						'wm_image_size_notice_html',
+						'receptar_image_size_notice_html',
 						//$page
 						'media',
 						//$section
@@ -364,7 +364,7 @@
 						'esc_attr'
 					);
 			}
-		} // /wm_image_size_notice
+		} // /receptar_image_size_notice
 
 
 
@@ -374,16 +374,16 @@
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_image_size_notice_html' ) ) {
-			function wm_image_size_notice_html() {
+		if ( ! function_exists( 'receptar_image_size_notice_html' ) ) {
+			function receptar_image_size_notice_html() {
 				//Helper variables
 					$default_image_size_names = array(
-							'thumbnail' => _x( 'Thumbnail size', 'WordPress predefined image size name.', 'wm_domain' ),
-							'medium'    => _x( 'Medium size', 'WordPress predefined image size name.', 'wm_domain' ),
-							'large'     => _x( 'Large size', 'WordPress predefined image size name.', 'wm_domain' ),
+							'thumbnail' => _x( 'Thumbnail size', 'WordPress predefined image size name.', 'receptar' ),
+							'medium'    => _x( 'Medium size', 'WordPress predefined image size name.', 'receptar' ),
+							'large'     => _x( 'Large size', 'WordPress predefined image size name.', 'receptar' ),
 						);
 
-					$image_sizes = array_filter( apply_filters( 'wmhook_wm_setup_image_sizes', array() ) );
+					$image_sizes = array_filter( apply_filters( 'wmhook_receptar_setup_image_sizes', array() ) );
 
 				//Requirements check
 					if ( empty( $image_sizes ) ) {
@@ -403,18 +403,18 @@
 
 					echo '<div class="recommended-image-sizes">';
 
-						do_action( 'wmhook_wm_image_size_notice_html_top' );
+						do_action( 'wmhook_receptar_image_size_notice_html_top' );
 
-						echo '<h3>' . __( 'Recommended image sizes', 'wm_domain' ) . '</h3>'
-							. '<p>' . __( 'For the theme to work correctly, please, set these recommended image sizes:', 'wm_domain' ) . '</p>';
+						echo '<h3>' . __( 'Recommended image sizes', 'receptar' ) . '</h3>'
+							. '<p>' . __( 'For the theme to work correctly, please, set these recommended image sizes:', 'receptar' ) . '</p>';
 
 						echo '<table>';
 
 							echo '<thead>'
 								. '<tr>'
-								. '<th>' . __( 'Size name', 'wm_domain' ) . '</th>'
-								. '<th>' . __( 'Size parameters', 'wm_domain' ) . '</th>'
-								. '<th>' . __( 'Theme usage', 'wm_domain' ) . '</th>'
+								. '<th>' . __( 'Size name', 'receptar' ) . '</th>'
+								. '<th>' . __( 'Size parameters', 'receptar' ) . '</th>'
+								. '<th>' . __( 'Theme usage', 'receptar' ) . '</th>'
 								. '</tr>'
 								. '</thead>';
 
@@ -424,12 +424,12 @@
 
 									if ( isset( $default_image_size_names[ $size ] ) ) {
 
-										$crop = ( $setup[2] ) ? ( __( 'cropped', 'wm_domain' ) ) : ( __( 'scaled', 'wm_domain' ) );
+										$crop = ( $setup[2] ) ? ( __( 'cropped', 'receptar' ) ) : ( __( 'scaled', 'receptar' ) );
 
 										echo '<tr>'
 											. '<th>' . $default_image_size_names[ $size ] . ':</th>'
 											. '<td>' . sprintf(
-													_x( '%1$s &times; %2$s, %3$s', '1: image width, 2: image height, 3: cropped or scaled?', 'wm_domain' ),
+													_x( '%1$s &times; %2$s, %3$s', '1: image width, 2: image height, 3: cropped or scaled?', 'receptar' ),
 													$setup[0],
 													$setup[1],
 													$crop
@@ -439,12 +439,12 @@
 
 									} else {
 
-										$crop = ( $setup[2] ) ? ( __( 'cropped', 'wm_domain' ) ) : ( __( 'scaled', 'wm_domain' ) );
+										$crop = ( $setup[2] ) ? ( __( 'cropped', 'receptar' ) ) : ( __( 'scaled', 'receptar' ) );
 
-										echo '<tr title="' . __( 'Additional image size added by the theme. Can not be changed on this page.', 'wm_domain' ) . '">'
+										echo '<tr title="' . __( 'Additional image size added by the theme. Can not be changed on this page.', 'receptar' ) . '">'
 											. '<th>' . '<code>' . $size . '</code>:</th>'
 											. '<td>' . sprintf(
-													_x( '%1$s &times; %2$s, %3$s', '1: image width, 2: image height, 3: cropped or scaled?', 'wm_domain' ),
+													_x( '%1$s &times; %2$s, %3$s', '1: image width, 2: image height, 3: cropped or scaled?', 'receptar' ),
 													$setup[0],
 													$setup[1],
 													$crop
@@ -460,11 +460,11 @@
 
 						echo '</table>';
 
-						do_action( 'wmhook_wm_image_size_notice_html_bottom' );
+						do_action( 'wmhook_receptar_image_size_notice_html_bottom' );
 
 					echo '</div>';
 			}
-		} // /wm_image_size_notice_html
+		} // /receptar_image_size_notice_html
 
 
 
@@ -476,11 +476,11 @@
 	 *
 	 * @param  array $fonts_setup
 	 */
-	if ( ! function_exists( 'wm_google_fonts' ) ) {
-		function wm_google_fonts( $fonts_setup ) {
+	if ( ! function_exists( 'receptar_google_fonts' ) ) {
+		function receptar_google_fonts( $fonts_setup ) {
 			return array( 'Roboto', 'Roboto Condensed:400,300', 'Alegreya:400,700' );
 		}
-	} // /wm_google_fonts
+	} // /receptar_google_fonts
 
 
 
@@ -496,20 +496,20 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_register_assets' ) ) {
-		function wm_register_assets() {
+	if ( ! function_exists( 'receptar_register_assets' ) ) {
+		function receptar_register_assets() {
 
 			/**
 			 * Styles
 			 */
 
-				$register_styles = apply_filters( 'wmhook_wm_register_assets_register_styles', array(
-						'wm-genericons'   => array( wm_get_stylesheet_directory_uri( 'genericons/genericons.css' )                          ),
-						'wm-google-fonts' => array( wm_google_fonts_url()                                                                   ),
-						'wm-starter'      => array( wm_get_stylesheet_directory_uri( 'css/starter.css' )                                    ),
-						'wm-stylesheet'   => array( 'src' => get_stylesheet_uri(), 'deps' => array( 'wm-genericons', 'wm-starter' )         ),
-						'wm-colors'       => array( wm_get_stylesheet_directory_uri( 'css/colors.css' ), 'deps' => array( 'wm-stylesheet' ) ),
-						'wm-slick'        => array( wm_get_stylesheet_directory_uri( 'css/slick.css' )                                      ),
+				$register_styles = apply_filters( 'wmhook_receptar_register_assets_register_styles', array(
+						'receptar-genericons'   => array( receptar_get_stylesheet_directory_uri( 'genericons/genericons.css' ) ),
+						'receptar-google-fonts' => array( receptar_google_fonts_url() ),
+						'receptar-starter'      => array( receptar_get_stylesheet_directory_uri( 'css/starter.css' ) ),
+						'receptar-stylesheet'   => array( 'src' => get_stylesheet_uri(), 'deps' => array( 'receptar-genericons', 'receptar-starter' ) ),
+						'receptar-colors'       => array( receptar_get_stylesheet_directory_uri( 'css/colors.css' ), 'deps' => array( 'receptar-stylesheet' ) ),
+						'receptar-slick'        => array( receptar_get_stylesheet_directory_uri( 'css/slick.css' ) ),
 					) );
 
 				foreach ( $register_styles as $handle => $atts ) {
@@ -525,10 +525,10 @@
 			 * Scripts
 			 */
 
-				$register_scripts = apply_filters( 'wmhook_wm_register_assets_register_scripts', array(
-						'wm-slick'               => array( wm_get_stylesheet_directory_uri( 'js/slick.min.js' ) ),
-						'wm-scripts-global'      => array( wm_get_stylesheet_directory_uri( 'js/scripts-global.js' ) ),
-						'wm-skip-link-focus-fix' => array( wm_get_stylesheet_directory_uri( 'js/skip-link-focus-fix.js' ) ),
+				$register_scripts = apply_filters( 'wmhook_receptar_register_assets_register_scripts', array(
+						'receptar-slick'               => array( receptar_get_stylesheet_directory_uri( 'js/slick.min.js' ) ),
+						'receptar-scripts-global'      => array( receptar_get_stylesheet_directory_uri( 'js/scripts-global.js' ) ),
+						'receptar-skip-link-focus-fix' => array( receptar_get_stylesheet_directory_uri( 'js/skip-link-focus-fix.js' ) ),
 					) );
 
 				foreach ( $register_scripts as $handle => $atts ) {
@@ -541,7 +541,7 @@
 				}
 
 		}
-	} // /wm_register_assets
+	} // /receptar_register_assets
 
 
 
@@ -551,43 +551,43 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_enqueue_assets' ) ) {
-		function wm_enqueue_assets() {
+	if ( ! function_exists( 'receptar_enqueue_assets' ) ) {
+		function receptar_enqueue_assets() {
 
 			//Helper variables
 				$enqueue_styles = $enqueue_scripts = array();
 
-				$custom_styles = wm_custom_styles();
+				$custom_styles = receptar_custom_styles();
 
-				$inline_styles_handle = ( wp_style_is( 'wm-colors', 'registered' ) ) ? ( 'wm-colors' ) : ( 'wm-stylesheet' );
-				$inline_styles_handle = apply_filters( 'wmhook_wm_enqueue_assets_inline_styles_handle', $inline_styles_handle );
+				$inline_styles_handle = ( wp_style_is( 'receptar-colors', 'registered' ) ) ? ( 'receptar-colors' ) : ( 'receptar-stylesheet' );
+				$inline_styles_handle = apply_filters( 'wmhook_receptar_enqueue_assets_inline_styles_handle', $inline_styles_handle );
 
 			/**
 			 * Styles
 			 */
 
 				//Google Fonts
-					if ( wm_google_fonts_url() ) {
-						$enqueue_styles[] = 'wm-google-fonts';
+					if ( receptar_google_fonts_url() ) {
+						$enqueue_styles[] = 'receptar-google-fonts';
 					}
 
 				//Banner slider
 					if (
 							( is_front_page() || is_home() )
-							&& wm_has_banner_posts( 2 )
+							&& receptar_has_banner_posts( 2 )
 						) {
-						$enqueue_styles[] = 'wm-slick';
+						$enqueue_styles[] = 'receptar-slick';
 					}
 
 				//Main
-					$enqueue_styles[] = 'wm-stylesheet';
+					$enqueue_styles[] = 'receptar-stylesheet';
 
 				//Colors
-					if ( 'wm-colors' === $inline_styles_handle ) {
-						$enqueue_styles[] = 'wm-colors';
+					if ( 'receptar-colors' === $inline_styles_handle ) {
+						$enqueue_styles[] = 'receptar-colors';
 					}
 
-				$enqueue_styles = apply_filters( 'wmhook_wm_enqueue_assets_enqueue_styles', $enqueue_styles );
+				$enqueue_styles = apply_filters( 'wmhook_receptar_enqueue_assets_enqueue_styles', $enqueue_styles );
 
 				foreach ( $enqueue_styles as $handle ) {
 					wp_enqueue_style( $handle );
@@ -599,7 +599,10 @@
 
 				//Customizer setup custom styles
 					if ( $custom_styles ) {
-						wp_add_inline_style( $inline_styles_handle, "\r\n" . apply_filters( 'wmhook_esc_css', $custom_styles ) . "\r\n" );
+						wp_add_inline_style(
+								$inline_styles_handle,
+								"\r\n" . apply_filters( 'wmhook_esc_css', $custom_styles ) . "\r\n"
+							);
 					}
 
 				//Custom styles set in post/page 'custom-css' custom field
@@ -607,9 +610,12 @@
 							is_singular()
 							&& $output = get_post_meta( get_the_ID(), 'custom_css', true )
 						) {
-						$output = apply_filters( 'wmhook_wm_enqueue_assets_styles_inline_singular', "\r\n\r\n/* Custom singular styles */\r\n" . $output . "\r\n" );
+						$output = apply_filters( 'wmhook_receptar_enqueue_assets_styles_inline_singular', "\r\n\r\n/* Custom singular styles */\r\n" . $output . "\r\n" );
 
-						wp_add_inline_style( $inline_styles_handle, apply_filters( 'wmhook_esc_css', $output ) . "\r\n" );
+						wp_add_inline_style(
+								$inline_styles_handle,
+								apply_filters( 'wmhook_esc_css', $output ) . "\r\n"
+							);
 					}
 
 			/**
@@ -619,18 +625,18 @@
 				//Banner slider
 					if (
 							( is_front_page() || is_home() )
-							&& wm_has_banner_posts( 2 )
+							&& receptar_has_banner_posts( 2 )
 						) {
-						$enqueue_scripts[] = 'wm-slick';
+						$enqueue_scripts[] = 'receptar-slick';
 					}
 
 				//Global theme scripts
-					$enqueue_scripts[] = 'wm-scripts-global';
+					$enqueue_scripts[] = 'receptar-scripts-global';
 
 				//Skip link focus fix
-					$enqueue_scripts[] = 'wm-skip-link-focus-fix';
+					$enqueue_scripts[] = 'receptar-skip-link-focus-fix';
 
-				$enqueue_scripts = apply_filters( 'wmhook_wm_enqueue_assets_enqueue_scripts', $enqueue_scripts );
+				$enqueue_scripts = apply_filters( 'wmhook_receptar_enqueue_assets_enqueue_scripts', $enqueue_scripts );
 
 				foreach ( $enqueue_scripts as $handle ) {
 					wp_enqueue_script( $handle );
@@ -642,11 +648,18 @@
 							&& comments_open()
 							&& get_option( 'thread_comments' )
 						) {
-						wp_enqueue_script( 'comment-reply', false, false, false, true );
+
+						wp_enqueue_script(
+								'comment-reply',
+								false,
+								false,
+								false,
+								true
+							);
 					}
 
 		}
-	} // /wm_enqueue_assets
+	} // /receptar_enqueue_assets
 
 
 
@@ -656,18 +669,18 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_customizer_enqueue_assets' ) ) {
-		function wm_customizer_enqueue_assets() {
+	if ( ! function_exists( 'receptar_customizer_enqueue_assets' ) ) {
+		function receptar_customizer_enqueue_assets() {
 			//Styles
 				wp_enqueue_style(
-						'wm-customizer',
+						'receptar-customizer',
 						get_template_directory_uri() . '/css/customizer.css',
 						false,
 						WM_SCRIPTS_VERSION,
 						'all'
 					);
 		}
-	} // /wm_customizer_enqueue_assets
+	} // /receptar_customizer_enqueue_assets
 
 
 
@@ -677,18 +690,18 @@
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_customizer_preview_enqueue_assets' ) ) {
-			function wm_customizer_preview_enqueue_assets() {
+		if ( ! function_exists( 'receptar_customizer_preview_enqueue_assets' ) ) {
+			function receptar_customizer_preview_enqueue_assets() {
 				//Scripts
 					wp_enqueue_script(
-							'wm-customizer-preview',
-							wm_get_stylesheet_directory_uri( 'js/customizer-preview.js' ),
+							'receptar-customizer-preview',
+							receptar_get_stylesheet_directory_uri( 'js/customizer-preview.js' ),
 							array( 'customize-preview' ),
 							WM_SCRIPTS_VERSION,
 							true
 						);
 			}
-		} // /wm_customizer_preview_enqueue_assets
+		} // /receptar_customizer_preview_enqueue_assets
 
 
 
@@ -700,8 +713,8 @@
 	 *
 	 * @param  array $classes
 	 */
-	if ( ! function_exists( 'wm_body_classes' ) ) {
-		function wm_body_classes( $classes ) {
+	if ( ! function_exists( 'receptar_body_classes' ) ) {
+		function receptar_body_classes( $classes ) {
 			//Helper variables
 				$body_classes = array();
 
@@ -743,14 +756,14 @@
 					}
 
 			//Output
-				$body_classes = array_filter( (array) apply_filters( 'wmhook_wm_body_classes_output', $body_classes ) );
+				$body_classes = array_filter( (array) apply_filters( 'wmhook_receptar_body_classes_output', $body_classes ) );
 				$classes      = array_merge( $classes, array_flip( $body_classes ) );
 
 				asort( $classes );
 
 				return $classes;
 		}
-	} // /wm_body_classes
+	} // /receptar_body_classes
 
 
 
@@ -762,8 +775,8 @@
 	 *
 	 * @param  array $classes
 	 */
-	if ( ! function_exists( 'wm_post_classes' ) ) {
-		function wm_post_classes( $classes ) {
+	if ( ! function_exists( 'receptar_post_classes' ) ) {
+		function receptar_post_classes( $classes ) {
 			//Preparing output
 				//Sticky post
 					/**
@@ -785,7 +798,7 @@
 			//Output
 				return $classes;
 		}
-	} // /wm_post_classes
+	} // /receptar_post_classes
 
 
 
@@ -795,8 +808,8 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_singular_featured_image' ) ) {
-		function wm_singular_featured_image() {
+	if ( ! function_exists( 'receptar_singular_featured_image' ) ) {
+		function receptar_singular_featured_image() {
 			//Requrements check
 				if (
 						( ! is_singular() && ! is_attachment() )
@@ -815,14 +828,14 @@
 
 					$output = wp_get_attachment_image_src(
 							get_post_thumbnail_id( get_the_ID() ),
-							apply_filters( 'wmhook_wm_enqueue_assets_styles_inline_featured_image_size', 'large' )
+							apply_filters( 'wmhook_receptar_enqueue_assets_styles_inline_featured_image_size', 'large' )
 						);
 
 				} else if ( is_attachment() ) {
 
 					$output = wp_get_attachment_image_src(
 							get_the_ID(),
-							apply_filters( 'wmhook_wm_enqueue_assets_styles_inline_featured_image_size', 'large' )
+							apply_filters( 'wmhook_receptar_enqueue_assets_styles_inline_featured_image_size', 'large' )
 						);
 
 				}
@@ -831,12 +844,15 @@
 
 				$output = "\r\n\r\n/* Singular featured image styles */\r\n.entry-media { background-image: url('" . $output[0] . "'); }\r\n";
 
-				$output = apply_filters( 'wmhook_wm_singular_featured_image_output', $output );
+				$output = apply_filters( 'wmhook_receptar_singular_featured_image_output', $output );
 
 			//Output
-				wp_add_inline_style( 'wm-stylesheet', apply_filters( 'wmhook_esc_css', $output ) . "\r\n" );
+				wp_add_inline_style(
+						'receptar-stylesheet',
+						apply_filters( 'wmhook_esc_css', $output ) . "\r\n"
+					);
 		}
-	} // /wm_singular_featured_image
+	} // /receptar_singular_featured_image
 
 
 
@@ -852,11 +868,11 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_doctype' ) ) {
-		function wm_doctype() {
+	if ( ! function_exists( 'receptar_doctype' ) ) {
+		function receptar_doctype() {
 			echo '<!doctype html>';
 		}
-	} // /wm_doctype
+	} // /receptar_doctype
 
 
 
@@ -866,8 +882,8 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_head' ) ) {
-		function wm_head() {
+	if ( ! function_exists( 'receptar_head' ) ) {
+		function receptar_head() {
 			//Helper variables
 				$output = array();
 
@@ -878,12 +894,12 @@
 				$output[40] = '<link rel="pingback" href="' . get_bloginfo( 'pingback_url' ) . '" />';
 
 				//Filter output array
-					$output = apply_filters( 'wmhook_wm_head_output_array', $output );
+					$output = apply_filters( 'wmhook_receptar_head_output_array', $output );
 
 			//Output
-				echo apply_filters( 'wmhook_wm_head_output', implode( "\r\n", $output ) . "\r\n" );
+				echo apply_filters( 'wmhook_receptar_head_output', implode( "\r\n", $output ) . "\r\n" );
 		}
-	} // /wm_head
+	} // /receptar_head
 
 
 
@@ -893,8 +909,8 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_site_top' ) ) {
-		function wm_site_top() {
+	if ( ! function_exists( 'receptar_site_top' ) ) {
+		function receptar_site_top() {
 			//Helper variables
 				$output  = '<div id="page" class="hfeed site">' . "\r\n";
 				$output .= "\t" . '<div class="site-inner">' . "\r\n";
@@ -902,7 +918,7 @@
 			//Output
 				echo $output;
 		}
-	} // /wm_site_top
+	} // /receptar_site_top
 
 
 
@@ -912,8 +928,8 @@
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_site_bottom' ) ) {
-			function wm_site_bottom() {
+		if ( ! function_exists( 'receptar_site_bottom' ) ) {
+			function receptar_site_bottom() {
 				//Helper variables
 					$output  = "\r\n\t" . '</div><!-- /.site-inner -->';
 					$output .= "\r\n" . '</div><!-- /#page -->' . "\r\n\r\n";
@@ -921,7 +937,7 @@
 				//Output
 					echo $output;
 			}
-		} // /wm_site_bottom
+		} // /receptar_site_bottom
 
 
 
@@ -931,15 +947,15 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_header_top' ) ) {
-		function wm_header_top() {
+	if ( ! function_exists( 'receptar_header_top' ) ) {
+		function receptar_header_top() {
 			//Preparing output
-				$output = "\r\n\r\n" . '<header id="masthead" class="site-header" role="banner"' . wm_schema_org( 'WPHeader' ) . '>' . "\r\n\r\n";
+				$output = "\r\n\r\n" . '<header id="masthead" class="site-header" role="banner"' . receptar_schema_org( 'WPHeader' ) . '>' . "\r\n\r\n";
 
 			//Output
 				echo $output;
 		}
-	} // /wm_header_top
+	} // /receptar_header_top
 
 
 
@@ -949,15 +965,15 @@
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_header_bottom' ) ) {
-			function wm_header_bottom() {
+		if ( ! function_exists( 'receptar_header_bottom' ) ) {
+			function receptar_header_bottom() {
 				//Helper variables
 					$output = "\r\n\r\n" . '</header>' . "\r\n\r\n";
 
 				//Output
 					echo $output;
 			}
-		} // /wm_header_bottom
+		} // /receptar_header_bottom
 
 
 
@@ -967,11 +983,11 @@
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_header_widgets' ) ) {
-			function wm_header_widgets() {
+		if ( ! function_exists( 'receptar_header_widgets' ) ) {
+			function receptar_header_widgets() {
 				get_sidebar( 'header' );
 			}
-		} // /wm_header_widgets
+		} // /receptar_header_widgets
 
 
 
@@ -981,11 +997,11 @@
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_menu_social' ) ) {
-			function wm_menu_social() {
+		if ( ! function_exists( 'receptar_menu_social' ) ) {
+			function receptar_menu_social() {
 				get_template_part( 'menu', 'social' );
 			}
-		} // /wm_menu_social
+		} // /receptar_menu_social
 
 
 
@@ -1000,8 +1016,8 @@
 	 * @param  int    $depth
 	 * @param  array  $args
 	 */
-	if ( ! function_exists( 'wm_nav_item_process' ) ) {
-		function wm_nav_item_process( $item_output, $item, $depth, $args ) {
+	if ( ! function_exists( 'receptar_nav_item_process' ) ) {
+		function receptar_nav_item_process( $item_output, $item, $depth, $args ) {
 			//Preparing output
 				//Display item description
 					if (
@@ -1014,7 +1030,7 @@
 			//Output
 				return $item_output;
 		}
-	} // /wm_nav_item_process
+	} // /receptar_nav_item_process
 
 
 
@@ -1026,26 +1042,26 @@
 	 *
 	 * @param  array $args Heading setup arguments
 	 */
-	if ( ! function_exists( 'wm_post_title' ) ) {
-		function wm_post_title( $args = array() ) {
+	if ( ! function_exists( 'receptar_post_title' ) ) {
+		function receptar_post_title( $args = array() ) {
 			//Helper variables
 				global $post;
 
 				//Requirements check
 					if (
 							! ( $title = get_the_title() )
-							|| apply_filters( 'wmhook_wm_post_title_disable', false )
+							|| apply_filters( 'wmhook_receptar_post_title_disable', false )
 						) {
 						return;
 					}
 
 				$output = $meta = '';
 
-				$args = wp_parse_args( $args, apply_filters( 'wmhook_wm_post_title_defaults', array(
+				$args = wp_parse_args( $args, apply_filters( 'wmhook_receptar_post_title_defaults', array(
 						'class'           => 'entry-title',
 						'class_container' => 'entry-header',
 						'link'            => esc_url( get_permalink() ),
-						'output'          => '<header class="{class_container}"><{tag} class="{class}"' . wm_schema_org( 'name' ) . '>{title}</{tag}>{meta}</header>',
+						'output'          => '<header class="{class_container}"><{tag} class="{class}"' . receptar_schema_org( 'name' ) . '>{title}</{tag}>{meta}</header>',
 						'tag'             => 'h1',
 						'title'           => '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $title . '</a>',
 					) ) );
@@ -1057,14 +1073,14 @@
 							|| ( is_page() && 'page' === get_post_type() ) //not to display the below stuff on posts list on static front page
 						) {
 
-						if ( $suffix = wm_paginated_suffix( 'small' ) ) {
+						if ( $suffix = receptar_paginated_suffix( 'small' ) ) {
 							$args['title'] .= $suffix;
 						} else {
 							$args['title'] = $title;
 						}
 
 						if ( ( $helper = get_edit_post_link( get_the_ID() ) ) && is_page() ) {
-							$args['title'] .= ' <a href="' . esc_url( $helper ) . '" class="entry-edit" title="' . esc_attr( sprintf( __( 'Edit the "%s"', 'wm_domain' ), the_title_attribute( array( 'echo' => false ) ) ) ) . '"><span>' . _x( 'Edit', 'Edit post link.', 'wm_domain' ) . '</span></a>';
+							$args['title'] .= ' <a href="' . esc_url( $helper ) . '" class="entry-edit" title="' . esc_attr( sprintf( __( 'Edit the "%s"', 'receptar' ), the_title_attribute( array( 'echo' => false ) ) ) ) . '"><span>' . _x( 'Edit', 'Edit post link.', 'receptar' ) . '</span></a>';
 						}
 
 					}
@@ -1072,7 +1088,7 @@
 				//Post meta
 					if ( is_single() ) {
 
-						$meta = wm_post_meta( array(
+						$meta = receptar_post_meta( array(
 								'class' => 'entry-category',
 								'meta'  => array( 'category' ),
 							) );
@@ -1080,10 +1096,10 @@
 					}
 
 				//Filter processed $args
-					$args = apply_filters( 'wmhook_wm_post_title_args', $args );
+					$args = apply_filters( 'wmhook_receptar_post_title_args', $args );
 
 				//Generating output HTML
-					$replacements = apply_filters( 'wmhook_wm_post_title_replacements', array(
+					$replacements = apply_filters( 'wmhook_receptar_post_title_replacements', array(
 							'{class}'           => esc_attr( $args['class'] ),
 							'{class_container}' => esc_attr( $args['class_container'] ),
 							'{meta}'            => $meta,
@@ -1093,9 +1109,9 @@
 					$output = strtr( $args['output'], $replacements );
 
 			//Output
-				echo apply_filters( 'wmhook_wm_post_title_output', $output, $args );
+				echo apply_filters( 'wmhook_receptar_post_title_output', $output, $args );
 		}
-	} // /wm_post_title
+	} // /receptar_post_title
 
 
 
@@ -1105,8 +1121,8 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_content_top' ) ) {
-		function wm_content_top() {
+	if ( ! function_exists( 'receptar_content_top' ) ) {
+		function receptar_content_top() {
 			//Helper variables
 				$output  = "\r\n\r\n" . '<div id="content" class="site-content">';
 				$output .= "\r\n\t"   . '<div id="primary" class="content-area">';
@@ -1115,7 +1131,7 @@
 			//Output
 				echo $output;
 		}
-	} // /wm_content_top
+	} // /receptar_content_top
 
 
 
@@ -1125,8 +1141,8 @@
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_content_bottom' ) ) {
-			function wm_content_bottom() {
+		if ( ! function_exists( 'receptar_content_bottom' ) ) {
+			function receptar_content_bottom() {
 				//Helper variables
 					$output  = "\r\n\r\n\t\t" . '</main><!-- /#main -->';
 					$output .= "\r\n\t"       . '</div><!-- /#primary -->';
@@ -1135,7 +1151,7 @@
 				//Output
 					echo $output;
 			}
-		} // /wm_content_bottom
+		} // /receptar_content_bottom
 
 
 
@@ -1145,18 +1161,18 @@
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_breadcrumbs' ) ) {
-			function wm_breadcrumbs() {
+		if ( ! function_exists( 'receptar_breadcrumbs' ) ) {
+			function receptar_breadcrumbs() {
 				if (
 						function_exists( 'bcn_display' )
 						&& ! is_front_page()
 						&& ( is_singular() || is_archive() || is_search() )
-						&& apply_filters( 'wmhook_wm_breadcrumbs_enabled', true )
+						&& apply_filters( 'wmhook_receptar_breadcrumbs_enabled', true )
 					) {
 					echo '<div class="breadcrumbs-container"><nav class="breadcrumbs" itemprop="breadcrumbs">' . bcn_display( true ) . '</nav></div>';
 				}
 			}
-		} // /wm_breadcrumbs
+		} // /receptar_breadcrumbs
 
 
 
@@ -1166,11 +1182,11 @@
 			 * @since    1.0
 			 * @version  1.0
 			 */
-			if ( ! function_exists( 'wm_breadcrumbs_off' ) ) {
-				function wm_breadcrumbs_off() {
-					add_filter( 'wmhook_wm_breadcrumbs_enabled', '__return_false' );
+			if ( ! function_exists( 'receptar_breadcrumbs_off' ) ) {
+				function receptar_breadcrumbs_off() {
+					add_filter( 'wmhook_receptar_breadcrumbs_enabled', '__return_false' );
 				}
-			} // /wm_breadcrumbs_off
+			} // /receptar_breadcrumbs_off
 
 
 
@@ -1180,11 +1196,11 @@
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_entry_container_atts' ) ) {
-			function wm_entry_container_atts() {
-				return wm_schema_org( 'entry' );
+		if ( ! function_exists( 'receptar_entry_container_atts' ) ) {
+			function receptar_entry_container_atts() {
+				return receptar_schema_org( 'entry' );
 			}
-		} // /wm_entry_container_atts
+		} // /receptar_entry_container_atts
 
 
 
@@ -1194,8 +1210,8 @@
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_entry_top' ) ) {
-			function wm_entry_top() {
+		if ( ! function_exists( 'receptar_entry_top' ) ) {
+			function receptar_entry_top() {
 				//Post content inner wrapper
 					if (
 							! is_single( get_the_ID() )
@@ -1204,7 +1220,7 @@
 						echo '<div class="entry-inner-content">';
 					}
 			}
-		} // /wm_entry_top
+		} // /receptar_entry_top
 
 
 
@@ -1214,13 +1230,13 @@
 			 * @since    1.0
 			 * @version  1.0
 			 */
-			if ( ! function_exists( 'wm_entry_bottom' ) ) {
-				function wm_entry_bottom() {
+			if ( ! function_exists( 'receptar_entry_bottom' ) ) {
+				function receptar_entry_bottom() {
 					//Post meta
-						if ( in_array( get_post_type(), apply_filters( 'wmhook_wm_entry_bottom_meta_post_types', array( 'post' ) ) ) ) {
+						if ( in_array( get_post_type(), apply_filters( 'wmhook_receptar_entry_bottom_meta_post_types', array( 'post' ) ) ) ) {
 							if ( is_single() ) {
 
-								echo wm_post_meta( apply_filters( 'wmhook_wm_entry_bottom_meta', array(
+								echo receptar_post_meta( apply_filters( 'wmhook_receptar_entry_bottom_meta', array(
 										'class' => 'entry-meta entry-meta-bottom',
 										'meta'  => array( 'edit', 'date', 'likes', 'author', 'tags' ),
 									) ) );
@@ -1239,7 +1255,7 @@
 							echo '</div>';
 						}
 				}
-			} // /wm_entry_bottom
+			} // /receptar_entry_bottom
 
 
 
@@ -1249,11 +1265,11 @@
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_comments_before' ) ) {
-			function wm_comments_before() {
+		if ( ! function_exists( 'receptar_comments_before' ) ) {
+			function receptar_comments_before() {
 				echo '<div class="comments-area-wrapper">';
 			}
-		} // /wm_comments_before
+		} // /receptar_comments_before
 
 
 
@@ -1263,11 +1279,11 @@
 			 * @since    1.0
 			 * @version  1.0
 			 */
-			if ( ! function_exists( 'wm_comments_after' ) ) {
-				function wm_comments_after() {
+			if ( ! function_exists( 'receptar_comments_after' ) ) {
+				function receptar_comments_after() {
 					echo '</div>';
 				}
-			} // /wm_comments_after
+			} // /receptar_comments_after
 
 
 
@@ -1279,8 +1295,8 @@
 		 *
 		 * @param  string $image_size
 		 */
-		if ( ! function_exists( 'wm_post_thumbnail_size' ) ) {
-			function wm_post_thumbnail_size( $image_size ) {
+		if ( ! function_exists( 'receptar_post_thumbnail_size' ) ) {
+			function receptar_post_thumbnail_size( $image_size ) {
 				//Preparing output
 					if (
 							is_single( get_the_ID() )
@@ -1298,7 +1314,7 @@
 				//Output
 					return $image_size;
 			}
-		} // /wm_post_thumbnail_size
+		} // /receptar_post_thumbnail_size
 
 
 
@@ -1314,12 +1330,12 @@
 		 *
 		 * @param  string $excerpt
 		 */
-		if ( ! function_exists( 'wm_excerpt' ) ) {
-			function wm_excerpt( $excerpt ) {
+		if ( ! function_exists( 'receptar_excerpt' ) ) {
+			function receptar_excerpt( $excerpt ) {
 				//Requirements check
 					if ( post_password_required() ) {
 						if ( ! is_single() ) {
-							return sprintf( __( 'This content is password protected. To view it please <a%s>enter the password</a>.', 'wm_domain' ), ' href="' . esc_url( get_permalink() ) . '"' );
+							return sprintf( __( 'This content is password protected. To view it please <a%s>enter the password</a>.', 'receptar' ), ' href="' . esc_url( get_permalink() ) . '"' );
 						}
 						return;
 					}
@@ -1327,7 +1343,7 @@
 				//Preparing output
 					if (
 							! is_single()
-							&& wm_has_more_tag()
+							&& receptar_has_more_tag()
 						) {
 
 						/**
@@ -1349,22 +1365,22 @@
 						 * Default excerpt for posts without more tag
 						 */
 
-							$excerpt = strtr( $excerpt, apply_filters( 'wmhook_wm_excerpt_replacements', array( '<p' => '<p class="post-excerpt"' ) ) );
+							$excerpt = strtr( $excerpt, apply_filters( 'wmhook_receptar_excerpt_replacements', array( '<p' => '<p class="post-excerpt"' ) ) );
 
 					}
 
 					//Adding "Continue reading" link
 						if (
 								! is_single()
-								&& in_array( get_post_type(), apply_filters( 'wmhook_wm_excerpt_continue_reading_post_type', array( 'post', 'page' ) ) )
+								&& in_array( get_post_type(), apply_filters( 'wmhook_receptar_excerpt_continue_reading_post_type', array( 'post', 'page' ) ) )
 							) {
-							$excerpt .= apply_filters( 'wmhook_wm_excerpt_continue_reading', '' );
+							$excerpt .= apply_filters( 'wmhook_receptar_excerpt_continue_reading', '' );
 						}
 
 				//Output
 					return $excerpt;
 			}
-		} // /wm_excerpt
+		} // /receptar_excerpt
 
 
 
@@ -1376,11 +1392,11 @@
 			 *
 			 * @param  absint $length
 			 */
-			if ( ! function_exists( 'wm_excerpt_length' ) ) {
-				function wm_excerpt_length( $length ) {
+			if ( ! function_exists( 'receptar_excerpt_length' ) ) {
+				function receptar_excerpt_length( $length ) {
 					return 12;
 				}
-			} // /wm_excerpt_length
+			} // /receptar_excerpt_length
 
 
 
@@ -1392,11 +1408,11 @@
 			 *
 			 * @param  string $more
 			 */
-			if ( ! function_exists( 'wm_excerpt_more' ) ) {
-				function wm_excerpt_more( $more ) {
+			if ( ! function_exists( 'receptar_excerpt_more' ) ) {
+				function receptar_excerpt_more( $more ) {
 					return '&hellip;';
 				}
-			} // /wm_excerpt_more
+			} // /receptar_excerpt_more
 
 
 
@@ -1408,11 +1424,11 @@
 			 *
 			 * @param  string $continue
 			 */
-			if ( ! function_exists( 'wm_excerpt_continue_reading' ) ) {
-				function wm_excerpt_continue_reading( $continue ) {
-					return '<div class="link-more"><a href="' . esc_url( get_permalink() ) . '">' . sprintf( __( 'Continue reading%s&hellip;', 'wm_domain' ), '<span class="screen-reader-text"> "' . get_the_title() . '"</span>' ) . '</a></div>';
+			if ( ! function_exists( 'receptar_excerpt_continue_reading' ) ) {
+				function receptar_excerpt_continue_reading( $continue ) {
+					return '<div class="link-more"><a href="' . esc_url( get_permalink() ) . '">' . sprintf( __( 'Continue reading%s&hellip;', 'receptar' ), '<span class="screen-reader-text"> "' . get_the_title() . '"</span>' ) . '</a></div>';
 				}
-			} // /wm_excerpt_continue_reading
+			} // /receptar_excerpt_continue_reading
 
 
 
@@ -1428,8 +1444,8 @@
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_post_nav' ) ) {
-			function wm_post_nav() {
+		if ( ! function_exists( 'receptar_post_nav' ) ) {
+			function receptar_post_nav() {
 				//Requirements check
 					if ( ! is_singular() || is_page() ) {
 						return;
@@ -1460,20 +1476,20 @@
 					}
 
 					if ( is_attachment() ) {
-						$output .= get_previous_post_link( '<div class="nav-previous nav-link' . $prev_class . '">%link</div>', __( '<span class="post-title"><span class="meta-nav">Published In </span>%title</span>', 'wm_domain' ) );
+						$output .= get_previous_post_link( '<div class="nav-previous nav-link' . $prev_class . '">%link</div>', __( '<span class="post-title"><span class="meta-nav">Published In </span>%title</span>', 'receptar' ) );
 					} else {
-						$output .= get_next_post_link( '<div class="nav-next nav-link' . $next_class . '">%link</div>', __( '<span class="post-title"><span class="meta-nav">Next: </span>%title</span>', 'wm_domain' ) );
-						$output .= get_previous_post_link( '<div class="nav-previous nav-link' . $prev_class . '">%link</div>', __( '<span class="post-title"><span class="meta-nav">Previous: </span>%title</span>', 'wm_domain' ) );
+						$output .= get_next_post_link( '<div class="nav-next nav-link' . $next_class . '">%link</div>', __( '<span class="post-title"><span class="meta-nav">Next: </span>%title</span>', 'receptar' ) );
+						$output .= get_previous_post_link( '<div class="nav-previous nav-link' . $prev_class . '">%link</div>', __( '<span class="post-title"><span class="meta-nav">Previous: </span>%title</span>', 'receptar' ) );
 					}
 
 					if ( $output ) {
-						$output = '<nav class="navigation post-navigation links-count-' . $links_count . '" role="navigation"><h1 class="screen-reader-text">' . __( 'Post navigation', 'wm_domain' ) . '</h1><div class="nav-links">' . $output . '</div></nav>';
+						$output = '<nav class="navigation post-navigation links-count-' . $links_count . '" role="navigation"><h1 class="screen-reader-text">' . __( 'Post navigation', 'receptar' ) . '</h1><div class="nav-links">' . $output . '</div></nav>';
 					}
 
 				//Output
-					echo apply_filters( 'wmhook_wm_post_nav_output', $output );
+					echo apply_filters( 'wmhook_receptar_post_nav_output', $output );
 			}
-		} // /wm_post_nav
+		} // /receptar_post_nav
 
 
 
@@ -1483,8 +1499,8 @@
 		 * @since    1.0
 		 * @version  1.1
 		 */
-		if ( ! function_exists( 'wm_pagination' ) ) {
-			function wm_pagination() {
+		if ( ! function_exists( 'receptar_pagination' ) ) {
+			function receptar_pagination() {
 				//Requirements check
 					if ( class_exists( 'The_Neverending_Home_Page' ) ) {
 						//Don't display pagination if Jetpack Infinite Scroll in use
@@ -1509,7 +1525,7 @@
 				//Output
 					echo $output;
 			}
-		} // /wm_pagination
+		} // /receptar_pagination
 
 
 
@@ -1524,21 +1540,21 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_footer' ) ) {
-		function wm_footer() {
+	if ( ! function_exists( 'receptar_footer' ) ) {
+		function receptar_footer() {
 			//Credits
 				echo '<div class="site-footer-area footer-area-site-info">';
 					echo '<div class="site-info-container">';
 						echo '<div class="site-info" role="contentinfo">';
-							echo apply_filters( 'wmhook_wm_credits_output',
+							echo apply_filters( 'wmhook_receptar_credits_output',
 									'&copy; ' . date( 'Y' ) . ' <a href="' . home_url( '/' ) . '" title="' . get_bloginfo( 'name' ) . '">' . get_bloginfo( 'name' ) . '</a>. '
 									. sprintf(
-											__( 'Powered by %s.', 'wm_domain' ),
+											__( 'Powered by %s.', 'receptar' ),
 											'<a href="https://wordpress.org">WordPress</a>'
 										)
 									. ' '
 									. sprintf(
-											__( 'Theme by %s.', 'wm_domain' ),
+											__( 'Theme by %s.', 'receptar' ),
 											'<a href="' . esc_url( WM_THEME_AUTHOR_URI ) . '">WebMan Design</a>'
 										)
 								);
@@ -1546,7 +1562,7 @@
 					echo '</div>';
 				echo '</div>';
 		}
-	} // /wm_footer
+	} // /receptar_footer
 
 
 
@@ -1556,15 +1572,15 @@
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_footer_top' ) ) {
-			function wm_footer_top() {
+		if ( ! function_exists( 'receptar_footer_top' ) ) {
+			function receptar_footer_top() {
 				//Preparing output
-					$output = "\r\n\r\n" . '<footer id="colophon" class="site-footer"' . wm_schema_org( 'WPFooter' ) . '>' . "\r\n\r\n";
+					$output = "\r\n\r\n" . '<footer id="colophon" class="site-footer"' . receptar_schema_org( 'WPFooter' ) . '>' . "\r\n\r\n";
 
 				//Output
 					echo $output;
 			}
-		} // /wm_footer_top
+		} // /receptar_footer_top
 
 
 
@@ -1574,15 +1590,15 @@
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_footer_bottom' ) ) {
-			function wm_footer_bottom() {
+		if ( ! function_exists( 'receptar_footer_bottom' ) ) {
+			function receptar_footer_bottom() {
 				//Preparing output
 					$output = "\r\n\r\n" . '</footer>' . "\r\n\r\n";
 
 				//Output
 					echo $output;
 			}
-		} // /wm_footer_bottom
+		} // /receptar_footer_bottom
 
 
 
@@ -1594,8 +1610,8 @@
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_footer_custom_scripts' ) ) {
-			function wm_footer_custom_scripts() {
+		if ( ! function_exists( 'receptar_footer_custom_scripts' ) ) {
+			function receptar_footer_custom_scripts() {
 				//Requirements check
 					if (
 							! is_singular()
@@ -1608,9 +1624,9 @@
 					$output = "\r\n\r\n<!--Custom singular JS -->\r\n<script type='text/javascript'>\r\n/* <![CDATA[ */\r\n" . wp_unslash( esc_js( str_replace( array( "\r", "\n", "\t" ), '', $output ) ) ) . "\r\n/* ]]> */\r\n</script>\r\n";
 
 				//Output
-					echo apply_filters( 'wmhook_wm_footer_custom_scripts_output', $output );
+					echo apply_filters( 'wmhook_receptar_footer_custom_scripts_output', $output );
 			}
-		} // /wm_footer_custom_scripts
+		} // /receptar_footer_custom_scripts
 
 
 
@@ -1626,13 +1642,13 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_register_widget_areas' ) ) {
-		function wm_register_widget_areas() {
+	if ( ! function_exists( 'receptar_register_widget_areas' ) ) {
+		function receptar_register_widget_areas() {
 			//Secondary
 				register_sidebar( array(
 						'id'            => 'sidebar',
-						'name'          => __( 'Sidebar', 'wm_domain' ),
-						'description'   => __( 'Displayed in hidden sidebar on left below the primary navigation.', 'wm_domain' ),
+						'name'          => __( 'Sidebar', 'receptar' ),
+						'description'   => __( 'Displayed in hidden sidebar on left below the primary navigation.', 'receptar' ),
 						'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 						'after_widget'  => '</aside>',
 						'before_title'  => '<h2 class="widget-title">',
@@ -1642,15 +1658,15 @@
 			//Header
 				register_sidebar( array(
 						'id'            => 'header',
-						'name'          => __( 'Header Widgets', 'wm_domain' ),
-						'description'   => __( 'Display widgets in the site header.', 'wm_domain' ),
+						'name'          => __( 'Header Widgets', 'receptar' ),
+						'description'   => __( 'Display widgets in the site header.', 'receptar' ),
 						'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 						'after_widget'  => '</aside>',
 						'before_title'  => '<h2 class="widget-title">',
 						'after_title'   => '</h2>'
 					) );
 		}
-	} // /wm_register_widget_areas
+	} // /receptar_register_widget_areas
 
 
 
@@ -1662,13 +1678,13 @@
 	 *
 	 * @param  obj $query
 	 */
-	if ( ! function_exists( 'wm_posts_query_ignore_sticky_posts' ) ) {
-		function wm_posts_query_ignore_sticky_posts( $query ) {
+	if ( ! function_exists( 'receptar_posts_query_ignore_sticky_posts' ) ) {
+		function receptar_posts_query_ignore_sticky_posts( $query ) {
 			if ( $query->is_main_query() ) {
 				$query->set( 'ignore_sticky_posts', 1 );
 			}
 		}
-	} // /wm_posts_query_ignore_sticky_posts
+	} // /receptar_posts_query_ignore_sticky_posts
 
 
 
@@ -1678,13 +1694,13 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_visual_editor' ) ) {
-		function wm_visual_editor() {
+	if ( ! function_exists( 'receptar_visual_editor' ) ) {
+		function receptar_visual_editor() {
 			if ( is_admin() || isset( $_GET['fl_builder'] ) ) {
 				locate_template( WM_INC_DIR . 'lib/visual-editor.php', true );
 			}
 		}
-	} // /wm_visual_editor
+	} // /receptar_visual_editor
 
 
 
@@ -1696,15 +1712,15 @@
 		 *
 		 * @param  array $formats
 		 */
-		if ( ! function_exists( 'wm_visual_editor_custom_mce_format' ) ) {
-			function wm_visual_editor_custom_mce_format( $formats ) {
+		if ( ! function_exists( 'receptar_visual_editor_custom_mce_format' ) ) {
+			function receptar_visual_editor_custom_mce_format( $formats ) {
 				//Preparing output
 					$formats[] = array(
-							'title' => __( 'Dropcaps', 'wm_domain' ),
+							'title' => __( 'Dropcaps', 'receptar' ),
 							'items' => array(
 
 								array(
-									'title'    => __( 'Dropcap text', 'wm_domain' ),
+									'title'    => __( 'Dropcap text', 'receptar' ),
 									'selector' => 'p',
 									'classes'  => 'dropcap-text',
 								),
@@ -1715,7 +1731,7 @@
 				//Return
 					return $formats;
 			}
-		} // /wm_visual_editor_custom_mce_format
+		} // /receptar_visual_editor_custom_mce_format
 
 
 
@@ -1725,8 +1741,8 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_entry_featured_image_fallback_url' ) ) {
-		function wm_entry_featured_image_fallback_url() {
+	if ( ! function_exists( 'receptar_entry_featured_image_fallback_url' ) ) {
+		function receptar_entry_featured_image_fallback_url() {
 			//Helper variables
 				$output = trailingslashit( get_stylesheet_directory_uri() ) . 'images/featured.jpg';
 
@@ -1743,7 +1759,7 @@
 
 					$output = wp_get_attachment_image_src(
 							absint( $header_image_data['attachment_id'] ),
-							apply_filters( 'wmhook_wm_enqueue_assets_styles_inline_featured_image_size', $image_size )
+							apply_filters( 'wmhook_receptar_enqueue_assets_styles_inline_featured_image_size', $image_size )
 						);
 					$output = $output[0];
 
@@ -1752,7 +1768,7 @@
 			//Output
 				return esc_url( $output );
 		}
-	} // /wm_entry_featured_image_fallback_url
+	} // /receptar_entry_featured_image_fallback_url
 
 
 
@@ -1764,15 +1780,15 @@
 	 *
 	 * @param  mixed $fields
 	 */
-	if ( ! function_exists( 'wm_comments_form_placeholders' ) ) {
-		function wm_comments_form_placeholders( $fields ) {
+	if ( ! function_exists( 'receptar_comments_form_placeholders' ) ) {
+		function receptar_comments_form_placeholders( $fields ) {
 			//Preparing output
 				if ( is_string( $fields ) ) {
 
 					//Comment
 						$fields = str_replace(
 								'<textarea',
-								'<textarea placeholder="' . _x( 'Comment', 'Comment form field placeholder text.', 'wm_domain' ) . '"',
+								'<textarea placeholder="' . _x( 'Comment', 'Comment form field placeholder text.', 'receptar' ) . '"',
 								$fields
 							);
 						$fields = str_replace(
@@ -1787,7 +1803,7 @@
 						if ( isset( $fields['author'] ) ) {
 							$fields['author'] = str_replace(
 									'<input',
-									'<input placeholder="' . _x( 'Name', 'Comment form field placeholder text.', 'wm_domain' ) . '"',
+									'<input placeholder="' . _x( 'Name', 'Comment form field placeholder text.', 'receptar' ) . '"',
 									$fields['author']
 								);
 						}
@@ -1796,7 +1812,7 @@
 						if ( isset( $fields['author'] ) ) {
 							$fields['email'] = str_replace(
 									'<input',
-									'<input placeholder="' . _x( 'Email', 'Comment form field placeholder text.', 'wm_domain' ) . '"',
+									'<input placeholder="' . _x( 'Email', 'Comment form field placeholder text.', 'receptar' ) . '"',
 									$fields['email']
 								);
 						}
@@ -1805,7 +1821,7 @@
 						if ( isset( $fields['author'] ) ) {
 							$fields['url'] = str_replace(
 									'<input',
-									'<input placeholder="' . _x( 'Website', 'Comment form field placeholder text.', 'wm_domain' ) . '"',
+									'<input placeholder="' . _x( 'Website', 'Comment form field placeholder text.', 'receptar' ) . '"',
 									$fields['url']
 								);
 						}
@@ -1815,6 +1831,6 @@
 			//Output
 				return $fields;
 		}
-	} // /wm_comments_form_placeholders
+	} // /receptar_comments_form_placeholders
 
 ?>

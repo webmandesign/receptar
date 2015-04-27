@@ -41,12 +41,12 @@
 	 */
 
 		//Register customizer
-			add_action( 'customize_register', 'wm_theme_customizer' );
+			add_action( 'customize_register', 'receptar_theme_customizer' );
 		//Save Customizer options
-			add_action( 'customize_save_after', 'wm_custom_styles_cache' );
+			add_action( 'customize_save_after', 'receptar_custom_styles_cache' );
 		//Flushing transients
-			add_action( 'switch_theme',         'wm_custom_styles_transient_flusher' );
-			add_action( 'wmhook_theme_upgrade', 'wm_custom_styles_transient_flusher' );
+			add_action( 'switch_theme',         'receptar_custom_styles_transient_flusher' );
+			add_action( 'wmhook_theme_upgrade', 'receptar_custom_styles_transient_flusher' );
 
 
 
@@ -55,7 +55,7 @@
 	 */
 
 		//Minify custom CSS
-			add_filter( 'wmhook_wm_custom_styles_output_cache', 'wm_minify_css' );
+			add_filter( 'wmhook_receptar_custom_styles_output_cache', 'receptar_minify_css' );
 
 
 
@@ -80,8 +80,8 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_theme_customizer_js' ) ) {
-		function wm_theme_customizer_js() {
+	if ( ! function_exists( 'receptar_theme_customizer_js' ) ) {
+		function receptar_theme_customizer_js() {
 			//Helper variables
 				$theme_options = apply_filters( 'wmhook_theme_options', array() );
 
@@ -137,7 +137,7 @@
 
 							$output_single .= "\t" . '} );' . "\r\n";
 							$output_single .= '} );'. "\r\n";
-							$output_single  = apply_filters( 'wmhook_wm_theme_customizer_js_option_' . $theme_option['id'], $output_single );
+							$output_single  = apply_filters( 'wmhook_receptar_theme_customizer_js_option_' . $theme_option['id'], $output_single );
 
 							$output .= $output_single;
 
@@ -148,11 +148,11 @@
 				}
 
 			//Output
-				if ( $output = trim( apply_filters( 'wmhook_wm_theme_customizer_js_output', $output ) ) ) {
+				if ( $output = trim( apply_filters( 'wmhook_receptar_theme_customizer_js_output', $output ) ) ) {
 					echo '<!-- Theme custom scripts -->' . "\r\n" . '<script type="text/javascript"><!--' . "\r\n" . '( function( $ ) {' . "\r\n\r\n" . $output . "\r\n\r\n" . '} )( jQuery );' . "\r\n" . '//--></script>';
 				}
 		}
-	} // /wm_theme_customizer_js
+	} // /receptar_theme_customizer_js
 
 
 
@@ -170,11 +170,11 @@
 	 *
 	 * @param  mixed $value WP customizer value to sanitize.
 	 */
-	if ( ! function_exists( 'wm_sanitize_text' ) ) {
-		function wm_sanitize_text( $value ) {
-			return apply_filters( 'wmhook_wm_sanitize_text_output', wp_kses_post( force_balance_tags( $value ) ) );
+	if ( ! function_exists( 'receptar_sanitize_text' ) ) {
+		function receptar_sanitize_text( $value ) {
+			return apply_filters( 'wmhook_receptar_sanitize_text_output', wp_kses_post( force_balance_tags( $value ) ) );
 		}
-	} // /wm_sanitize_text
+	} // /receptar_sanitize_text
 
 
 
@@ -188,8 +188,8 @@
 	 *
 	 * @param  mixed $value WP customizer value to sanitize.
 	 */
-	if ( ! function_exists( 'wm_sanitize_return_value' ) ) {
-		function wm_sanitize_return_value( $value ) {
+	if ( ! function_exists( 'receptar_sanitize_return_value' ) ) {
+		function receptar_sanitize_return_value( $value ) {
 			//Preparing output
 				if ( is_array( $value ) ) {
 					$value = (array) $value;
@@ -200,9 +200,9 @@
 				}
 
 			//Output
-				return apply_filters( 'wmhook_wm_sanitize_return_value_output', $value );
+				return apply_filters( 'wmhook_receptar_sanitize_return_value_output', $value );
 		}
-	} // /wm_sanitize_return_value
+	} // /receptar_sanitize_return_value
 
 
 
@@ -220,8 +220,8 @@
 	 *
 	 * @param  object $wp_customize WP customizer object.
 	 */
-	if ( ! function_exists( 'wm_theme_customizer' ) ) {
-		function wm_theme_customizer( $wp_customize ) {
+	if ( ! function_exists( 'receptar_theme_customizer' ) ) {
+		function receptar_theme_customizer( $wp_customize ) {
 
 			//Make predefined controls use live preview JS
 				$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
@@ -237,16 +237,16 @@
 			 * @link  http://ottopress.com/2012/making-a-custom-control-for-the-theme-customizer/
 			 */
 
-				locate_template( WM_INC_DIR . 'customizer/controls/class-WM_Customizer_Hidden.php',      true );
-				locate_template( WM_INC_DIR . 'customizer/controls/class-WM_Customizer_HTML.php',        true );
-				locate_template( WM_INC_DIR . 'customizer/controls/class-WM_Customizer_Image.php',       true );
-				locate_template( WM_INC_DIR . 'customizer/controls/class-WM_Customizer_Multiselect.php', true );
-				locate_template( WM_INC_DIR . 'customizer/controls/class-WM_Customizer_Select.php',      true );
-				if ( ! wm_check_wp_version( 4 ) ) {
-					locate_template( WM_INC_DIR . 'customizer/controls/class-WM_Customizer_Textarea.php', true );
+				locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Hidden.php',      true );
+				locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_HTML.php',        true );
+				locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Image.php',       true );
+				locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Multiselect.php', true );
+				locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Select.php',      true );
+				if ( ! receptar_check_wp_version( 4 ) ) {
+					locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Textarea.php', true );
 				}
 
-				do_action( 'wmhook_wm_theme_customizer_load_controls', $wp_customize );
+				do_action( 'wmhook_receptar_theme_customizer_load_controls', $wp_customize );
 
 
 
@@ -255,7 +255,7 @@
 
 				ksort( $theme_options );
 
-				$allowed_option_types = apply_filters( 'wmhook_wm_theme_customizer_allowed_option_types', array(
+				$allowed_option_types = apply_filters( 'wmhook_receptar_theme_customizer_allowed_option_types', array(
 						'checkbox',
 						'color',
 						'hidden',
@@ -271,7 +271,7 @@
 					) );
 
 				//To make sure our customizer sections start after WordPress default ones
-					$priority = apply_filters( 'wmhook_wm_theme_customizer_priority', 900 );
+					$priority = apply_filters( 'wmhook_receptar_theme_customizer_priority', 900 );
 				//Default section name in case not set (should be overwritten anyway)
 					$customizer_panel   = '';
 					$customizer_section = WM_THEME_SHORTNAME;
@@ -324,7 +324,7 @@
 							 * @link  http://make.wordpress.org/core/2014/07/08/customizer-improvements-in-4-0/
 							 */
 							if (
-									wm_check_wp_version( 4 )
+									receptar_check_wp_version( 4 )
 									&& isset( $theme_option['theme-customizer-panel'] )
 								) {
 
@@ -370,7 +370,7 @@
 											)
 									);
 
-								if ( wm_check_wp_version( 4 ) ) {
+								if ( receptar_check_wp_version( 4 ) ) {
 									$customizer_section['setup']['panel'] = $customizer_panel;
 								}
 
@@ -436,7 +436,7 @@
 											)
 										);
 
-									$wp_customize->add_control( new WM_Customizer_Hidden(
+									$wp_customize->add_control( new Receptar_Customizer_Hidden(
 											$wp_customize,
 											$option_id,
 											array(
@@ -461,12 +461,12 @@
 									$wp_customize->add_setting(
 											$option_id,
 											array(
-												'sanitize_callback'    => 'wm_sanitize_text',
-												'sanitize_js_callback' => 'wm_sanitize_text',
+												'sanitize_callback'    => 'receptar_sanitize_text',
+												'sanitize_js_callback' => 'receptar_sanitize_text',
 											)
 										);
 
-									$wp_customize->add_control( new WM_Customizer_HTML(
+									$wp_customize->add_control( new Receptar_Customizer_HTML(
 											$wp_customize,
 											$option_id,
 											array(
@@ -489,12 +489,12 @@
 												'type'                 => 'theme_mod',
 												'default'              => $default,
 												'transport'            => $transport,
-												'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'wm_sanitize_return_value' ),
-												'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'wm_sanitize_return_value' ),
+												'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'receptar_sanitize_return_value' ),
+												'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'receptar_sanitize_return_value' ),
 											)
 										);
 
-									$wp_customize->add_control( new WM_Customizer_Image(
+									$wp_customize->add_control( new Receptar_Customizer_Image(
 											$wp_customize,
 											$option_id,
 											array(
@@ -550,12 +550,12 @@
 												'type'                 => 'theme_mod',
 												'default'              => $default,
 												'transport'            => $transport,
-												'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'wm_sanitize_return_value' ),
-												'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'wm_sanitize_return_value' ),
+												'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'receptar_sanitize_return_value' ),
+												'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'receptar_sanitize_return_value' ),
 											)
 										);
 
-									$wp_customize->add_control( new WM_Customizer_Multiselect(
+									$wp_customize->add_control( new Receptar_Customizer_Multiselect(
 											$wp_customize,
 											$option_id,
 											array(
@@ -585,7 +585,7 @@
 											)
 										);
 
-									if ( wm_check_wp_version( 4 ) ) {
+									if ( receptar_check_wp_version( 4 ) ) {
 
 										$wp_customize->add_control(
 												$option_id,
@@ -635,7 +635,7 @@
 											)
 										);
 
-									$wp_customize->add_control( new WM_Customizer_Select(
+									$wp_customize->add_control( new Receptar_Customizer_Select(
 											$wp_customize,
 											$option_id,
 											array(
@@ -695,7 +695,7 @@
 											)
 										);
 
-									if ( wm_check_wp_version( 4 ) ) {
+									if ( receptar_check_wp_version( 4 ) ) {
 
 										$wp_customize->add_control(
 												$option_id,
@@ -710,7 +710,7 @@
 
 									} else {
 
-										$wp_customize->add_control( new WM_Customizer_Textarea(
+										$wp_customize->add_control( new Receptar_Customizer_Textarea(
 												$wp_customize,
 												$option_id,
 												array(
@@ -741,10 +741,10 @@
 
 			//Assets needed for customizer preview
 				if ( $wp_customize->is_preview() ) {
-					add_action( 'wp_footer', 'wm_theme_customizer_js', 99 );
+					add_action( 'wp_footer', 'receptar_theme_customizer_js', 99 );
 				}
 		}
-	} // /wm_theme_customizer
+	} // /receptar_theme_customizer
 
 
 
@@ -771,8 +771,8 @@
 	 * @param  bool $set_cache  Determines whether the results should be cached or not.
 	 * @param  bool $return     Whether to return a value or just run the process.
 	 */
-	if ( ! function_exists( 'wm_custom_styles' ) ) {
-		function wm_custom_styles( $set_cache = false, $return = true ) {
+	if ( ! function_exists( 'receptar_custom_styles' ) ) {
+		function receptar_custom_styles( $set_cache = false, $return = true ) {
 			//Helper variables
 				global $wp_customize;
 
@@ -855,7 +855,7 @@
 								}
 
 							//Value filtering
-								$value = apply_filters( 'wmhook_wm_custom_styles_value', $value, $theme_option );
+								$value = apply_filters( 'wmhook_receptar_custom_styles_value', $value, $theme_option );
 
 							//Make array to string as otherwise the strtr() function throws error
 								if ( is_array( $value ) ) {
@@ -873,7 +873,7 @@
 								 * hooked onto the $replacements filter below.
 								 */
 								if ( 'color' === $theme_option['type'] ) {
-									$replacements['[[' . $option_id . '|alpha=0]]'] = wm_color_hex_to_rgba( $value, 0 );
+									$replacements['[[' . $option_id . '|alpha=0]]'] = receptar_color_hex_to_rgba( $value, 0 );
 								}
 
 						} // /foreach
@@ -882,7 +882,7 @@
 							//Background color
 								if ( $value = get_background_color() ) {
 									$replacements['[[background_color]]'] = '#' . trim( $value, '#' );
-									$replacements['[[background_color|alpha=0]]'] = wm_color_hex_to_rgba( $value, 0 );
+									$replacements['[[background_color|alpha=0]]'] = receptar_color_hex_to_rgba( $value, 0 );
 								}
 							//Background image
 								if ( $value = esc_url( get_background_image() ) ) {
@@ -893,7 +893,7 @@
 							//Header text color
 								if ( $value = get_header_textcolor() ) {
 									$replacements['[[header_textcolor]]'] = '#' . trim( $value, '#' );
-									$replacements['[[header_textcolor|alpha=0]]'] = wm_color_hex_to_rgba( $value, 0 );
+									$replacements['[[header_textcolor|alpha=0]]'] = receptar_color_hex_to_rgba( $value, 0 );
 								}
 							//Header image
 								if ( $value = esc_url( get_header_image() ) ) {
@@ -902,7 +902,7 @@
 									$replacements['[[header_image]]'] = 'none';
 								}
 
-						$replacements = apply_filters( 'wmhook_wm_custom_styles_replace_replacements', $replacements, $theme_options, $output );
+						$replacements = apply_filters( 'wmhook_receptar_custom_styles_replace_replacements', $replacements, $theme_options, $output );
 
 						if (
 								$set_cache
@@ -930,8 +930,8 @@
 							$output = strtr( $output, $replacements );
 
 						if ( $set_cache ) {
-							set_transient( WM_THEME_SHORTNAME . '-custom-css-debug', apply_filters( 'wmhook_wm_custom_styles_output_cache_debug', $output ) );
-							set_transient( WM_THEME_SHORTNAME . '-custom-css', apply_filters( 'wmhook_wm_custom_styles_output_cache', $output ) );
+							set_transient( WM_THEME_SHORTNAME . '-custom-css-debug', apply_filters( 'wmhook_receptar_custom_styles_output_cache_debug', $output ) );
+							set_transient( WM_THEME_SHORTNAME . '-custom-css', apply_filters( 'wmhook_receptar_custom_styles_output_cache', $output ) );
 						}
 
 					} else {
@@ -942,26 +942,26 @@
 
 			//Output
 				if ( $output && $return ) {
-					return (string) apply_filters( 'wmhook_wm_custom_styles_output', trim( $output ) );
+					return (string) apply_filters( 'wmhook_receptar_custom_styles_output', trim( $output ) );
 				}
 		}
-	} // /wm_custom_styles
+	} // /receptar_custom_styles
 
 
 
 		/**
-		 * Flush out the transients used in wm_custom_styles
+		 * Flush out the transients used in receptar_custom_styles
 		 *
 		 * @since    1.0
 		 * @version  1.0
 		 */
-		if ( ! function_exists( 'wm_custom_styles_transient_flusher' ) ) {
-			function wm_custom_styles_transient_flusher() {
+		if ( ! function_exists( 'receptar_custom_styles_transient_flusher' ) ) {
+			function receptar_custom_styles_transient_flusher() {
 				delete_transient( WM_THEME_SHORTNAME . '-customizer-values' );
 				delete_transient( WM_THEME_SHORTNAME . '-custom-css-debug' );
 				delete_transient( WM_THEME_SHORTNAME . '-custom-css' );
 			}
-		} // /wm_custom_styles_transient_flusher
+		} // /receptar_custom_styles_transient_flusher
 
 
 
@@ -973,12 +973,12 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_custom_styles_cache' ) ) {
-		function wm_custom_styles_cache() {
+	if ( ! function_exists( 'receptar_custom_styles_cache' ) ) {
+		function receptar_custom_styles_cache() {
 			//Set cache, do not return
-				wm_custom_styles( true, false );
+				receptar_custom_styles( true, false );
 		}
-	} // /wm_custom_styles_cache
+	} // /receptar_custom_styles_cache
 
 
 
@@ -995,8 +995,8 @@
 	 *
 	 * @return  string Color in rgb() or rgba() format to use in CSS.
 	 */
-	if ( ! function_exists( 'wm_color_hex_to_rgba' ) ) {
-		function wm_color_hex_to_rgba( $hex, $alpha = 100 ) {
+	if ( ! function_exists( 'receptar_color_hex_to_rgba' ) ) {
+		function receptar_color_hex_to_rgba( $hex, $alpha = 100 ) {
 			//Helper variables
 				$alpha = absint( $alpha );
 
@@ -1024,9 +1024,9 @@
 					}
 
 			//Output
-				return apply_filters( 'wmhook_wm_color_hex_to_rgba_output', $output . ')', $hex, $alpha );
+				return apply_filters( 'wmhook_receptar_color_hex_to_rgba_output', $output . ')', $hex, $alpha );
 		}
-	} // /wm_color_hex_to_rgba
+	} // /receptar_color_hex_to_rgba
 
 
 
@@ -1038,18 +1038,18 @@
 	 *
 	 * @param  string $css Code to minify
 	 */
-	if ( ! function_exists( 'wm_minify_css' ) ) {
-		function wm_minify_css( $css ) {
+	if ( ! function_exists( 'receptar_minify_css' ) ) {
+		function receptar_minify_css( $css ) {
 			//Requirements check
 				if (
 						! is_string( $css )
-						&& ! apply_filters( 'wmhook_wm_minify_css_disable', false )
+						&& ! apply_filters( 'wmhook_receptar_minify_css_disable', false )
 					) {
 					return $css;
 				}
 
 			//Praparing output
-				$css = apply_filters( 'wmhook_wm_minify_css_pre', $css );
+				$css = apply_filters( 'wmhook_receptar_minify_css_pre', $css );
 
 				//Remove CSS comments
 					$css = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css );
@@ -1059,8 +1059,8 @@
 					$css = str_replace( array( ' { ', ': ', '; }' ), array( '{', ':', '}' ), $css );
 
 			//Output
-				return apply_filters( 'wmhook_wm_minify_css_output', $css );
+				return apply_filters( 'wmhook_receptar_minify_css_output', $css );
 		}
-	} // /wm_minify_css
+	} // /receptar_minify_css
 
 ?>

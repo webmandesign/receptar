@@ -10,7 +10,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.2
  *
  * CONTENT:
  * -  1) Requirements check
@@ -44,7 +44,7 @@
 	 */
 
 		//Beaver Builder editor styles
-			add_action( 'wp_enqueue_scripts', 'wm_bb_assets' );
+			add_action( 'wp_enqueue_scripts', 'receptar_bb_assets' );
 		//Make sure to load layout styles after the theme stylesheet
 			remove_action( 'wp_enqueue_scripts', 'FLBuilder::layout_styles_scripts'      );
 			remove_action( 'wp_enqueue_scripts', 'FLBuilder::styles_scripts'             );
@@ -58,9 +58,9 @@
 	 */
 
 		//Beaver Builder global settings option
-			add_filter( 'fl_builder_settings_form_defaults', 'wm_bb_global_settings', 10, 2 );
+			add_filter( 'fl_builder_settings_form_defaults', 'receptar_bb_global_settings', 10, 2 );
 		//Upgrade link
-			add_filter( 'fl_builder_upgrade_url', 'wm_bb_upgrade_url' );
+			add_filter( 'fl_builder_upgrade_url', 'receptar_bb_upgrade_url' );
 
 
 
@@ -74,16 +74,16 @@
 	 * Upgrade link URL
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.2
 	 *
 	 * @param  string $url
 	 */
-	if ( ! function_exists( 'wm_bb_upgrade_url' ) ) {
-		function wm_bb_upgrade_url( $url ) {
+	if ( ! function_exists( 'receptar_bb_upgrade_url' ) ) {
+		function receptar_bb_upgrade_url( $url ) {
 			//Output
-				return $url . '&fla=67';
+				return esc_url( add_query_arg( 'fla', '67', $url ) );
 		}
-	} // /wm_bb_upgrade_url
+	} // /receptar_bb_upgrade_url
 
 
 
@@ -93,14 +93,20 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_bb_assets' ) ) {
-		function wm_bb_assets() {
+	if ( ! function_exists( 'receptar_bb_assets' ) ) {
+		function receptar_bb_assets() {
 			//Styles
 				if ( class_exists( 'FLBuilderModel' ) && FLBuilderModel::is_builder_active() ) {
-					wp_enqueue_style( 'wm-bb-addon', wm_get_stylesheet_directory_uri( 'css/beaver-builder-editor.css' ), false, WM_SCRIPTS_VERSION, 'screen' );
+					wp_enqueue_style(
+							'receptar-bb-addon',
+							receptar_get_stylesheet_directory_uri( 'css/beaver-builder-editor.css' ),
+							false,
+							WM_SCRIPTS_VERSION,
+							'screen'
+						);
 				}
 		}
-	} // /wm_bb_assets
+	} // /receptar_bb_assets
 
 
 
@@ -113,8 +119,8 @@
 	 * @param  array  $defaults
 	 * @param  string $form_type
 	 */
-	if ( ! function_exists( 'wm_bb_global_settings' ) ) {
-		function wm_bb_global_settings( $defaults, $form_type ) {
+	if ( ! function_exists( 'receptar_bb_global_settings' ) ) {
+		function receptar_bb_global_settings( $defaults, $form_type ) {
 			//Preparing output
 				if ( 'global' === $form_type ) {
 
@@ -139,6 +145,6 @@
 			//Output
 				return $defaults;
 		}
-	} // /wm_bb_global_settings
+	} // /receptar_bb_global_settings
 
 ?>

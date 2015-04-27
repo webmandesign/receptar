@@ -26,9 +26,9 @@
 	 */
 
 		//Visual Editor addons
-			add_filter( 'mce_buttons',          'wm_add_buttons_row1'  );
-			add_filter( 'mce_buttons_2',        'wm_add_buttons_row2'  );
-			add_filter( 'tiny_mce_before_init', 'wm_custom_mce_format' );
+			add_filter( 'mce_buttons',          'receptar_add_buttons_row1'  );
+			add_filter( 'mce_buttons_2',        'receptar_add_buttons_row2'  );
+			add_filter( 'tiny_mce_before_init', 'receptar_custom_mce_format' );
 
 
 
@@ -48,8 +48,8 @@
 	 *
 	 * @param  array $buttons
 	 */
-	if ( ! function_exists( 'wm_add_buttons_row1' ) ) {
-		function wm_add_buttons_row1( $buttons ) {
+	if ( ! function_exists( 'receptar_add_buttons_row1' ) ) {
+		function receptar_add_buttons_row1( $buttons ) {
 			//Inserting buttons after "more" button
 				$pos = array_search( 'wp_more', $buttons, true );
 				if ( false !== $pos ) {
@@ -61,7 +61,7 @@
 			//Output
 				return $buttons;
 		}
-	} // /wm_add_buttons_row1
+	} // /receptar_add_buttons_row1
 
 
 
@@ -75,15 +75,15 @@
 		 *
 		 * @param  array $buttons
 		 */
-		if ( ! function_exists( 'wm_add_buttons_row2' ) ) {
-			function wm_add_buttons_row2( $buttons ) {
+		if ( ! function_exists( 'receptar_add_buttons_row2' ) ) {
+			function receptar_add_buttons_row2( $buttons ) {
 				//Inserting buttons at the beginning of the row
 					array_unshift( $buttons, 'styleselect' );
 
 				//Output
 					return $buttons;
 			}
-		} // /wm_add_buttons_row2
+		} // /receptar_add_buttons_row2
 
 
 
@@ -97,36 +97,36 @@
 	 *
 	 * @param  array $init
 	 */
-	if ( ! function_exists( 'wm_custom_mce_format' ) ) {
-		function wm_custom_mce_format( $init ) {
+	if ( ! function_exists( 'receptar_custom_mce_format' ) ) {
+		function receptar_custom_mce_format( $init ) {
 			//Preparing output
 				//Merge old & new formats
 					$init['style_formats_merge'] = true;
 
 				//Add custom formats
-					$init['style_formats'] = json_encode( apply_filters( 'wmhook_wm_custom_mce_format_style_formats', array(
+					$init['style_formats'] = json_encode( apply_filters( 'wmhook_receptar_custom_mce_format_style_formats', array(
 
 							//Group: Quotes
 								array(
-									'title' => _x( 'Quotes', 'Visual editor blockquote formats group title.', 'wm_domain' ),
+									'title' => _x( 'Quotes', 'Visual editor blockquote formats group title.', 'receptar' ),
 									'items' => array(
 
 										array(
-											'title' => __( 'Blockquote', 'wm_domain' ),
+											'title' => __( 'Blockquote', 'receptar' ),
 											'block' => 'blockquote',
 										),
 										array(
-											'title'   => __( 'Pullquote - align left', 'wm_domain' ),
+											'title'   => __( 'Pullquote - align left', 'receptar' ),
 											'block'   => 'blockquote',
 											'classes' => 'pullquote alignleft',
 										),
 										array(
-											'title'   => __( 'Pullquote - align right', 'wm_domain' ),
+											'title'   => __( 'Pullquote - align right', 'receptar' ),
 											'block'   => 'blockquote',
 											'classes' => 'pullquote alignright',
 										),
 										array(
-											'title' => _x( 'Cite', 'Visual editor format label for HTML CITE tag used to set the blockquote source.', 'wm_domain' ),
+											'title' => _x( 'Cite', 'Visual editor format label for HTML CITE tag used to set the blockquote source.', 'receptar' ),
 											'block' => 'cite',
 										),
 
@@ -135,22 +135,22 @@
 
 							//Group: Text styles
 								array(
-									'title' => __( 'Text styles', 'wm_domain' ),
+									'title' => __( 'Text styles', 'receptar' ),
 									'items' => array(
 
 										array(
-											'title'    => __( 'Uppercase heading or paragraph', 'wm_domain' ),
+											'title'    => __( 'Uppercase heading or paragraph', 'receptar' ),
 											'selector' => 'h1, h2, h3, h4, h5, h6, p',
 											'classes'  => 'uppercase',
 										),
 
 										array(
-											'title'  => __( 'Highlighted (marked) text', 'wm_domain' ),
+											'title'  => __( 'Highlighted (marked) text', 'receptar' ),
 											'inline' => 'mark',
 										),
 
 										array(
-											'title'    => __( 'Button link', 'wm_domain' ),
+											'title'    => __( 'Button link', 'receptar' ),
 											'selector' => 'a',
 											'classes'  => 'button',
 										),
@@ -161,8 +161,8 @@
 						) ) );
 
 			//Output
-				return apply_filters( 'wmhook_wm_custom_mce_format_output', $init );
+				return apply_filters( 'wmhook_receptar_custom_mce_format_output', $init );
 		}
-	} // /wm_custom_mce_format
+	} // /receptar_custom_mce_format
 
 ?>

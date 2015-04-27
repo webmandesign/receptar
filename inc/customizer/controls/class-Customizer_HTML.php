@@ -16,12 +16,12 @@
 /**
  * Custom HTML (set as label)
  */
-class WM_Customizer_HTML extends WP_Customize_Control {
+class Receptar_Customizer_HTML extends WP_Customize_Control {
 
 	public function render_content() {
 		echo $this->label;
 	}
 
-} // /WM_Customizer_HTML
+} // /Receptar_Customizer_HTML
 
 ?>

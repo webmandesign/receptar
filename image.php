@@ -36,7 +36,7 @@ get_header();
 
 				<div class="entry-media">
 
-					<figure class="post-thumbnail"<?php echo wm_schema_org( 'image' ); ?>>
+					<figure class="post-thumbnail"<?php echo receptar_schema_org( 'image' ); ?>>
 
 						<?php
 
@@ -68,22 +68,22 @@ get_header();
 
 					wmhook_entry_top();
 
-					echo '<div class="entry-content"' . wm_schema_org( 'itemprop="description"' ) . '>';
+					echo '<div class="entry-content"' . receptar_schema_org( 'itemprop="description"' ) . '>';
 
 						?>
 
 						<table>
 							<tbody>
 								<tr class="date">
-									<th><?php _ex( 'Image published on:', 'Attachment page publish time.', 'wm_domain' ); ?></th>
+									<th><?php _ex( 'Image published on:', 'Attachment page publish time.', 'receptar' ); ?></th>
 									<td><?php the_time( get_option( 'date_format' ) ); ?></td>
 								</tr>
 								<tr class="size">
-									<th><?php _e( 'Image size:', 'wm_domain' ); ?></th>
+									<th><?php _e( 'Image size:', 'receptar' ); ?></th>
 									<td><?php echo absint( $image_link[1] ) . ' &times; ' . absint( $image_link[2] ) . ' px'; ?></td>
 								</tr>
 								<tr class="filename">
-									<th><?php _e( 'Image file name:', 'wm_domain' ); ?></th>
+									<th><?php _e( 'Image file name:', 'receptar' ); ?></th>
 									<td><code><?php echo basename( get_attached_file( get_the_ID() ) ); ?></code></td>
 								</tr>
 							</tbody>

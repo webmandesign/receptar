@@ -23,7 +23,7 @@
 
 	<div class="site-banner-media">
 
-		<figure class="site-banner-thumbnail" title="<?php the_title(); ?>"<?php echo wm_schema_org( 'image' ); ?>>
+		<figure class="site-banner-thumbnail" title="<?php the_title(); ?>"<?php echo receptar_schema_org( 'image' ); ?>>
 
 			<?php
 
@@ -35,7 +35,7 @@
 			} else {
 
 				//Fallback to Custom Header image
-					$image_url = ( get_header_image() ) ? ( get_header_image() ) : ( wm_get_stylesheet_directory_uri( 'images/header.jpg' ) );
+					$image_url = ( get_header_image() ) ? ( get_header_image() ) : ( receptar_get_stylesheet_directory_uri( 'images/header.jpg' ) );
 					echo '<img src="' . esc_url( $image_url ) . '" width="' . esc_attr( get_custom_header()->width ) . '" height="' . esc_attr( get_custom_header()->height ) . '" alt="" />';
 
 			}
@@ -58,7 +58,7 @@
 
 	<div class="site-banner-header">
 
-		<h1 class="entry-title"<?php echo wm_schema_org( 'name' ); ?>>
+		<h1 class="entry-title"<?php echo receptar_schema_org( 'name' ); ?>>
 			<a href="<?php echo esc_url( get_permalink() ); ?>" class="highlight" rel="bookmark"><?php
 
 			if ( $custom_title = trim( get_post_meta( get_the_ID(), 'banner_text', true ) ) ) {

@@ -43,7 +43,7 @@
 	 */
 
 		//Jetpack
-			add_action( 'after_setup_theme', 'wm_jetpack', 30 );
+			add_action( 'after_setup_theme', 'receptar_jetpack', 30 );
 
 
 
@@ -52,8 +52,8 @@
 	 */
 
 		//Jetpack
-			add_filter( 'sharing_show',                'wm_jetpack_sharing',        10, 2 );
-			add_filter( 'infinite_scroll_js_settings', 'wm_jetpack_is_js_settings', 10    );
+			add_filter( 'sharing_show',                'receptar_jetpack_sharing',        10, 2 );
+			add_filter( 'infinite_scroll_js_settings', 'receptar_jetpack_is_js_settings', 10    );
 
 
 
@@ -69,8 +69,8 @@
 	 * @since    1.0
 	 * @version  1.0
 	 */
-	if ( ! function_exists( 'wm_jetpack' ) ) {
-		function wm_jetpack() {
+	if ( ! function_exists( 'receptar_jetpack' ) ) {
+		function receptar_jetpack() {
 			//Responsive videos
 				add_theme_support( 'jetpack-responsive-videos' );
 
@@ -78,14 +78,14 @@
 				add_theme_support( 'site-logo' );
 
 			//Featured content
-				add_theme_support( 'featured-content', apply_filters( 'wmhook_wm_jetpack_featured_content', array(
-						'featured_content_filter' => 'wm_get_banner_posts',
+				add_theme_support( 'featured-content', apply_filters( 'wmhook_receptar_jetpack_featured_content', array(
+						'featured_content_filter' => 'receptar_get_banner_posts',
 						'max_posts'               => 6,
 						'post_types'              => array( 'post' ),
 					) ) );
 
 			//Infinite scroll
-				add_theme_support( 'infinite-scroll', apply_filters( 'wmhook_wm_jetpack_infinite_scroll', array(
+				add_theme_support( 'infinite-scroll', apply_filters( 'wmhook_receptar_jetpack_infinite_scroll', array(
 						'container'      => 'posts',
 						'footer'         => false,
 						'posts_per_page' => 4, //Only works if type is scroll and not click - note, that this can be toggled in WP admin.
@@ -93,7 +93,7 @@
 						'wrapper'        => true,
 					) ) );
 		}
-	} // /wm_jetpack
+	} // /receptar_jetpack
 
 
 
@@ -110,8 +110,8 @@
 		 * @param  bool $show
 		 * @param  obj  $post
 		 */
-		if ( ! function_exists( 'wm_jetpack_sharing' ) ) {
-			function wm_jetpack_sharing( $show, $post ) {
+		if ( ! function_exists( 'receptar_jetpack_sharing' ) ) {
+			function receptar_jetpack_sharing( $show, $post ) {
 				//Helper variables
 					global $wp_current_filter;
 
@@ -123,7 +123,7 @@
 				//Output
 					return $show;
 			}
-		} // /wm_jetpack_sharing
+		} // /receptar_jetpack_sharing
 
 
 
@@ -139,14 +139,14 @@
 		 *
 		 * @param  array $settings
 		 */
-		if ( ! function_exists( 'wm_jetpack_is_js_settings' ) ) {
-			function wm_jetpack_is_js_settings( $settings ) {
+		if ( ! function_exists( 'receptar_jetpack_is_js_settings' ) ) {
+			function receptar_jetpack_is_js_settings( $settings ) {
 				//Helper variables
-					$settings['text'] = esc_js( __( 'Load more&hellip;', 'wm_domain' ) );
+					$settings['text'] = esc_js( __( 'Load more&hellip;', 'receptar' ) );
 
 				//Output
 					return $settings;
 			}
-		} // /wm_jetpack_is_js_settings
+		} // /receptar_jetpack_is_js_settings
 
 ?>

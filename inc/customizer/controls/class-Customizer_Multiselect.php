@@ -16,7 +16,7 @@
 /**
  * Multiselect
  */
-class WM_Customizer_Multiselect extends WP_Customize_Control {
+class Receptar_Customizer_Multiselect extends WP_Customize_Control {
 
 	public function render_content() {
 		if ( ! empty( $this->choices ) && is_array( $this->choices ) ) {
@@ -39,13 +39,13 @@ class WM_Customizer_Multiselect extends WP_Customize_Control {
 					?>
 
 				</select>
-				<em><?php _e( 'Press CTRL key for multiple selection.', 'wm_domain' ); ?></em>
+				<em><?php _e( 'Press CTRL key for multiple selection.', 'receptar' ); ?></em>
 			</label>
 
 			<?php
 		}
 	}
 
-} // /WM_Customizer_Multiselect
+} // /Receptar_Customizer_Multiselect
 
 ?>

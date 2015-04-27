@@ -12,6 +12,6 @@
 ?>
 
 <form method="get" class="form-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-	<label for="search-field" class="screen-reader-text"><?php _ex( 'Search', 'Search field label.', 'wm_domain' ); ?></label>
-	<input type="search" value="" placeholder="<?php _e( 'Type and press enter', 'wm_domain' ); ?>" name="s" class="search-field" data-id="search-field" />
+	<label for="search-field" class="screen-reader-text"><?php _ex( 'Search', 'Search field label.', 'receptar' ); ?></label>
+	<input type="search" value="" placeholder="<?php _e( 'Type and press enter', 'receptar' ); ?>" name="s" class="search-field" data-id="search-field" />
 </form>

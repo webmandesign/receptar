@@ -19,7 +19,7 @@ get_header();
 
 		<header class="page-header">
 
-			<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'wm_domain' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+			<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'receptar' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 
 		</header>
 

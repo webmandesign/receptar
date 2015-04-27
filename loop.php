@@ -15,7 +15,7 @@ if ( have_posts() ) {
 
 	wmhook_postslist_before();
 
-	echo '<div id="posts" class="posts posts-list clearfix"' . wm_schema_org( 'ItemList' ) . '>';
+	echo '<div id="posts" class="posts posts-list clearfix"' . receptar_schema_org( 'ItemList' ) . '>';
 
 		wmhook_postslist_top();
 

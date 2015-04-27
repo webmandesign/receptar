@@ -16,7 +16,7 @@
 /**
  * Hidden
  */
-class WM_Customizer_Hidden extends WP_Customize_Control {
+class Receptar_Customizer_Hidden extends WP_Customize_Control {
 
 	public $type = 'hidden';
 
@@ -28,6 +28,6 @@ class WM_Customizer_Hidden extends WP_Customize_Control {
 		<?php
 	}
 
-} // /WM_Customizer_Hidden
+} // /Receptar_Customizer_Hidden
 
 ?>

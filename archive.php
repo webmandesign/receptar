@@ -20,7 +20,7 @@ get_header();
 		<header class="page-header">
 			<?php
 
-				the_archive_title( '<h1 class="page-title">', wm_paginated_suffix( 'small' ) . '</h1>' );
+				the_archive_title( '<h1 class="page-title">', receptar_paginated_suffix( 'small' ) . '</h1>' );
 
 				the_archive_description( '<div class="taxonomy-description">', '</div>' );
 

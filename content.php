@@ -11,7 +11,7 @@
 
 
 
-$pagination_suffix = wm_paginated_suffix( 'small', 'post' );
+$pagination_suffix = receptar_paginated_suffix( 'small', 'post' );
 
 ?>
 
@@ -32,7 +32,7 @@ $pagination_suffix = wm_paginated_suffix( 'small', 'post' );
 
 		<div class="entry-media">
 
-			<figure class="post-thumbnail"<?php echo wm_schema_org( 'image' ); ?>>
+			<figure class="post-thumbnail"<?php echo receptar_schema_org( 'image' ); ?>>
 
 				<?php
 
@@ -77,7 +77,7 @@ $pagination_suffix = wm_paginated_suffix( 'small', 'post' );
 
 			wmhook_entry_top();
 
-			echo '<div class="entry-content"' . wm_schema_org( 'entry_body' ) . '>';
+			echo '<div class="entry-content"' . receptar_schema_org( 'entry_body' ) . '>';
 
 				if (
 						! is_singular()
@@ -87,7 +87,7 @@ $pagination_suffix = wm_paginated_suffix( 'small', 'post' );
 				}
 
 				if ( is_singular() ) {
-					the_content( apply_filters( 'wmhook_wm_excerpt_continue_reading', '' ) );
+					the_content( apply_filters( 'wmhook_receptar_excerpt_continue_reading', '' ) );
 				}
 
 			echo '</div>';

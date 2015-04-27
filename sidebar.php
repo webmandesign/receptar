@@ -27,15 +27,15 @@
 
 			?>
 
-			<nav id="site-navigation" class="main-navigation" role="navigation"<?php echo wm_schema_org( 'SiteNavigationElement' ); ?>>
+			<nav id="site-navigation" class="main-navigation" role="navigation"<?php echo receptar_schema_org( 'SiteNavigationElement' ); ?>>
 
-				<span class="screen-reader-text"><?php printf( __( '%s site navigation', 'wm_domain' ), get_bloginfo( 'name' ) ); ?></span>
+				<span class="screen-reader-text"><?php printf( __( '%s site navigation', 'receptar' ), get_bloginfo( 'name' ) ); ?></span>
 
 				<?php
 
-				echo wm_accessibility_skip_link( 'to_content' );
+				echo receptar_accessibility_skip_link( 'to_content' );
 
-				wp_nav_menu( apply_filters( 'wmhook_wm_navigation_args', array(
+				wp_nav_menu( apply_filters( 'wmhook_navigation_args', array(
 						'theme_location'  => 'primary',
 						'container'       => 'div',
 						'container_class' => 'menu',
@@ -61,7 +61,7 @@
 
 					?>
 
-					<div class="widget-area sidebar" role="complementary"<?php echo wm_schema_org( 'WPSideBar' ); ?>>
+					<div class="widget-area sidebar" role="complementary"<?php echo receptar_schema_org( 'WPSideBar' ); ?>>
 
 						<?php
 
@@ -103,7 +103,7 @@
 			<span class="hamburger-item"></span>
 			<span class="hamburger-item"></span>
 
-			<span class="screen-reader-text"><?php _ex( 'Menu', 'Mobile navigation toggle button title.', 'wm_domain' ); ?></span>
+			<span class="screen-reader-text"><?php _ex( 'Menu', 'Mobile navigation toggle button title.', 'receptar' ); ?></span>
 
 		</button>
 
