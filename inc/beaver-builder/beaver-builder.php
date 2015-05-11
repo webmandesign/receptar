@@ -10,7 +10,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.2
+ * @version  1.2.1
  *
  * CONTENT:
  * -  1) Requirements check
@@ -91,7 +91,7 @@
 	 * Styles and scripts
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.2.1
 	 */
 	if ( ! function_exists( 'receptar_bb_assets' ) ) {
 		function receptar_bb_assets() {
@@ -101,7 +101,7 @@
 							'receptar-bb-addon',
 							receptar_get_stylesheet_directory_uri( 'css/beaver-builder-editor.css' ),
 							false,
-							WM_SCRIPTS_VERSION,
+							esc_attr( trim( wp_get_theme()->get( 'Version' ) ) ),
 							'screen'
 						);
 				}

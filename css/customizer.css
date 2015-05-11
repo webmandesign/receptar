@@ -5,7 +5,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.2.1
  */
 
 
@@ -62,15 +62,6 @@
 		.customize-control textarea { width: 100%; }
 		.customize-control textarea { resize: vertical; }
 		.customize-control-hidden { display: none !important; }
-
-		#customize-control-page_on_front,
-		#customize-control-page_for_posts {
-			padding: 10px;
-			margin-left: -10px;
-			border-radius: 5px;
-			background: #d7eef4;
-		}
-		#customize-control-page_for_posts { background: #d7f4e3; }
 
 		/* Hide Custom Background image setup */
 			#accordion-section-background_image { display: none !important; }

@@ -1,5 +1,32 @@
 # Receptar Changelog
 
+## 1.2.1
+
+* UPDATE: Enqueuing `comment-reply.js` the right way
+* UPDATE: Removing `example.html` Genericons file
+* UPDATE: Prefixing custom created image sizes
+* UPDATE: Saving image size setup into theme mod, not individual options
+* UPDATE: Removing thumbnail preview column in admin posts list screen
+* UPDATE: Removing obsolete constants
+* UPDATE: Localization
+* FIXED: Default featured image size
+
+#### Files changed:
+
+	content-featured-post.php
+	functions.php
+	style.css
+	css/customizer.css
+	images/featured.jpg
+	inc/setup-theme-options.php
+	inc/setup.php
+	inc/beaver-builder/beaver-builder.php
+	inc/lib/core.php
+	languages/sk_SK.mo
+	languages/sk_SK.po
+	languages/xx_XX.pot
+
+
 ## 1.2
 
 * UPDATE: Theme description
