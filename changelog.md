@@ -2,14 +2,14 @@
 
 ## 1.2.1
 
-* UPDATE: Enqueuing `comment-reply.js` the right way
-* UPDATE: Removing `example.html` Genericons file
-* UPDATE: Prefixing custom created image sizes
-* UPDATE: Saving image size setup into theme mod, not individual options
-* UPDATE: Removing thumbnail preview column in admin posts list screen
-* UPDATE: Removing obsolete constants
-* UPDATE: Localization
-* FIXED: Default featured image size
+* **Update**: Enqueuing `comment-reply.js` the right way
+* **Update**: Removing `example.html` Genericons file
+* **Update**: Prefixing custom created image sizes
+* **Update**: Saving image size setup into theme mod, not individual options
+* **Update**: Removing thumbnail preview column in admin posts list screen
+* **Update**: Removing obsolete constants
+* **Update**: Localization
+* **Fix**: Default featured image size
 
 #### Files changed:
 
@@ -29,12 +29,12 @@
 
 ## 1.2
 
-* UPDATE: Theme description
-* UPDATE: Beaver Builder support
-* UPDATE: Starter CSS
-* UPDATE: Screenshot and default images to be 100% GPL compatible
-* UPDATE: Renamed functions, classes, hooks, variables and text domain (affects almost all files)
-* UPDATE: Localization
+* **Update**: Theme description
+* **Update**: Beaver Builder support
+* **Update**: Starter CSS
+* **Update**: Screenshot and default images to be 100% GPL compatible
+* **Update**: Renamed functions, classes, hooks, variables and text domain (affects almost all files)
+* **Update**: Localization
 
 #### Files changed:
 
@@ -49,10 +49,10 @@
 
 ## 1.1
 
-* UPDATE: Tightening security
-* UPDATE: Improved code
-* FIX: Removed obsolete CSS3 transitions
-* FIX: Responsive page title top margin
+* **Update**: Tightening security
+* **Update**: Improved code
+* **Fix**: Removed obsolete CSS3 transitions
+* **Fix**: Responsive page title top margin
 
 #### Files changed:
 
