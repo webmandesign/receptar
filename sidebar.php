@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.3
  */
 
 ?>
@@ -29,7 +29,7 @@
 
 			<nav id="site-navigation" class="main-navigation" role="navigation"<?php echo receptar_schema_org( 'SiteNavigationElement' ); ?>>
 
-				<span class="screen-reader-text"><?php printf( __( '%s site navigation', 'receptar' ), get_bloginfo( 'name' ) ); ?></span>
+				<span class="screen-reader-text"><?php printf( esc_html__( '%s site navigation', 'receptar' ), get_bloginfo( 'name' ) ); ?></span>
 
 				<?php
 
@@ -103,7 +103,7 @@
 			<span class="hamburger-item"></span>
 			<span class="hamburger-item"></span>
 
-			<span class="screen-reader-text"><?php _ex( 'Menu', 'Mobile navigation toggle button title.', 'receptar' ); ?></span>
+			<span class="screen-reader-text"><?php echo esc_html_x( 'Menu', 'Mobile navigation toggle button title.', 'receptar' ); ?></span>
 
 		</button>
 

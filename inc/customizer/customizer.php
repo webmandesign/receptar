@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.3
  *
  * CONTENT:
  * -  1) Required files
@@ -216,7 +216,7 @@
 	 * Registering sections and options for WP Customizer
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.3
 	 *
 	 * @param  object $wp_customize WP customizer object.
 	 */
@@ -242,9 +242,6 @@
 				locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Image.php',       true );
 				locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Multiselect.php', true );
 				locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Select.php',      true );
-				if ( ! receptar_check_wp_version( 4 ) ) {
-					locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Textarea.php', true );
-				}
 
 				do_action( 'wmhook_receptar_theme_customizer_load_controls', $wp_customize );
 
@@ -323,10 +320,7 @@
 							 *
 							 * @link  http://make.wordpress.org/core/2014/07/08/customizer-improvements-in-4-0/
 							 */
-							if (
-									receptar_check_wp_version( 4 )
-									&& isset( $theme_option['theme-customizer-panel'] )
-								) {
+							if ( isset( $theme_option['theme-customizer-panel'] ) ) {
 
 								$panel_id = sanitize_title( trim( $theme_option['theme-customizer-panel'] ) );
 
@@ -370,9 +364,7 @@
 											)
 									);
 
-								if ( receptar_check_wp_version( 4 ) ) {
-									$customizer_section['setup']['panel'] = $customizer_panel;
-								}
+								$customizer_section['setup']['panel'] = $customizer_panel;
 
 								$wp_customize->add_section(
 										$customizer_section['id'],
@@ -585,37 +577,21 @@
 											)
 										);
 
-									if ( receptar_check_wp_version( 4 ) ) {
-
-										$wp_customize->add_control(
-												$option_id,
-												array(
-													'label'       => $theme_option['label'],
-													'description' => $description,
-													'section'     => $customizer_section,
-													'priority'    => $priority,
-													'type'        => 'range',
-													'input_attrs' => array(
-														'min'  => ( isset( $theme_option['min'] ) ) ? ( intval( $theme_option['min'] ) ) : ( 0 ),
-														'max'  => ( isset( $theme_option['max'] ) ) ? ( intval( $theme_option['max'] ) ) : ( 100 ),
-														'step' => ( isset( $theme_option['step'] ) ) ? ( intval( $theme_option['step'] ) ) : ( 1 ),
-													),
-												)
-											);
-
-									} else {
-
-										$wp_customize->add_control(
-												$option_id,
-												array(
-													'label'       => $theme_option['label'],
-													'description' => $description,
-													'section'     => $customizer_section,
-													'priority'    => $priority,
-												)
-											);
-
-									}
+									$wp_customize->add_control(
+											$option_id,
+											array(
+												'label'       => $theme_option['label'],
+												'description' => $description,
+												'section'     => $customizer_section,
+												'priority'    => $priority,
+												'type'        => 'range',
+												'input_attrs' => array(
+													'min'  => ( isset( $theme_option['min'] ) ) ? ( intval( $theme_option['min'] ) ) : ( 0 ),
+													'max'  => ( isset( $theme_option['max'] ) ) ? ( intval( $theme_option['max'] ) ) : ( 100 ),
+													'step' => ( isset( $theme_option['step'] ) ) ? ( intval( $theme_option['step'] ) ) : ( 1 ),
+												),
+											)
+										);
 
 								break;
 
@@ -695,33 +671,16 @@
 											)
 										);
 
-									if ( receptar_check_wp_version( 4 ) ) {
-
-										$wp_customize->add_control(
-												$option_id,
-												array(
-													'type'        => 'textarea',
-													'label'       => $theme_option['label'],
-													'description' => $description,
-													'section'     => $customizer_section,
-													'priority'    => $priority,
-												)
-											);
-
-									} else {
-
-										$wp_customize->add_control( new Receptar_Customizer_Textarea(
-												$wp_customize,
-												$option_id,
-												array(
-													'label'       => $theme_option['label'],
-													'description' => $description,
-													'section'     => $customizer_section,
-													'priority'    => $priority,
-												)
-											) );
-
-									}
+									$wp_customize->add_control(
+											$option_id,
+											array(
+												'type'        => 'textarea',
+												'label'       => $theme_option['label'],
+												'description' => $description,
+												'section'     => $customizer_section,
+												'priority'    => $priority,
+											)
+										);
 
 								break;
 

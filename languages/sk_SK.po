@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Receptar v1.2.1\n"
+"Project-Id-Version: Receptar\n"
 "Report-Msgid-Bugs-To: http://support.webmandesign.eu\n"
-"POT-Creation-Date: 2015-05-11 21:14+0100\n"
-"PO-Revision-Date: 2015-05-11 21:14+0100\n"
+"POT-Creation-Date: 2015-05-27 12:20+0100\n"
+"PO-Revision-Date: 2015-05-27 12:22+0100\n"
 "Last-Translator: WebMan - Oliver Juhas <webmandesigneu@gmail.com>\n"
 "Language-Team: WebMan - Oliver Juhas <webmandesigneu@gmail.com>\n"
 "Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 1.8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -128,22 +128,21 @@ msgstr "Časť %"
 
 #: inc/lib/core.php:614
 #, php-format
-msgctxt "Number of comments in post meta."
-msgid "Comments: %s"
-msgstr "Komentáre: %s"
+msgctxt "%d: number of comments."
+msgid "Comments: %d"
+msgstr "Komentáre: %d"
 
 #: inc/lib/core.php:614
-#, php-format
-msgctxt "Number of comments in post meta (keep the HTML tags)."
-msgid "<span class=\"comments-title\">Comments: </span>%s"
-msgstr "<span class=\"comments-title\">Komentáre: </span>%s"
+msgctxt "Title for number of comments in post meta."
+msgid "Comments:"
+msgstr "Komentáre:"
 
-#: inc/lib/core.php:645 inc/setup.php:1082
+#: inc/lib/core.php:645 inc/setup.php:1075
 #, php-format
 msgid "Edit the \"%s\""
 msgstr "Upraviť \"%s\""
 
-#: inc/lib/core.php:645 inc/setup.php:1082
+#: inc/lib/core.php:645 inc/setup.php:1075
 msgctxt "Edit post link."
 msgid "Edit"
 msgstr "Upraviť"
@@ -163,118 +162,13 @@ msgctxt "Paginated content title suffix."
 msgid "(page %s)"
 msgstr "(stránka %s)"
 
-#: inc/lib/core.php:1012
+#: inc/lib/core.php:994
 msgid "Skip to content"
 msgstr "Preskočiť na obsah"
 
-#: inc/lib/core.php:1013
+#: inc/lib/core.php:995
 msgid "Skip to navigation"
 msgstr "Preskočiť na navigáciu"
-
-#: inc/lib/core.php:1209
-#, php-format
-msgid "Category: %s"
-msgstr "Kategória: %s"
-
-#: inc/lib/core.php:1211
-#, php-format
-msgid "Tag: %s"
-msgstr "Značka: %s"
-
-#: inc/lib/core.php:1213
-#, php-format
-msgid "Author: %s"
-msgstr "Autor: %s"
-
-#: inc/lib/core.php:1215
-#, php-format
-msgid "Year: %s"
-msgstr "Rok: %s"
-
-#: inc/lib/core.php:1215
-msgctxt "yearly archives date format"
-msgid "Y"
-msgstr "Y"
-
-#: inc/lib/core.php:1217
-#, php-format
-msgid "Month: %s"
-msgstr "Mesiac: %s"
-
-#: inc/lib/core.php:1217
-msgctxt "monthly archives date format"
-msgid "F Y"
-msgstr "F Y"
-
-#: inc/lib/core.php:1219
-#, php-format
-msgid "Day: %s"
-msgstr "Deň: %s"
-
-#: inc/lib/core.php:1219
-msgctxt "daily archives date format"
-msgid "F j, Y"
-msgstr "j. F Y"
-
-#: inc/lib/core.php:1222
-msgctxt "post format archive title"
-msgid "Asides"
-msgstr "Poznámky"
-
-#: inc/lib/core.php:1224
-msgctxt "post format archive title"
-msgid "Galleries"
-msgstr "Galérie"
-
-#: inc/lib/core.php:1226
-msgctxt "post format archive title"
-msgid "Images"
-msgstr "Obrázky"
-
-#: inc/lib/core.php:1228
-msgctxt "post format archive title"
-msgid "Videos"
-msgstr "Videá"
-
-#: inc/lib/core.php:1230
-msgctxt "post format archive title"
-msgid "Quotes"
-msgstr "Cítáty"
-
-#: inc/lib/core.php:1232
-msgctxt "post format archive title"
-msgid "Links"
-msgstr "Odkazy"
-
-#: inc/lib/core.php:1234
-msgctxt "post format archive title"
-msgid "Statuses"
-msgstr "Statusy"
-
-#: inc/lib/core.php:1236
-msgctxt "post format archive title"
-msgid "Audio"
-msgstr "Audio"
-
-#: inc/lib/core.php:1238
-msgctxt "post format archive title"
-msgid "Chats"
-msgstr "Chat, rozhovory"
-
-#: inc/lib/core.php:1241
-#, php-format
-msgid "Archives: %s"
-msgstr "Archív: %s"
-
-#. translators: 1: Taxonomy singular name, 2: Current taxonomy term
-#: inc/lib/core.php:1245
-#, php-format
-msgid "%1$s: %2$s"
-msgstr "%1$s: %2$s"
-
-#: inc/lib/core.php:1247
-msgid "Archives"
-msgstr "Archív"
 
 #: inc/lib/visual-editor.php:111
 msgctxt "Visual editor blockquote formats group title."
@@ -358,7 +252,7 @@ msgstr "Farba pozadia"
 msgid "Text color"
 msgstr "Farba textu"
 
-#: inc/setup-theme-options.php:115 inc/setup.php:1649
+#: inc/setup-theme-options.php:115 inc/setup.php:1664
 msgid "Sidebar"
 msgstr "Bočný panel"
 
@@ -389,7 +283,7 @@ msgctxt "Customizer section title."
 msgid "Fonts"
 msgstr "Písmo"
 
-#: inc/setup-theme-options.php:239
+#: inc/setup-theme-options.php:240
 #, php-format
 msgctxt ""
 "%s is replaced with linked examples of web fonts libraries such as Google "
@@ -403,30 +297,26 @@ msgstr ""
 "pre akúkoľvek službu typov písma (ako je napríklad %s) a nastavte ho podľa "
 "doleuvedených informácií."
 
-#: inc/setup-theme-options.php:240
+#: inc/setup-theme-options.php:243
 msgid "List of CSS selectors for predefined theme font sets:"
 msgstr "Zoznam CSS selektorov pre predefinované sady typov písma v téme:"
 
-#: inc/setup-theme-options.php:243 inc/setup-theme-options.php:248
-#: inc/setup-theme-options.php:253
-#, php-format
-msgctxt "1: CSS selector group name, 2: actual CSS selectors."
-msgid "<strong>%1$s</strong>:<br />%2$s"
-msgstr "<strong>%1$s</strong>:<br />%2$s"
+#: inc/setup-theme-options.php:245
+msgctxt "CSS selector group name."
+msgid "Texts:"
+msgstr "Texty:"
 
-#: inc/setup-theme-options.php:244
-msgid "Texts"
-msgstr "Texty"
+#: inc/setup-theme-options.php:248
+msgctxt "CSS selector group name."
+msgid "Headings:"
+msgstr "Nadpisy:"
 
-#: inc/setup-theme-options.php:249
-msgid "Headings"
-msgstr "Nadpisy"
+#: inc/setup-theme-options.php:251
+msgctxt "CSS selector group name."
+msgid "Logo:"
+msgstr "Logo:"
 
-#: inc/setup-theme-options.php:254
-msgid "Logo"
-msgstr "Logo"
-
-#: inc/setup-theme-options.php:259
+#: inc/setup-theme-options.php:256
 #, php-format
 msgid ""
 "By default the theme uses %1$s font for texts, %2$s font for headings and "
@@ -435,20 +325,25 @@ msgstr ""
 "Pôvodne téma používa typ písma %1$s pre texty, typ písma %2$s pre nadpisy a "
 "typ písma %3$s pre logo."
 
-#: inc/setup-theme-options.php:283
+#: inc/setup-theme-options.php:280
 msgid "Theme Credits"
 msgstr "O téme"
 
-#: inc/setup-theme-options.php:284
+#: inc/setup-theme-options.php:281
 #, php-format
+msgctxt "1: linked theme name, 2: theme author name, 3: theme author link."
 msgid ""
-"%s is free WordPress theme developed by WebMan. You can obtain other "
-"professional WordPress themes at <strong><a href=\"%s\" target=\"_blank"
-"\">WebManDesign.eu</a></strong>. Thank you for using this awesome theme!"
+"%1$s is free WordPress theme developed by %2$s. You can obtain other "
+"professional WordPress themes at %3$s. Thank you for using this awesome "
+"theme!"
 msgstr ""
-"%s je voľne dostupná WordPress téma. Ďalšie profesionálne WordPress témy sú "
-"k dispozícií na stránke <strong><a href=\"%s\" target=\"_blank"
-"\">WebManDesign.eu</a></strong>. Ďakujeme, že používate túto úžasnú tému!"
+"%1$s je WordPress téma bezplatne poskytnutá spoločnosťou %2$s. Ďalšie "
+"profesionálne WordPress témy môžete získať na %3$s. Ďakujeme, že používate "
+"túto úžasnú tému!"
+
+#: inc/setup-theme-options.php:286
+msgid "Donate"
+msgstr ""
 
 #: inc/setup.php:202
 msgid "Primary Menu"
@@ -512,114 +407,113 @@ msgstr "Parametre rozmeru"
 msgid "Theme usage"
 msgstr "Použitie v téme"
 
-#: inc/setup.php:426 inc/setup.php:441
+#: inc/setup.php:424
 msgid "cropped"
 msgstr "orezaný"
 
-#: inc/setup.php:426 inc/setup.php:441
+#: inc/setup.php:424
 msgid "scaled"
 msgstr "zmenšený"
 
-#: inc/setup.php:431 inc/setup.php:446
-#, php-format
-msgctxt "1: image width, 2: image height, 3: cropped or scaled?"
-msgid "%1$s &times; %2$s, %3$s"
-msgstr "%1$s &times; %2$s, %3$s"
-
-#: inc/setup.php:443
+#: inc/setup.php:432
 msgid ""
 "Additional image size added by the theme. Can not be changed on this page."
 msgstr ""
 "Dodatočný rozmer obrázkov vytvorený použitou témou. Nie je ho možné nastaviť "
 "na tejto stránke."
 
-#: inc/setup.php:1337
+#: inc/setup.php:437
 #, php-format
-msgid ""
-"This content is password protected. To view it please <a%s>enter the "
-"password</a>."
-msgstr ""
-"Tento obsah je chránený heslom. Na jeho prezeranie <a%s>zadajte heslo/a>."
+msgctxt "1: image width, 2: image height, 3: cropped or scaled?"
+msgid "%1$d &times; %2$d, %3$s"
+msgstr "%1$d &times; %2$d, %3$s"
 
-#: inc/setup.php:1428
+#: inc/setup.php:1330
+msgid "This content is password protected."
+msgstr "Tento obsah je chránený heslom."
+
+#: inc/setup.php:1330
+msgid "Enter the password to view it."
+msgstr "Zadajte heslo pre jeho zobrazenie."
+
+#: inc/setup.php:1421
 #, php-format
 msgid "Continue reading%s&hellip;"
 msgstr "Prečítať%s&hellip;"
 
-#: inc/setup.php:1478
+#: inc/setup.php:1475
 msgid ""
-"<span class=\"post-title\"><span class=\"meta-nav\">Published In </span>"
+"<span class=\"meta-nav\">Published In</span> <span class=\"post-title\">"
 "%title</span>"
 msgstr ""
-"<span class=\"post-title\"><span class=\"meta-nav\">Publikované v </span>"
-"%title</span>"
-
-#: inc/setup.php:1480
-msgid ""
-"<span class=\"post-title\"><span class=\"meta-nav\">Next: </span>%title</"
-"span>"
-msgstr ""
-"<span class=\"post-title\"><span class=\"meta-nav\">Nasledujúce: </span>"
-"%title</span>"
-
-#: inc/setup.php:1481
-msgid ""
-"<span class=\"post-title\"><span class=\"meta-nav\">Previous: </span>%title</"
-"span>"
-msgstr ""
-"<span class=\"post-title\"><span class=\"meta-nav\">Predchádzajúce: </span>"
+"<span class=\"meta-nav\">Publikované v</span> <span class=\"post-title\">"
 "%title</span>"
 
 #: inc/setup.php:1485
+msgid ""
+"<span class=\"meta-nav\">Previous</span> <span class=\"post-title\">%title</"
+"span>"
+msgstr ""
+"<span class=\"meta-nav\">Predchádzaúce</span> <span class=\"post-title\">"
+"%title</span>"
+
+#: inc/setup.php:1492
+msgid ""
+"<span class=\"meta-nav\">Next</span> <span class=\"post-title\">%title</span>"
+msgstr ""
+"<span class=\"meta-nav\">Nasleduje</span> <span class=\"post-title\">%title</"
+"span>"
+
+#: inc/setup.php:1500
 msgid "Post navigation"
 msgstr "Navigácia v článkoch"
 
-#: inc/setup.php:1551
+#: inc/setup.php:1566
 #, php-format
 msgid "Powered by %s."
 msgstr "Používame %s."
 
-#: inc/setup.php:1556
+#: inc/setup.php:1571
 #, php-format
 msgid "Theme by %s."
 msgstr "Autor témy: %s."
 
-#: inc/setup.php:1650
+#: inc/setup.php:1665
 msgid "Displayed in hidden sidebar on left below the primary navigation."
 msgstr "Zobrazí sa v skrytom bočnom paneli vľavo pod primárnou navigáciou."
 
-#: inc/setup.php:1660
+#: inc/setup.php:1675
 msgid "Header Widgets"
 msgstr "Widgety záhlavia"
 
-#: inc/setup.php:1661
+#: inc/setup.php:1676
 msgid "Display widgets in the site header."
 msgstr "Zobrazí widgety v záhlaví stránky."
 
-#: inc/setup.php:1718
+#: inc/setup.php:1733
 msgid "Dropcaps"
 msgstr "Iniciály"
 
-#: inc/setup.php:1722
+#: inc/setup.php:1737
 msgid "Dropcap text"
 msgstr "Text s iniciálou"
 
-#: inc/setup.php:1790
+#: inc/setup.php:1805
 msgctxt "Comment form field placeholder text."
 msgid "Comment"
 msgstr "Komentár"
 
-#: inc/setup.php:1805
+#: inc/setup.php:1820
 msgctxt "Comment form field placeholder text."
 msgid "Name"
 msgstr "Meno"
 
-#: inc/setup.php:1814
+#: inc/setup.php:1829
 msgctxt "Comment form field placeholder text."
 msgid "Email"
 msgstr "E-mail"
 
-#: inc/setup.php:1823
+#: inc/setup.php:1838
 msgctxt "Comment form field placeholder text."
 msgid "Website"
 msgstr "Webstránka"
@@ -647,6 +541,142 @@ msgstr "Navigácia webstránky %s"
 msgctxt "Mobile navigation toggle button title."
 msgid "Menu"
 msgstr "Navigácia"
+
+#~ msgctxt "Number of comments in post meta."
+#~ msgid "Comments: %s"
+#~ msgstr "Komentáre: %s"
+
+#~ msgctxt "Number of comments in post meta (keep the HTML tags)."
+#~ msgid "<span class=\"comments-title\">Comments: </span>%s"
+#~ msgstr "<span class=\"comments-title\">Komentáre: </span>%s"
+
+#~ msgid "Category: %s"
+#~ msgstr "Kategória: %s"
+
+#~ msgid "Tag: %s"
+#~ msgstr "Značka: %s"
+
+#~ msgid "Author: %s"
+#~ msgstr "Autor: %s"
+
+#~ msgid "Year: %s"
+#~ msgstr "Rok: %s"
+
+#~ msgctxt "yearly archives date format"
+#~ msgid "Y"
+#~ msgstr "Y"
+
+#~ msgid "Month: %s"
+#~ msgstr "Mesiac: %s"
+
+#~ msgctxt "monthly archives date format"
+#~ msgid "F Y"
+#~ msgstr "F Y"
+
+#~ msgid "Day: %s"
+#~ msgstr "Deň: %s"
+
+#~ msgctxt "daily archives date format"
+#~ msgid "F j, Y"
+#~ msgstr "j. F Y"
+
+#~ msgctxt "post format archive title"
+#~ msgid "Asides"
+#~ msgstr "Poznámky"
+
+#~ msgctxt "post format archive title"
+#~ msgid "Galleries"
+#~ msgstr "Galérie"
+
+#~ msgctxt "post format archive title"
+#~ msgid "Images"
+#~ msgstr "Obrázky"
+
+#~ msgctxt "post format archive title"
+#~ msgid "Videos"
+#~ msgstr "Videá"
+
+#~ msgctxt "post format archive title"
+#~ msgid "Quotes"
+#~ msgstr "Cítáty"
+
+#~ msgctxt "post format archive title"
+#~ msgid "Links"
+#~ msgstr "Odkazy"
+
+#~ msgctxt "post format archive title"
+#~ msgid "Statuses"
+#~ msgstr "Statusy"
+
+#~ msgctxt "post format archive title"
+#~ msgid "Audio"
+#~ msgstr "Audio"
+
+#~ msgctxt "post format archive title"
+#~ msgid "Chats"
+#~ msgstr "Chat, rozhovory"
+
+#~ msgid "Archives: %s"
+#~ msgstr "Archív: %s"
+
+#~ msgid "%1$s: %2$s"
+#~ msgstr "%1$s: %2$s"
+
+#~ msgid "Archives"
+#~ msgstr "Archív"
+
+#~ msgctxt "1: CSS selector group name, 2: actual CSS selectors."
+#~ msgid "<strong>%1$s</strong>:<br />%2$s"
+#~ msgstr "<strong>%1$s</strong>:<br />%2$s"
+
+#~ msgid "Texts"
+#~ msgstr "Texty"
+
+#~ msgid "Headings"
+#~ msgstr "Nadpisy"
+
+#~ msgid "Logo"
+#~ msgstr "Logo"
+
+#~ msgid ""
+#~ "%s is free WordPress theme developed by WebMan. You can obtain other "
+#~ "professional WordPress themes at <strong><a href=\"%s\" target=\"_blank"
+#~ "\">WebManDesign.eu</a></strong>. Thank you for using this awesome theme!"
+#~ msgstr ""
+#~ "%s je voľne dostupná WordPress téma. Ďalšie profesionálne WordPress témy "
+#~ "sú k dispozícií na stránke <strong><a href=\"%s\" target=\"_blank"
+#~ "\">WebManDesign.eu</a></strong>. Ďakujeme, že používate túto úžasnú tému!"
+
+#~ msgctxt "1: image width, 2: image height, 3: cropped or scaled?"
+#~ msgid "%1$s &times; %2$s, %3$s"
+#~ msgstr "%1$s &times; %2$s, %3$s"
+
+#~ msgid ""
+#~ "This content is password protected. To view it please <a%s>enter the "
+#~ "password</a>."
+#~ msgstr ""
+#~ "Tento obsah je chránený heslom. Na jeho prezeranie <a%s>zadajte heslo/a>."
+
+#~ msgid ""
+#~ "<span class=\"post-title\"><span class=\"meta-nav\">Published In </span>"
+#~ "%title</span>"
+#~ msgstr ""
+#~ "<span class=\"post-title\"><span class=\"meta-nav\">Publikované v </span>"
+#~ "%title</span>"
+
+#~ msgid ""
+#~ "<span class=\"post-title\"><span class=\"meta-nav\">Next: </span>%title</"
+#~ "span>"
+#~ msgstr ""
+#~ "<span class=\"post-title\"><span class=\"meta-nav\">Nasledujúce: </span>"
+#~ "%title</span>"
+
+#~ msgid ""
+#~ "<span class=\"post-title\"><span class=\"meta-nav\">Previous: </span>"
+#~ "%title</span>"
+#~ msgstr ""
+#~ "<span class=\"post-title\"><span class=\"meta-nav\">Predchádzajúce: </"
+#~ "span>%title</span>"
 
 #~ msgid "Image"
 #~ msgstr "Obrázok"
@@ -768,27 +798,6 @@ msgstr "Navigácia"
 
 #~ msgid "This is sticky post"
 #~ msgstr "Odporúčaný článok"
-
-#~ msgid ""
-#~ "<span class=\"meta-nav\">Published In</span> <span class=\"post-title\">"
-#~ "%title</span>"
-#~ msgstr ""
-#~ "<span class=\"meta-nav\">Publikované v</span> <span class=\"post-title\">"
-#~ "%title</span>"
-
-#~ msgid ""
-#~ "<span class=\"meta-nav\">Previous</span> <span class=\"post-title\">"
-#~ "%title</span>"
-#~ msgstr ""
-#~ "<span class=\"meta-nav\">Predchádzaúce</span> <span class=\"post-title\">"
-#~ "%title</span>"
-
-#~ msgid ""
-#~ "<span class=\"meta-nav\">Next</span> <span class=\"post-title\">%title</"
-#~ "span>"
-#~ msgstr ""
-#~ "<span class=\"meta-nav\">Nasleduje</span> <span class=\"post-title\">"
-#~ "%title</span>"
 
 #~ msgid "All posts"
 #~ msgstr "Všetky články"

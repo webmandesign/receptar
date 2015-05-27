@@ -12,7 +12,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.2.1
+ * @version  1.3
  *
  * @link  http://www.webmandesign.eu
  *
@@ -29,12 +29,12 @@
  * 0) Constants
  */
 
-	//Basic constants
+	// Basic constants
+
 		if ( ! defined( 'WM_THEME_SHORTNAME' ) ) define( 'WM_THEME_SHORTNAME', str_replace( array( '-lite', '-plus' ), '', get_template() ) );
 
-		if ( ! defined( 'WM_WP_COMPATIBILITY' ) ) define( 'WM_WP_COMPATIBILITY', 4.1 );
+	// Dir constants
 
-	//Dir constants
 		if ( ! defined( 'WM_INC_DIR' ) ) define( 'WM_INC_DIR', trailingslashit( 'inc' ) );
 
 
@@ -62,5 +62,3 @@
 
 	//Beaver Builder setup
 		locate_template( WM_INC_DIR . 'beaver-builder/beaver-builder.php', true );
-
-?>

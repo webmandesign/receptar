@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.3
  */
 
 
@@ -28,7 +28,7 @@ if ( post_password_required() ) {
 if (
 		( is_single( get_the_ID() ) || is_page( get_the_ID() ) )
 		&& ( comments_open() || have_comments() )
-		&& ! is_attachment()
+		&& post_type_supports( get_post_type(), 'comments' )
 	) :
 
 	wmhook_comments_before();
@@ -40,12 +40,12 @@ if (
 		<h2 id="comments-title" class="comments-title"><?php
 
 			printf(
-					_nx( '1 comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', get_comments_number(), 'Comments list title.', 'receptar' ),
+					esc_html( _nx( '1 comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', get_comments_number(), 'Comments list title.', 'receptar' ) ),
 					number_format_i18n( get_comments_number() ),
 					'<span>' . get_the_title() . '</span>'
 				);
 
-			echo '<a href="#respond" class="add-comment-link">' . _x( 'Add yours &rarr;', 'Add new comment link text.', 'receptar' ) . '</a>';
+			echo '<a href="#respond" class="add-comment-link">' . esc_html_x( 'Add yours &rarr;', 'Add new comment link text.', 'receptar' ) . '</a>';
 
 		?></h2>
 
@@ -60,7 +60,7 @@ if (
 
 				?>
 
-				<h3 class="comments-closed"><?php _e( 'Comments are closed. You can not add new comments.', 'receptar' ); ?></h3>
+				<h3 class="comments-closed"><?php esc_html_e( 'Comments are closed. You can not add new comments.', 'receptar' ); ?></h3>
 
 				<?php
 
@@ -84,14 +84,14 @@ if (
 
 					<nav id="comment-nav-below" class="comment-navigation" role="navigation">
 
-						<h3 class="screen-reader-text"><?php _e( 'Comment navigation', 'receptar' ); ?></h3>
+						<h3 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'receptar' ); ?></h3>
 
 						<div class="nav-previous">
-							<?php previous_comments_link( __( '&larr; Older comments', 'receptar' ) ); ?>
+							<?php previous_comments_link( esc_html__( '&larr; Older comments', 'receptar' ) ); ?>
 						</div>
 
 						<div class="nav-next">
-							<?php next_comments_link( __( 'Newer comments &rarr;', 'receptar' ) ); ?>
+							<?php next_comments_link( esc_html__( 'Newer comments &rarr;', 'receptar' ) ); ?>
 						</div>
 
 					</nav>
@@ -122,5 +122,3 @@ if (
 	wmhook_comments_after();
 
 endif;
-
-?>

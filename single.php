@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.3
  */
 
 
@@ -19,7 +19,7 @@ get_header();
 
 		the_post();
 
-		get_template_part( 'content', apply_filters( 'wmhook_single_content_type', get_post_format() ) );
+		get_template_part( 'template-parts/content', apply_filters( 'wmhook_single_content_type', get_post_format() ) );
 
 		wp_reset_query();
 
@@ -28,5 +28,3 @@ get_header();
 	wmhook_entry_after();
 
 get_footer();
-
-?>

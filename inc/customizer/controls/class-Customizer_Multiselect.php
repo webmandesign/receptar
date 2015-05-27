@@ -39,7 +39,7 @@ class Receptar_Customizer_Multiselect extends WP_Customize_Control {
 					?>
 
 				</select>
-				<em><?php _e( 'Press CTRL key for multiple selection.', 'receptar' ); ?></em>
+				<em><?php esc_html_e( 'Press CTRL key for multiple selection.', 'receptar' ); ?></em>
 			</label>
 
 			<?php

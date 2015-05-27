@@ -1,5 +1,42 @@
 # Receptar Changelog
 
+## 1.3
+
+* **Update**: Improved file organization
+* **Update**: Improved security
+* **Update**: Removed tracking URL parameters
+* **Update**: Removed obsolete constants, functions and custom Customizer controls
+* **Fix**: Donate button is translatable
+
+#### Files changed:
+
+	404.php
+	archive.php
+	comments.php
+	functions.php
+	image.php
+	index.php
+	page.php
+	search.php
+	searchform.php
+	sidebar.php
+	single.php
+	inc/setup-theme-options.php
+	inc/setup.php
+	inc/custom-header/custom-header.php
+	inc/customizer/customizer.php
+	inc/jetpack/jetpack.php
+	inc/lib/core.php
+	inc/lib/visual-editor.php
+	languages/sk_SK.mo
+	languages/sk_SK.po
+	languages/xx_XX.pot
+	template-parts/content-attachment-image.php
+	template-parts/content-none.php
+	template-parts/loop-banner.php
+	template-parts/loop.php
+
+
 ## 1.2.1
 
 * **Update**: Enqueuing `comment-reply.js` the right way

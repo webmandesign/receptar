@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.2.1
+ * @version  1.3
  *
  * CONTENT:
  * - 10) Actions and filters
@@ -44,7 +44,7 @@
 	 * Set theme options array
 	 *
 	 * @since    1.0
-	 * @version  1.2.1
+	 * @version  1.3
 	 *
 	 * @param  array $options
 	 */
@@ -64,27 +64,27 @@
 						100 . 'colors' => array(
 							'id'                       => 'colors',
 							'type'                     => 'section',
-							'theme-customizer-section' => _x( 'Colors', 'Customizer section title.', 'receptar' ),
-							'theme-customizer-panel'   => _x( 'Theme', 'Customizer panel title.', 'receptar' ),
+							'theme-customizer-section' => esc_html_x( 'Colors', 'Customizer section title.', 'receptar' ),
+							'theme-customizer-panel'   => esc_html_x( 'Theme', 'Customizer panel title.', 'receptar' ),
 						),
 
 							100 . 'colors' . 100 => array(
 								'type'    => 'theme-customizer-html',
-								'content' => '<h3>' . __( 'Accent color', 'receptar' ) . '</h3>',
+								'content' => '<h3>' . esc_html__( 'Accent color', 'receptar' ) . '</h3>',
 							),
 
 								100 . 'colors' . 110 => array(
 									'type'        => 'color',
 									'id'          => 'color' . '-accent',
-									'label'       => __( 'Accent color', 'receptar' ),
-									'description' => __( 'This color affects links, buttons and other elements of the website', 'receptar' ),
+									'label'       => esc_html__( 'Accent color', 'receptar' ),
+									'description' => esc_html__( 'This color affects links, buttons and other elements of the website', 'receptar' ),
 									'default'     => '#e53739',
 								),
 								100 . 'colors' . 120 => array(
 									'type'        => 'color',
 									'id'          => 'color' . '-accent-text',
-									'label'       => __( 'Accent text color', 'receptar' ),
-									'description' => __( 'Color of text over accent color background', 'receptar' ),
+									'label'       => esc_html__( 'Accent text color', 'receptar' ),
+									'description' => esc_html__( 'Color of text over accent color background', 'receptar' ),
 									'default'     => '#ffffff',
 								),
 
@@ -92,19 +92,19 @@
 
 							100 . 'colors' . 200 => array(
 								'type'    => 'theme-customizer-html',
-								'content' => '<h3>' . __( 'Header', 'receptar' ) . '</h3>',
+								'content' => '<h3>' . esc_html__( 'Header', 'receptar' ) . '</h3>',
 							),
 
 								100 . 'colors' . 210 => array( //This array key is used in `receptar_custom_css_replacements()` function.
 									'type'    => 'color',
 									'id'      => 'color' . '-header-background',
-									'label'   => __( 'Background color', 'receptar' ),
+									'label'   => esc_html__( 'Background color', 'receptar' ),
 									'default' => '#2a2c2e',
 								),
 								100 . 'colors' . 220 => array(
 									'type'    => 'color',
 									'id'      => 'color' . '-header-text',
-									'label'   => __( 'Text color', 'receptar' ),
+									'label'   => esc_html__( 'Text color', 'receptar' ),
 									'default' => '#ffffff',
 								),
 
@@ -112,31 +112,31 @@
 
 							100 . 'colors' . 300 => array(
 								'type'    => 'theme-customizer-html',
-								'content' => '<h3>' . __( 'Sidebar', 'receptar' ) . '</h3>',
+								'content' => '<h3>' . esc_html__( 'Sidebar', 'receptar' ) . '</h3>',
 							),
 
 								100 . 'colors' . 310 => array(
 									'type'    => 'color',
 									'id'      => 'color' . '-sidebar-background',
-									'label'   => __( 'Background color', 'receptar' ),
+									'label'   => esc_html__( 'Background color', 'receptar' ),
 									'default' => '#1a1c1e',
 								),
 								100 . 'colors' . 320 => array(
 									'type'        => 'color',
 									'id'          => 'color' . '-sidebar-text',
-									'label'       => __( 'Text color', 'receptar' ),
+									'label'       => esc_html__( 'Text color', 'receptar' ),
 									'default'     => '#9a9c9e',
 								),
 								100 . 'colors' . 330 => array(
 									'type'        => 'color',
 									'id'          => 'color' . '-sidebar-headings',
-									'label'       => __( 'Headings color', 'receptar' ),
+									'label'       => esc_html__( 'Headings color', 'receptar' ),
 									'default'     => '#ffffff',
 								),
 								100 . 'colors' . 340 => array(
 									'type'        => 'color',
 									'id'          => 'color' . '-sidebar-border',
-									'label'       => __( 'Borders color', 'receptar' ),
+									'label'       => esc_html__( 'Borders color', 'receptar' ),
 									'default'     => '#3a3c3e',
 								),
 
@@ -144,61 +144,61 @@
 
 							100 . 'colors' . 400 => array(
 								'type'    => 'theme-customizer-html',
-								'content' => '<h3>' . __( 'Content', 'receptar' ) . '</h3>',
+								'content' => '<h3>' . esc_html__( 'Content', 'receptar' ) . '</h3>',
 							),
 
 								100 . 'colors' . 410 => array(
 									'type'    => 'color',
 									'id'      => 'color' . '-content-background',
-									'label'   => __( 'Background color', 'receptar' ),
+									'label'   => esc_html__( 'Background color', 'receptar' ),
 									'default' => '#ffffff',
 								),
 								100 . 'colors' . 420 => array(
 									'type'        => 'color',
 									'id'          => 'color' . '-content-text',
-									'label'       => __( 'Text color', 'receptar' ),
+									'label'       => esc_html__( 'Text color', 'receptar' ),
 									'default'     => '#6a6c6e',
 								),
 								100 . 'colors' . 430 => array(
 									'type'        => 'color',
 									'id'          => 'color' . '-content-headings',
-									'label'       => __( 'Headings color', 'receptar' ),
+									'label'       => esc_html__( 'Headings color', 'receptar' ),
 									'default'     => '#1a1c1e',
 								),
 								100 . 'colors' . 440 => array(
 									'type'        => 'color',
 									'id'          => 'color' . '-content-border',
-									'label'       => __( 'Borders color', 'receptar' ),
+									'label'       => esc_html__( 'Borders color', 'receptar' ),
 									'default'     => '#eaecee',
 								),
 
 								100 . 'colors' . 450 => array(
 									'type'    => 'theme-customizer-html',
-									'content' => '<h4>' . __( 'Alternative colors', 'receptar' ) . '</h4>',
+									'content' => '<h4>' . esc_html__( 'Alternative colors', 'receptar' ) . '</h4>',
 								),
 
 									100 . 'colors' . 460 => array(
 										'type'    => 'color',
 										'id'      => 'color' . '-content-alt-background',
-										'label'   => __( 'Background color', 'receptar' ),
+										'label'   => esc_html__( 'Background color', 'receptar' ),
 										'default' => '#2a2c2e',
 									),
 									100 . 'colors' . 470 => array(
 										'type'        => 'color',
 										'id'          => 'color' . '-content-alt-text',
-										'label'       => __( 'Text color', 'receptar' ),
+										'label'       => esc_html__( 'Text color', 'receptar' ),
 										'default'     => '#9a9c9e',
 									),
 									100 . 'colors' . 480 => array(
 										'type'        => 'color',
 										'id'          => 'color' . '-content-alt-headings',
-										'label'       => __( 'Headings color', 'receptar' ),
+										'label'       => esc_html__( 'Headings color', 'receptar' ),
 										'default'     => '#ffffff',
 									),
 									100 . 'colors' . 490 => array(
 										'type'        => 'color',
 										'id'          => 'color' . '-content-alt-border',
-										'label'       => __( 'Borders color', 'receptar' ),
+										'label'       => esc_html__( 'Borders color', 'receptar' ),
 										'default'     => '#3a3c3e',
 									),
 
@@ -206,19 +206,19 @@
 
 							100 . 'colors' . 800 => array(
 								'type'    => 'theme-customizer-html',
-								'content' => '<h3>' . __( 'Footer', 'receptar' ) . '</h3>',
+								'content' => '<h3>' . esc_html__( 'Footer', 'receptar' ) . '</h3>',
 							),
 
 								100 . 'colors' . 810 => array(
 									'type'        => 'color',
 									'id'          => 'color' . '-footer-background',
-									'label'       => __( 'Background color', 'receptar' ),
+									'label'       => esc_html__( 'Background color', 'receptar' ),
 									'default'     => '#f5f7f9',
 								),
 								100 . 'colors' . 820 => array(
 									'type'        => 'color',
 									'id'          => 'color' . '-footer-text',
-									'label'       => __( 'Text color', 'receptar' ),
+									'label'       => esc_html__( 'Text color', 'receptar' ),
 									'default'     => '#9a9c9e',
 								),
 
@@ -230,33 +230,30 @@
 						200 . 'fonts' => array(
 							'id'                       => 'fonts',
 							'type'                     => 'section',
-							'theme-customizer-section' => _x( 'Fonts', 'Customizer section title.', 'receptar' ),
-							'theme-customizer-panel'   => _x( 'Theme', 'Customizer panel title.', 'receptar' ),
+							'theme-customizer-section' => esc_html_x( 'Fonts', 'Customizer section title.', 'receptar' ),
+							'theme-customizer-panel'   => esc_html_x( 'Theme', 'Customizer panel title.', 'receptar' ),
 						),
 
 							200 . 'fonts' . 100 => array(
 								'type'    => 'theme-customizer-html',
-								'content' => '<p class="description">' . sprintf( _x( 'This theme does not restrict you to a predefined set of fonts. Please use any font service (such as %s) plugin you want and set the plugin according to the information below.', '%s is replaced with linked examples of web fonts libraries such as Google Fonts or Adobe Typekit.', 'receptar' ), '<a href="http://www.google.com/fonts" target="_blank"><strong>Google Fonts</strong></a>, <a href="https://typekit.com/fonts" target="_blank"><strong>Adobe Typekit</strong></a>' ) . '</p>'
-									. '<p>' . __( 'List of CSS selectors for predefined theme font sets:', 'receptar' ) . '</p>'
+								'content' => '<p class="description">' . sprintf(
+										esc_html_x( 'This theme does not restrict you to a predefined set of fonts. Please use any font service (such as %s) plugin you want and set the plugin according to the information below.', '%s is replaced with linked examples of web fonts libraries such as Google Fonts or Adobe Typekit.', 'receptar' ),
+										'<a href="http://www.google.com/fonts" target="_blank"><strong>Google Fonts</strong></a>, <a href="https://typekit.com/fonts" target="_blank"><strong>Adobe Typekit</strong></a>'
+									) . '</p>'
+									. '<p>' . esc_html__( 'List of CSS selectors for predefined theme font sets:', 'receptar' ) . '</p>'
 									. '<ol>'
-									. '<li>' . sprintf(
-												_x( '<strong>%1$s</strong>:<br />%2$s', '1: CSS selector group name, 2: actual CSS selectors.', 'receptar' ),
-												__( 'Texts', 'receptar' ),
-												'<code>html</code>'
-											) . '</li>'
-									. '<li>' . sprintf(
-												_x( '<strong>%1$s</strong>:<br />%2$s', '1: CSS selector group name, 2: actual CSS selectors.', 'receptar' ),
-												__( 'Headings', 'receptar' ),
-												'<code>h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .entry-category, .entry-title .entry-edit</code>'
-											) . '</li>'
-									. '<li>' . sprintf(
-												_x( '<strong>%1$s</strong>:<br />%2$s', '1: CSS selector group name, 2: actual CSS selectors.', 'receptar' ),
-												__( 'Logo', 'receptar' ),
-												'<code>h1, .h1, blockquote</code>'
-											) . '</li>'
+									. '<li><strong>' . esc_html_x( 'Texts:', 'CSS selector group name.', 'receptar' ) . '</strong><br />'
+										. '<code>html</code>'
+									. '</li>'
+									. '<li><strong>' . esc_html_x( 'Headings:', 'CSS selector group name.', 'receptar' ) . '</strong><br />'
+										. '<code>h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .entry-category, .entry-title .entry-edit</code>'
+									. '</li>'
+									. '<li><strong>' . esc_html_x( 'Logo:', 'CSS selector group name.', 'receptar' ) . '</strong><br />'
+										. '<code>h1, .h1, blockquote</code>'
+									. '</li>'
 									. '</ol>'
 									. '<p>' . sprintf(
-												__( 'By default the theme uses %1$s font for texts, %2$s font for headings and %3$s font for logo.', 'receptar' ),
+												esc_html__( 'By default the theme uses %1$s font for texts, %2$s font for headings and %3$s font for logo.', 'receptar' ),
 												//Texts
 												'<a href="http://www.google.com/fonts/specimen/Roboto" target="_blank">Roboto</a>',
 												//Headings
@@ -275,16 +272,19 @@
 							'id'                       => 'credits',
 							'type'                     => 'section',
 							'theme-customizer-section' => 'Credits',
+							'theme-customizer-panel'   => esc_html_x( 'Theme', 'Customizer panel title.', 'receptar' ),
 						),
 
 							999 . 'credits' . 100 => array(
 								'id'      => 'credits-text',
 								'type'    => 'theme-customizer-html',
-								'content' => '<h3>' . __( 'Theme Credits', 'receptar' ) . '</h3><p class="description">' . sprintf(
-										__( '%s is free WordPress theme developed by WebMan. You can obtain other professional WordPress themes at <strong><a href="%s" target="_blank">WebManDesign.eu</a></strong>. Thank you for using this awesome theme!', 'receptar' ),
-										'<strong>' . wp_get_theme()->get( 'Name' ) . '</strong>',
-										esc_url( add_query_arg( array( 'utm_source' => WM_THEME_SHORTNAME . '-theme-credits' ), esc_url( wp_get_theme()->get( 'AuthorURI' ) ) ) )
-									) . '</p><p><a href="' . esc_url( trailingslashit( wp_get_theme()->get( 'AuthorURI' ) ) . WM_THEME_SHORTNAME . '-wordpress-theme/#donate' ) . '" class="donation-link" target="_blank">Donate</a></p>',
+								'content' => '<h3>' . esc_html__( 'Theme Credits', 'receptar' ) . '</h3><p class="description">' . sprintf(
+										esc_html_x( '%1$s is free WordPress theme developed by %2$s. You can obtain other professional WordPress themes at %3$s. Thank you for using this awesome theme!', '1: linked theme name, 2: theme author name, 3: theme author link.', 'receptar' ),
+										'<a href="' . esc_url( wp_get_theme()->get( 'ThemeURI' ) ) . '" target="_blank"><strong>' . esc_html( wp_get_theme()->get( 'Name' ) ) . '</strong></a>',
+										esc_html( wp_get_theme()->get( 'Author' ) ),
+										'<strong><a href="' . esc_url( wp_get_theme()->get( 'AuthorURI' ) ) . '" target="_blank">' . esc_html( wp_get_theme()->get( 'AuthorURI' ) ) . '</a></strong>'
+									) . '</p>'
+									. '<p><a href="' . esc_url( wp_get_theme()->get( 'ThemeURI' ) ) . '#donate" class="donation-link" target="_blank">' . esc_html__( 'Donate', 'receptar' ) . '</a></p>',
 							),
 
 					);

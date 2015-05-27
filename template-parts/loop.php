@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.3
  */
 
 
@@ -23,7 +23,7 @@ if ( have_posts() ) {
 
 			the_post();
 
-			get_template_part( 'content', apply_filters( 'wmhook_loop_content_type', get_post_format() ) );
+			get_template_part( 'template-parts/content', apply_filters( 'wmhook_loop_content_type', get_post_format() ) );
 
 		endwhile;
 
@@ -35,10 +35,8 @@ if ( have_posts() ) {
 
 } else {
 
-	get_template_part( 'content', 'none' );
+	get_template_part( 'template-parts/content', 'none' );
 
 }
 
 wp_reset_query();
-
-?>

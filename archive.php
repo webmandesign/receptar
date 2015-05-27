@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.3
  */
 
 
@@ -27,12 +27,10 @@ get_header();
 			?>
 		</header>
 
-		<?php get_template_part( 'loop', 'archive' ); ?>
+		<?php get_template_part( 'template-parts/loop', 'archive' ); ?>
 
 	</section>
 
 	<?php
 
 get_footer();
-
-?>

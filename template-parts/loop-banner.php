@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.3
  */
 
 ?>
@@ -32,7 +32,7 @@
 				foreach ( (array) $featured_posts as $order => $post ) {
 
 					setup_postdata( $post );
-					get_template_part( 'content', 'featured-post' );
+					get_template_part( 'template-parts/content', 'featured-post' );
 
 				}
 
@@ -41,7 +41,7 @@
 		} else {
 
 			//Fall back to Custom Header
-				get_template_part( 'content', 'custom-header' );
+				get_template_part( 'template-parts/content', 'custom-header' );
 
 		}
 

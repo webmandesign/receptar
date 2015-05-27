@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.3
  */
 
 
@@ -19,11 +19,11 @@ get_header();
 
 		<header class="page-header">
 
-			<h1 class="page-title"><?php _e( 'Oops! That page can not be found.', 'receptar' ); ?></h1>
+			<h1 class="page-title"><?php esc_html_e( 'Oops! That page can not be found.', 'receptar' ); ?></h1>
 
 		</header>
 
-		<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'receptar' ); ?></p>
+		<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'receptar' ); ?></p>
 
 		<?php get_search_form(); ?>
 
@@ -32,5 +32,3 @@ get_header();
 	<?php
 
 get_footer();
-
-?>

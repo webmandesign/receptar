@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.2.1
+ * @version  1.3
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -149,7 +149,7 @@
 	 * Theme setup
 	 *
 	 * @since    1.0
-	 * @version  1.2.1
+	 * @version  1.3
 	 */
 	if ( ! function_exists( 'receptar_setup' ) ) {
 		function receptar_setup() {
@@ -199,8 +199,8 @@
 
 			//Custom menus
 				register_nav_menus( apply_filters( 'wmhook_receptar_setup_menus', array(
-						'primary' => __( 'Primary Menu', 'receptar' ),
-						'social'  => __( 'Social Links Menu', 'receptar' ),
+						'primary' => esc_html__( 'Primary Menu', 'receptar' ),
+						'social'  => esc_html__( 'Social Links Menu', 'receptar' ),
 					) ) );
 
 			//Custom header
@@ -274,7 +274,7 @@
 	 * Set images: default image sizes
 	 *
 	 * @since    1.0
-	 * @version  1.2.1
+	 * @version  1.3
 	 *
 	 * @param  array $image_sizes
 	 */
@@ -297,7 +297,7 @@
 								480,
 								640,
 								true,
-								__( 'In posts list.', 'receptar' )
+								esc_html__( 'In posts list.', 'receptar' )
 							),
 						'medium' => array(
 								absint( $content_width * .62 ),
@@ -308,19 +308,19 @@
 								absint( $content_width ),
 								9999,
 								false,
-								__( 'In single post page.', 'receptar' )
+								esc_html__( 'In single post page.', 'receptar' )
 							),
 						'receptar-banner' => array(
 								1920,
 								640, //Approx. 62% of desktop viewport height (16:9)
 								true,
-								__( 'In front (and blog) page banner.', 'receptar' )
+								esc_html__( 'In front (and blog) page banner.', 'receptar' )
 							),
 						'receptar-featured' => array(
 								absint( $content_width ),
 								absint( $content_width / 3 * 2 ),
 								true,
-								__( 'In single post page on mobile devices only.', 'receptar' )
+								esc_html__( 'In single post page on mobile devices only.', 'receptar' )
 							),
 					);
 
@@ -371,15 +371,15 @@
 		 * Set images: display recommended image sizes notice
 		 *
 		 * @since    1.0
-		 * @version  1.0
+		 * @version  1.3
 		 */
 		if ( ! function_exists( 'receptar_image_size_notice_html' ) ) {
 			function receptar_image_size_notice_html() {
 				//Helper variables
 					$default_image_size_names = array(
-							'thumbnail' => _x( 'Thumbnail size', 'WordPress predefined image size name.', 'receptar' ),
-							'medium'    => _x( 'Medium size', 'WordPress predefined image size name.', 'receptar' ),
-							'large'     => _x( 'Large size', 'WordPress predefined image size name.', 'receptar' ),
+							'thumbnail' => esc_html_x( 'Thumbnail size', 'WordPress predefined image size name.', 'receptar' ),
+							'medium'    => esc_html_x( 'Medium size', 'WordPress predefined image size name.', 'receptar' ),
+							'large'     => esc_html_x( 'Large size', 'WordPress predefined image size name.', 'receptar' ),
 						);
 
 					$image_sizes = array_filter( apply_filters( 'wmhook_receptar_setup_image_sizes', array() ) );
@@ -404,16 +404,16 @@
 
 						do_action( 'wmhook_receptar_image_size_notice_html_top' );
 
-						echo '<h3>' . __( 'Recommended image sizes', 'receptar' ) . '</h3>'
-							. '<p>' . __( 'For the theme to work correctly, please, set these recommended image sizes:', 'receptar' ) . '</p>';
+						echo '<h3>' . esc_html__( 'Recommended image sizes', 'receptar' ) . '</h3>'
+							. '<p>' . esc_html__( 'For the theme to work correctly, please, set these recommended image sizes:', 'receptar' ) . '</p>';
 
 						echo '<table>';
 
 							echo '<thead>'
 								. '<tr>'
-								. '<th>' . __( 'Size name', 'receptar' ) . '</th>'
-								. '<th>' . __( 'Size parameters', 'receptar' ) . '</th>'
-								. '<th>' . __( 'Theme usage', 'receptar' ) . '</th>'
+								. '<th>' . esc_html__( 'Size name', 'receptar' ) . '</th>'
+								. '<th>' . esc_html__( 'Size parameters', 'receptar' ) . '</th>'
+								. '<th>' . esc_html__( 'Theme usage', 'receptar' ) . '</th>'
 								. '</tr>'
 								. '</thead>';
 
@@ -421,37 +421,26 @@
 
 								foreach ( $image_sizes as $size => $setup ) {
 
+									$crop = ( $setup[2] ) ? ( esc_html__( 'cropped', 'receptar' ) ) : ( esc_html__( 'scaled', 'receptar' ) );
+
 									if ( isset( $default_image_size_names[ $size ] ) ) {
 
-										$crop = ( $setup[2] ) ? ( __( 'cropped', 'receptar' ) ) : ( __( 'scaled', 'receptar' ) );
-
-										echo '<tr>'
-											. '<th>' . $default_image_size_names[ $size ] . ':</th>'
-											. '<td>' . sprintf(
-													_x( '%1$s &times; %2$s, %3$s', '1: image width, 2: image height, 3: cropped or scaled?', 'receptar' ),
-													$setup[0],
-													$setup[1],
-													$crop
-												) . '</td>'
-											. '<td class="small">' . ( ( isset( $setup[3] ) ) ? ( $setup[3] ) : ( '&mdash;' ) ) . '</td>'
-											. '</tr>';
+										echo '<tr><th>' . esc_html( $default_image_size_names[ $size ] ) . ':</th>';
 
 									} else {
 
-										$crop = ( $setup[2] ) ? ( __( 'cropped', 'receptar' ) ) : ( __( 'scaled', 'receptar' ) );
-
-										echo '<tr title="' . __( 'Additional image size added by the theme. Can not be changed on this page.', 'receptar' ) . '">'
-											. '<th>' . '<code>' . $size . '</code>:</th>'
-											. '<td>' . sprintf(
-													_x( '%1$s &times; %2$s, %3$s', '1: image width, 2: image height, 3: cropped or scaled?', 'receptar' ),
-													$setup[0],
-													$setup[1],
-													$crop
-												) . '</td>'
-											. '<td class="small">' . ( ( isset( $setup[3] ) ) ? ( $setup[3] ) : ( '&mdash;' ) ) . '</td>'
-											. '</tr>';
+										echo '<tr title="' . esc_attr__( 'Additional image size added by the theme. Can not be changed on this page.', 'receptar' ) . '"><th><code>' . esc_html( $size ) . '</code>:</th>';
 
 									}
+
+									echo '<td>' . sprintf(
+											esc_html_x( '%1$d &times; %2$d, %3$s', '1: image width, 2: image height, 3: cropped or scaled?', 'receptar' ),
+											absint( $setup[0] ),
+											absint( $setup[1] ),
+											$crop
+										) . '</td>'
+										. '<td class="small">' . ( ( isset( $setup[3] ) ) ? ( $setup[3] ) : ( '&mdash;' ) ) . '</td>'
+										. '</tr>';
 
 								} // /foreach
 
@@ -998,11 +987,11 @@
 		 * Display social links
 		 *
 		 * @since    1.0
-		 * @version  1.0
+		 * @version  1.3
 		 */
 		if ( ! function_exists( 'receptar_menu_social' ) ) {
 			function receptar_menu_social() {
-				get_template_part( 'menu', 'social' );
+				get_template_part( 'template-parts/menu', 'social' );
 			}
 		} // /receptar_menu_social
 
@@ -1041,7 +1030,7 @@
 	 * Post/page heading (title)
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.3
 	 *
 	 * @param  array $args Heading setup arguments
 	 */
@@ -1083,7 +1072,7 @@
 						}
 
 						if ( ( $helper = get_edit_post_link( get_the_ID() ) ) && is_page() ) {
-							$args['title'] .= ' <a href="' . esc_url( $helper ) . '" class="entry-edit" title="' . esc_attr( sprintf( __( 'Edit the "%s"', 'receptar' ), the_title_attribute( array( 'echo' => false ) ) ) ) . '"><span>' . _x( 'Edit', 'Edit post link.', 'receptar' ) . '</span></a>';
+							$args['title'] .= ' <a href="' . esc_url( $helper ) . '" class="entry-edit" title="' . esc_attr( sprintf( esc_html__( 'Edit the "%s"', 'receptar' ), the_title_attribute( array( 'echo' => false ) ) ) ) . '"><span>' . esc_html_x( 'Edit', 'Edit post link.', 'receptar' ) . '</span></a>';
 						}
 
 					}
@@ -1329,7 +1318,7 @@
 		 * If the post has more tag, display the content appropriately.
 		 *
 		 * @since    1.0
-		 * @version  1.0
+		 * @version  1.3
 		 *
 		 * @param  string $excerpt
 		 */
@@ -1338,7 +1327,7 @@
 				//Requirements check
 					if ( post_password_required() ) {
 						if ( ! is_single() ) {
-							return sprintf( __( 'This content is password protected. To view it please <a%s>enter the password</a>.', 'receptar' ), ' href="' . esc_url( get_permalink() ) . '"' );
+							return esc_html__( 'This content is password protected.', 'receptar' ) . ' <a href="' . esc_url( get_permalink() ) . '">' . esc_html__( 'Enter the password to view it.', 'receptar' ) . '</a>';
 						}
 						return;
 					}
@@ -1423,13 +1412,13 @@
 			 * Excerpt "Continue reading" text
 			 *
 			 * @since    1.0
-			 * @version  1.0
+			 * @version  1.3
 			 *
 			 * @param  string $continue
 			 */
 			if ( ! function_exists( 'receptar_excerpt_continue_reading' ) ) {
 				function receptar_excerpt_continue_reading( $continue ) {
-					return '<div class="link-more"><a href="' . esc_url( get_permalink() ) . '">' . sprintf( __( 'Continue reading%s&hellip;', 'receptar' ), '<span class="screen-reader-text"> "' . get_the_title() . '"</span>' ) . '</a></div>';
+					return '<div class="link-more"><a href="' . esc_url( get_permalink() ) . '">' . sprintf( esc_html__( 'Continue reading%s&hellip;', 'receptar' ), '<span class="screen-reader-text"> "' . get_the_title() . '"</span>' ) . '</a></div>';
 				}
 			} // /receptar_excerpt_continue_reading
 
@@ -1445,7 +1434,7 @@
 		 * @todo  Transfer to WordPress 4.1+ core functionality.
 		 *
 		 * @since    1.0
-		 * @version  1.0
+		 * @version  1.3
 		 */
 		if ( ! function_exists( 'receptar_post_nav' ) ) {
 			function receptar_post_nav() {
@@ -1479,14 +1468,36 @@
 					}
 
 					if ( is_attachment() ) {
-						$output .= get_previous_post_link( '<div class="nav-previous nav-link' . $prev_class . '">%link</div>', __( '<span class="post-title"><span class="meta-nav">Published In </span>%title</span>', 'receptar' ) );
+
+						$output .= get_previous_post_link(
+								'<div class="nav-previous nav-link' . esc_attr( $prev_class ) . '">%link</div>',
+								wp_kses(
+									__( '<span class="meta-nav">Published In</span> <span class="post-title">%title</span>', 'receptar' ),
+									array( 'span' => array( 'class' => array() ) )
+								)
+							);
+
 					} else {
-						$output .= get_next_post_link( '<div class="nav-next nav-link' . $next_class . '">%link</div>', __( '<span class="post-title"><span class="meta-nav">Next: </span>%title</span>', 'receptar' ) );
-						$output .= get_previous_post_link( '<div class="nav-previous nav-link' . $prev_class . '">%link</div>', __( '<span class="post-title"><span class="meta-nav">Previous: </span>%title</span>', 'receptar' ) );
+
+						$output .= get_previous_post_link(
+								'<div class="nav-previous nav-link' . esc_attr( $prev_class ) . '">%link</div>',
+								wp_kses(
+									__( '<span class="meta-nav">Previous</span> <span class="post-title">%title</span>', 'receptar' ),
+									array( 'span' => array( 'class' => array() ) )
+								)
+							);
+						$output .= get_next_post_link(
+								'<div class="nav-next nav-link' . esc_attr( $next_class ) . '">%link</div>',
+								wp_kses(
+									__( '<span class="meta-nav">Next</span> <span class="post-title">%title</span>', 'receptar' ),
+									array( 'span' => array( 'class' => array() ) )
+								)
+							);
+
 					}
 
 					if ( $output ) {
-						$output = '<nav class="navigation post-navigation links-count-' . $links_count . '" role="navigation"><h1 class="screen-reader-text">' . __( 'Post navigation', 'receptar' ) . '</h1><div class="nav-links">' . $output . '</div></nav>';
+						$output = '<nav class="navigation post-navigation links-count-' . $links_count . '" role="navigation"><h1 class="screen-reader-text">' . esc_html__( 'Post navigation', 'receptar' ) . '</h1><div class="nav-links">' . $output . '</div></nav>';
 					}
 
 				//Output
@@ -1541,7 +1552,7 @@
 	 * I would appreciate it if you keep the credit link in the footer.
 	 *
 	 * @since    1.0
-	 * @version  1.2.1
+	 * @version  1.3
 	 */
 	if ( ! function_exists( 'receptar_footer' ) ) {
 		function receptar_footer() {
@@ -1552,12 +1563,12 @@
 							echo apply_filters( 'wmhook_receptar_credits_output',
 									'&copy; ' . date( 'Y' ) . ' <a href="' . home_url( '/' ) . '" title="' . get_bloginfo( 'name' ) . '">' . get_bloginfo( 'name' ) . '</a>. '
 									. sprintf(
-											__( 'Powered by %s.', 'receptar' ),
+											esc_html__( 'Powered by %s.', 'receptar' ),
 											'<a href="https://wordpress.org">WordPress</a>'
 										)
 									. ' '
 									. sprintf(
-											__( 'Theme by %s.', 'receptar' ),
+											esc_html__( 'Theme by %s.', 'receptar' ),
 											'<a href="' . esc_url( wp_get_theme()->get( 'AuthorURI' ) ) . '">WebMan Design</a>'
 										)
 								);
@@ -1643,15 +1654,15 @@
 	 * Register predefined widget areas (sidebars)
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.3
 	 */
 	if ( ! function_exists( 'receptar_register_widget_areas' ) ) {
 		function receptar_register_widget_areas() {
 			//Secondary
 				register_sidebar( array(
 						'id'            => 'sidebar',
-						'name'          => __( 'Sidebar', 'receptar' ),
-						'description'   => __( 'Displayed in hidden sidebar on left below the primary navigation.', 'receptar' ),
+						'name'          => esc_html__( 'Sidebar', 'receptar' ),
+						'description'   => esc_html__( 'Displayed in hidden sidebar on left below the primary navigation.', 'receptar' ),
 						'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 						'after_widget'  => '</aside>',
 						'before_title'  => '<h2 class="widget-title">',
@@ -1661,8 +1672,8 @@
 			//Header
 				register_sidebar( array(
 						'id'            => 'header',
-						'name'          => __( 'Header Widgets', 'receptar' ),
-						'description'   => __( 'Display widgets in the site header.', 'receptar' ),
+						'name'          => esc_html__( 'Header Widgets', 'receptar' ),
+						'description'   => esc_html__( 'Display widgets in the site header.', 'receptar' ),
 						'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 						'after_widget'  => '</aside>',
 						'before_title'  => '<h2 class="widget-title">',
@@ -1711,7 +1722,7 @@
 		 * Adding additional formats to TinyMCE editor
 		 *
 		 * @since    1.0
-		 * @version  1.0
+		 * @version  1.3
 		 *
 		 * @param  array $formats
 		 */
@@ -1719,11 +1730,11 @@
 			function receptar_visual_editor_custom_mce_format( $formats ) {
 				//Preparing output
 					$formats[] = array(
-							'title' => __( 'Dropcaps', 'receptar' ),
+							'title' => esc_html__( 'Dropcaps', 'receptar' ),
 							'items' => array(
 
 								array(
-									'title'    => __( 'Dropcap text', 'receptar' ),
+									'title'    => esc_html__( 'Dropcap text', 'receptar' ),
 									'selector' => 'p',
 									'classes'  => 'dropcap-text',
 								),
@@ -1779,7 +1790,7 @@
 	 * Add form field placeholders to comments form
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.3
 	 *
 	 * @param  mixed $fields
 	 */
@@ -1791,7 +1802,7 @@
 					//Comment
 						$fields = str_replace(
 								'<textarea',
-								'<textarea placeholder="' . _x( 'Comment', 'Comment form field placeholder text.', 'receptar' ) . '"',
+								'<textarea placeholder="' . esc_html_x( 'Comment', 'Comment form field placeholder text.', 'receptar' ) . '"',
 								$fields
 							);
 						$fields = str_replace(
@@ -1806,7 +1817,7 @@
 						if ( isset( $fields['author'] ) ) {
 							$fields['author'] = str_replace(
 									'<input',
-									'<input placeholder="' . _x( 'Name', 'Comment form field placeholder text.', 'receptar' ) . '"',
+									'<input placeholder="' . esc_html_x( 'Name', 'Comment form field placeholder text.', 'receptar' ) . '"',
 									$fields['author']
 								);
 						}
@@ -1815,7 +1826,7 @@
 						if ( isset( $fields['author'] ) ) {
 							$fields['email'] = str_replace(
 									'<input',
-									'<input placeholder="' . _x( 'Email', 'Comment form field placeholder text.', 'receptar' ) . '"',
+									'<input placeholder="' . esc_html_x( 'Email', 'Comment form field placeholder text.', 'receptar' ) . '"',
 									$fields['email']
 								);
 						}
@@ -1824,7 +1835,7 @@
 						if ( isset( $fields['author'] ) ) {
 							$fields['url'] = str_replace(
 									'<input',
-									'<input placeholder="' . _x( 'Website', 'Comment form field placeholder text.', 'receptar' ) . '"',
+									'<input placeholder="' . esc_html_x( 'Website', 'Comment form field placeholder text.', 'receptar' ) . '"',
 									$fields['url']
 								);
 						}

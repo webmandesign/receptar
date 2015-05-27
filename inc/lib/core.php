@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.2.1
+ * @version  1.3
  *
  * CONTENT:
  * -   1) Required files
@@ -92,7 +92,7 @@
 	 * Supports Jetpack Site Logo module.
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.3
 	 */
 	if ( ! function_exists( 'receptar_logo' ) ) {
 		function receptar_logo() {
@@ -121,7 +121,7 @@
 							$logo_url = wp_get_attachment_image_src( $img_id, 'full' );
 
 							$atts = (array) apply_filters( 'wmhook_receptar_logo_image_atts', array(
-									'alt'   => esc_attr( sprintf( _x( '%s logo', 'Site logo image "alt" HTML attribute text.', 'receptar' ), $blog_info['name'] ) ),
+									'alt'   => esc_attr( sprintf( esc_html_x( '%s logo', 'Site logo image "alt" HTML attribute text.', 'receptar' ), $blog_info['name'] ) ),
 									'title' => esc_attr( $args['title_att'] ),
 									'class' => '',
 								) );
@@ -400,7 +400,7 @@
 	 * Appends the output at the top and bottom of post content.
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.3
 	 *
 	 * @param  string $content
 	 */
@@ -410,7 +410,7 @@
 				global $page, $numpages, $multipage, $post;
 
 				//translators: %s will be replaced with parted post title. Copy it, do not translate.
-				$title_text = apply_filters( 'wmhook_receptar_nextpage_table_of_contents_title_text', sprintf( _x( '"%s" table of contents', 'Parted/paginated post table of content title.', 'receptar' ), get_the_title() ) );
+				$title_text = apply_filters( 'wmhook_receptar_nextpage_table_of_contents_title_text', sprintf( esc_html_x( '"%s" table of contents', 'Parted/paginated post table of content title.', 'receptar' ), get_the_title() ) );
 				$title      = apply_filters( 'wmhook_receptar_nextpage_table_of_contents_title', '<h2 class="screen-reader-text">' . $title_text . '</h2>' );
 
 				//Requirements check
@@ -454,7 +454,7 @@
 								preg_match( '/<' . $args['tag'] . '(.*?)>(.*?)<\/' . $args['tag'] . '>/', $part, $matches );
 
 								if ( ! isset( $matches[2] ) || ! $matches[2] ) {
-									$part_title = sprintf( __( 'Page %s', 'receptar' ), $i );
+									$part_title = sprintf( esc_html__( 'Page %s', 'receptar' ), $i );
 								} else {
 									$part_title = $matches[2];
 								}
@@ -498,7 +498,7 @@
 	 * Post/page parts pagination
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.3
 	 *
 	 * @param  boolean $echo
 	 */
@@ -508,7 +508,7 @@
 				'before'         => '<p class="pagination post-parts">',
 				'after'          => '</p>',
 				'next_or_number' => 'number',
-				'pagelink'       => '<span class="page-numbers">' . __( 'Part %', 'receptar' ) . '</span>',
+				'pagelink'       => '<span class="page-numbers">' . esc_html__( 'Part %', 'receptar' ) . '</span>',
 				'echo'           => $echo,
 			) );
 		}
@@ -524,7 +524,7 @@
 	 * Supports Post Views Count plugin. @link https://wordpress.org/plugins/baw-post-views-count/
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.3
 	 *
 	 * @param  array $args
 	 */
@@ -611,7 +611,7 @@
 									$replacements = array(
 											'{attributes}' => '',
 											'{class}'      => 'comments-link entry-meta-element',
-											'{content}'    => '<a href="' . esc_url( get_permalink( $args['post_id'] ) ) . $element_id . '" title="' . esc_attr( sprintf( _x( 'Comments: %s', 'Number of comments in post meta.', 'receptar' ), $helper ) ) . '">' . sprintf( _x( '<span class="comments-title">Comments: </span>%s', 'Number of comments in post meta (keep the HTML tags).', 'receptar' ), '<span class="comments-count">' . $helper . '</span>' ) . '</a>',
+											'{content}'    => '<a href="' . esc_url( get_permalink( $args['post_id'] ) ) . $element_id . '" title="' . esc_attr( sprintf( esc_html_x( 'Comments: %d', '%d: number of comments.', 'receptar' ), $helper ) ) . '"><span class="comments-title">' . esc_html_x( 'Comments:', 'Title for number of comments in post meta.', 'receptar' ) . ' </span><span class="comments-count">' . $helper . '</span></a>',
 										);
 								}
 
@@ -642,7 +642,7 @@
 									$replacements = array(
 											'{attributes}' => '',
 											'{class}'      => 'entry-edit entry-meta-element',
-											'{content}'    => '<a href="' . esc_url( $helper ) . '" title="' . esc_attr( sprintf( __( 'Edit the "%s"', 'receptar' ), the_title_attribute( $the_title_attribute_args ) ) ) . '"><span>' . _x( 'Edit', 'Edit post link.', 'receptar' ) . '</span></a>',
+											'{content}'    => '<a href="' . esc_url( $helper ) . '" title="' . esc_attr( sprintf( esc_html__( 'Edit the "%s"', 'receptar' ), the_title_attribute( $the_title_attribute_args ) ) ) . '"><span>' . esc_html_x( 'Edit', 'Edit post link.', 'receptar' ) . '</span></a>',
 										);
 								}
 
@@ -675,7 +675,7 @@
 									$replacements = array(
 											'{attributes}' => receptar_schema_org( 'url' ),
 											'{class}'      => 'entry-permalink entry-meta-element',
-											'{content}'    => '<a href="' . esc_url( get_permalink( $args['post_id'] ) ) . '" title="' . esc_attr( sprintf( __( 'Permalink to "%s"', 'receptar' ), the_title_attribute( $the_title_attribute_args ) ) ) . '" rel="bookmark"><span>' . get_the_title( $args['post_id'] ) . '</span></a>',
+											'{content}'    => '<a href="' . esc_url( get_permalink( $args['post_id'] ) ) . '" title="' . esc_attr( sprintf( esc_html__( 'Permalink to "%s"', 'receptar' ), the_title_attribute( $the_title_attribute_args ) ) ) . '" rel="bookmark"><span>' . get_the_title( $args['post_id'] ) . '</span></a>',
 										);
 								}
 
@@ -702,7 +702,7 @@
 										&& ( $helper = bawpvc_views_sc( array() ) )
 									) {
 									$replacements = array(
-											'{attributes}' => ' title="' . __( 'Views count', 'receptar' ) . '"',
+											'{attributes}' => ' title="' . esc_html__( 'Views count', 'receptar' ) . '"',
 											'{class}'      => 'entry-views entry-meta-element',
 											'{content}'    => $helper,
 										);
@@ -744,7 +744,7 @@
 	 * Paginated heading suffix
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.3
 	 *
 	 * @param  string $tag           Wrapper tag
 	 * @param  string $singular_only Display only on singular posts of specific type
@@ -779,7 +779,7 @@
 
 			//Preparing output
 				if ( 1 < $paged ) {
-					$output = ' ' . $tag[0] . sprintf( _x( '(page %s)', 'Paginated content title suffix.', 'receptar' ), $paged ) . $tag[1];
+					$output = ' ' . $tag[0] . sprintf( esc_html_x( '(page %s)', 'Paginated content title suffix.', 'receptar' ), $paged ) . $tag[1];
 				}
 
 			//Output
@@ -826,24 +826,6 @@
 /**
  * 100) Other functions
  */
-
-	/**
-	 * Check WordPress version
-	 *
-	 * @since    1.0
-	 * @version  1.0
-	 *
-	 * @param  float $version
-	 */
-	if ( ! function_exists( 'receptar_check_wp_version' ) ) {
-		function receptar_check_wp_version( $version = WM_WP_COMPATIBILITY ) {
-			global $wp_version;
-
-			return apply_filters( 'wmhook_receptar_check_wp_version_output', version_compare( (float) $wp_version, $version, '>=' ), $version, $wp_version );
-		}
-	} // /receptar_check_wp_version
-
-
 
 	/**
 	 * Do action on theme version change
@@ -1001,7 +983,7 @@
 	 * Accessibility skip links
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.3
 	 *
 	 * @param  string $type
 	 */
@@ -1009,8 +991,8 @@
 		function receptar_accessibility_skip_link( $type ) {
 			//Helper variables
 				$links = apply_filters( 'wmhook_receptar_accessibility_skip_links', array(
-					'to_content'    => '<a class="skip-link screen-reader-text" href="#content">' . __( 'Skip to content', 'receptar' ) . '</a>',
-					'to_navigation' => '<a class="skip-link screen-reader-text" href="#site-navigation">' . __( 'Skip to navigation', 'receptar' ) . '</a>',
+					'to_content'    => '<a class="skip-link screen-reader-text" href="#content">' . esc_html__( 'Skip to content', 'receptar' ) . '</a>',
+					'to_navigation' => '<a class="skip-link screen-reader-text" href="#site-navigation">' . esc_html__( 'Skip to navigation', 'receptar' ) . '</a>',
 				) );
 
 			//Output
@@ -1192,141 +1174,3 @@
 				delete_transient( 'receptar-all-categories' );
 			}
 		} // /receptar_all_categories_transient_flusher
-
-
-
-	/**
-	 * Shim for `get_the_archive_title()`.
-	 *
-	 * @todo Remove this function when WordPress 4.3 is released.
-	 *
-	 * @since    1.0
-	 * @version  1.0
-	 */
-	if ( ! function_exists( 'get_the_archive_title' ) ) {
-		function get_the_archive_title() {
-			if ( is_category() ) {
-				$title = sprintf( __( 'Category: %s', 'receptar' ), single_cat_title( '', false ) );
-			} elseif ( is_tag() ) {
-				$title = sprintf( __( 'Tag: %s', 'receptar' ), single_tag_title( '', false ) );
-			} elseif ( is_author() ) {
-				$title = sprintf( __( 'Author: %s', 'receptar' ), '<span class="vcard">' . get_the_author() . '</span>' );
-			} elseif ( is_year() ) {
-				$title = sprintf( __( 'Year: %s', 'receptar' ), get_the_date( _x( 'Y', 'yearly archives date format', 'receptar' ) ) );
-			} elseif ( is_month() ) {
-				$title = sprintf( __( 'Month: %s', 'receptar' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'receptar' ) ) );
-			} elseif ( is_day() ) {
-				$title = sprintf( __( 'Day: %s', 'receptar' ), get_the_date( _x( 'F j, Y', 'daily archives date format', 'receptar' ) ) );
-			} elseif ( is_tax( 'post_format' ) ) {
-				if ( is_tax( 'post_format', 'post-format-aside' ) ) {
-					$title = _x( 'Asides', 'post format archive title', 'receptar' );
-				} elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) {
-					$title = _x( 'Galleries', 'post format archive title', 'receptar' );
-				} elseif ( is_tax( 'post_format', 'post-format-image' ) ) {
-					$title = _x( 'Images', 'post format archive title', 'receptar' );
-				} elseif ( is_tax( 'post_format', 'post-format-video' ) ) {
-					$title = _x( 'Videos', 'post format archive title', 'receptar' );
-				} elseif ( is_tax( 'post_format', 'post-format-quote' ) ) {
-					$title = _x( 'Quotes', 'post format archive title', 'receptar' );
-				} elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
-					$title = _x( 'Links', 'post format archive title', 'receptar' );
-				} elseif ( is_tax( 'post_format', 'post-format-status' ) ) {
-					$title = _x( 'Statuses', 'post format archive title', 'receptar' );
-				} elseif ( is_tax( 'post_format', 'post-format-audio' ) ) {
-					$title = _x( 'Audio', 'post format archive title', 'receptar' );
-				} elseif ( is_tax( 'post_format', 'post-format-chat' ) ) {
-					$title = _x( 'Chats', 'post format archive title', 'receptar' );
-				}
-			} elseif ( is_post_type_archive() ) {
-				$title = sprintf( __( 'Archives: %s', 'receptar' ), post_type_archive_title( '', false ) );
-			} elseif ( is_tax() ) {
-				$tax = get_taxonomy( get_queried_object()->taxonomy );
-				/* translators: 1: Taxonomy singular name, 2: Current taxonomy term */
-				$title = sprintf( __( '%1$s: %2$s', 'receptar' ), $tax->labels->singular_name, single_term_title( '', false ) );
-			} else {
-				$title = __( 'Archives', 'receptar' );
-			}
-
-			/**
-			* Filter the archive title.
-			*
-			* @param string $title Archive title to be displayed.
-			*/
-			return apply_filters( 'get_the_archive_title', $title );
-		}
-	} // /get_the_archive_title
-
-
-
-		/**
-		 * Shim for `the_archive_title()`.
-		 *
-		 * Display the archive title based on the queried object.
-		 *
-		 * @todo Remove this function when WordPress 4.3 is released.
-		 *
-		 * @since    1.0
-		 * @version  1.0
-		 *
-		 * @param  string $before Optional. Content to prepend to the title. Default empty.
-		 * @param  string $after  Optional. Content to append to the title. Default empty.
-		 */
-		if ( ! function_exists( 'the_archive_title' ) ) {
-			function the_archive_title( $before = '', $after = '' ) {
-				$title = get_the_archive_title();
-
-				if ( ! empty( $title ) ) {
-					echo $before . $title . $after;
-				}
-			}
-		} // /the_archive_title
-
-
-
-	/**
-	 * Shim for `get_the_archive_description()`.
-	 *
-	 * @todo Remove this function when WordPress 4.3 is released.
-	 *
-	 * @since    1.0
-	 * @version  1.0
-	 */
-	if ( ! function_exists( 'get_the_archive_description' ) ) {
-		function get_the_archive_description() {
-			/**
-			 * Filter the archive description.
-			 *
-			 * @see term_description()
-			 *
-			 * @param string $description Archive description to be displayed.
-			 */
-			return apply_filters( 'get_the_archive_description', term_description() );
-		}
-	} // /get_the_archive_description
-
-
-
-		/**
-		 * Shim for `the_archive_description()`.
-		 *
-		 * Display category, tag, or term description.
-		 *
-		 * @todo Remove this function when WordPress 4.3 is released.
-		 *
-		 * @since    1.0
-		 * @version  1.0
-		 *
-		 * @param  string $before Optional. Content to prepend to the description. Default empty.
-		 * @param  string $after  Optional. Content to append to the description. Default empty.
-		 */
-		if ( ! function_exists( 'the_archive_description' ) ) {
-			function the_archive_description( $before = '', $after = '' ) {
-				$description = get_the_archive_description();
-
-				if ( $description ) {
-					echo $before . $description . $after;
-				}
-			}
-		} // /the_archive_description
-
-?>

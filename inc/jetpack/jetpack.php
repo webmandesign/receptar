@@ -10,7 +10,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.3
  *
  * CONTENT:
  * -  1) Requirements check
@@ -67,7 +67,7 @@
 	 * Enables Jetpack features
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.3
 	 */
 	if ( ! function_exists( 'receptar_jetpack' ) ) {
 		function receptar_jetpack() {
@@ -89,6 +89,7 @@
 						'container'      => 'posts',
 						'footer'         => false,
 						'posts_per_page' => 4, //Only works if type is scroll and not click - note, that this can be toggled in WP admin.
+						'render'         => 'receptar_jetpack_is_render',
 						'type'           => 'scroll',
 						'wrapper'        => true,
 					) ) );
@@ -142,11 +143,33 @@
 		if ( ! function_exists( 'receptar_jetpack_is_js_settings' ) ) {
 			function receptar_jetpack_is_js_settings( $settings ) {
 				//Helper variables
-					$settings['text'] = esc_js( __( 'Load more&hellip;', 'receptar' ) );
+					$settings['text'] = esc_js( esc_html__( 'Load more&hellip;', 'receptar' ) );
 
 				//Output
 					return $settings;
 			}
 		} // /receptar_jetpack_is_js_settings
 
-?>
+
+
+		/**
+		 * Jetpack infinite scroll posts renderer
+		 *
+		 * @see  receptar_jetpack()
+		 *
+		 * @since    1.3
+		 * @version  1.3
+		 */
+		function receptar_jetpack_is_render() {
+
+			// Output
+
+				while ( have_posts() ) :
+
+					the_post();
+
+					get_template_part( 'template-parts/content', get_post_format() );
+
+				endwhile;
+
+		} // /receptar_jetpack_is_render

@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.3
  *
  * CONTENT:
  * - 10) Actions and filters
@@ -93,7 +93,7 @@
 	 * @link  http://codex.wordpress.org/TinyMCE_Custom_Styles
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.3
 	 *
 	 * @param  array $init
 	 */
@@ -108,25 +108,25 @@
 
 							//Group: Quotes
 								array(
-									'title' => _x( 'Quotes', 'Visual editor blockquote formats group title.', 'receptar' ),
+									'title' => esc_html_x( 'Quotes', 'Visual editor blockquote formats group title.', 'receptar' ),
 									'items' => array(
 
 										array(
-											'title' => __( 'Blockquote', 'receptar' ),
+											'title' => esc_html__( 'Blockquote', 'receptar' ),
 											'block' => 'blockquote',
 										),
 										array(
-											'title'   => __( 'Pullquote - align left', 'receptar' ),
+											'title'   => esc_html__( 'Pullquote - align left', 'receptar' ),
 											'block'   => 'blockquote',
 											'classes' => 'pullquote alignleft',
 										),
 										array(
-											'title'   => __( 'Pullquote - align right', 'receptar' ),
+											'title'   => esc_html__( 'Pullquote - align right', 'receptar' ),
 											'block'   => 'blockquote',
 											'classes' => 'pullquote alignright',
 										),
 										array(
-											'title' => _x( 'Cite', 'Visual editor format label for HTML CITE tag used to set the blockquote source.', 'receptar' ),
+											'title' => esc_html_x( 'Cite', 'Visual editor format label for HTML CITE tag used to set the blockquote source.', 'receptar' ),
 											'block' => 'cite',
 										),
 
@@ -135,22 +135,22 @@
 
 							//Group: Text styles
 								array(
-									'title' => __( 'Text styles', 'receptar' ),
+									'title' => esc_html__( 'Text styles', 'receptar' ),
 									'items' => array(
 
 										array(
-											'title'    => __( 'Uppercase heading or paragraph', 'receptar' ),
+											'title'    => esc_html__( 'Uppercase heading or paragraph', 'receptar' ),
 											'selector' => 'h1, h2, h3, h4, h5, h6, p',
 											'classes'  => 'uppercase',
 										),
 
 										array(
-											'title'  => __( 'Highlighted (marked) text', 'receptar' ),
+											'title'  => esc_html__( 'Highlighted (marked) text', 'receptar' ),
 											'inline' => 'mark',
 										),
 
 										array(
-											'title'    => __( 'Button link', 'receptar' ),
+											'title'    => esc_html__( 'Button link', 'receptar' ),
 											'selector' => 'a',
 											'classes'  => 'button',
 										),

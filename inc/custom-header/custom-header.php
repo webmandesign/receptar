@@ -10,7 +10,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.3
  *
  * @uses  Jetpack -> Featured Content
  * @link  http://jetpack.me/support/featured-content/
@@ -107,7 +107,7 @@
 	 * Featured area
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.3
 	 */
 	if ( ! function_exists( 'receptar_banner_area' ) ) {
 		function receptar_banner_area() {
@@ -116,7 +116,7 @@
 					&& ! is_paged()
 					&& apply_filters( 'wmhook_receptar_banner_area_enabled', true )
 				) {
-				get_template_part( 'loop', 'banner' );
+				get_template_part( 'template-parts/loop', 'banner' );
 			}
 		}
 	} // /receptar_banner_area
