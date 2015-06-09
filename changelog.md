@@ -1,5 +1,14 @@
 # Receptar Changelog
 
+## 1.3.1
+
+* **Update**: Reset WordPress native image sizes to their pre-theme-activation state after switching the theme
+
+#### Files changed:
+
+	inc/setup.php
+
+
 ## 1.3
 
 * **Update**: Improved file organization

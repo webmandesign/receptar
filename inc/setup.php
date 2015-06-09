@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.3
+ * @version  1.3.1
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -35,6 +35,7 @@
 			add_action( 'wp_enqueue_scripts',  'receptar_singular_featured_image',  110 );
 			add_action( 'wp_footer',           'receptar_footer_custom_scripts',   9998 );
 			add_action( 'comment_form_before', 'receptar_comment_reply_js_enqueue'      );
+			add_action( 'switch_theme',        'receptar_image_sizes_reset'             );
 		//Customizer assets
 			add_action( 'customize_controls_enqueue_scripts', 'receptar_customizer_enqueue_assets'             );
 			add_action( 'customize_preview_init',             'receptar_customizer_preview_enqueue_assets', 10 );
@@ -243,21 +244,41 @@
 								 * This allows users to set their own sizes later, but a notification is displayed.
 								 */
 
-								if ( $image_sizes[ $size ][0] != get_option( $size . '_size_w' ) ) {
-									update_option( $size . '_size_w', $image_sizes[ $size ][0] );
-								}
-								if ( $image_sizes[ $size ][1] != get_option( $size . '_size_h' ) ) {
-									update_option( $size . '_size_h', $image_sizes[ $size ][1] );
-								}
-								if ( $image_sizes[ $size ][2] != get_option( $size . '_crop' ) ) {
-									update_option( $size . '_crop', $image_sizes[ $size ][2] );
-								}
+								$original_image_width = get_option( $size . '_size_w' );
 
-								set_theme_mod( '__image_size-' . $size, true );
+									if ( $image_sizes[ $size ][0] != $original_image_width ) {
+										update_option( $size . '_size_w', $image_sizes[ $size ][0] );
+									}
+
+								$original_image_height = get_option( $size . '_size_h' );
+
+									if ( $image_sizes[ $size ][1] != $original_image_height ) {
+										update_option( $size . '_size_h', $image_sizes[ $size ][1] );
+									}
+
+								$original_image_crop = get_option( $size . '_crop' );
+
+									if ( $image_sizes[ $size ][2] != $original_image_crop ) {
+										update_option( $size . '_crop', $image_sizes[ $size ][2] );
+									}
+
+								set_theme_mod(
+										'__image_size_' . $size,
+										array(
+											$original_image_width,
+											$original_image_height,
+											$original_image_crop
+										)
+									);
 
 							} else {
 
-								add_image_size( $size, $image_sizes[ $size ][0], $image_sizes[ $size ][1], $image_sizes[ $size ][2] );
+								add_image_size(
+										$size,
+										$image_sizes[ $size ][0],
+										$image_sizes[ $size ][1],
+										$image_sizes[ $size ][2]
+									);
 
 							}
 
@@ -271,68 +292,148 @@
 
 
 	/**
-	 * Set images: default image sizes
-	 *
-	 * @since    1.0
-	 * @version  1.3
-	 *
-	 * @param  array $image_sizes
+	 * Setup images
 	 */
-	if ( ! function_exists( 'receptar_image_sizes' ) ) {
-		function receptar_image_sizes( $image_sizes ) {
-			//Helper variables
-				global $content_width;
 
-			//Preparing output
-				/**
-				 * image_size = array(
-				 *   width,
-				 *   height,
-				 *   cropped?,
-				 *   theme_usage //Optional
-				 * )
-				 */
-				$image_sizes = array(
-						'thumbnail' => array(
-								480,
-								640,
-								true,
-								esc_html__( 'In posts list.', 'receptar' )
-							),
-						'medium' => array(
-								absint( $content_width * .62 ),
-								9999,
-								false
-							),
-						'large' => array(
-								absint( $content_width ),
-								9999,
-								false,
-								esc_html__( 'In single post page.', 'receptar' )
-							),
-						'receptar-banner' => array(
-								1920,
-								640, //Approx. 62% of desktop viewport height (16:9)
-								true,
-								esc_html__( 'In front (and blog) page banner.', 'receptar' )
-							),
-						'receptar-featured' => array(
-								absint( $content_width ),
-								absint( $content_width / 3 * 2 ),
-								true,
-								esc_html__( 'In single post page on mobile devices only.', 'receptar' )
-							),
-					);
+		/**
+		 * Image sizes
+		 *
+		 * @example
+		 *
+		 *   $image_sizes = array(
+		 *     'image_size_id' => array(
+		 *       absint( width ),
+		 *       absint( height ),
+		 *       (bool) cropped?,
+		 *       (string) optional_theme_usage_explanation_text
+		 *     )
+		 *   );
+		 *
+		 * @since    1.0
+		 * @version  1.3
+		 *
+		 * @param  array $image_sizes
+		 */
+		if ( ! function_exists( 'receptar_image_sizes' ) ) {
+			function receptar_image_sizes( $image_sizes ) {
+				//Helper variables
+					global $content_width;
 
-			//Output
-				return $image_sizes;
-		}
-	} // /receptar_image_sizes
+				//Preparing output
+					/**
+					 * image_size = array(
+					 *   width,
+					 *   height,
+					 *   cropped?,
+					 *   theme_usage //Optional
+					 * )
+					 */
+					$image_sizes = array(
+							'thumbnail' => array(
+									480,
+									640,
+									true,
+									esc_html__( 'In posts list.', 'receptar' )
+								),
+							'medium' => array(
+									absint( $content_width * .62 ),
+									9999,
+									false
+								),
+							'large' => array(
+									absint( $content_width ),
+									9999,
+									false,
+									esc_html__( 'In single post page.', 'receptar' )
+								),
+							'receptar-banner' => array(
+									1920,
+									640, //Approx. 62% of desktop viewport height (16:9)
+									true,
+									esc_html__( 'In front (and blog) page banner.', 'receptar' )
+								),
+							'receptar-featured' => array(
+									absint( $content_width ),
+									absint( $content_width / 3 * 2 ),
+									true,
+									esc_html__( 'In single post page on mobile devices only.', 'receptar' )
+								),
+						);
+
+				//Output
+					return $image_sizes;
+			}
+		} // /receptar_image_sizes
 
 
 
 		/**
-		 * Set images: register recommended image sizes notice
+		 * Reset predefined image sizes to their original values
+		 *
+		 * @since    1.3.1
+		 * @version  1.3.1
+		 */
+		if ( ! function_exists( 'receptar_image_sizes_reset' ) ) {
+			function receptar_image_sizes_reset() {
+
+				// Helper variables
+
+					$image_sizes = array( 'thumbnail', 'medium', 'large' );
+					$theme_old   = get_option( 'theme_switched' );
+					$theme_mods  = get_option( 'theme_mods_' . $theme_old );
+
+					$update_theme_mods = false;
+
+
+				// Processing
+
+					foreach ( $image_sizes as $size ) {
+
+						$values = (array) ( isset( $theme_mods[ '__image_size_' . $size ] ) ) ? ( $theme_mods[ '__image_size_' . $size ] ) : ( array() );
+
+						// Skip processing if we do not have the image height and crop value
+
+							if ( ! isset( $values[1] ) || ! isset( $values[2] ) ) {
+								continue;
+							}
+
+						// Old image width
+
+							if ( $values[0] ) {
+								update_option( $size . '_size_w', $values[0] );
+							}
+
+						// Old image height
+
+							if ( $values[1] ) {
+								update_option( $size . '_size_h', $values[1] );
+							}
+
+						// Old image crop
+
+							if ( $values[2] ) {
+								update_option( $size . '_crop', $values[2] );
+							}
+
+						// Remove the image settings from theme mods for future reset
+
+							unset( $theme_mods[ '__image_size_' . $size ] );
+
+							$update_theme_mods = true;
+
+					} // /foreach
+
+					if ( $update_theme_mods ) {
+						update_option( 'theme_mods_' . $theme_old, $theme_mods );
+					}
+
+			}
+		} // /receptar_image_sizes_reset
+
+
+
+		/**
+		 * Register recommended image sizes notice
 		 *
 		 * @since    1.0
 		 * @version  1.0
@@ -368,7 +469,7 @@
 
 
 		/**
-		 * Set images: display recommended image sizes notice
+		 * Display recommended image sizes notice
 		 *
 		 * @since    1.0
 		 * @version  1.3
@@ -457,18 +558,22 @@
 
 
 	/**
-	 * Set typography: Google Fonts
-	 *
-	 * @since    1.0
-	 * @version  1.0
-	 *
-	 * @param  array $fonts_setup
+	 * Setup typography
 	 */
-	if ( ! function_exists( 'receptar_google_fonts' ) ) {
-		function receptar_google_fonts( $fonts_setup ) {
-			return array( 'Roboto', 'Roboto Condensed:400,300', 'Alegreya:400,700' );
-		}
-	} // /receptar_google_fonts
+
+		/**
+		 * Google Fonts
+		 *
+		 * @since    1.0
+		 * @version  1.0
+		 *
+		 * @param  array $fonts_setup
+		 */
+		if ( ! function_exists( 'receptar_google_fonts' ) ) {
+			function receptar_google_fonts( $fonts_setup ) {
+				return array( 'Roboto', 'Roboto Condensed:400,300', 'Alegreya:400,700' );
+			}
+		} // /receptar_google_fonts
 
 
 
