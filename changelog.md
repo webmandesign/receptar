@@ -1,5 +1,14 @@
 # Receptar Changelog
 
+## 1.3.4
+
+* **Fix**: Fixed position of next/previous post navigation buttons
+
+#### Files changed:
+
+	inc/setup.php
+
+
 ## 1.3.3
 
 * **Update**: Localization

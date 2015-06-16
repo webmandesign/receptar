@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.3.2
+ * @version  1.3.4
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -1539,7 +1539,7 @@
 		 * @todo  Transfer to WordPress 4.1+ core functionality.
 		 *
 		 * @since    1.0
-		 * @version  1.3.2
+		 * @version  1.3.4
 		 */
 		if ( ! function_exists( 'receptar_post_nav' ) ) {
 			function receptar_post_nav() {
@@ -1584,17 +1584,17 @@
 
 					} else {
 
-						$output .= get_previous_post_link(
-								'<div class="nav-previous nav-link' . esc_attr( $prev_class ) . '">%link</div>',
-								wp_kses(
-									__( '<span class="post-title"><span class="meta-nav">Previous: </span>%title</span>', 'receptar' ),
-									array( 'span' => array( 'class' => array() ) )
-								)
-							);
 						$output .= get_next_post_link(
 								'<div class="nav-next nav-link' . esc_attr( $next_class ) . '">%link</div>',
 								wp_kses(
 									__( '<span class="post-title"><span class="meta-nav">Next: </span>%title</span>', 'receptar' ),
+									array( 'span' => array( 'class' => array() ) )
+								)
+							);
+						$output .= get_previous_post_link(
+								'<div class="nav-previous nav-link' . esc_attr( $prev_class ) . '">%link</div>',
+								wp_kses(
+									__( '<span class="post-title"><span class="meta-nav">Previous: </span>%title</span>', 'receptar' ),
 									array( 'span' => array( 'class' => array() ) )
 								)
 							);
