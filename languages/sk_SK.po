@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Receptar\n"
 "Report-Msgid-Bugs-To: http://support.webmandesign.eu\n"
-"POT-Creation-Date: 2015-05-27 12:20+0100\n"
-"PO-Revision-Date: 2015-05-27 12:22+0100\n"
+"POT-Creation-Date: 2015-06-16 14:33+0100\n"
+"PO-Revision-Date: 2015-06-16 14:34+0100\n"
 "Last-Translator: WebMan - Oliver Juhas <webmandesigneu@gmail.com>\n"
 "Language-Team: WebMan - Oliver Juhas <webmandesigneu@gmail.com>\n"
 "Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8\n"
+"X-Generator: Poedit 1.8.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -58,49 +58,11 @@ msgstr "&larr; Staršie komentáre"
 msgid "Newer comments &rarr;"
 msgstr "Novšie komentáre &rarr;"
 
-#: content-none.php:18
-msgid "Nothing Found"
-msgstr "Nenašli sa žiadne záznamy"
-
-#: content-none.php:24
-#, php-format
-msgid ""
-"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr ""
-"Pripravený publikovať svoj prvý článok? <a href=\"%1$s\">Začnite hneď</a>."
-
-#: content-none.php:28
-msgid ""
-"Sorry, but nothing matched your search terms. Please try again with some "
-"different keywords."
-msgstr ""
-"Vášmu vyhľadávaniu nezodpovedajú žiadne záznamy. Skúste znovu pomocou iných "
-"kľúčových slov."
-
-#: content-none.php:34
-msgid ""
-"It seems we can not find what you are looking for. Perhaps searching can "
-"help."
-msgstr "Nemôžeme nájsť, čo hľadáte. Skúste vyhľadávacie pole."
-
-#: image.php:78
-msgctxt "Attachment page publish time."
-msgid "Image published on:"
-msgstr "Obrázok bol publikovaný dňa:"
-
-#: image.php:82
-msgid "Image size:"
-msgstr "Veľkosť obrázku:"
-
-#: image.php:86
-msgid "Image file name:"
-msgstr "Názov súboru obrázku:"
-
 #: inc/customizer/controls/class-Customizer_Multiselect.php:42
 msgid "Press CTRL key for multiple selection."
 msgstr "Pridržte klávesu CTRL pre viacnásobnú voľbu"
 
-#: inc/jetpack/jetpack.php:145
+#: inc/jetpack/jetpack.php:146
 msgid "Load more&hellip;"
 msgstr "Načítať ďalšie&hellip;"
 
@@ -137,12 +99,12 @@ msgctxt "Title for number of comments in post meta."
 msgid "Comments:"
 msgstr "Komentáre:"
 
-#: inc/lib/core.php:645 inc/setup.php:1075
+#: inc/lib/core.php:645 inc/setup.php:1180
 #, php-format
 msgid "Edit the \"%s\""
 msgstr "Upraviť \"%s\""
 
-#: inc/lib/core.php:645 inc/setup.php:1075
+#: inc/lib/core.php:645 inc/setup.php:1180
 msgctxt "Edit post link."
 msgid "Edit"
 msgstr "Upraviť"
@@ -216,6 +178,7 @@ msgid "Colors"
 msgstr "Farby"
 
 #: inc/setup-theme-options.php:68 inc/setup-theme-options.php:234
+#: inc/setup-theme-options.php:275
 msgctxt "Customizer panel title."
 msgid "Theme"
 msgstr "Téma"
@@ -252,7 +215,7 @@ msgstr "Farba pozadia"
 msgid "Text color"
 msgstr "Farba textu"
 
-#: inc/setup-theme-options.php:115 inc/setup.php:1664
+#: inc/setup-theme-options.php:115 inc/setup.php:1769
 msgid "Sidebar"
 msgstr "Bočný panel"
 
@@ -325,11 +288,11 @@ msgstr ""
 "Pôvodne téma používa typ písma %1$s pre texty, typ písma %2$s pre nadpisy a "
 "typ písma %3$s pre logo."
 
-#: inc/setup-theme-options.php:280
+#: inc/setup-theme-options.php:281
 msgid "Theme Credits"
 msgstr "O téme"
 
-#: inc/setup-theme-options.php:281
+#: inc/setup-theme-options.php:282
 #, php-format
 msgctxt "1: linked theme name, 2: theme author name, 3: theme author link."
 msgid ""
@@ -341,179 +304,180 @@ msgstr ""
 "profesionálne WordPress témy môžete získať na %3$s. Ďakujeme, že používate "
 "túto úžasnú tému!"
 
-#: inc/setup-theme-options.php:286
+#: inc/setup-theme-options.php:287
 msgid "Donate"
-msgstr ""
+msgstr "Prispejte"
 
-#: inc/setup.php:202
+#: inc/setup.php:203
 msgid "Primary Menu"
 msgstr "Hlavné menu"
 
-#: inc/setup.php:203
+#: inc/setup.php:204
 msgid "Social Links Menu"
 msgstr "Odkazy sociálnych sietí"
 
-#: inc/setup.php:300
+#: inc/setup.php:336
 msgid "In posts list."
 msgstr "V zozname článkov."
 
-#: inc/setup.php:311
+#: inc/setup.php:347
 msgid "In single post page."
 msgstr "Na stránke článku."
 
-#: inc/setup.php:317
+#: inc/setup.php:353
 msgid "In front (and blog) page banner."
 msgstr "V banneri úvodnej (alebo blog) stránky."
 
-#: inc/setup.php:323
+#: inc/setup.php:359
 msgid "In single post page on mobile devices only."
 msgstr "Na stránke článku, iba na mobilných zariadeniach."
 
-#: inc/setup.php:380
+#: inc/setup.php:481
 msgctxt "WordPress predefined image size name."
 msgid "Thumbnail size"
 msgstr "Veľkosť miniatúry"
 
-#: inc/setup.php:381
+#: inc/setup.php:482
 msgctxt "WordPress predefined image size name."
 msgid "Medium size"
 msgstr "Stredný rozmer"
 
-#: inc/setup.php:382
+#: inc/setup.php:483
 msgctxt "WordPress predefined image size name."
 msgid "Large size"
 msgstr "Veľký rozmer"
 
-#: inc/setup.php:407
+#: inc/setup.php:508
 msgid "Recommended image sizes"
 msgstr "Odporúčané rozmery obrázkov"
 
-#: inc/setup.php:408
+#: inc/setup.php:509
 msgid ""
 "For the theme to work correctly, please, set these recommended image sizes:"
 msgstr ""
 "Prosíme, nastavte tieto odporúčané rozmery obrázkov pre správne zobrazenie v "
 "téme:"
 
-#: inc/setup.php:414
+#: inc/setup.php:515
 msgid "Size name"
 msgstr "Názov rozmeru"
 
-#: inc/setup.php:415
+#: inc/setup.php:516
 msgid "Size parameters"
 msgstr "Parametre rozmeru"
 
-#: inc/setup.php:416
+#: inc/setup.php:517
 msgid "Theme usage"
 msgstr "Použitie v téme"
 
-#: inc/setup.php:424
+#: inc/setup.php:525
 msgid "cropped"
 msgstr "orezaný"
 
-#: inc/setup.php:424
+#: inc/setup.php:525
 msgid "scaled"
 msgstr "zmenšený"
 
-#: inc/setup.php:432
+#: inc/setup.php:533
 msgid ""
 "Additional image size added by the theme. Can not be changed on this page."
 msgstr ""
 "Dodatočný rozmer obrázkov vytvorený použitou témou. Nie je ho možné nastaviť "
 "na tejto stránke."
 
-#: inc/setup.php:437
+#: inc/setup.php:538
 #, php-format
 msgctxt "1: image width, 2: image height, 3: cropped or scaled?"
 msgid "%1$d &times; %2$d, %3$s"
 msgstr "%1$d &times; %2$d, %3$s"
 
-#: inc/setup.php:1330
+#: inc/setup.php:1435
 msgid "This content is password protected."
 msgstr "Tento obsah je chránený heslom."
 
-#: inc/setup.php:1330
+#: inc/setup.php:1435
 msgid "Enter the password to view it."
 msgstr "Zadajte heslo pre jeho zobrazenie."
 
-#: inc/setup.php:1421
+#: inc/setup.php:1526
 #, php-format
 msgid "Continue reading%s&hellip;"
 msgstr "Prečítať%s&hellip;"
 
-#: inc/setup.php:1475
+#: inc/setup.php:1580
 msgid ""
-"<span class=\"meta-nav\">Published In</span> <span class=\"post-title\">"
+"<span class=\"post-title\"><span class=\"meta-nav\">Published In: </span>"
 "%title</span>"
 msgstr ""
-"<span class=\"meta-nav\">Publikované v</span> <span class=\"post-title\">"
+"<span class=\"post-title\"><span class=\"meta-nav\">Publikované v: </span>"
 "%title</span>"
 
-#: inc/setup.php:1485
+#: inc/setup.php:1590
 msgid ""
-"<span class=\"meta-nav\">Previous</span> <span class=\"post-title\">%title</"
+"<span class=\"post-title\"><span class=\"meta-nav\">Previous: </span>%title</"
 "span>"
 msgstr ""
-"<span class=\"meta-nav\">Predchádzaúce</span> <span class=\"post-title\">"
+"<span class=\"post-title\"><span class=\"meta-nav\">Predchádzajúce: </span>"
 "%title</span>"
 
-#: inc/setup.php:1492
+#: inc/setup.php:1597
 msgid ""
-"<span class=\"meta-nav\">Next</span> <span class=\"post-title\">%title</span>"
-msgstr ""
-"<span class=\"meta-nav\">Nasleduje</span> <span class=\"post-title\">%title</"
+"<span class=\"post-title\"><span class=\"meta-nav\">Next: </span>%title</"
 "span>"
+msgstr ""
+"<span class=\"post-title\"><span class=\"meta-nav\">Nasledujúce: </span>"
+"%title</span>"
 
-#: inc/setup.php:1500
+#: inc/setup.php:1605
 msgid "Post navigation"
 msgstr "Navigácia v článkoch"
 
-#: inc/setup.php:1566
+#: inc/setup.php:1671
 #, php-format
 msgid "Powered by %s."
 msgstr "Používame %s."
 
-#: inc/setup.php:1571
+#: inc/setup.php:1676
 #, php-format
 msgid "Theme by %s."
 msgstr "Autor témy: %s."
 
-#: inc/setup.php:1665
+#: inc/setup.php:1770
 msgid "Displayed in hidden sidebar on left below the primary navigation."
 msgstr "Zobrazí sa v skrytom bočnom paneli vľavo pod primárnou navigáciou."
 
-#: inc/setup.php:1675
+#: inc/setup.php:1780
 msgid "Header Widgets"
 msgstr "Widgety záhlavia"
 
-#: inc/setup.php:1676
+#: inc/setup.php:1781
 msgid "Display widgets in the site header."
 msgstr "Zobrazí widgety v záhlaví stránky."
 
-#: inc/setup.php:1733
+#: inc/setup.php:1838
 msgid "Dropcaps"
 msgstr "Iniciály"
 
-#: inc/setup.php:1737
+#: inc/setup.php:1842
 msgid "Dropcap text"
 msgstr "Text s iniciálou"
 
-#: inc/setup.php:1805
+#: inc/setup.php:1910
 msgctxt "Comment form field placeholder text."
 msgid "Comment"
 msgstr "Komentár"
 
-#: inc/setup.php:1820
+#: inc/setup.php:1925
 msgctxt "Comment form field placeholder text."
 msgid "Name"
 msgstr "Meno"
 
-#: inc/setup.php:1829
+#: inc/setup.php:1934
 msgctxt "Comment form field placeholder text."
 msgid "Email"
 msgstr "E-mail"
 
-#: inc/setup.php:1838
+#: inc/setup.php:1943
 msgctxt "Comment form field placeholder text."
 msgid "Website"
 msgstr "Webstránka"
@@ -541,6 +505,65 @@ msgstr "Navigácia webstránky %s"
 msgctxt "Mobile navigation toggle button title."
 msgid "Menu"
 msgstr "Navigácia"
+
+#: template-parts/content-attachment-image.php:70
+msgctxt "Attachment page publish time."
+msgid "Image published on:"
+msgstr "Obrázok bol publikovaný dňa:"
+
+#: template-parts/content-attachment-image.php:74
+msgid "Image size:"
+msgstr "Veľkosť obrázku:"
+
+#: template-parts/content-attachment-image.php:78
+msgid "Image file name:"
+msgstr "Názov súboru obrázku:"
+
+#: template-parts/content-none.php:18
+msgid "Nothing Found"
+msgstr "Nenašli sa žiadne záznamy"
+
+#: template-parts/content-none.php:24
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"Pripravený publikovať svoj prvý článok? <a href=\"%1$s\">Začnite hneď</a>."
+
+#: template-parts/content-none.php:28
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Vášmu vyhľadávaniu nezodpovedajú žiadne záznamy. Skúste znovu pomocou iných "
+"kľúčových slov."
+
+#: template-parts/content-none.php:34
+msgid ""
+"It seems we can not find what you are looking for. Perhaps searching can "
+"help."
+msgstr "Nemôžeme nájsť, čo hľadáte. Skúste vyhľadávacie pole."
+
+#~ msgid ""
+#~ "<span class=\"meta-nav\">Published In</span> <span class=\"post-title\">"
+#~ "%title</span>"
+#~ msgstr ""
+#~ "<span class=\"meta-nav\">Publikované v</span> <span class=\"post-title\">"
+#~ "%title</span>"
+
+#~ msgid ""
+#~ "<span class=\"meta-nav\">Previous</span> <span class=\"post-title\">"
+#~ "%title</span>"
+#~ msgstr ""
+#~ "<span class=\"meta-nav\">Predchádzaúce</span> <span class=\"post-title\">"
+#~ "%title</span>"
+
+#~ msgid ""
+#~ "<span class=\"meta-nav\">Next</span> <span class=\"post-title\">%title</"
+#~ "span>"
+#~ msgstr ""
+#~ "<span class=\"meta-nav\">Nasleduje</span> <span class=\"post-title\">"
+#~ "%title</span>"
 
 #~ msgctxt "Number of comments in post meta."
 #~ msgid "Comments: %s"
@@ -663,20 +686,6 @@ msgstr "Navigácia"
 #~ msgstr ""
 #~ "<span class=\"post-title\"><span class=\"meta-nav\">Publikované v </span>"
 #~ "%title</span>"
-
-#~ msgid ""
-#~ "<span class=\"post-title\"><span class=\"meta-nav\">Next: </span>%title</"
-#~ "span>"
-#~ msgstr ""
-#~ "<span class=\"post-title\"><span class=\"meta-nav\">Nasledujúce: </span>"
-#~ "%title</span>"
-
-#~ msgid ""
-#~ "<span class=\"post-title\"><span class=\"meta-nav\">Previous: </span>"
-#~ "%title</span>"
-#~ msgstr ""
-#~ "<span class=\"post-title\"><span class=\"meta-nav\">Predchádzajúce: </"
-#~ "span>%title</span>"
 
 #~ msgid "Image"
 #~ msgstr "Obrázok"

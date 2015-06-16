@@ -1,5 +1,25 @@
 # Receptar Changelog
 
+## 1.3.3
+
+* **Update**: Localization
+
+#### Files changed:
+
+	languages/sk_SK.mo
+	languages/sk_SK.po
+	languages/xx_XX.pot
+
+
+## 1.3.2
+
+* **Fix**: Fixed issue with next/previous post navigation introduced in version 1.3
+
+#### Files changed:
+
+	inc/setup.php
+
+
 ## 1.3.1
 
 * **Update**: Reset WordPress native image sizes to their pre-theme-activation state after switching the theme
