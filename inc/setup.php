@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.3.4
+ * @version  1.3.5
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -1388,7 +1388,7 @@
 		 * Post thumbnail (featured image) display size
 		 *
 		 * @since    1.0
-		 * @version  1.2.1
+		 * @version  1.3.5
 		 *
 		 * @param  string $image_size
 		 */
@@ -1397,7 +1397,7 @@
 				//Preparing output
 					if (
 							is_single( get_the_ID() )
-							|| is_page()
+							|| is_page( get_the_ID() )
 						) {
 
 						$image_size = 'receptar-featured';

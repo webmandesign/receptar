@@ -1,5 +1,29 @@
 # Receptar Changelog
 
+## 1.3.5
+
+* **Add**: WordPress 4.3 support
+* **Add**: Localization: Brazilian Portuguesse - thanks to xapuri (www.xapuri.info)
+* **Add**: Localization: French - thanks to WP-Traduction (wp-traduction.com)
+* **Add**: Localization: Greek - thanks to Nikolas Branis (kanenas.net)
+* **Fix**: Google Fonts URL function subset issue
+* **Fix**: Image size setup issue on pages
+
+#### Files changed:
+
+	css/customizer.css
+	inc/setup-theme-options.php
+	inc/setup.php
+	inc/customizer/customizer.php
+	inc/lib/core.php
+	languages/el_EL.mo
+	languages/el_EL.po
+	languages/fr_FR.mo
+	languages/fr_FR.po
+	languages/pt_BR.mo
+	languages/pt_BR.po
+
+
 ## 1.3.4
 
 * **Fix**: Fixed position of next/previous post navigation buttons
