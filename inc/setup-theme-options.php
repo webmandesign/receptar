@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.3
+ * @version  1.3.5
  *
  * CONTENT:
  * - 10) Actions and filters
@@ -44,7 +44,7 @@
 	 * Set theme options array
 	 *
 	 * @since    1.0
-	 * @version  1.3
+	 * @version  1.3.5
 	 *
 	 * @param  array $options
 	 */
@@ -62,10 +62,17 @@
 						 * Colors
 						 */
 						100 . 'colors' => array(
-							'id'                       => 'colors',
-							'type'                     => 'section',
-							'theme-customizer-section' => esc_html_x( 'Colors', 'Customizer section title.', 'receptar' ),
-							'theme-customizer-panel'   => esc_html_x( 'Theme', 'Customizer panel title.', 'receptar' ),
+							'id'                   => 'colors',
+							'type'                 => 'section',
+							'create_section'       => esc_html_x( 'Colors', 'Customizer section title.', 'receptar' ),
+							'in_panel'             => esc_html_x( 'Theme', 'Customizer panel title.', 'receptar' ),
+							'in_panel-description' => '<h3>' . esc_html__( 'Theme Credits', 'receptar' ) . '</h3><p class="description">' . sprintf(
+										esc_html_x( '%1$s is free WordPress theme developed by %2$s. You can obtain other professional WordPress themes at %3$s. Thank you for using this awesome theme!', '1: linked theme name, 2: theme author name, 3: theme author link.', 'receptar' ),
+										'<a href="' . esc_url( wp_get_theme()->get( 'ThemeURI' ) ) . '" target="_blank"><strong>' . esc_html( wp_get_theme()->get( 'Name' ) ) . '</strong></a>',
+										esc_html( wp_get_theme()->get( 'Author' ) ),
+										'<strong><a href="' . esc_url( wp_get_theme()->get( 'AuthorURI' ) ) . '" target="_blank">' . esc_html( wp_get_theme()->get( 'AuthorURI' ) ) . '</a></strong>'
+									) . '</p>'
+									. '<p><a href="' . esc_url( wp_get_theme()->get( 'ThemeURI' ) ) . '#donate" class="donation-link" target="_blank">' . esc_html__( 'Donate', 'receptar' ) . '</a></p>',
 						),
 
 							100 . 'colors' . 100 => array(
@@ -228,10 +235,10 @@
 						 * Fonts
 						 */
 						200 . 'fonts' => array(
-							'id'                       => 'fonts',
-							'type'                     => 'section',
-							'theme-customizer-section' => esc_html_x( 'Fonts', 'Customizer section title.', 'receptar' ),
-							'theme-customizer-panel'   => esc_html_x( 'Theme', 'Customizer panel title.', 'receptar' ),
+							'id'             => 'fonts',
+							'type'           => 'section',
+							'create_section' => esc_html_x( 'Fonts', 'Customizer section title.', 'receptar' ),
+							'in_panel'       => esc_html_x( 'Theme', 'Customizer panel title.', 'receptar' ),
 						),
 
 							200 . 'fonts' . 100 => array(
@@ -261,30 +268,6 @@
 												//Logo
 												'<a href="http://www.google.com/fonts/specimen/Alegreya" target="_blank">Alegreya</a>'
 											) . '</p>',
-							),
-
-
-
-						/**
-						 * Credits
-						 */
-						999 . 'credits' => array(
-							'id'                       => 'credits',
-							'type'                     => 'section',
-							'theme-customizer-section' => 'Credits',
-							'theme-customizer-panel'   => esc_html_x( 'Theme', 'Customizer panel title.', 'receptar' ),
-						),
-
-							999 . 'credits' . 100 => array(
-								'id'      => 'credits-text',
-								'type'    => 'theme-customizer-html',
-								'content' => '<h3>' . esc_html__( 'Theme Credits', 'receptar' ) . '</h3><p class="description">' . sprintf(
-										esc_html_x( '%1$s is free WordPress theme developed by %2$s. You can obtain other professional WordPress themes at %3$s. Thank you for using this awesome theme!', '1: linked theme name, 2: theme author name, 3: theme author link.', 'receptar' ),
-										'<a href="' . esc_url( wp_get_theme()->get( 'ThemeURI' ) ) . '" target="_blank"><strong>' . esc_html( wp_get_theme()->get( 'Name' ) ) . '</strong></a>',
-										esc_html( wp_get_theme()->get( 'Author' ) ),
-										'<strong><a href="' . esc_url( wp_get_theme()->get( 'AuthorURI' ) ) . '" target="_blank">' . esc_html( wp_get_theme()->get( 'AuthorURI' ) ) . '</a></strong>'
-									) . '</p>'
-									. '<p><a href="' . esc_url( wp_get_theme()->get( 'ThemeURI' ) ) . '#donate" class="donation-link" target="_blank">' . esc_html__( 'Donate', 'receptar' ) . '</a></p>',
 							),
 
 					);
