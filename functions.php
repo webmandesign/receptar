@@ -12,7 +12,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.3
+ * @version  1.3.6
  *
  * @link  http://www.webmandesign.eu
  *

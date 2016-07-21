@@ -10,7 +10,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.2.1
+ * @version  1.3.6
  *
  * CONTENT:
  * -  1) Requirements check
@@ -45,11 +45,6 @@
 
 		//Beaver Builder editor styles
 			add_action( 'wp_enqueue_scripts', 'receptar_bb_assets' );
-		//Make sure to load layout styles after the theme stylesheet
-			remove_action( 'wp_enqueue_scripts', 'FLBuilder::layout_styles_scripts'      );
-			remove_action( 'wp_enqueue_scripts', 'FLBuilder::styles_scripts'             );
-			   add_action( 'wp_enqueue_scripts', 'FLBuilder::layout_styles_scripts', 198 );
-			   add_action( 'wp_enqueue_scripts', 'FLBuilder::styles_scripts',        198 );
 
 
 

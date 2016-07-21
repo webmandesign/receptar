@@ -1,5 +1,17 @@
 # Receptar Changelog
 
+## 1.3.6
+
+* **Update**: Updated theme tags
+* **Fix**: Compatibility with Beaver Builder 1.8.3
+
+#### Files changed:
+
+	style.css
+	functions.php
+	inc/beaver-builder/beaver-builder.php
+
+
 ## 1.3.5
 
 * **Add**: WordPress 4.3 support
