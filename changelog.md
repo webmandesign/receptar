@@ -2,18 +2,21 @@
 
 ## 1.4.0
 
-* **Update**:
-* **Update**:
-* **Update**:
-* **Update**:
-* **Update**:
-* **Fix**:
-* **Fix**:
-* **Fix**:
-* **Fix**:
-* **Fix**:
+* **Add**: Option to set custom site info in footer
+* **Add**: Overriding banner image with front page featured image
+* **Update**: Removing localization files in favor of WordPress.org theme repository localization service
+* **Update**: Posts list using flexbox layout styles
+* **Update**: Improved compatibility with WordPress 4.9
+* **Update**: Styles improvements and fixes
+* **Update**: Default footer site info text
+* **Update**: Removing custom scrollbar styles
+* **Update**: Improving responsive posts list styles
+* **Update**: Removing Schema.org microformats in favor of plugins
+* **Update**: Documentation URL
+* **Fix**: Not overriding sticky posts
+* **Fix**: Displaying logo on laptop screen size
 
-#### Files changed:
+### Files changed:
 
 	changelog.md
 	footer.php
@@ -45,7 +48,7 @@
 * **Update**: Updated theme tags
 * **Fix**: Compatibility with Beaver Builder 1.8.3
 
-#### Files changed:
+### Files changed:
 
 	style.css
 	functions.php
@@ -61,7 +64,7 @@
 * **Fix**: Google Fonts URL function subset issue
 * **Fix**: Image size setup issue on pages
 
-#### Files changed:
+### Files changed:
 
 	css/customizer.css
 	inc/setup-theme-options.php
@@ -80,7 +83,7 @@
 
 * **Fix**: Fixed position of next/previous post navigation buttons
 
-#### Files changed:
+### Files changed:
 
 	inc/setup.php
 
@@ -89,7 +92,7 @@
 
 * **Update**: Localization
 
-#### Files changed:
+### Files changed:
 
 	languages/sk_SK.mo
 	languages/sk_SK.po
@@ -100,7 +103,7 @@
 
 * **Fix**: Fixed issue with next/previous post navigation introduced in version 1.3
 
-#### Files changed:
+### Files changed:
 
 	inc/setup.php
 
@@ -109,7 +112,7 @@
 
 * **Update**: Reset WordPress native image sizes to their pre-theme-activation state after switching the theme
 
-#### Files changed:
+### Files changed:
 
 	inc/setup.php
 
@@ -122,7 +125,7 @@
 * **Update**: Removed obsolete constants, functions and custom Customizer controls
 * **Fix**: Donate button is translatable
 
-#### Files changed:
+### Files changed:
 
 	404.php
 	archive.php
@@ -162,7 +165,7 @@
 * **Update**: Localization
 * **Fix**: Default featured image size
 
-#### Files changed:
+### Files changed:
 
 	content-featured-post.php
 	functions.php
@@ -187,7 +190,7 @@
 * **Update**: Renamed functions, classes, hooks, variables and text domain (affects almost all files)
 * **Update**: Localization
 
-#### Files changed:
+### Files changed:
 
 	readme.md
 	screenshot.jpg
@@ -205,7 +208,7 @@
 * **Fix**: Removed obsolete CSS3 transitions
 * **Fix**: Responsive page title top margin
 
-#### Files changed:
+### Files changed:
 
 	style.css
 	inc/setup-theme-options.php
