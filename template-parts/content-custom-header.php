@@ -7,8 +7,8 @@
  * @package    Receptar
  * @copyright  2015 WebMan - Oliver Juhas
  *
- * @since    1.0
- * @version  1.0
+ * @since    1.0.0
+ * @version  1.4.0
  */
 
 ?>
@@ -54,16 +54,19 @@
 		<h1 class="entry-title"><span class="highlight"><?php
 
 		if (
-				get_option( 'page_on_front' )
-				&& $custom_title = trim( get_post_meta( get_the_ID(), 'banner_text', true ) )
-			) {
+			is_front_page()
+			&& is_page()
+			&& $custom_title = trim( get_post_meta( get_the_ID(), 'banner_text', true ) )
+		) {
 
-			//If there is a front page, display 'banner_text' custom field if set
-				echo $custom_title;
+			// If there is a front page, display 'banner_text' custom field if set
+
+				echo wp_kses_post( $custom_title );
 
 		} else {
 
-			//Display site description
+			// Display site description
+
 				bloginfo( 'description' );
 
 		}

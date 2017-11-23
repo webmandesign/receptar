@@ -16,7 +16,28 @@
 #### Files changed:
 
 	changelog.md
+	footer.php
+	header.php
+	sidebar.php
 	style.css
+	css/_custom.css
+	css/beaver-builder-editor.css
+	css/colors.css
+	css/customizer.css
+	css/editor-style.css
+	css/starter.css
+	inc/setup-theme-options.php
+	inc/setup.php
+	inc/custom-header/custom-header.php
+	inc/customizer/customizer.php
+	inc/lib/core.php
+	template-parts/content-attachment-image.php
+	template-parts/content-custom-header.php
+	template-parts/content-featured-post.php
+	template-parts/content.php
+	template-parts/loop-banner.php
+	template-parts/loop.php
+	template-parts/footer/site-info.php
 
 
 ## 1.3.6

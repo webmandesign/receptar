@@ -9,8 +9,8 @@
  * @package    Receptar
  * @copyright  2015 WebMan - Oliver Juhas
  *
- * @since    1.0
- * @version  1.3
+ * @since    1.0.0
+ * @version  1.4.0
  *
  * @uses  Jetpack -> Featured Content
  * @link  http://jetpack.me/support/featured-content/
@@ -171,4 +171,35 @@
 			}
 		} // /receptar_nsfp_get_banner_posts
 
-?>
+
+
+	/**
+	 * Featured image in banner
+	 *
+	 * @since    1.4.0
+	 * @version  1.4.0
+	 *
+	 * @param  string $url
+	 */
+	if ( ! function_exists( 'receptar_front_page_header_image' ) ) {
+		function receptar_front_page_header_image( $url ) {
+
+			// Processing
+
+				if (
+					is_front_page()
+					&& is_page()
+					&& has_post_thumbnail()
+				) {
+					$url = get_the_post_thumbnail_url( get_the_ID(), 'receptar-banner' );
+				}
+
+
+			// Output
+
+				return $url;
+
+		}
+	} // /receptar_front_page_header_image
+
+	add_filter( 'theme_mod_header_image', 'receptar_front_page_header_image' );

@@ -147,8 +147,8 @@
 	/**
 	 * Theme setup
 	 *
-	 * @since    1.0
-	 * @version  1.3
+	 * @since    1.0.0
+	 * @version  1.4.0
 	 */
 	if ( ! function_exists( 'receptar_setup' ) ) {
 		function receptar_setup() {
@@ -232,51 +232,14 @@
 
 						foreach ( $image_sizes as $size => $setup ) {
 
-							if (
-									in_array( $size, array( 'thumbnail', 'medium', 'large' ) )
-									&& ! get_theme_mod( '__image_size-' . $size )
-								) {
-
-								/**
-								 * Force the default image sizes on theme installation only.
-								 * This allows users to set their own sizes later, but a notification is displayed.
-								 */
-
-								$original_image_width = get_option( $size . '_size_w' );
-
-									if ( $image_sizes[ $size ][0] != $original_image_width ) {
-										update_option( $size . '_size_w', $image_sizes[ $size ][0] );
-									}
-
-								$original_image_height = get_option( $size . '_size_h' );
-
-									if ( $image_sizes[ $size ][1] != $original_image_height ) {
-										update_option( $size . '_size_h', $image_sizes[ $size ][1] );
-									}
-
-								$original_image_crop = get_option( $size . '_crop' );
-
-									if ( $image_sizes[ $size ][2] != $original_image_crop ) {
-										update_option( $size . '_crop', $image_sizes[ $size ][2] );
-									}
-
-								set_theme_mod(
-										'__image_size_' . $size,
-										array(
-											$original_image_width,
-											$original_image_height,
-											$original_image_crop
-										)
-									);
-
-							} else {
+							if ( ! in_array( $size, array( 'thumbnail', 'medium', 'medium_large', 'large' ) ) ) {
 
 								add_image_size(
-										$size,
-										$image_sizes[ $size ][0],
-										$image_sizes[ $size ][1],
-										$image_sizes[ $size ][2]
-									);
+									$size,
+									$image_sizes[ $size ][0],
+									$image_sizes[ $size ][1],
+									$image_sizes[ $size ][2]
+								);
 
 							}
 

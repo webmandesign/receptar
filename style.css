@@ -1155,7 +1155,16 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 		 * Posts list
 		 */
 
-			.posts { margin: 0; }
+			.posts {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-flex-wrap: wrap;
+				    -ms-flex-wrap: wrap;
+				        flex-wrap: wrap;
+				margin: 0;
+			}
 
 				.posts .entry {
 					float: left;
@@ -2129,13 +2138,21 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 				/* Site banner */
 
-					.site-banner h1 { font-size: 1.38rem; }
+					.site-banner h1 {
+						max-width: 100%;
+						font-size: 1.38rem;
+					}
 
-				/**
-				 * Site banner (featured content)
-				 */
+					.site-banner-thumbnail {
+						overflow: hidden;
+					}
 
-					.site-banner h1 { max-width: 100%; }
+					.site-banner-thumbnail img {
+						width: 200%;
+						max-width: 200%;
+						margin-left: -50%;
+						margin-right: -50%;
+					}
 
 			/**
 			 * Site content
@@ -2179,25 +2196,6 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 							bottom: auto;
 							max-height: 100%;
 						}
-
-					/* Image */
-
-						.site .posts .entry .entry-media {
-							padding: 0 0 66.66%;
-							overflow: hidden;
-						}
-
-							.posts .entry-media .post-thumbnail {
-								position: absolute;
-								width: 100%;
-								height: 100%;
-								left: 0;
-								top: 50%;
-								overflow: hidden;
-								-webkit-transform: translateY( -50% );
-								    -ms-transform: translateY( -50% );
-								        transform: translateY( -50% );
-							}
 
 					/* Description */
 
@@ -2246,7 +2244,3 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 						.fl-col.fl-col-small { max-width: 100%; }
 
 		} /* /(max-width: 680px) */
-
-
-
-/* End of file */
