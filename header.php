@@ -5,9 +5,11 @@
  * @package    Receptar
  * @copyright  2015 WebMan - Oliver Juhas
  *
- * @since    1.0
- * @version  1.0
+ * @since    1.0.0
+ * @version  1.4.0
  */
+
+
 
 
 
@@ -19,15 +21,15 @@
 
 ?>
 
-<html class="no-js" <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> class="no-js">
 
 <head>
 
 <?php
 
-	/**
-	 * HTML head
-	 */
+/**
+ * HTML head
+ */
 
 	wmhook_head_top();
 
@@ -40,44 +42,42 @@
 </head>
 
 
-<body id="top" <?php body_class(); ?>>
+<body <?php body_class(); ?>>
 
 <?php
 
-	/**
-	 * Body
-	 */
+/**
+ * Body
+ */
 
-		wmhook_body_top();
-
-
-
-	if ( ! apply_filters( 'wmhook_disable_header', false ) ) {
-
-		/**
-		 * Header
-		 */
-
-			wmhook_header_before();
-
-			wmhook_header_top();
-
-			wmhook_header();
-
-			wmhook_header_bottom();
-
-			wmhook_header_after();
+	wmhook_body_top();
 
 
 
-		/**
-		 * Content
-		 */
+/**
+ * Header
+ */
 
-			wmhook_content_before();
+	if ( ! apply_filters( 'wmhook_receptar_disable_header', false ) ) {
 
-			wmhook_content_top();
+		wmhook_header_before();
 
-	} // /wmhook_disable_header
+		wmhook_header_top();
 
-?>
+		wmhook_header();
+
+		wmhook_header_bottom();
+
+		wmhook_header_after();
+
+	}
+
+
+
+/**
+ * Content
+ */
+
+	wmhook_content_before();
+
+	wmhook_content_top();

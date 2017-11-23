@@ -5,8 +5,8 @@
  * @package    Receptar
  * @copyright  2015 WebMan - Oliver Juhas
  *
- * @since    1.0
- * @version  1.3
+ * @since    1.0.0
+ * @version  1.4.0
  */
 
 
@@ -15,7 +15,7 @@ if ( have_posts() ) {
 
 	wmhook_postslist_before();
 
-	echo '<div id="posts" class="posts posts-list clearfix"' . receptar_schema_org( 'ItemList' ) . '>';
+	echo '<div id="posts" class="posts posts-list clearfix">';
 
 		wmhook_postslist_top();
 

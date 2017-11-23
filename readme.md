@@ -1,22 +1,20 @@
 # Receptar
 
-* **Theme URI:**    http://www.webmandesign.eu/receptar-wordpress-theme/
+* **Theme URI:**    https://www.webmandesign.eu/portfolio/receptar-wordpress-theme/
 * **Author:**       WebMan Design
-* **Author URI:**   http://www.webmandesign.eu/
-* **License:**      GNU General Public License v2 or later
-* **License URI:**  http://www.gnu.org/licenses/gpl-2.0.html
+* **Author URI:**   https://www.webmandesign.eu/
+* **License:**      GNU General Public License v3
+* **License URI:**  https://www.gnu.org/licenses/gpl-3.0.html
 
 ## Description
 
-**Receptar** is simple, modern, responsive, high-DPI, fully customizable, stylish blog WordPress theme. It features split-screen book-like design inspired by a modern cook book with emphasize on beautiful imagery and typography. Supports Beaver Builder page builder and Jetpack plugin, Schema.org markup, Theme Hook Alliance action hooks, translation-ready code, front page slideshow, customizable colors, and other cool features.
-
-Thank you for using one of WebMan's themes (more cool WordPress themes can be found at www.webmandesign.eu).
+**Receptar** is simple, modern, responsive, customizable, stylish blog WordPress theme. It features split-screen book-like design inspired by a modern cook book with emphasize on beautiful imagery and typography. It features Beaver Builder page builder and Jetpack plugin support, translation-ready code, front page slideshow, uses Theme Hook Alliance action hooks. More at WebMan Design (https://www.webmandesign.eu)
 
 Follow WebMan on Twitter [https://twitter.com/webmandesigneu] and become a fan on Facebook [https://www.facebook.com/webmandesigneu].
 
 ## Demo
 
-Full theme demo website at [http://themedemos.webmandesign.eu/receptar/].
+Full theme demo website at [https://themedemos.webmandesign.eu/receptar/].
 
 ## Browser Compatibility
 
@@ -28,14 +26,14 @@ The theme was tested and is compatible with Chrome, Safari, Opera, Firefox, Inte
 
 ## Documentation
 
-User manual available at http://www.webmandesign.eu/manual/receptar/
+User manual available at https://webmandesign.github.io/docs/receptar/
 
 ## Copyright
 
 ### Theme copyright
 
 **Receptar WordPress Theme**
-Copyright (c) 2015 WebMan [http://www.webmandesign.eu/]
+Copyright (c) 2015 WebMan [https://www.webmandesign.eu/]
 Distributed under the terms of the GNU GPL
 
 **Receptar is based on Underscores**

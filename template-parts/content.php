@@ -5,8 +5,8 @@
  * @package    Receptar
  * @copyright  2015 WebMan - Oliver Juhas
  *
- * @since    1.0
- * @version  1.0
+ * @since    1.0.0
+ * @version  1.4.0
  */
 
 
@@ -15,7 +15,7 @@ $pagination_suffix = receptar_paginated_suffix( 'small', 'post' );
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); echo apply_filters( 'wmhook_entry_container_atts', '' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<?php
 
@@ -32,7 +32,7 @@ $pagination_suffix = receptar_paginated_suffix( 'small', 'post' );
 
 		<div class="entry-media">
 
-			<figure class="post-thumbnail"<?php echo receptar_schema_org( 'image' ); ?>>
+			<figure class="post-thumbnail">
 
 				<?php
 
@@ -77,7 +77,7 @@ $pagination_suffix = receptar_paginated_suffix( 'small', 'post' );
 
 			wmhook_entry_top();
 
-			echo '<div class="entry-content"' . receptar_schema_org( 'entry_body' ) . '>';
+			echo '<div class="entry-content">';
 
 				if (
 						! is_singular()

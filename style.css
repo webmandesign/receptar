@@ -1,18 +1,24 @@
-/**
- * Theme Name:   Receptar
- * Theme URI:    http://www.webmandesign.eu/receptar-wordpress-theme/
- * Author:       WebMan
- * Author URI:   http://www.webmandesign.eu/
- * Description:  <strong>Receptar</strong> is simple, modern, responsive, high-DPI, fully customizable, stylish blog WordPress theme. It features split-screen book-like design inspired by a modern cook book with emphasize on beautiful imagery and typography. Supports Beaver Builder page builder and Jetpack plugin, Schema.org markup, Theme Hook Alliance action hooks, translation-ready code, front page slideshow, customizable colors, and other cool features. The theme is compatible with Chrome, Safari, Opera, Firefox, Internet Explorer 9+ browsers. Thank you for using one of WebMan's themes (more cool WordPress themes can be found at www.webmandesign.eu). Theme demo at http://themedemos.webmandesign.eu/receptar/
- * Version:      1.3.6
- * License:      GNU General Public License v2 or later
- * License URI:  http://www.gnu.org/licenses/gpl-2.0.html
- * Tags:         two-columns, four-columns, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, flexible-header, full-width-template, microformats, sticky-post, theme-options, threaded-comments, translation-ready, grid-layout, blog, food-and-drink, entertainment, photography
- * Text Domain:  receptar
- *
- * This theme, like WordPress, is licensed under the GPL.
- * Use it to make something cool, have fun, and share what you've learned with others.
- */
+/*!
+Theme Name:   Receptar
+Theme URI:    https://www.webmandesign.eu/portfolio/receptar-wordpress-theme/
+Author:       WebMan Design
+Author URI:   https://www.webmandesign.eu/
+Version:      1.4.0
+Text Domain:  receptar
+Domain Path:  /languages
+License:      GNU General Public License v3
+License URI:  https://www.gnu.org/licenses/gpl-3.0.html
+Description:  Receptar is simple, modern, responsive, customizable, stylish blog WordPress theme. It features split-screen book-like design inspired by a modern cook book with emphasize on beautiful imagery and typography. It features Beaver Builder page builder and Jetpack plugin support, translation-ready code, front page slideshow, uses Theme Hook Alliance action hooks. More at WebMan Design (https://www.webmandesign.eu)
+Tags:         two-columns, four-columns, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, grid-layout, blog, food-and-drink, entertainment, photography
+
+GitHub Theme URI:  webmandesign/receptar
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+Receptar is based on Underscores http://underscores.me/, (C) Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+*/
 
 
 
@@ -290,6 +296,22 @@
 		.site-banner h1 .highlight { line-height: 1.5; }
 
 		.social-links { line-height: inherit; }
+
+
+
+
+
+/**
+ * 4. WordPress styles
+ */
+
+	.mejs-container {
+		margin-bottom: 1.62em;
+	}
+
+	.mejs-container:last-child {
+		margin-bottom: 0;
+	}
 
 
 
@@ -951,10 +973,10 @@
 			width: calc( 100% - 5rem );
 		}
 
-			.no-js .site-banner.enable-slider .hentry,
-			.enable-slider .site-banner-inner:not(.slick-slider) .hentry { display: none; }
-			.no-js .site-banner.enable-slider .hentry:first-child,
-			.enable-slider .site-banner-inner:not(.slick-slider) .hentry:first-child { display: block; }
+			.no-js .site-banner.enable-slider .entry,
+			.enable-slider .site-banner-inner:not(.slick-slider) .entry { display: none; }
+			.no-js .site-banner.enable-slider .entry:first-child,
+			.enable-slider .site-banner-inner:not(.slick-slider) .entry:first-child { display: block; }
 
 			.site-banner-header {
 				position: absolute;
@@ -1135,13 +1157,13 @@
 
 			.posts { margin: 0; }
 
-				.posts .hentry {
+				.posts .entry {
 					float: left;
 					position: relative;
 					width: 50%;
 					overflow: hidden;
 				}
-				.posts .hentry:after {
+				.posts .entry:after {
 					content: '';
 					display: block;
 					position: absolute;
@@ -1155,8 +1177,8 @@
 					-webkit-box-shadow: inset 0 0 0 2px rgba(0,0,0, .1);
 					        box-shadow: inset 0 0 0 2px rgba(0,0,0, .1);
 				}
-				.ie10 .posts .hentry:after { display: none; }
-					.posts .hentry:hover:after {
+				.ie10 .posts .entry:after { display: none; }
+					.posts .entry:hover:after {
 						-webkit-box-shadow: inset 0 0 0 1.62rem rgba(0,0,0, .2);
 						        box-shadow: inset 0 0 0 1.62rem rgba(0,0,0, .2);
 					}
@@ -1168,8 +1190,8 @@
 						width: 50%;
 						margin: 0;
 					}
-					.posts .hentry:nth-child(4n+3) .entry-media,
-					.posts .hentry:nth-child(4n+4) .entry-media { float: right; }
+					.posts .entry:nth-child(4n+3) .entry-media,
+					.posts .entry:nth-child(4n+4) .entry-media { float: right; }
 
 				/* Description */
 
@@ -1180,8 +1202,8 @@
 						right: 0;
 						top: 0;
 					}
-					.posts .hentry:nth-child(4n+3) .entry-inner,
-					.posts .hentry:nth-child(4n+4) .entry-inner {
+					.posts .entry:nth-child(4n+3) .entry-inner,
+					.posts .entry:nth-child(4n+4) .entry-inner {
 						left: 0;
 						right: auto;
 					}
@@ -1198,8 +1220,8 @@
 							    -ms-transform: rotate( 45deg );
 							        transform: rotate( 45deg );
 						}
-						.posts .hentry:nth-child(4n+3) .entry-inner:after,
-						.posts .hentry:nth-child(4n+4) .entry-inner:after {
+						.posts .entry:nth-child(4n+3) .entry-inner:after,
+						.posts .entry:nth-child(4n+4) .entry-inner:after {
 							left: auto;
 							right: 0;
 						}
@@ -1538,6 +1560,29 @@
 				.nsfp_featured_post_widget li:before { content: '\f411'; }
 				.widget_zilla_likes_widget li:before { content: '\f461'; }
 
+		/**
+		 * Text widget
+		 */
+
+			.textwidget ul { margin-top: 0; margin-bottom: 1em; margin-left: 1.62em; margin-right: 0; list-style: square; }
+
+			.textwidget ul:last-child { margin-bottom: 0; }
+
+			.textwidget ul ul { border-width: 0; }
+
+			.textwidget ul li { padding: 0; border-width: 0; }
+
+			.textwidget ul li:hover { -webkit-transform: none; -ms-transform: none; transform: none; }
+
+			.textwidget ul li + li { margin-top: 0; }
+
+			.textwidget ul li ul { bottom: 0; margin-bottom: 0; }
+
+			.textwidget ul li li { padding: 0; }
+
+			.textwidget li a { text-decoration: underline; }
+
+			.textwidget li a:hover, .textwidget li a:active, .textwidget li a:focus { text-decoration: none; }
 
 
 
@@ -1712,10 +1757,10 @@
 
 
 	/**
-	 * 1400px max
+	 * 1280px max
 	 */
 
-		@media only screen and (max-width: 1400px) {
+		@media only screen and (max-width: 1280px) {
 
 			/**
 			 * Site header
@@ -1726,9 +1771,6 @@
 				.is-singular:not(.home) .site-header-widgets {
 					float: none;
 					display: block;
-				}
-
-				.is-singular:not(.home) .site-header-widgets {
 					max-width: 100%;
 					text-align: left;
 				}
@@ -1738,16 +1780,6 @@
 						margin: 1.62rem 0 0;
 						line-height: 1.62;
 					}
-
-		} /* /(max-width: 1400px) */
-
-
-
-	/**
-	 * 1200px max
-	 */
-
-		@media only screen and (max-width: 1200px) {
 
 			/**
 			 * Main layout
@@ -1769,36 +1801,36 @@
 				 * Posts list
 				 */
 
-					.posts .hentry {
+					.posts .entry {
 						float: none;
 						width: 100%;
 					}
 
 					/* Image */
 
-						.posts .hentry:nth-child(odd) .entry-media { float: left; }
-						.posts .hentry:nth-child(even) .entry-media { float: right; }
+						.posts .entry:nth-child(odd) .entry-media { float: left; }
+						.posts .entry:nth-child(even) .entry-media { float: right; }
 
 					/* Description */
 
-						.posts .hentry:nth-child(odd) .entry-inner {
+						.posts .entry:nth-child(odd) .entry-inner {
 							left: auto;
 							right: 0;
 						}
-						.posts .hentry:nth-child(even) .entry-inner {
+						.posts .entry:nth-child(even) .entry-inner {
 							left: 0;
 							right: auto;
 						}
-							.posts .hentry:nth-child(odd) .entry-inner:after {
+							.posts .entry:nth-child(odd) .entry-inner:after {
 								left: 0;
 								right: auto;
 							}
-							.posts .hentry:nth-child(even) .entry-inner:after {
+							.posts .entry:nth-child(even) .entry-inner:after {
 								left: auto;
 								right: 0;
 							}
 
-		} /* /(max-width: 1200px) */
+		} /* /(max-width: 1280px) */
 
 
 
@@ -2132,10 +2164,10 @@
 				 * Posts list
 				 */
 
-					.posts .hentry:after { display: none; }
+					.posts .entry:after { display: none; }
 
-						.site .posts .hentry .entry-media,
-						.site .posts .hentry .entry-inner,
+						.site .posts .entry .entry-media,
+						.site .posts .entry .entry-inner,
 						.site .entry-inner-content {
 							position: relative;
 							float: none;
@@ -2150,7 +2182,7 @@
 
 					/* Image */
 
-						.site .posts .hentry .entry-media {
+						.site .posts .entry .entry-media {
 							padding: 0 0 66.66%;
 							overflow: hidden;
 						}
@@ -2169,7 +2201,7 @@
 
 					/* Description */
 
-						.site .posts .hentry .entry-inner:after {
+						.site .posts .entry .entry-inner:after {
 							left: 50%;
 							top: 0;
 						}

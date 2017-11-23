@@ -5,7 +5,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.4.0
  */
 
 
@@ -36,19 +36,3 @@
  */
 
 	.fl-row:not(:hover) { z-index: 0; }
-
-
-
-/**
- * Visibility
- */
-
-	.site .fl-visible-desktop,
-	.site .fl-visible-desktop-medium,
-	.site .fl-visible-medium,
-	.site .fl-visible-medium-mobile,
-	.site .fl-visible-mobile { display: block !important; }
-
-
-
-/* End of file */

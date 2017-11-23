@@ -1,5 +1,24 @@
 # Receptar Changelog
 
+## 1.4.0
+
+* **Update**:
+* **Update**:
+* **Update**:
+* **Update**:
+* **Update**:
+* **Fix**:
+* **Fix**:
+* **Fix**:
+* **Fix**:
+* **Fix**:
+
+#### Files changed:
+
+	changelog.md
+	style.css
+
+
 ## 1.3.6
 
 * **Update**: Updated theme tags

@@ -5,7 +5,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.4.0
  */
 
 
@@ -59,7 +59,7 @@
 
 		.site,
 		.home .content-area,
-		.posts .hentry { background-color: [[color-content-background]]; }
+		.posts .entry { background-color: [[color-content-background]]; }
 
 		.site-content { border-color: [[color-content-border]]; }
 

@@ -4,135 +4,91 @@
  * @package    Receptar
  * @copyright  2015 WebMan - Oliver Juhas
  *
- * @since    1.0
- * @version  1.3.5
+ * @since    1.0.0
+ * @version  1.4.0
  */
 
 
 
-	/**
-	 * Basic custom styles
-	 */
 
-		.no-overflow { overflow: hidden; }
+/* FILE: customize.scss */
+/* FILE: styles/_customize.scss */
+.customize-control-html h3, .control-section-theme-options .customize-control h3, .customize-control-html h4, .control-section-theme-options .customize-control h4 { padding: 1em 20px; margin: 2em -20px .5em; text-transform: uppercase; font-size: 1em; letter-spacing: 1px; color: #555; border-top: 2px solid #bbb; }
 
-		.donation-link,
-		.donation-link:hover,
-		.donation-link:active {
-			display: block;
-			width: 100%;
-			padding: 1em 0;
-			text-transform: uppercase;
-			text-align: center;
-			font-weight: bold;
-			font-size: .81em;
-			background: #0aac8e;
-			color: #fafcfe;
-		}
+.customize-control-html h4, .control-section-theme-options .customize-control h4 { padding: 1em 0; margin: 1em 0 .5em; border-top-style: dotted; }
 
-			.donation-link:hover { letter-spacing: 1px; }
+.customize-control input[type=tel][size], .customize-control input[type=url][size], .customize-control input[type=text][size], .customize-control input[type=password][size], .customize-control input[type=email][size], .customize-control input[type=number][size], .customize-control input[type=search][size] { width: auto; }
 
-		.customize-control h3,
-		.customize-control h4 {
-			padding: 1em 20px;
-			margin: 2em -20px .5em;
-			text-transform: uppercase;
-			font-size: 1em;
-			letter-spacing: 1px;
-			color: #555;
-			border-top: 2px solid #bbb;
-		}
+.control-section-theme-options .no-overflow { overflow: hidden; }
 
-			.customize-control h4 {
-				padding: 1em 0;
-				margin: 1em 0 .5em;
-				border-top-style: dotted;
-			}
+.control-section-theme-options .donation-link, .control-section-theme-options .donation-link:hover, .control-section-theme-options .donation-link:active { display: block; width: 100%; padding: 1em 0; text-transform: uppercase; text-align: center; font-weight: bold; font-size: .81em; background: #0aac8e; color: #fafcfe; }
 
-			.customize-control:first-child h3:first-child,
-			.customize-section-description-container + .customize-control h3:first-child {
-				margin-top: 0;
-				border: 0;
-			}
+.control-section-theme-options .donation-link:hover { letter-spacing: 1px; }
 
-		.customize-control hr {
-			margin: 1em 0;
-			background: transparent;
-			border: 0;
-			border-top: 2px dashed #bbb;
-		}
+.control-section-theme-options .customize-section-description-container + .customize-control h3:first-of-type { margin-top: 0; border: 0; }
 
+.control-section-theme-options .customize-control:first-child h3:first-of-type { margin-top: 0; border: 0; }
 
+.control-section-theme-options .customize-control hr { margin: 1em 0; background: transparent; border: 0; border-top: 2px dashed #bbb; }
 
-	/**
-	 * Controls
-	 */
+.control-section-theme-options .customize-control pre { max-height: 8em; padding: .62em; white-space: pre-wrap; background: #eee; border: 1px dashed #ddd; overflow: auto; }
 
-		.customize-control select,
-		.customize-control textarea { width: 100%; }
+.control-section-theme-options .customize-control select, .control-section-theme-options .customize-control textarea { width: 100%; }
 
-			.customize-control textarea {
-				min-height: 12em;
-				resize: vertical;
-			}
+.control-section-theme-options .customize-control select[multiple] { height: 8em; }
 
-		.customize-control-hidden { display: none !important; }
+.control-section-theme-options .customize-control textarea { min-height: 12em; resize: vertical; }
 
-		.customize-control-color .wp-picker-container { display: block; }
+.control-section-theme-options .customize-control-hidden { display: none !important; }
 
-			.wp-color-result {
-				box-sizing: border-box;
-				width: 100%;
-				height: 30px;
-				padding-left: 50%;
-				margin-right: 0;
-				border-color: rgba(0, 0, 0, 0.2);
-			}
+.control-section-theme-options .customize-control-checkbox label { font-weight: 600; }
 
-			.wp-color-result:focus,
-			.wp-color-result:hover { border-color: rgba(0, 0, 0, 0.3); }
+.control-section-theme-options .customize-control-checkbox .description { margin-top: .38em; font-weight: 400; }
 
-				.wp-color-result:focus::after,
-				.wp-color-result:hover::after {
-					background: rgba(0, 0, 0, 0.35);
-					color: #fff;
-					border: 0;
-				}
+.control-section-theme-options .matrix { padding: 2px 0 3px; padding-left: 2px; margin-bottom: .5em; border: 2px solid #bbb; overflow: hidden; }
 
-				.wp-color-result::after {
-					margin: -1px -1px 0 0;
-					line-height: 30px;
-					font-weight: 700;
-					text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-					background: rgba(0, 0, 0, 0.2);
-					color: #fff;
-					border: 0;
-					box-shadow: none;
-				}
+.control-section-theme-options .matrix span { display: none; }
 
-			.wp-picker-open + .wp-picker-input-wrap { display: block; }
+.control-section-theme-options .matrix label { float: left; display: block; width: 33.33%; padding: .5em 0 .5em; padding-left: 4px; margin: 0 -1px -1px; margin-left: 0; text-align: center; border: 1px dotted #bbb; box-sizing: border-box; }
 
-				.wp-picker-input-wrap .button,
-				.wp-picker-input-wrap input[type=text].wp-color-picker { width: 48%; }
+.control-section-theme-options .matrix label:hover { background: #fff; }
 
-				.wp-picker-input-wrap .button { float: right; }
+.control-section-theme-options .matrix label.is-active { background: #aaa; }
 
-				.wp-picker-container .iris-picker { width: 100% !important; }
+.control-section-theme-options .matrix label.is-active:hover { background: #ccc; }
 
-					.wp-picker-container .iris-picker .iris-square { margin-right: 5%; }
+.control-section-theme-options .image-radio span { display: none; }
 
-		/* Hide Custom Background image setup */
+.control-section-theme-options .image-radio label { float: left; display: inline-block; margin: 4px; text-align: center; }
 
-			#accordion-section-background_image { display: none !important; }
+.control-section-theme-options .image-radio label.is-active img, .control-section-theme-options .image-radio label:hover img { opacity: 1; }
 
+.control-section-theme-options .image-radio img { display: block; width: 42px; opacity: .5; }
 
+.control-section-theme-options .image-radio input { position: relative; top: -.75em; margin: 0; }
 
-	/**
-	 * Credits
-	 */
+.control-section-theme-options input[type=range] { -webkit-appearance: none; -moz-appearance: none; appearance: none; width: 100%; margin: 1.62em 0; background: transparent; }
 
-		#accordion-panel-receptar_theme .customize-info .customize-panel-description { display: block; }
+.control-section-theme-options input[type=range]:focus { outline: none; }
 
+.control-section-theme-options input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 1em; cursor: pointer; background: #ccc; border: 0; border-radius: 1.5em; box-shadow: none; }
 
+.control-section-theme-options input[type=range]::-moz-range-track { width: 100%; height: 1em; cursor: pointer; background: #ccc; border: 0; border-radius: 1.5em; box-shadow: none; }
 
-/* End of file */
+.control-section-theme-options input[type=range]::-ms-track { width: 100%; height: 1em; cursor: pointer; background: #ccc; border: 0; border-radius: 1.5em; box-shadow: none; }
+
+.control-section-theme-options input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 1.5em; height: 1.5em; margin-top: -0.25em; background: #0085ba; border: 0; border-radius: .19em; box-shadow: none; cursor: pointer; }
+
+.control-section-theme-options input[type=range]::-moz-range-thumb { -moz-appearance: none; appearance: none; width: 1.5em; height: 1.5em; margin-top: -0.25em; background: #0085ba; border: 0; border-radius: .19em; box-shadow: none; cursor: pointer; }
+
+.control-section-theme-options input[type=range]::-ms-thumb { appearance: none; width: 1.5em; height: 1.5em; margin-top: -0.25em; background: #0085ba; border: 0; border-radius: .19em; box-shadow: none; cursor: pointer; }
+
+.control-section-theme-options input[type=range]::-ms-fill-upper { background: #ccc; border: 0; border-radius: 1.5em; box-shadow: none; }
+
+.control-section-theme-options input[type=range]::-ms-fill-lower { background: #ccc; border: 0; border-radius: 1.5em; box-shadow: none; }
+
+.control-section-theme-options .range-container { display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-align-items: center; -ms-flex-align: center; align-items: center; cursor: default; }
+
+.control-section-theme-options .range-value { position: relative; min-width: 16%; padding: .38rem; margin-left: .38rem; text-align: center; font-size: .9em; background: #0085ba; color: #fff; border-radius: .19rem; cursor: help; }
+
+.control-section-theme-options .range-value::before { content: ''; position: absolute; width: .38rem; height: .38rem; left: 0; top: 50%; margin: -.19rem; background: inherit; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); }

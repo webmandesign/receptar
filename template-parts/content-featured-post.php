@@ -5,13 +5,13 @@
  * @package    Receptar
  * @copyright  2015 WebMan - Oliver Juhas
  *
- * @since    1.0
- * @version  1.2.1
+ * @since    1.0.0
+ * @version  1.4.0
  */
 
 ?>
 
-<article data-id="post-<?php the_ID(); ?>" <?php post_class(); echo apply_filters( 'wmhook_entry_container_atts', '' ); ?>>
+<article data-id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<?php
 
@@ -23,7 +23,7 @@
 
 	<div class="site-banner-media">
 
-		<figure class="site-banner-thumbnail" title="<?php the_title(); ?>"<?php echo receptar_schema_org( 'image' ); ?>>
+		<figure class="site-banner-thumbnail" title="<?php the_title(); ?>">
 
 			<?php
 
@@ -58,7 +58,7 @@
 
 	<div class="site-banner-header">
 
-		<h1 class="entry-title"<?php echo receptar_schema_org( 'name' ); ?>>
+		<h1 class="entry-title">
 			<a href="<?php echo esc_url( get_permalink() ); ?>" class="highlight" rel="bookmark"><?php
 
 			if ( $custom_title = trim( get_post_meta( get_the_ID(), 'banner_text', true ) ) ) {

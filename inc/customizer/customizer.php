@@ -5,8 +5,8 @@
  * @package    Receptar
  * @copyright  2015 WebMan - Oliver Juhas
  *
- * @since    1.0
- * @version  1.3.5
+ * @since    1.0.0
+ * @version  1.4.0
  *
  * CONTENT:
  * -  1) Required files
@@ -215,39 +215,23 @@
 	/**
 	 * Registering sections and options for WP Customizer
 	 *
-	 * @since    1.0
-	 * @version  1.3.5
+	 * @since    1.0.0
+	 * @version  1.4.0
 	 *
 	 * @param  object $wp_customize WP customizer object.
 	 */
 	if ( ! function_exists( 'receptar_theme_customizer' ) ) {
 		function receptar_theme_customizer( $wp_customize ) {
 
-			//Make predefined controls use live preview JS
-				$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
-				$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-				$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+			// Requirements check
+
+				if ( ! isset( $wp_customize ) ) {
+					return;
+				}
 
 
+			// Helper variables
 
-			/**
-			 * Custom customizer controls
-			 *
-			 * @link  https://github.com/bueltge/Wordpress-Theme-Customizer-Custom-Controls
-			 * @link  http://ottopress.com/2012/making-a-custom-control-for-the-theme-customizer/
-			 */
-
-				locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Hidden.php',      true );
-				locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_HTML.php',        true );
-				locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Image.php',       true );
-				locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Multiselect.php', true );
-				locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Select.php',      true );
-
-				do_action( 'wmhook_receptar_theme_customizer_load_controls', $wp_customize );
-
-
-
-			//Helper variables
 				$theme_options = (array) apply_filters( 'wmhook_theme_options', array() );
 
 				ksort( $theme_options );
@@ -260,447 +244,519 @@
 						'image',
 						'multiselect',
 						'radio',
-						'range', //This does not display the value indicator, only the slider, unfortunatelly...
+						'range',
+						'section',
 						'select',
 						'text',
 						'textarea',
-						'theme-customizer-html', //synonym for 'html'
 					) );
 
-				//To make sure our customizer sections start after WordPress default ones
-					$priority = apply_filters( 'wmhook_receptar_theme_customizer_priority', 900 );
-				//Default section name in case not set (should be overwritten anyway)
+				// To make sure our customizer sections start after WordPress default ones
+
+					$priority = apply_filters( 'wmhook_receptar_theme_customizer_priority', 200 );
+
+				// Default section name in case not set (should be overwritten anyway)
+
 					$customizer_panel   = '';
-					$customizer_section = WM_THEME_SHORTNAME;
+					$customizer_section = 'receptar';
 
-				/**
-				 * @todo  Consider switching from 'type' => 'theme_mod' to 'option' for better theme upgradability.
-				 */
+				// Option type
 
-			//Generate customizer options
-				if ( is_array( $theme_options ) && ! empty( $theme_options ) ) {
-
-					foreach ( $theme_options as $theme_option ) {
-
-						if (
-								is_array( $theme_option )
-								&& isset( $theme_option['type'] )
-								&& (
-										in_array( $theme_option['type'], $allowed_option_types )
-										|| isset( $theme_option['create_section'] )
-									)
-							) {
-
-							//Helper variables
-								$priority++;
-
-								$option_id = $default = $description = '';
-
-								if ( isset( $theme_option['id'] ) ) {
-									$option_id = $theme_option['id'];
-								}
-								if ( isset( $theme_option['default'] ) ) {
-									$default = $theme_option['default'];
-								}
-								if ( isset( $theme_option['description'] ) ) {
-									$description = $theme_option['description'];
-								}
-
-								$transport = ( isset( $theme_option['customizer_js'] ) ) ? ( 'postMessage' ) : ( 'refresh' );
+					$type = 'theme_mod';
 
 
+			// Processing
 
-							/**
-							 * Panels
-							 *
-							 * Panels are wrappers for customizer sections.
-							 * Note that the panel will not display unless sections are assigned to it.
-							 * Set the panel name in the section declaration with `in_panel`.
-							 * Panel has to be defined for each section to prevent all sections within a single panel.
-							 *
-							 * @link  http://make.wordpress.org/core/2014/07/08/customizer-improvements-in-4-0/
-							 */
-							if ( isset( $theme_option['in_panel'] ) ) {
+				// Moving "Widgets" panel after the custom "Theme" panel
+				// @link  https://developer.wordpress.org/themes/advanced-topics/customizer-api/#sections
 
-								$panel_id = 'receptar_' . sanitize_title( trim( $theme_option['in_panel'] ) );
+					if ( $wp_customize->get_panel( 'widgets' ) ) {
+						$wp_customize->get_panel( 'widgets' )->priority = $priority + 10;
+					}
 
-								if ( $customizer_panel !== $panel_id ) {
+				// Set live preview for predefined controls
 
-									$wp_customize->add_panel(
-											$panel_id,
-											array(
-												'title'       => $theme_option['in_panel'], // Panel title
-												'description' => ( isset( $theme_option['in_panel-description'] ) ) ? ( $theme_option['in_panel-description'] ) : ( '' ), // Hidden at the top of the panel
-												'priority'    => $priority,
-											)
-										);
+					$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
+					$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
+					$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
-									$customizer_panel = $panel_id;
-								}
+				// Move background color setting alongside background image
 
-							}
+					$wp_customize->get_control( 'background_color' )->section  = 'background_image';
+					$wp_customize->get_control( 'background_color' )->priority = 20;
 
+				// Change background image section priority
 
+					$wp_customize->get_section( 'background_image' )->priority = 30;
 
-							/**
-							 * Sections
-							 */
-							if ( isset( $theme_option['create_section'] ) && trim( $theme_option['create_section'] ) ) {
+				// Change header image section priority
 
-								if ( empty( $option_id ) ) {
-									$option_id = sanitize_title( trim( $theme_option['create_section'] ) );
-								}
+					$wp_customize->get_section( 'header_image' )->priority = 25;
 
-								$customizer_section = array(
-										'id'    => $option_id,
-										'setup' => array(
-												'title'       => $theme_option['create_section'], // Section title
-												'description' => ( isset( $theme_option['create_section-description'] ) ) ? ( $theme_option['create_section-description'] ) : ( '' ), // Displayed at the top of section
-												'priority'    => $priority,
-											)
-									);
+				// Custom controls
 
-								if ( ! isset( $theme_option['in_panel'] ) ) {
-									$customizer_panel = '';
-								} else {
-									$customizer_section['setup']['panel'] = $customizer_panel;
-								}
+					/**
+					 * Custom customizer controls
+					 *
+					 * @link  https://github.com/bueltge/Wordpress-Theme-Customizer-Custom-Controls
+					 * @link  http://ottopress.com/2012/making-a-custom-control-for-the-theme-customizer/
+					 */
 
-								$wp_customize->add_section(
-										$customizer_section['id'],
-										$customizer_section['setup']
-									);
+					locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Hidden.php',      true );
+					locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_HTML.php',        true );
+					locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Image.php',       true );
+					locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Multiselect.php', true );
+					locate_template( WM_INC_DIR . 'customizer/controls/class-Customizer_Select.php',      true );
 
-								$customizer_section = $customizer_section['id'];
+					do_action( 'wmhook_receptar_theme_customizer_load_controls', $wp_customize );
 
-							}
+				// Generate customizer options
 
+					if ( is_array( $theme_options ) && ! empty( $theme_options ) ) {
 
+						foreach ( $theme_options as $theme_option ) {
 
-							/**
-							 * Options generator
-							 */
-							switch ( $theme_option['type'] ) {
+							if (
+									is_array( $theme_option )
+									&& isset( $theme_option['type'] )
+									&& in_array( $theme_option['type'], $allowed_option_types )
+								) {
 
-								/**
-								 * Color
-								 */
-								case 'color':
+								// Helper variables
 
-									$wp_customize->add_setting(
-											$option_id,
-											array(
-												'type'                 => 'theme_mod',
-												'default'              => trim( $default, '#' ),
-												'transport'            => $transport,
-												'sanitize_callback'    => 'sanitize_hex_color_no_hash',
-												'sanitize_js_callback' => 'maybe_hash_hex_color',
-											)
-										);
+									$priority++;
 
-									$wp_customize->add_control( new WP_Customize_Color_Control(
-											$wp_customize,
-											$option_id,
-											array(
-												'label'       => $theme_option['label'],
-												'description' => $description,
-												'section'     => $customizer_section,
-												'priority'    => $priority,
-											)
-										) );
+									$option_id = $default = $description = '';
 
-								break;
-
-								/**
-								 * Hidden
-								 */
-								case 'hidden':
-
-									$wp_customize->add_setting(
-											$option_id,
-											array(
-												'type'                 => 'theme_mod',
-												'default'              => $default,
-												'transport'            => $transport,
-												'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_attr' ),
-												'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_attr' ),
-											)
-										);
-
-									$wp_customize->add_control( new Receptar_Customizer_Hidden(
-											$wp_customize,
-											$option_id,
-											array(
-												'label'    => 'HIDDEN FIELD',
-												'section'  => $customizer_section,
-												'priority' => $priority,
-											)
-										) );
-
-								break;
-
-								/**
-								 * HTML
-								 */
-								case 'html':
-								case 'theme-customizer-html':
-
-									if ( empty( $option_id ) ) {
-										$option_id = 'custom-title-' . $priority;
+									if ( isset( $theme_option['id'] ) ) {
+										$option_id = $theme_option['id'];
+									}
+									if ( isset( $theme_option['default'] ) ) {
+										$default = $theme_option['default'];
+									}
+									if ( isset( $theme_option['description'] ) ) {
+										$description = $theme_option['description'];
 									}
 
-									$wp_customize->add_setting(
-											$option_id,
-											array(
-												'sanitize_callback'    => 'receptar_sanitize_text',
-												'sanitize_js_callback' => 'receptar_sanitize_text',
-											)
-										);
+									$transport = ( isset( $theme_option['customizer_js'] ) ) ? ( 'postMessage' ) : ( 'refresh' );
 
-									$wp_customize->add_control( new Receptar_Customizer_HTML(
-											$wp_customize,
-											$option_id,
-											array(
-												'label'    => $theme_option['content'],
-												'section'  => $customizer_section,
-												'priority' => $priority,
-											)
-										) );
 
-								break;
 
 								/**
-								 * Image
-								 */
-								case 'image':
-
-									$wp_customize->add_setting(
-											$option_id,
-											array(
-												'type'                 => 'theme_mod',
-												'default'              => $default,
-												'transport'            => $transport,
-												'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'receptar_sanitize_return_value' ),
-												'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'receptar_sanitize_return_value' ),
-											)
-										);
-
-									$wp_customize->add_control( new Receptar_Customizer_Image(
-											$wp_customize,
-											$option_id,
-											array(
-												'label'       => $theme_option['label'],
-												'description' => $description,
-												'section'     => $customizer_section,
-												'priority'    => $priority,
-												'context'     => $option_id,
-											)
-										) );
-
-								break;
-
-								/**
-								 * Checkbox, radio
-								 */
-								case 'checkbox':
-								case 'radio':
-
-									$wp_customize->add_setting(
-											$option_id,
-											array(
-												'type'                 => 'theme_mod',
-												'default'              => $default,
-												'transport'            => $transport,
-												'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_attr' ),
-												'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_attr' ),
-											)
-										);
-
-									$wp_customize->add_control(
-											$option_id,
-											array(
-												'label'       => $theme_option['label'],
-												'description' => $description,
-												'section'     => $customizer_section,
-												'priority'    => $priority,
-												'type'        => $theme_option['type'],
-												'choices'     => ( isset( $theme_option['options'] ) ) ? ( $theme_option['options'] ) : ( '' ),
-											)
-										);
-
-								break;
-
-								/**
-								 * Multiselect
-								 */
-								case 'multiselect':
-
-									$wp_customize->add_setting(
-											$option_id,
-											array(
-												'type'                 => 'theme_mod',
-												'default'              => $default,
-												'transport'            => $transport,
-												'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'receptar_sanitize_return_value' ),
-												'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'receptar_sanitize_return_value' ),
-											)
-										);
-
-									$wp_customize->add_control( new Receptar_Customizer_Multiselect(
-											$wp_customize,
-											$option_id,
-											array(
-												'label'       => $theme_option['label'],
-												'description' => $description,
-												'section'     => $customizer_section,
-												'priority'    => $priority,
-												'choices'     => ( isset( $theme_option['options'] ) ) ? ( $theme_option['options'] ) : ( '' ),
-											)
-										) );
-
-								break;
-
-								/**
-								 * Range
-								 */
-								case 'range':
-
-									$wp_customize->add_setting(
-											$option_id,
-											array(
-												'type'                 => 'theme_mod',
-												'default'              => $default,
-												'transport'            => $transport,
-												'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'absint' ),
-												'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'absint' ),
-											)
-										);
-
-									$wp_customize->add_control(
-											$option_id,
-											array(
-												'label'       => $theme_option['label'],
-												'description' => $description,
-												'section'     => $customizer_section,
-												'priority'    => $priority,
-												'type'        => 'range',
-												'input_attrs' => array(
-													'min'  => ( isset( $theme_option['min'] ) ) ? ( intval( $theme_option['min'] ) ) : ( 0 ),
-													'max'  => ( isset( $theme_option['max'] ) ) ? ( intval( $theme_option['max'] ) ) : ( 100 ),
-													'step' => ( isset( $theme_option['step'] ) ) ? ( intval( $theme_option['step'] ) ) : ( 1 ),
-												),
-											)
-										);
-
-								break;
-
-								/**
-								 * Select (with optgroups)
-								 */
-								case 'select':
-
-									$wp_customize->add_setting(
-											$option_id,
-											array(
-												'type'                 => 'theme_mod',
-												'default'              => $default,
-												'transport'            => $transport,
-												'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_attr' ),
-												'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_attr' ),
-											)
-										);
-
-									$wp_customize->add_control( new Receptar_Customizer_Select(
-											$wp_customize,
-											$option_id,
-											array(
-												'label'       => $theme_option['label'],
-												'description' => $description,
-												'section'     => $customizer_section,
-												'priority'    => $priority,
-												'choices'     => ( isset( $theme_option['options'] ) ) ? ( $theme_option['options'] ) : ( '' ),
-											)
-										) );
-
-								break;
-
-								/**
-								 * Text
-								 */
-								case 'text':
-
-									$wp_customize->add_setting(
-											$option_id,
-											array(
-												'type'                 => 'theme_mod',
-												'default'              => $default,
-												'transport'            => $transport,
-												'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_textarea' ),
-												'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_textarea' ),
-											)
-										);
-
-									$wp_customize->add_control(
-											$option_id,
-											array(
-												'label'       => $theme_option['label'],
-												'description' => $description,
-												'section'     => $customizer_section,
-												'priority'    => $priority,
-											)
-										);
-
-								break;
-
-								/**
-								 * Textarea
+								 * Panels
 								 *
-								 * Since WordPress 4.0 this is native input field.
+								 * Panels are wrappers for customizer sections.
+								 * Note that the panel will not display unless sections are assigned to it.
+								 * Set the panel name in the section declaration with `in_panel`:
+								 * - if text, this will become a panel title (ID defaults to `theme-options`)
+								 * - if array, you can set `title`, `id` and `type` (the type will affect panel class)
+								 * Panel has to be defined for each section to prevent all sections within a single panel.
+								 *
+								 * @link  http://make.wordpress.org/core/2014/07/08/customizer-improvements-in-4-0/
 								 */
-								case 'textarea':
+								if ( isset( $theme_option['in_panel'] ) ) {
 
-									$wp_customize->add_setting(
-											$option_id,
-											array(
-												'type'                 => 'theme_mod',
-												'default'              => $default,
-												'transport'            => $transport,
-												'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_textarea' ),
-												'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_textarea' ),
-											)
-										);
+									$panel_type = 'theme-options';
 
-									$wp_customize->add_control(
-											$option_id,
-											array(
-												'type'        => 'textarea',
-												'label'       => $theme_option['label'],
-												'description' => $description,
-												'section'     => $customizer_section,
-												'priority'    => $priority,
-											)
-										);
+									if ( is_array( $theme_option['in_panel'] ) ) {
 
-								break;
+										$panel_title = isset( $theme_option['in_panel']['title'] ) ? ( $theme_option['in_panel']['title'] ) : ( '&mdash;' );
+										$panel_id    = isset( $theme_option['in_panel']['id'] ) ? ( $theme_option['in_panel']['id'] ) : ( $panel_type );
+										$panel_type  = isset( $theme_option['in_panel']['type'] ) ? ( $theme_option['in_panel']['type'] ) : ( $panel_type );
+
+									} else {
+
+										$panel_title = $theme_option['in_panel'];
+										$panel_id    = $panel_type;
+
+									}
+
+									$panel_type = apply_filters( 'wmhook_receptar_library_customize_panel_type', $panel_type, $theme_option, $theme_options );
+									$panel_id   = apply_filters( 'wmhook_receptar_library_customize_panel_id', $panel_id, $theme_option, $theme_options );
+
+									if ( $customizer_panel !== $panel_id ) {
+
+										$wp_customize->add_panel(
+												$panel_id,
+												array(
+													'title'       => esc_html( $panel_title ),
+													'description' => ( isset( $theme_option['in_panel-description'] ) ) ? ( $theme_option['in_panel-description'] ) : ( '' ), // Hidden at the top of the panel
+													'priority'    => $priority,
+													'type'        => $panel_type, // Sets also the panel class
+												)
+											);
+
+										$customizer_panel = $panel_id;
+
+									}
+
+								}
+
+
 
 								/**
-								 * Default
+								 * Sections
 								 */
-								default:
-								break;
+								if ( isset( $theme_option['create_section'] ) && trim( $theme_option['create_section'] ) ) {
 
-							} // /switch
+									if ( empty( $option_id ) ) {
+										$option_id = sanitize_title( trim( $theme_option['create_section'] ) );
+									}
 
-						} // /if suitable option array
+									$customizer_section = array(
+											'id'    => $option_id,
+											'setup' => array(
+													'title'       => $theme_option['create_section'], // Section title
+													'description' => ( isset( $theme_option['create_section-description'] ) ) ? ( $theme_option['create_section-description'] ) : ( '' ), // Displayed at the top of section
+													'priority'    => $priority,
+													'type'        => 'theme-options', // Sets also the section class
+												)
+										);
 
-					} // /foreach
+									if ( ! isset( $theme_option['in_panel'] ) ) {
+										$customizer_panel = '';
+									} else {
+										$customizer_section['setup']['panel'] = $customizer_panel;
+									}
 
-				} // /if skin options are non-empty array
+									$wp_customize->add_section(
+											$customizer_section['id'],
+											$customizer_section['setup']
+										);
 
-			//Assets needed for customizer preview
-				if ( $wp_customize->is_preview() ) {
-					add_action( 'wp_footer', 'receptar_theme_customizer_js', 99 );
-				}
+									$customizer_section = $customizer_section['id'];
+
+								}
+
+
+
+								/**
+								 * Options generator
+								 */
+								switch ( $theme_option['type'] ) {
+
+									/**
+									 * Color
+									 */
+									case 'color':
+
+										$wp_customize->add_setting(
+												$option_id,
+												array(
+													'type'                 => 'theme_mod',
+													'default'              => trim( $default, '#' ),
+													'transport'            => $transport,
+													'sanitize_callback'    => 'sanitize_hex_color_no_hash',
+													'sanitize_js_callback' => 'maybe_hash_hex_color',
+												)
+											);
+
+										$wp_customize->add_control( new WP_Customize_Color_Control(
+												$wp_customize,
+												$option_id,
+												array(
+													'label'       => $theme_option['label'],
+													'description' => $description,
+													'section'     => $customizer_section,
+													'priority'    => $priority,
+												)
+											) );
+
+									break;
+
+									/**
+									 * Hidden
+									 */
+									case 'hidden':
+
+										$wp_customize->add_setting(
+												$option_id,
+												array(
+													'type'                 => 'theme_mod',
+													'default'              => $default,
+													'transport'            => $transport,
+													'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_attr' ),
+													'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_attr' ),
+												)
+											);
+
+										$wp_customize->add_control( new Receptar_Customizer_Hidden(
+												$wp_customize,
+												$option_id,
+												array(
+													'label'    => 'HIDDEN FIELD',
+													'section'  => $customizer_section,
+													'priority' => $priority,
+												)
+											) );
+
+									break;
+
+									/**
+									 * HTML
+									 */
+									case 'html':
+
+										if ( empty( $option_id ) ) {
+											$option_id = 'custom-title-' . $priority;
+										}
+
+										$wp_customize->add_setting(
+												$option_id,
+												array(
+													'sanitize_callback'    => 'receptar_sanitize_text',
+													'sanitize_js_callback' => 'receptar_sanitize_text',
+												)
+											);
+
+										$wp_customize->add_control( new Receptar_Customizer_HTML(
+												$wp_customize,
+												$option_id,
+												array(
+													'label'    => $theme_option['content'],
+													'section'  => $customizer_section,
+													'priority' => $priority,
+												)
+											) );
+
+									break;
+
+									/**
+									 * Image
+									 */
+									case 'image':
+
+										$wp_customize->add_setting(
+												$option_id,
+												array(
+													'type'                 => 'theme_mod',
+													'default'              => $default,
+													'transport'            => $transport,
+													'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'receptar_sanitize_return_value' ),
+													'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'receptar_sanitize_return_value' ),
+												)
+											);
+
+										$wp_customize->add_control( new Receptar_Customizer_Image(
+												$wp_customize,
+												$option_id,
+												array(
+													'label'       => $theme_option['label'],
+													'description' => $description,
+													'section'     => $customizer_section,
+													'priority'    => $priority,
+													'context'     => $option_id,
+												)
+											) );
+
+									break;
+
+									/**
+									 * Checkbox, radio
+									 */
+									case 'checkbox':
+									case 'radio':
+
+										$wp_customize->add_setting(
+												$option_id,
+												array(
+													'type'                 => 'theme_mod',
+													'default'              => $default,
+													'transport'            => $transport,
+													'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_attr' ),
+													'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_attr' ),
+												)
+											);
+
+										$wp_customize->add_control(
+												$option_id,
+												array(
+													'label'       => $theme_option['label'],
+													'description' => $description,
+													'section'     => $customizer_section,
+													'priority'    => $priority,
+													'type'        => $theme_option['type'],
+													'choices'     => ( isset( $theme_option['options'] ) ) ? ( $theme_option['options'] ) : ( '' ),
+												)
+											);
+
+									break;
+
+									/**
+									 * Multiselect
+									 */
+									case 'multiselect':
+
+										$wp_customize->add_setting(
+												$option_id,
+												array(
+													'type'                 => 'theme_mod',
+													'default'              => $default,
+													'transport'            => $transport,
+													'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'receptar_sanitize_return_value' ),
+													'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'receptar_sanitize_return_value' ),
+												)
+											);
+
+										$wp_customize->add_control( new Receptar_Customizer_Multiselect(
+												$wp_customize,
+												$option_id,
+												array(
+													'label'       => $theme_option['label'],
+													'description' => $description,
+													'section'     => $customizer_section,
+													'priority'    => $priority,
+													'choices'     => ( isset( $theme_option['options'] ) ) ? ( $theme_option['options'] ) : ( '' ),
+												)
+											) );
+
+									break;
+
+									/**
+									 * Range
+									 */
+									case 'range':
+
+										$wp_customize->add_setting(
+												$option_id,
+												array(
+													'type'                 => 'theme_mod',
+													'default'              => $default,
+													'transport'            => $transport,
+													'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'absint' ),
+													'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'absint' ),
+												)
+											);
+
+										$wp_customize->add_control(
+												$option_id,
+												array(
+													'label'       => $theme_option['label'],
+													'description' => $description,
+													'section'     => $customizer_section,
+													'priority'    => $priority,
+													'type'        => 'range',
+													'input_attrs' => array(
+														'min'  => ( isset( $theme_option['min'] ) ) ? ( intval( $theme_option['min'] ) ) : ( 0 ),
+														'max'  => ( isset( $theme_option['max'] ) ) ? ( intval( $theme_option['max'] ) ) : ( 100 ),
+														'step' => ( isset( $theme_option['step'] ) ) ? ( intval( $theme_option['step'] ) ) : ( 1 ),
+													),
+												)
+											);
+
+									break;
+
+									/**
+									 * Select (with optgroups)
+									 */
+									case 'select':
+
+										$wp_customize->add_setting(
+												$option_id,
+												array(
+													'type'                 => 'theme_mod',
+													'default'              => $default,
+													'transport'            => $transport,
+													'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_attr' ),
+													'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_attr' ),
+												)
+											);
+
+										$wp_customize->add_control( new Receptar_Customizer_Select(
+												$wp_customize,
+												$option_id,
+												array(
+													'label'       => $theme_option['label'],
+													'description' => $description,
+													'section'     => $customizer_section,
+													'priority'    => $priority,
+													'choices'     => ( isset( $theme_option['options'] ) ) ? ( $theme_option['options'] ) : ( '' ),
+												)
+											) );
+
+									break;
+
+									/**
+									 * Text
+									 */
+									case 'text':
+
+										$wp_customize->add_setting(
+												$option_id,
+												array(
+													'type'                 => 'theme_mod',
+													'default'              => $default,
+													'transport'            => $transport,
+													'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_textarea' ),
+													'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_textarea' ),
+												)
+											);
+
+										$wp_customize->add_control(
+												$option_id,
+												array(
+													'label'       => $theme_option['label'],
+													'description' => $description,
+													'section'     => $customizer_section,
+													'priority'    => $priority,
+												)
+											);
+
+									break;
+
+									/**
+									 * Textarea
+									 *
+									 * Since WordPress 4.0 this is native input field.
+									 */
+									case 'textarea':
+
+										$wp_customize->add_setting(
+												$option_id,
+												array(
+													'type'                 => 'theme_mod',
+													'default'              => $default,
+													'transport'            => $transport,
+													'sanitize_callback'    => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_textarea' ),
+													'sanitize_js_callback' => ( isset( $theme_option['validate'] ) ) ? ( $theme_option['validate'] ) : ( 'esc_textarea' ),
+												)
+											);
+
+										$wp_customize->add_control(
+												$option_id,
+												array(
+													'type'        => 'textarea',
+													'label'       => $theme_option['label'],
+													'description' => $description,
+													'section'     => $customizer_section,
+													'priority'    => $priority,
+												)
+											);
+
+									break;
+
+									/**
+									 * Default
+									 */
+									default:
+									break;
+
+								} // /switch
+
+							} // /if suitable option array
+
+						} // /foreach
+
+					} // /if skin options are non-empty array
+
+				// Assets needed for customizer preview
+
+					if ( $wp_customize->is_preview() ) {
+
+						add_action( 'wp_footer', 'receptar_theme_customizer_js', 99 );
+
+					}
+
 		}
 	} // /receptar_theme_customizer
 

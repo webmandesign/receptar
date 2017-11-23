@@ -5,8 +5,8 @@
  * @package    Receptar
  * @copyright  2015 WebMan - Oliver Juhas
  *
- * @since    1.0
- * @version  1.3.5
+ * @since    1.0.0
+ * @version  1.4.0
  *
  * CONTENT:
  * -   1) Required files
@@ -238,155 +238,6 @@
 
 
 
-	/**
-	 * Schema.org markup on HTML tags
-	 *
-	 * @uses    schema.org
-	 * @link    http://schema.org/docs/gs.html
-	 * @link    http://leaves-and-love.net/how-to-improve-wordpress-seo-with-schema-org/
-	 *
-	 * @since    1.0
-	 * @version  1.0
-	 *
-	 * @param   string  $element
-	 * @param   boolean $output_meta_tag  Wraps output in a <meta> tag.
-	 *
-	 * @return  string Schema.org HTML attributes
-	 */
-	if ( ! function_exists( 'receptar_schema_org' ) ) {
-		function receptar_schema_org( $element = '', $output_meta_tag = false ) {
-			//Requirements check
-				if ( function_exists( 'wma_schema_org' ) ) {
-					return wma_schema_org( $element, $output_meta_tag );
-				}
-				if ( ! $element || ! apply_filters( 'wmhook_receptar_schema_org_enable', true ) ) {
-					return;
-				}
-
-			//Helper variables
-				$output = apply_filters( 'wmhook_schema_org_output_pre', '', $element, $output_meta_tag );
-
-				if ( $output ) {
-					return apply_filters( 'wmhook_receptar_schema_org_output', ' ' . $output, $element, $output_meta_tag );
-				}
-
-				$base    = apply_filters( 'wmhook_receptar_schema_org_base', 'http://schema.org/', $element, $output_meta_tag );
-				$post_id = ( is_home() ) ? ( get_option( 'page_for_posts' ) ) : ( null );
-				$type    = get_post_meta( $post_id, 'schemaorg_type', true );
-
-				//Add custom post types that describe a single item to this array
-					$itempage_array = (array) apply_filters( 'wmhook_schema_org_itempage_array', array( 'jetpack-portfolio' ), $element, $output_meta_tag );
-
-			//Generate output
-				switch ( $element ) {
-					case 'author':
-							$output = 'itemprop="author"';
-						break;
-
-					case 'datePublished':
-							$output = 'itemprop="datePublished"';
-						break;
-
-					case 'entry':
-							$output = 'itemscope ';
-
-							if ( is_page() ) {
-								$output .= 'itemtype="' . $base . 'WebPage"';
-
-							} elseif ( is_singular( 'jetpack-portfolio' ) ) {
-								$output .= 'itemprop="workExample" itemtype="' . $base . 'CreativeWork"';
-
-							} elseif ( 'audio' === get_post_format() ) {
-								$output .= 'itemtype="' . $base . 'AudioObject"';
-
-							} elseif ( 'gallery' === get_post_format() ) {
-								$output .= 'itemprop="ImageGallery" itemtype="' . $base . 'ImageGallery"';
-
-							} elseif ( 'video' === get_post_format() ) {
-								$output .= 'itemprop="video" itemtype="' . $base . 'VideoObject"';
-
-							} else {
-								$output .= 'itemprop="blogPost" itemtype="' . $base . 'BlogPosting"';
-
-							}
-						break;
-
-					case 'entry_body':
-							if ( ! is_single() ) {
-								$output = 'itemprop="description"';
-
-							} elseif ( is_page() ) {
-								$output = 'itemprop="mainContentOfPage"';
-
-							} else {
-								$output = 'itemprop="articleBody"';
-
-							}
-						break;
-
-					case 'image':
-							$output = 'itemprop="image"';
-						break;
-
-					case 'ItemList':
-							$output = 'itemscope itemtype="' . $base . 'ItemList"';
-						break;
-
-					case 'keywords':
-							$output = 'itemprop="keywords"';
-						break;
-
-					case 'name':
-							$output = 'itemprop="name"';
-						break;
-
-					case 'Person':
-							$output = 'itemscope itemtype="' . $base . 'Person"';
-						break;
-
-					case 'SiteNavigationElement':
-							$output = 'itemscope itemtype="' . $base . 'SiteNavigationElement"';
-						break;
-
-					case 'url':
-							$output = 'itemprop="url"';
-						break;
-
-					case 'WPFooter':
-							$output = 'itemscope itemtype="' . $base . 'WPFooter"';
-						break;
-
-					case 'WPSideBar':
-							$output = 'itemscope itemtype="' . $base . 'WPSideBar"';
-						break;
-
-					case 'WPHeader':
-							$output = 'itemscope itemtype="' . $base . 'WPHeader"';
-						break;
-
-					default:
-							$output = $element;
-						break;
-				}
-
-				$output = ' ' . $output;
-
-				//Output in <meta> tag
-					if ( $output_meta_tag ) {
-						if ( false === strpos( $output, 'content=' ) ) {
-							$output .= ' content="true"';
-						}
-						$output = '<meta ' . trim( $output ) . ' />';
-					}
-
-			//Output
-				return apply_filters( 'wmhook_receptar_schema_org_output', $output, $element, $output_meta_tag );
-		}
-	} // /receptar_schema_org
-
-
-
-
 
 /**
  * 40) Post/page
@@ -523,8 +374,8 @@
 	 * Supports ZillaLikes plugin. @link http://www.themezilla.com/plugins/zillalikes/
 	 * Supports Post Views Count plugin. @link https://wordpress.org/plugins/baw-post-views-count/
 	 *
-	 * @since    1.0
-	 * @version  1.3
+	 * @since    1.0.0
+	 * @version  1.4.0
 	 *
 	 * @param  array $args
 	 */
@@ -574,9 +425,8 @@
 
 								if ( apply_filters( 'wmhook_receptar_post_meta_enable_' . $meta, true, $args ) ) {
 									$replacements = array(
-											'{attributes}' => receptar_schema_org( 'Person' ),
 											'{class}'      => 'author vcard entry-meta-element',
-											'{content}'    => '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" class="url fn n" rel="author"' . receptar_schema_org( 'author' ) .'>' . get_the_author() . '</a>',
+											'{content}'    => '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" class="url fn n" rel="author">' . get_the_author() . '</a>',
 										);
 								}
 
@@ -620,7 +470,7 @@
 
 								if ( apply_filters( 'wmhook_receptar_post_meta_enable_' . $meta, true, $args ) ) {
 									$replacements = array(
-											'{attributes}' => ' title="' . esc_attr( get_the_date() ) . ' | ' . esc_attr( get_the_time( '', $args['post'] ) ) . '"' . receptar_schema_org( 'datePublished' ),
+											'{attributes}' => ' title="' . esc_attr( get_the_date() ) . ' | ' . esc_attr( get_the_time( '', $args['post'] ) ) . '"',
 											'{class}'      => 'entry-date entry-meta-element published',
 											'{content}'    => esc_html( get_the_date( $args['date_format'] ) ),
 											'{datetime}'   => esc_attr( get_the_date( 'c' ) ),
@@ -673,7 +523,6 @@
 									}
 
 									$replacements = array(
-											'{attributes}' => receptar_schema_org( 'url' ),
 											'{class}'      => 'entry-permalink entry-meta-element',
 											'{content}'    => '<a href="' . esc_url( get_permalink( $args['post_id'] ) ) . '" title="' . esc_attr( sprintf( esc_html__( 'Permalink to "%s"', 'receptar' ), the_title_attribute( $the_title_attribute_args ) ) ) . '" rel="bookmark"><span>' . get_the_title( $args['post_id'] ) . '</span></a>',
 										);
@@ -687,7 +536,6 @@
 										&& ( $helper = get_the_tag_list( '', ' ', '', $args['post_id'] ) )
 									) {
 									$replacements = array(
-											'{attributes}' => receptar_schema_org( 'keywords' ),
 											'{class}'      => 'tags-links entry-meta-element',
 											'{content}'    => $helper,
 										);

@@ -8,7 +8,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.4.0
  */
 
 
@@ -41,7 +41,7 @@
 			.site,
 			.hamburger-item,
 			.home .content-area,
-			.posts .hentry { background-color: #fff; }
+			.posts .entry { background-color: #fff; }
 
 			body,
 			.site-footer { background-color: #f5f7f9; }

@@ -4,8 +4,8 @@
  * @package    Receptar
  * @copyright  2015 WebMan - Oliver Juhas
  *
- * @since    1.0
- * @version  1.2
+ * @since    1.0.0
+ * @version  1.4.0
  */
 
 
@@ -815,109 +815,6 @@
 
 					.pagination > span.dots,
 					.pagination .extend { width: auto; }
-
-
-
-		/**
-		 * Scrollbars
-		 */
-
-			::-webkit-scrollbar { width: 8px; }
-
-			/* Track */
-
-				::-webkit-scrollbar-track {
-					background: rgba(255,255,255, .5);
-					border-radius: 10px;
-					-webkit-box-shadow: 0 0 0 1px rgba(255,255,255, .3), inset 0 0 6px rgba(0,0,0, .3);
-				}
-
-			/* Handle */
-
-				::-webkit-scrollbar-thumb {
-					background: rgba(0,0,0, .5);
-					border-radius: 10px;
-					-webkit-box-shadow: inset 0 0 6px rgba(0,0,0, .3);
-				}
-				::-webkit-scrollbar-thumb:window-inactive { background: rgba(0,0,0, .25); }
-
-
-
-		/**
-		 * MediaElement player custom styles
-		 */
-
-			/* Player */
-
-				.site .mejs-container {
-					min-height: 50px;
-					margin: 1.62em 0;
-				}
-				.site .mejs-video { width: 100% !important; }
-
-					.site .mejs-overlay-button { margin: -50px 0 0 -50px !important; }
-
-					.site .mejs-container .mejs-controls {
-						height: 50px;
-						padding: 0 20px;
-						background: #2a2c2e;
-					}
-						.site .mejs-container .mejs-controls div { margin-top: 10px; }
-						.site .mejs-container .mejs-controls button {
-							-webkit-box-shadow: none;
-							        box-shadow: none;
-						}
-						.site .mejs-container .mejs-controls .mejs-time-rail .mejs-time-total { background: #1a1c1e; }
-						.site .mejs-container .mejs-controls .mejs-time-rail .mejs-time-loaded {
-							height: 6px;
-							margin-top: 2px;
-							background: #3a3c3e;
-							border-radius: 0;
-						}
-						.site .mejs-container .mejs-controls .mejs-time-rail .mejs-time-current { background: #6a6c6e; }
-
-			/* Playlist */
-
-				.site .wp-playlist {
-					padding: 1.62em;
-					margin: 1.62em 0;
-					background-color: #eaecee;
-					border: 0;
-				}
-
-					.site .wp-playlist-current-item { margin-bottom: 1em; }
-
-					.site .wp-playlist .mejs-container { width: 100% !important; }
-
-					.site .wp-playlist-tracks { margin-top: 1em; }
-						.site .wp-playlist-item {
-							padding: .62em 0;
-							border-color: #caccce;
-						}
-						.site .wp-playlist .wp-playlist-playing { background: transparent; }
-							.site .wp-playlist-item-length { margin-top: .62em; }
-
-			/* WP Audio modifications */
-
-				.site .wp-audio-playlist .mejs-container { height: 50px !important; }
-
-			/* WP Video modifications */
-
-				.mejs-container video { height: auto; }
-
-				.entry-media .mejs-container,
-				.entry-media .wp-playlist { margin: 0; }
-
-				.wp-video .mejs-controls,
-				.wp-video-playlist .mejs-controls { visibility: hidden; }
-					.wp-video:hover .mejs-controls,
-					.wp-video-playlist:hover .mejs-controls { visibility: visible; }
-
-				.wp-video .mejs-layer,
-				.wp-video-playlist .mejs-layer {
-					width: 100% !important;
-					height: 100% !important;
-				}
 
 
 
@@ -2078,18 +1975,6 @@
 						z-index: 1;
 						opacity: 1;
 					}
-
-					.widget .tagcloud a:before {
-						content: attr(title);
-						position: absolute;
-						display: none;
-						left: 100%;
-						top: -1px;
-						padding: .19em .62em;
-						pointer-events: none;
-						border: 1px solid;
-					}
-						.widget .tagcloud a:hover:before { display: block; }
 
 
 

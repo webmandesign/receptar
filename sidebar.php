@@ -5,8 +5,8 @@
  * @package    Receptar
  * @copyright  2015 WebMan - Oliver Juhas
  *
- * @since    1.0
- * @version  1.3
+ * @since    1.0.0
+ * @version  1.4.0
  */
 
 ?>
@@ -27,7 +27,7 @@
 
 			?>
 
-			<nav id="site-navigation" class="main-navigation" role="navigation"<?php echo receptar_schema_org( 'SiteNavigationElement' ); ?>>
+			<nav id="site-navigation" class="main-navigation" role="navigation">
 
 				<span class="screen-reader-text"><?php printf( esc_html__( '%s site navigation', 'receptar' ), get_bloginfo( 'name' ) ); ?></span>
 
@@ -61,7 +61,7 @@
 
 					?>
 
-					<div class="widget-area sidebar" role="complementary"<?php echo receptar_schema_org( 'WPSideBar' ); ?>>
+					<div class="widget-area sidebar" role="complementary">
 
 						<?php
 

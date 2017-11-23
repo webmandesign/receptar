@@ -5,13 +5,13 @@
  * @package    Receptar
  * @copyright  2015 WebMan - Oliver Juhas
  *
- * @since    1.0
- * @version  1.3
+ * @since    1.0.0
+ * @version  1.4.0
  */
 
 ?>
 
-<div id="site-banner" class="site-banner<?php if ( ( is_front_page() || is_home() ) && receptar_has_banner_posts( 2 ) ) { echo ' enable-slider'; } else { echo ' no-slider'; } ?>"<?php do_action( 'wmhook_site_banner_container_atts' ); ?>>
+<div id="site-banner" class="site-banner<?php if ( ( is_front_page() || is_home() ) && receptar_has_banner_posts( 2 ) ) { echo ' enable-slider'; } else { echo ' no-slider'; } ?>">
 
 	<div class="site-banner-inner">
 

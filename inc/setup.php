@@ -5,8 +5,8 @@
  * @package    Receptar
  * @copyright  2015 WebMan - Oliver Juhas
  *
- * @since    1.0
- * @version  1.3.5
+ * @since    1.0.0
+ * @version  1.4.0
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -44,7 +44,7 @@
 		//Register widget areas
 			add_action( 'widgets_init', 'receptar_register_widget_areas', 1 );
 		//Sticky posts
-			add_action( 'pre_get_posts', 'receptar_posts_query_ignore_sticky_posts' );
+			// add_action( 'pre_get_posts', 'receptar_posts_query_ignore_sticky_posts' );
 		//Pagination fallback
 			add_action( 'wmhook_postslist_after', 'receptar_pagination', 10 );
 		//Visual Editor addons
@@ -109,8 +109,6 @@
 			add_filter( 'excerpt_length',                           'receptar_excerpt_length',           10 );
 			add_filter( 'excerpt_more',                             'receptar_excerpt_more',             10 );
 			add_filter( 'wmhook_receptar_excerpt_continue_reading', 'receptar_excerpt_continue_reading', 10 );
-		//Entry HTML attributes
-			add_filter( 'wmhook_entry_container_atts', 'receptar_entry_container_atts', 10 );
 		//Post thumbnail
 			add_filter( 'wmhook_entry_featured_image_size',         'receptar_post_thumbnail_size'               );
 			add_filter( 'wmhook_entry_featured_image_fallback_url', 'receptar_entry_featured_image_fallback_url' );
@@ -867,15 +865,22 @@
 	/**
 	 * Post classes
 	 *
-	 * @since    1.0
-	 * @version  1.0
+	 * @since    1.0.0
+	 * @version  1.4.0
 	 *
 	 * @param  array $classes
 	 */
 	if ( ! function_exists( 'receptar_post_classes' ) ) {
 		function receptar_post_classes( $classes ) {
-			//Preparing output
-				//Sticky post
+
+			// Processing
+
+				// A generic class for easy styling
+
+					$classes[] = 'entry';
+
+				// Sticky post
+
 					/**
 					 * On paginated posts list the sticky class is not
 					 * being applied, so, we need to compensate.
@@ -884,16 +889,20 @@
 						$classes[] = 'is-sticky';
 					}
 
-				//Featured post
+				// Featured post
+
 					if (
-							class_exists( 'NS_Featured_Posts' )
-							&& get_post_meta( get_the_ID(), '_is_ns_featured_post', true )
-						) {
+						class_exists( 'NS_Featured_Posts' )
+						&& get_post_meta( get_the_ID(), '_is_ns_featured_post', true )
+					) {
 						$classes[] = 'is-featured';
 					}
 
-			//Output
+
+			// Output
+
 				return $classes;
+
 		}
 	} // /receptar_post_classes
 
@@ -1041,16 +1050,16 @@
 	/**
 	 * Header top
 	 *
-	 * @since    1.0
-	 * @version  1.0
+	 * @since    1.0.0
+	 * @version  1.4.0
 	 */
 	if ( ! function_exists( 'receptar_header_top' ) ) {
 		function receptar_header_top() {
-			//Preparing output
-				$output = "\r\n\r\n" . '<header id="masthead" class="site-header" role="banner"' . receptar_schema_org( 'WPHeader' ) . '>' . "\r\n\r\n";
 
-			//Output
-				echo $output;
+			// Output
+
+				echo "\r\n\r\n" . '<header id="masthead" class="site-header" role="banner">' . "\r\n\r\n";
+
 		}
 	} // /receptar_header_top
 
@@ -1134,41 +1143,47 @@
 	/**
 	 * Post/page heading (title)
 	 *
-	 * @since    1.0
-	 * @version  1.3
+	 * @since    1.0.0
+	 * @version  1.4.0
 	 *
 	 * @param  array $args Heading setup arguments
 	 */
 	if ( ! function_exists( 'receptar_post_title' ) ) {
 		function receptar_post_title( $args = array() ) {
-			//Helper variables
+
+			// Helper variables
+
 				global $post;
 
-				//Requirements check
+				// Requirements check
+
 					if (
-							! ( $title = get_the_title() )
-							|| apply_filters( 'wmhook_receptar_post_title_disable', false )
-						) {
+						! ( $title = get_the_title() )
+						|| apply_filters( 'wmhook_receptar_post_title_disable', false )
+					) {
 						return;
 					}
 
 				$output = $meta = '';
 
 				$args = wp_parse_args( $args, apply_filters( 'wmhook_receptar_post_title_defaults', array(
-						'class'           => 'entry-title',
-						'class_container' => 'entry-header',
-						'link'            => esc_url( get_permalink() ),
-						'output'          => '<header class="{class_container}"><{tag} class="{class}"' . receptar_schema_org( 'name' ) . '>{title}</{tag}>{meta}</header>',
-						'tag'             => 'h1',
-						'title'           => '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $title . '</a>',
-					) ) );
+					'class'           => 'entry-title',
+					'class_container' => 'entry-header',
+					'link'            => esc_url( get_permalink() ),
+					'output'          => '<header class="{class_container}"><{tag} class="{class}">{title}</{tag}>{meta}</header>',
+					'tag'             => 'h1',
+					'title'           => '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $title . '</a>',
+				) ) );
 
-			//Preparing output
-				//Singular title (no link applied)
+
+			// Processing
+
+				// Singular title (no link applied)
+
 					if (
-							is_single()
-							|| ( is_page() && 'page' === get_post_type() ) //not to display the below stuff on posts list on static front page
-						) {
+						is_single()
+						|| ( is_page() && 'page' === get_post_type() ) //not to display the below stuff on posts list on static front page
+					) {
 
 						if ( $suffix = receptar_paginated_suffix( 'small' ) ) {
 							$args['title'] .= $suffix;
@@ -1182,7 +1197,8 @@
 
 					}
 
-				//Post meta
+				// Post meta
+
 					if ( is_single() ) {
 
 						$meta = receptar_post_meta( array(
@@ -1192,21 +1208,26 @@
 
 					}
 
-				//Filter processed $args
+				// Filter processed $args
+
 					$args = apply_filters( 'wmhook_receptar_post_title_args', $args );
 
-				//Generating output HTML
+				// Generating output HTML
+
 					$replacements = apply_filters( 'wmhook_receptar_post_title_replacements', array(
-							'{class}'           => esc_attr( $args['class'] ),
-							'{class_container}' => esc_attr( $args['class_container'] ),
-							'{meta}'            => $meta,
-							'{tag}'             => esc_attr( $args['tag'] ),
-							'{title}'           => do_shortcode( $args['title'] ),
-						), $args );
+						'{class}'           => esc_attr( $args['class'] ),
+						'{class_container}' => esc_attr( $args['class_container'] ),
+						'{meta}'            => $meta,
+						'{tag}'             => esc_attr( $args['tag'] ),
+						'{title}'           => do_shortcode( $args['title'] ),
+					), $args );
 					$output = strtr( $args['output'], $replacements );
 
-			//Output
+
+			// Output
+
 				echo apply_filters( 'wmhook_receptar_post_title_output', $output, $args );
+
 		}
 	} // /receptar_post_title
 
@@ -1284,20 +1305,6 @@
 					add_filter( 'wmhook_receptar_breadcrumbs_enabled', '__return_false' );
 				}
 			} // /receptar_breadcrumbs_off
-
-
-
-		/**
-		 * Entry container attributes
-		 *
-		 * @since    1.0
-		 * @version  1.0
-		 */
-		if ( ! function_exists( 'receptar_entry_container_atts' ) ) {
-			function receptar_entry_container_atts() {
-				return receptar_schema_org( 'entry' );
-			}
-		} // /receptar_entry_container_atts
 
 
 
@@ -1656,30 +1663,16 @@
 	 * It is completely optional, but if you like this WordPress theme,
 	 * I would appreciate it if you keep the credit link in the footer.
 	 *
-	 * @since    1.0
-	 * @version  1.3
+	 * @since    1.0.0
+	 * @version  1.4.0
 	 */
 	if ( ! function_exists( 'receptar_footer' ) ) {
 		function receptar_footer() {
-			//Credits
-				echo '<div class="site-footer-area footer-area-site-info">';
-					echo '<div class="site-info-container">';
-						echo '<div class="site-info" role="contentinfo">';
-							echo apply_filters( 'wmhook_receptar_credits_output',
-									'&copy; ' . date( 'Y' ) . ' <a href="' . home_url( '/' ) . '" title="' . get_bloginfo( 'name' ) . '">' . get_bloginfo( 'name' ) . '</a>. '
-									. sprintf(
-											esc_html__( 'Powered by %s.', 'receptar' ),
-											'<a href="https://wordpress.org">WordPress</a>'
-										)
-									. ' '
-									. sprintf(
-											esc_html__( 'Theme by %s.', 'receptar' ),
-											'<a href="' . esc_url( wp_get_theme()->get( 'AuthorURI' ) ) . '">WebMan Design</a>'
-										)
-								);
-						echo '</div>';
-					echo '</div>';
-				echo '</div>';
+
+			// Output
+
+				get_template_part( 'template-parts/footer/site', 'info' );
+
 		}
 	} // /receptar_footer
 
@@ -1688,16 +1681,16 @@
 		/**
 		 * Footer top
 		 *
-		 * @since    1.0
-		 * @version  1.0
+		 * @since    1.0.0
+		 * @version  1.4.0
 		 */
 		if ( ! function_exists( 'receptar_footer_top' ) ) {
 			function receptar_footer_top() {
-				//Preparing output
-					$output = "\r\n\r\n" . '<footer id="colophon" class="site-footer"' . receptar_schema_org( 'WPFooter' ) . '>' . "\r\n\r\n";
 
-				//Output
-					echo $output;
+				// Output
+
+					echo "\r\n\r\n" . '<footer id="colophon" class="site-footer">' . "\r\n\r\n";
+
 			}
 		} // /receptar_footer_top
 
