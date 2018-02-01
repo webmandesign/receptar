@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.4.0
+ * @version  1.4.1
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -62,11 +62,11 @@
 				add_action( 'wmhook_body_bottom',               'receptar_site_bottom',     100 );
 			//Header
 				add_action( 'wmhook_header_top',                'receptar_header_top',       10 );
-				add_action( 'wmhook_header',                    'receptar_logo',             10 );
+				add_action( 'wmhook_header',                    'receptar_logo',             10, 0 );
 				add_action( 'wmhook_header',                    'get_sidebar',               20 );
 				add_action( 'wmhook_header',                    'receptar_header_widgets',   30 );
 				add_action( 'wmhook_header_bottom',             'receptar_header_bottom',    10 );
-				add_action( 'wmhook_secondary_content_top',     'receptar_logo',             10 );
+				add_action( 'wmhook_secondary_content_top',     'receptar_logo',             10, 0 );
 				add_action( 'wmhook_secondary_controls_bottom', 'receptar_post_nav',         10 );
 				add_action( 'wmhook_secondary_controls_bottom', 'receptar_menu_social',      20 );
 			//Content
@@ -148,7 +148,7 @@
 	 * Theme setup
 	 *
 	 * @since    1.0.0
-	 * @version  1.4.0
+	 * @version  1.4.1
 	 */
 	if ( ! function_exists( 'receptar_setup' ) ) {
 		function receptar_setup() {
@@ -180,6 +180,13 @@
 
 			//Title tag
 				add_theme_support( 'title-tag' );
+
+			// Site logo
+
+				/**
+				 * @link  https://codex.wordpress.org/Theme_Logo
+				 */
+				add_theme_support( 'custom-logo' );
 
 			//Visual editor styles
 				add_editor_style( $visual_editor_css );

@@ -6,11 +6,13 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.4.0
+ * @version  1.4.1
  *
- * CONTENT:
- * - 10) Actions and filters
- * - 20) Options functions
+ * Content:
+ *
+ * 10) Actions and filters
+ * 20) Options functions
+ * 30) Partial refresh
  */
 
 
@@ -475,4 +477,61 @@
 		}
 	} // /receptar_custom_css_template
 
-?>
+
+
+
+
+/**
+ * 30) Partial refresh
+ */
+
+	/**
+	 * Customizer partial refresh
+	 *
+	 * @since    1.4.1
+	 * @version  1.4.1
+	 *
+	 * @param  object $wp_customize  WP customizer object.
+	 */
+	if ( ! function_exists( 'receptar_customizer_partial_refresh' ) ) {
+		function receptar_customizer_partial_refresh( $wp_customize ) {
+
+			// Requirements check
+
+				if ( ! isset( $wp_customize->selective_refresh ) ) {
+					return;
+				}
+
+
+			// Processing
+
+				$wp_customize->get_setting( 'custom_logo' )->transport = 'postMessage';
+
+				$wp_customize->selective_refresh->add_partial( 'custom_logo', array(
+					'selector'            => '.site-branding',
+					'container_inclusive' => false,
+					'render_callback'     => 'receptar_customizer_partial_refresh_logo',
+				) );
+
+		}
+	} // /receptar_customizer_partial_refresh
+
+	add_filter( 'customize_register', 'receptar_customizer_partial_refresh', 999 );
+
+
+
+		/**
+		 * Customizer partial refresh helper: site logo
+		 *
+		 * @since    1.4.1
+		 * @version  1.4.1
+		 */
+		if ( ! function_exists( 'receptar_customizer_partial_refresh_logo' ) ) {
+			function receptar_customizer_partial_refresh_logo() {
+
+				// Output
+
+					receptar_logo( false );
+
+			}
+		} // /receptar_customizer_partial_refresh_logo

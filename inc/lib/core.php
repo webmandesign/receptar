@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.4.0
+ * @version  1.4.1
  *
  * CONTENT:
  * -   1) Required files
@@ -89,44 +89,58 @@
 	/**
 	 * Logo
 	 *
-	 * Supports Jetpack Site Logo module.
-	 *
 	 * @since    1.0
-	 * @version  1.3
+	 * @version  1.4.1
 	 */
 	if ( ! function_exists( 'receptar_logo' ) ) {
-		function receptar_logo() {
-			//Helper variables
-				$output = '';
+		function receptar_logo( $container_class = 'site-branding' ) {
+
+			// Helper variables
+
+				$output = array();
+
+				$document_title = wp_get_document_title();
+				$custom_logo    = get_theme_mod( 'custom_logo' );
+
+				// If we don't get WordPress custom logo, try Jetpack Site Logo
+
+					if ( empty( $custom_logo ) && function_exists( 'jetpack_get_site_logo' ) ) {
+						$custom_logo = get_option( 'site_logo', array() );
+						$custom_logo = ( isset( $custom_logo['id'] ) && $custom_logo['id'] ) ? ( absint( $custom_logo['id'] ) ) : ( false );
+					}
 
 				$blog_info = apply_filters( 'wmhook_receptar_logo_blog_info', array(
-						'name'        => trim( get_bloginfo( 'name' ) ),
-						'description' => trim( get_bloginfo( 'description' ) ),
-					) );
+					'name'        => trim( get_bloginfo( 'name' ) ),
+					'description' => trim( get_bloginfo( 'description' ) ),
+				), $container_class );
 
 				$args = apply_filters( 'wmhook_receptar_logo_args', array(
-						'title_att'  => ( $blog_info['description'] ) ? ( $blog_info['name'] . ' | ' . $blog_info['description'] ) : ( $blog_info['name'] ),
-						'logo_image' => ( function_exists( 'jetpack_get_site_logo' ) ) ? ( absint( jetpack_get_site_logo( 'id' ) ) ) : ( false ),
-						'logo_type'  => 'text',
-						'url'        => home_url( '/' ),
-					) );
+					'logo_image' => ( ! empty( $custom_logo ) ) ? ( $custom_logo ) : ( false ),
+					'logo_type'  => 'text',
+					'title_att'  => ( $blog_info['description'] ) ? ( $blog_info['name'] . ' | ' . $blog_info['description'] ) : ( $blog_info['name'] ),
+					'url'        => home_url( '/' ),
+					'container'  => $container_class,
+				) );
 
-			//Preparing output
-				//Logo image
-					if ( ! empty( $args['logo_image'] ) ) {
+
+			// Processing
+
+				// Logo image
+
+					if ( $args['logo_image'] ) {
 
 						$img_id = ( is_numeric( $args['logo_image'] ) ) ? ( absint( $args['logo_image'] ) ) : ( receptar_get_image_id_from_url( $args['logo_image'] ) );
 
 						if ( $img_id ) {
-							$logo_url = wp_get_attachment_image_src( $img_id, 'full' );
 
 							$atts = (array) apply_filters( 'wmhook_receptar_logo_image_atts', array(
-									'alt'   => esc_attr( sprintf( esc_html_x( '%s logo', 'Site logo image "alt" HTML attribute text.', 'receptar' ), $blog_info['name'] ) ),
-									'title' => esc_attr( $args['title_att'] ),
-									'class' => '',
-								) );
+								'alt'   => esc_attr( sprintf( esc_html_x( '%s logo', 'Site logo image "alt" HTML attribute text.', 'receptar' ), $blog_info['name'] ) ),
+								'title' => esc_attr( $args['title_att'] ),
+								'class' => '',
+							) );
 
-							$args['logo_image'] = wp_get_attachment_image( $img_id, 'full', false, $atts );
+							$args['logo_image'] = wp_get_attachment_image( absint( $img_id ), 'full', false, $atts );
+
 						}
 
 						$args['logo_type'] = 'img';
@@ -135,27 +149,52 @@
 
 					$args['logo_image'] = apply_filters( 'wmhook_receptar_logo_logo_image', $args['logo_image'] );
 
-				//Logo HTML
-					$output .= '<div class="site-branding">';
-						$output .= '<h1 class="' . apply_filters( 'wmhook_receptar_logo_class', 'site-title logo type-' . $args['logo_type'], $args ) . '">';
-						$output .= '<a href="' . esc_url( $args['url'] ) . '" title="' . esc_attr( $args['title_att'] ) . '">';
+				// Logo HTML
+
+					$logo_class = apply_filters( 'wmhook_receptar_logo_class', 'site-title logo type-' . $args['logo_type'], $args );
+
+					if ( $args['container'] ) {
+						$output[1] = '<div class="' . esc_attr( trim( $args['container'] ) ) . '">';
+					}
+
+						if ( is_front_page() ) {
+							$output[10] = '<h1 id="site-title" class="' . esc_attr( $logo_class ) . '">';
+						} else {
+							$output[10] = '<h2 class="screen-reader-text">' . $document_title . '</h2>'; // To provide BODY heading on subpages
+							$output[15] = '<a id="site-title" class="' . esc_attr( $logo_class ) . '" href="' . esc_url( $args['url'] ) . '" title="' . esc_attr( $args['title_att'] ) . '" rel="home">';
+						}
 
 							if ( 'text' === $args['logo_type'] ) {
-								$output .= '<span class="text-logo">' . $blog_info['name'] . '</span>';
+								$output[30] = '<span class="text-logo">' . $blog_info['name'] . '</span>';
 							} else {
-								$output .= $args['logo_image'];
+								$output[30] = $args['logo_image'] . '<span class="screen-reader-text">' . $blog_info['name'] . '</span>';
 							}
 
-						$output .= '</a></h1>';
+						if ( is_front_page() ) {
+							$output[40] = '</h1>';
+						} else {
+							$output[40] = '</a>';
+						}
 
 							if ( $blog_info['description'] ) {
-								$output .= '<h2 class="site-description">' . $blog_info['description'] . '</h2>';
+								$output[50] = '<div class="site-description">' . $blog_info['description'] . '</div>';
 							}
 
-					$output .= '</div>';
+					if ( $args['container'] ) {
+						$output[100] = '</div>';
+					}
 
-			//Output
-				echo apply_filters( 'wmhook_receptar_logo_output', $output );
+					// Filter output array
+
+						$output = (array) apply_filters( 'wmhook_receptar_logo_output', $output, $args );
+
+						ksort( $output );
+
+
+			// Output
+
+				echo implode( '', $output );
+
 		}
 	} // /receptar_logo
 

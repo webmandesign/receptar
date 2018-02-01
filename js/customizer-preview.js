@@ -5,14 +5,16 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.4.1
  */
 
 
 
 
 
-jQuery( function() {
+( function( $ ) {
+
+
 
 
 
@@ -22,20 +24,34 @@ jQuery( function() {
 
 		wp.customize( 'blogname', function( value ) {
 
-			value.bind( function( to ) {
-				jQuery( '.site-title a' ).text( to );
-			} );
+			// Processing
+
+				value
+					.bind( function( to ) {
+
+						$( '.site-title span' )
+							.text( to );
+
+					} );
 
 		} ); // /blogname
 
 		wp.customize( 'blogdescription', function( value ) {
 
-			value.bind( function( to ) {
-				jQuery( '.site-description, .site-banner-header .highlight' ).text( to );
-			} );
+			// Processing
+
+				value
+					.bind( function( to ) {
+
+						$( '.site-description, .site-banner-header .highlight' )
+							.text( to );
+
+					} );
 
 		} ); // /blogdescription
 
 
 
-} );
+
+
+} )( jQuery );

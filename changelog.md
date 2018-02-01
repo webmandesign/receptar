@@ -1,5 +1,26 @@
 # Receptar Changelog
 
+## 1.4.1
+
+* **Add**: Site title/logo partial refresh in customizer
+* **Fix**: Unclosed CSS comments
+* **Fix**: Safari browser posts layout
+
+### Files changed:
+
+	changelog.md
+	style.css
+	css/_custom.css
+	css/colors.css
+	css/editor-style.css
+	css/slick.css
+	inc/setup-theme-options.php
+	inc/setup.php
+	inc/lib/core.php
+	js/customizer-preview.js
+	template-parts/loop.php
+
+
 ## 1.4.0
 
 * **Add**: Option to set custom site info in footer

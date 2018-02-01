@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.4.0
+ * @version  1.4.1
  */
 
 
@@ -15,7 +15,7 @@ if ( have_posts() ) {
 
 	wmhook_postslist_before();
 
-	echo '<div id="posts" class="posts posts-list clearfix">';
+	echo '<div id="posts" class="posts posts-list">';
 
 		wmhook_postslist_top();
 

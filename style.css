@@ -3,7 +3,7 @@ Theme Name:   Receptar
 Theme URI:    https://www.webmandesign.eu/portfolio/receptar-wordpress-theme/
 Author:       WebMan Design
 Author URI:   https://www.webmandesign.eu/
-Version:      1.4.0
+Version:      1.4.1
 Text Domain:  receptar
 Domain Path:  /languages
 License:      GNU General Public License v3
@@ -577,7 +577,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 			.site-description { margin: 0; }
 
-				.site-header > .site-branding .site-description {
+				.site-description {
 					clip: rect(1px, 1px, 1px, 1px);
 					position: absolute !important;
 					height: 1px;
