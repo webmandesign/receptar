@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.4.1
+ * @version  1.5.0
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -774,7 +774,7 @@
 	 * HTML Body classes
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.5.0
 	 *
 	 * @param  array $classes
 	 */
@@ -796,6 +796,12 @@
 						$body_classes['is-singular'] = ++$i;
 					} else {
 						$body_classes['is-not-singular'] = ++$i;
+					}
+
+				// Privacy Policy page
+
+					if ( (int) get_option( 'wp_page_for_privacy_policy' ) === get_the_ID() ) {
+						$body_classes['page-privacy-policy'] = ++$i;
 					}
 
 				//Has featured image?
@@ -1858,61 +1864,69 @@
 	 * Add form field placeholders to comments form
 	 *
 	 * @since    1.0
-	 * @version  1.3
+	 * @version  1.5.0
 	 *
 	 * @param  mixed $fields
 	 */
 	if ( ! function_exists( 'receptar_comments_form_placeholders' ) ) {
 		function receptar_comments_form_placeholders( $fields ) {
-			//Preparing output
+
+			//Processing
+
 				if ( is_string( $fields ) ) {
 
-					//Comment
+					// Comment
+
 						$fields = str_replace(
-								'<textarea',
-								'<textarea placeholder="' . esc_html_x( 'Comment', 'Comment form field placeholder text.', 'receptar' ) . '"',
-								$fields
-							);
+							'<textarea',
+							'<textarea placeholder="' . esc_html_x( 'Comment', 'Comment form field placeholder text.', 'receptar' ) . '"',
+							$fields
+						);
+
 						$fields = str_replace(
-								'rows="8"',
-								'rows="4"',
-								$fields
-							);
+							'rows="8"',
+							'rows="4"',
+							$fields
+						);
 
 				} else {
 
-					//Name
+					// Name
+
 						if ( isset( $fields['author'] ) ) {
 							$fields['author'] = str_replace(
-									'<input',
-									'<input placeholder="' . esc_html_x( 'Name', 'Comment form field placeholder text.', 'receptar' ) . '"',
-									$fields['author']
-								);
+								'<input',
+								'<input placeholder="' . esc_html_x( 'Name', 'Comment form field placeholder text.', 'receptar' ) . '"',
+								$fields['author']
+							);
 						}
 
-					//Email
-						if ( isset( $fields['author'] ) ) {
+					// Email
+
+						if ( isset( $fields['email'] ) ) {
 							$fields['email'] = str_replace(
-									'<input',
-									'<input placeholder="' . esc_html_x( 'Email', 'Comment form field placeholder text.', 'receptar' ) . '"',
-									$fields['email']
-								);
+								'<input',
+								'<input placeholder="' . esc_html_x( 'Email', 'Comment form field placeholder text.', 'receptar' ) . '"',
+								$fields['email']
+							);
 						}
 
-					//Website
-						if ( isset( $fields['author'] ) ) {
+					// Website
+
+						if ( isset( $fields['url'] ) ) {
 							$fields['url'] = str_replace(
-									'<input',
-									'<input placeholder="' . esc_html_x( 'Website', 'Comment form field placeholder text.', 'receptar' ) . '"',
-									$fields['url']
-								);
+								'<input',
+								'<input placeholder="' . esc_html_x( 'Website', 'Comment form field placeholder text.', 'receptar' ) . '"',
+								$fields['url']
+							);
 						}
 
 				}
 
-			//Output
+
+			// Output
+
 				return $fields;
+
 		}
 	} // /receptar_comments_form_placeholders
-
-?>

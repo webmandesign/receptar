@@ -5,7 +5,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.4.1
+ * @version  1.5.0
  */
 
 
@@ -134,7 +134,9 @@
 		 */
 
 			.site-banner .slick-slider .slider-nav {
-				position: relative;
+				position: absolute;
+				bottom: 0;
+				width: 90%;
 				height: 0;
 				padding: 0;
 			}
@@ -164,7 +166,7 @@
 				    -ms-transition: opacity .4s ease-in-out;
 				        transition: opacity .4s ease-in-out;
 			}
-			.site-banner .slick-next { right: 1rem; }
+			.site-banner .slick-next { right: 0; }
 
 			.site-banner .slick-prev span,
 			.site-banner .slick-next span {

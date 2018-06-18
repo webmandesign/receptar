@@ -5,7 +5,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.5.0
  *
  * CONTENT:
  * -  10) Basics
@@ -85,7 +85,6 @@ jQuery( function() {
 						'autoplaySpeed'  : ( ! jQuery( '#site-banner' ).data( 'speed' ) ) ? ( 5400 ) : ( jQuery( '#site-banner' ).data( 'speed' ) ),
 						'cssEase'        : 'ease-in-out',
 						'dots'           : false,
-						'draggable'      : false,
 						'easing'         : 'easeInOutBack',
 						'fade'           : true,
 						'pauseOnHover'   : true,

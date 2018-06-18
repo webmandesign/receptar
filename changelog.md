@@ -1,5 +1,26 @@
 # Receptar Changelog
 
+## 1.5.0
+
+* **Update**: WordPress 4.9.6 compatibility (GDPR)
+* **Update**: Scripts: Slick 1.8.0
+* **Update**: Beaver Builder editor styles
+* **Fix**: Checking for comments form fields isset in `receptar_comments_form_placeholders()`
+
+### Files changed:
+
+	changelog.md
+	style.css
+	css/beaver-builder-editor.css
+	css/slick.css
+	css/starter.css
+	inc/setup.php
+	js/scripts-global.js
+	js/slick.min.js
+	js/dev/slick.js
+	template-parts/footer/site-info.php
+
+
 ## 1.4.1
 
 * **Add**: Site title/logo partial refresh in customizer

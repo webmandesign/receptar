@@ -5,7 +5,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.4.0
+ * @version  1.5.0
  */
 
 
@@ -1223,7 +1223,7 @@
 		 * Sticky posts
 		 */
 
-			.sticky {}
+			.sticky { /* This theme does not apply special styles here. */ }
 
 
 
@@ -1388,6 +1388,8 @@
 				.comment-form p { margin-bottom: 1em; }
 
 				.comment-form label { display: block; }
+				.comment-form [type="checkbox"] + label,
+				.comment-form [type="radio"] + label { display: inline-block; }
 
 				.comment-form-author input,
 				.comment-form-email input,
@@ -1841,14 +1843,6 @@
 							text-decoration: none;
 							opacity: .75;
 						}
-
-
-
-		/**
-		 * Comments special
-		 */
-
-			.bypostauthor {}
 
 
 

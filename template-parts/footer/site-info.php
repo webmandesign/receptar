@@ -6,7 +6,7 @@
  * @copyright  WebMan Design, Oliver Juhas
  *
  * @since    1.4.0
- * @version  1.4.0
+ * @version  1.5.0
  */
 
 
@@ -15,7 +15,7 @@
 
 // Helper variables
 
-	$site_info_text = trim( get_theme_mod( 'texts_site_info' ) );
+	$site_info_text = trim( (string) get_theme_mod( 'texts_site_info' ) );
 
 
 // Requirements check
@@ -50,6 +50,10 @@
 					'<a href="' . esc_url( wp_get_theme( 'receptar' )->get( 'ThemeURI' ) ) . '"><strong>' . wp_get_theme( 'receptar' )->get( 'Name' ) . '</strong></a>',
 					'<a href="' . esc_url( __( 'https://wordpress.org/', 'receptar' ) ) . '">WordPress</a>'
 				);
+
+				if ( function_exists( 'the_privacy_policy_link' ) ) {
+					the_privacy_policy_link( '<span class="sep"> | </span>' );
+				}
 
 				?>
 				<span class="sep"> | </span>
