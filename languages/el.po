@@ -1,0 +1,555 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Receptar\n"
+"Report-Msgid-Bugs-To: http://support.webmandesign.eu\n"
+"POT-Creation-Date: 2015-06-16 14:32+0100\n"
+"PO-Revision-Date: 2015-07-23 17:40+0200\n"
+"Last-Translator: kanenas.net (aka Nikolas Branis) <nbran@kanenas.net>\n"
+"Language-Team: Nikolas Branis <nbran@kanenas.net>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:22
+msgid "Oops! That page can not be found."
+msgstr "Ουπς! Δεν μπορώ να βρω τη σελίδα που ψάχνεις."
+
+#: 404.php:26
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr ""
+"Φαίνεται ότι δε βρέθηκε κάτι σε αυτή την τοποθεσία. Μήπως να δοκίμαζες στην "
+"αναζήτηση;"
+
+#: comments.php:43
+#, php-format
+msgctxt "Comments list title."
+msgid "1 comment on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s comments on &ldquo;%2$s&rdquo;"
+msgstr[0] "1 σχόλιο στο &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s σχόλια στο &ldquo;%2$s&rdquo;"
+
+#: comments.php:48
+msgctxt "Add new comment link text."
+msgid "Add yours &rarr;"
+msgstr "Πρόσθεσε το δικό σου &rarr;"
+
+#: comments.php:63
+msgid "Comments are closed. You can not add new comments."
+msgstr ""
+"Τα σχόλια της καταχώρησης έχουν κλείσει. Δεν μπορείς να προσθέσεις νέα "
+"σχόλια."
+
+#: comments.php:87
+msgid "Comment navigation"
+msgstr "Πλοήγηση στα σχόλια"
+
+#: comments.php:90
+msgid "&larr; Older comments"
+msgstr "&larr; Παλαιότερα σχόλια"
+
+#: comments.php:94
+msgid "Newer comments &rarr;"
+msgstr "Νεότερα σχόλια &rarr;"
+
+#: inc/customizer/controls/class-Customizer_Multiselect.php:42
+msgid "Press CTRL key for multiple selection."
+msgstr "Πάτησε το πλήκτρο CTRL για πολλαπλή επιλογή."
+
+#: inc/jetpack/jetpack.php:146
+msgid "Load more&hellip;"
+msgstr "Περισσότερα&hellip;"
+
+#: inc/lib/core.php:124
+#, php-format
+msgctxt "Site logo image \"alt\" HTML attribute text."
+msgid "%s logo"
+msgstr "%s λογότυπο"
+
+#. translators: %s will be replaced with parted post title. Copy it, do not translate.
+#: inc/lib/core.php:413
+#, php-format
+msgctxt "Parted/paginated post table of content title."
+msgid "\"%s\" table of contents"
+msgstr "\"%s\" πίνακας περιεχομένων"
+
+#: inc/lib/core.php:457
+#, php-format
+msgid "Page %s"
+msgstr "Σελίδα %s"
+
+#: inc/lib/core.php:511
+msgid "Part %"
+msgstr "Μέρος %"
+
+#: inc/lib/core.php:614
+#, php-format
+msgctxt "%d: number of comments."
+msgid "Comments: %d"
+msgstr "Σχόλια: %d"
+
+#: inc/lib/core.php:614
+msgctxt "Title for number of comments in post meta."
+msgid "Comments:"
+msgstr "Σχόλια:"
+
+#: inc/lib/core.php:645 inc/setup.php:1180
+#, php-format
+msgid "Edit the \"%s\""
+msgstr "Επεξεργαστείτε το \"%s\""
+
+#: inc/lib/core.php:645 inc/setup.php:1180
+msgctxt "Edit post link."
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: inc/lib/core.php:678
+#, php-format
+msgid "Permalink to \"%s\""
+msgstr "Μόνιμος σύνδεσμος στο \"%s\""
+
+#: inc/lib/core.php:705
+msgid "Views count"
+msgstr "Καταμέτρηση προβολών"
+
+#: inc/lib/core.php:782
+#, php-format
+msgctxt "Paginated content title suffix."
+msgid "(page %s)"
+msgstr "(σελίδα %s)"
+
+#: inc/lib/core.php:994
+msgid "Skip to content"
+msgstr "Μετάβαση στο περιεχόμενο"
+
+#: inc/lib/core.php:995
+msgid "Skip to navigation"
+msgstr "Μετάβαση στην πλοήγηση"
+
+#: inc/lib/visual-editor.php:111
+msgctxt "Visual editor blockquote formats group title."
+msgid "Quotes"
+msgstr "Εισαγωγικά"
+
+#: inc/lib/visual-editor.php:115
+msgid "Blockquote"
+msgstr "Παράθεση"
+
+#: inc/lib/visual-editor.php:119
+msgid "Pullquote - align left"
+msgstr "Παράθεση - στοίχιση αριστερά"
+
+#: inc/lib/visual-editor.php:124
+msgid "Pullquote - align right"
+msgstr "Παράθεση - στοίχιση δεξιά"
+
+#: inc/lib/visual-editor.php:129
+msgctxt ""
+"Visual editor format label for HTML CITE tag used to set the blockquote "
+"source."
+msgid "Cite"
+msgstr "Παράθεση"
+
+#: inc/lib/visual-editor.php:138
+msgid "Text styles"
+msgstr "Στυλ κειμένων"
+
+#: inc/lib/visual-editor.php:142
+msgid "Uppercase heading or paragraph"
+msgstr " Κεφαλαία επικεφαλίδα ή παράγραφος"
+
+#: inc/lib/visual-editor.php:148
+msgid "Highlighted (marked) text"
+msgstr "Τονισμένο (με σήμανση) κείμενο"
+
+#: inc/lib/visual-editor.php:153
+msgid "Button link"
+msgstr "Σύνδεσμος κουμπιού"
+
+#: inc/setup-theme-options.php:67
+msgctxt "Customizer section title."
+msgid "Colors"
+msgstr "Χρώματα"
+
+#: inc/setup-theme-options.php:68 inc/setup-theme-options.php:234
+#: inc/setup-theme-options.php:275
+msgctxt "Customizer panel title."
+msgid "Theme"
+msgstr "Θέμα"
+
+#: inc/setup-theme-options.php:73 inc/setup-theme-options.php:79
+msgid "Accent color"
+msgstr "Χρώμα έμφασης"
+
+#: inc/setup-theme-options.php:80
+msgid "This color affects links, buttons and other elements of the website"
+msgstr ""
+"Αυτό το χρώμα επηρεάζει συνδέσμους, κουμπιά και άλλα στοιχεία της ιστοσελίδας"
+
+#: inc/setup-theme-options.php:86
+msgid "Accent text color"
+msgstr "Χρώμα έμφασης κειμένου"
+
+#: inc/setup-theme-options.php:87
+msgid "Color of text over accent color background"
+msgstr "Χρώμα κειμένου πάνω από χρώμα έμφασης φόντου"
+
+#: inc/setup-theme-options.php:95
+msgid "Header"
+msgstr "Κεφαλίδα"
+
+#: inc/setup-theme-options.php:101 inc/setup-theme-options.php:121
+#: inc/setup-theme-options.php:153 inc/setup-theme-options.php:183
+#: inc/setup-theme-options.php:215
+msgid "Background color"
+msgstr "Χρώμα φόντου"
+
+#: inc/setup-theme-options.php:107 inc/setup-theme-options.php:127
+#: inc/setup-theme-options.php:159 inc/setup-theme-options.php:189
+#: inc/setup-theme-options.php:221
+msgid "Text color"
+msgstr "Χρώμα κειμένου"
+
+#: inc/setup-theme-options.php:115 inc/setup.php:1769
+msgid "Sidebar"
+msgstr "Πλευρική εργαλειοθήκη"
+
+#: inc/setup-theme-options.php:133 inc/setup-theme-options.php:165
+#: inc/setup-theme-options.php:195
+msgid "Headings color"
+msgstr "Χρώματα επικεφαλίδων"
+
+#: inc/setup-theme-options.php:139 inc/setup-theme-options.php:171
+#: inc/setup-theme-options.php:201
+msgid "Borders color"
+msgstr "Χρώμα περιθωρίων"
+
+#: inc/setup-theme-options.php:147
+msgid "Content"
+msgstr "Περιεχόμενο"
+
+#: inc/setup-theme-options.php:177
+msgid "Alternative colors"
+msgstr "Εναλλακτικά χρώματα"
+
+#: inc/setup-theme-options.php:209
+msgid "Footer"
+msgstr "Υποσέλιδο"
+
+#: inc/setup-theme-options.php:233
+msgctxt "Customizer section title."
+msgid "Fonts"
+msgstr "Γραμματοσειρές"
+
+#: inc/setup-theme-options.php:240
+#, php-format
+msgctxt ""
+"%s is replaced with linked examples of web fonts libraries such as Google "
+"Fonts or Adobe Typekit."
+msgid ""
+"This theme does not restrict you to a predefined set of fonts. Please use "
+"any font service (such as %s) plugin you want and set the plugin according "
+"to the information below."
+msgstr ""
+"Αυτό το θέμα δε σας περιορίζει σε ένα προκαθορισμένο σύνολο γραμματοσειρών. "
+"Παρακαλούμε χρησιμοποιήστε οποιαδήποτε υπηρεσία πρόσθετου γραμματοσειράς "
+"(όπως% s) που θέλετε και ρυθμίστε το πρόσθετο σύμφωνα με τις παρακάτω "
+"πληροφορίες."
+
+#: inc/setup-theme-options.php:243
+msgid "List of CSS selectors for predefined theme font sets:"
+msgstr ""
+"Λίστα CSS επιλογέων για τα προκαθορισμένα σύνολα γραμματοσειρών του θέματος:"
+
+#: inc/setup-theme-options.php:245
+msgctxt "CSS selector group name."
+msgid "Texts:"
+msgstr "Κείμενα:"
+
+#: inc/setup-theme-options.php:248
+msgctxt "CSS selector group name."
+msgid "Headings:"
+msgstr "Επικεφαλίδες:"
+
+#: inc/setup-theme-options.php:251
+msgctxt "CSS selector group name."
+msgid "Logo:"
+msgstr "Λογότυπο:"
+
+#: inc/setup-theme-options.php:256
+#, php-format
+msgid ""
+"By default the theme uses %1$s font for texts, %2$s font for headings and "
+"%3$s font for logo."
+msgstr ""
+"Εξ ορισμού το θέμα χρησιμοποιεί γραμματοσειρά %1$s για κείμενα, %2$s "
+"γραμματοσειρά για επικεφαλίδες και γραμματοσειρά %3$s για το λογότυπο."
+
+#: inc/setup-theme-options.php:281
+msgid "Theme Credits"
+msgstr "Συντελεστές Θέματος"
+
+#: inc/setup-theme-options.php:282
+#, php-format
+msgctxt "1: linked theme name, 2: theme author name, 3: theme author link."
+msgid ""
+"%1$s is free WordPress theme developed by %2$s. You can obtain other "
+"professional WordPress themes at %3$s. Thank you for using this awesome "
+"theme!"
+msgstr ""
+"Το %1$s είναι δωρεάν WordPress θέμα που αναπτύχθηκε από το %2$s. Μπορείτε να "
+"αποκτήσετε άλλα επαγγελματικά WordPress θέματα στο %3$s. Σας ευχαριστούμε "
+"που χρησιμοποιείτε αυτό το φοβερό θέμα!"
+
+#: inc/setup-theme-options.php:287
+msgid "Donate"
+msgstr "Δωρεά"
+
+#: inc/setup.php:203
+msgid "Primary Menu"
+msgstr "Κυρίως Μενού"
+
+#: inc/setup.php:204
+msgid "Social Links Menu"
+msgstr "Social Links Μενού"
+
+#: inc/setup.php:336
+msgid "In posts list."
+msgstr "Σε λίστα αναρτήσεων."
+
+#: inc/setup.php:347
+msgid "In single post page."
+msgstr "Σε σελίδα απλής ανάρτησης."
+
+#: inc/setup.php:353
+msgid "In front (and blog) page banner."
+msgstr "Μπροστά (και blog) σελίδα μπάνερ."
+
+#: inc/setup.php:359
+msgid "In single post page on mobile devices only."
+msgstr "Σε σελίδα απλής ανάρτησης σε κινητές συσκευές μόνο."
+
+#: inc/setup.php:481
+msgctxt "WordPress predefined image size name."
+msgid "Thumbnail size"
+msgstr "Μέγεθος μικρογραφίας"
+
+#: inc/setup.php:482
+msgctxt "WordPress predefined image size name."
+msgid "Medium size"
+msgstr "Μεσαίο μέγεθος"
+
+#: inc/setup.php:483
+msgctxt "WordPress predefined image size name."
+msgid "Large size"
+msgstr "Μεγάλο μέγεθος"
+
+#: inc/setup.php:508
+msgid "Recommended image sizes"
+msgstr "Προτεινόμενα μεγέθη εικόνας"
+
+#: inc/setup.php:509
+msgid ""
+"For the theme to work correctly, please, set these recommended image sizes:"
+msgstr ""
+"Για να λειτουργήσει σωστά το θέμα, παρακαλούμε, χρησιμοποιήστε τα "
+"συνιστώμενα μεγέθη εικόνας:"
+
+#: inc/setup.php:515
+msgid "Size name"
+msgstr "Όνομα μεγέθους"
+
+#: inc/setup.php:516
+msgid "Size parameters"
+msgstr "Παράμετροι μεγέθους"
+
+#: inc/setup.php:517
+msgid "Theme usage"
+msgstr "Χρήση θέματος"
+
+#: inc/setup.php:525
+msgid "cropped"
+msgstr "περικομμένη"
+
+#: inc/setup.php:525
+msgid "scaled"
+msgstr "κλιμακούμενη"
+
+#: inc/setup.php:533
+msgid ""
+"Additional image size added by the theme. Can not be changed on this page."
+msgstr ""
+"Πρόσθετα μέγεθη εικόνων έχουν προστεθεί από το θέμα. Δεν μπορούν να αλλάξουν "
+"σε αυτή τη σελίδα."
+
+#: inc/setup.php:538
+#, php-format
+msgctxt "1: image width, 2: image height, 3: cropped or scaled?"
+msgid "%1$d &times; %2$d, %3$s"
+msgstr "%1$d &times; %2$d, %3$s"
+
+#: inc/setup.php:1435
+msgid "This content is password protected."
+msgstr "Αυτό το περιεχόμενο είναι προστατευμένο με κωδικό πρόσβασης."
+
+#: inc/setup.php:1435
+msgid "Enter the password to view it."
+msgstr "Εισάγετε τον κωδικό πρόσβασης για να δείτε το περιεχόμενο."
+
+#: inc/setup.php:1526
+#, php-format
+msgid "Continue reading%s&hellip;"
+msgstr "Συνέχισε την ανάγνωση%s&hellip;"
+
+#: inc/setup.php:1580
+msgid ""
+"<span class=\"post-title\"><span class=\"meta-nav\">Published In: </span>"
+"%title</span>"
+msgstr ""
+"<span class=\"post-title\"><span class=\"meta-nav\">Δημοσιεύτηκε σε: </span>"
+"%title</span>"
+
+#: inc/setup.php:1590
+msgid ""
+"<span class=\"post-title\"><span class=\"meta-nav\">Previous: </span>%title</"
+"span>"
+msgstr ""
+"<span class=\"post-title\"><span class=\"meta-nav\">Προηγούμενο: </span>"
+"%title</span>"
+
+#: inc/setup.php:1597
+msgid ""
+"<span class=\"post-title\"><span class=\"meta-nav\">Next: </span>%title</"
+"span>"
+msgstr ""
+"<span class=\"post-title\"><span class=\"meta-nav\">Επόμενο: </span>%title</"
+"span>"
+
+#: inc/setup.php:1605
+msgid "Post navigation"
+msgstr "Πλοήγηση ανάρτησης"
+
+#: inc/setup.php:1671
+#, php-format
+msgid "Powered by %s."
+msgstr "Υποστηρίζεται από %s."
+
+#: inc/setup.php:1676
+#, php-format
+msgid "Theme by %s."
+msgstr "Θέμα από %s."
+
+#: inc/setup.php:1770
+msgid "Displayed in hidden sidebar on left below the primary navigation."
+msgstr ""
+"Εμφανίζεται στην κρυφή πλευρική εργαλειοθήκη στα αριστερά κάτω από την "
+"κυρίως πλοήγηση."
+
+#: inc/setup.php:1780
+msgid "Header Widgets"
+msgstr "Μονάδες Κεφαλίδας"
+
+#: inc/setup.php:1781
+msgid "Display widgets in the site header."
+msgstr "Εμφάνιση μονάδων στην κεφαλίδα της ιστοσελίδας."
+
+#: inc/setup.php:1838
+msgid "Dropcaps"
+msgstr "Dropcaps"
+
+#: inc/setup.php:1842
+msgid "Dropcap text"
+msgstr "Κείμενο Dropcap"
+
+#: inc/setup.php:1910
+msgctxt "Comment form field placeholder text."
+msgid "Comment"
+msgstr "Σχολιο"
+
+#: inc/setup.php:1925
+msgctxt "Comment form field placeholder text."
+msgid "Name"
+msgstr "Όνομα"
+
+#: inc/setup.php:1934
+msgctxt "Comment form field placeholder text."
+msgid "Email"
+msgstr "Email"
+
+#: inc/setup.php:1943
+msgctxt "Comment form field placeholder text."
+msgid "Website"
+msgstr "Ιστοσελίδα"
+
+#: search.php:22
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Αποτελέσματα αναζητησης για: %s"
+
+#: searchform.php:15
+msgctxt "Search field label."
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: searchform.php:16
+msgid "Type and press enter"
+msgstr "Πληκτρολόγησε και πάτησε enter"
+
+#: sidebar.php:32
+#, php-format
+msgid "%s site navigation"
+msgstr "%s πλοήγηση ιστοσελίδας"
+
+#: sidebar.php:106
+msgctxt "Mobile navigation toggle button title."
+msgid "Menu"
+msgstr "Μενού"
+
+#: template-parts/content-attachment-image.php:70
+msgctxt "Attachment page publish time."
+msgid "Image published on:"
+msgstr "Δημοσίευση εικόνας στις:"
+
+#: template-parts/content-attachment-image.php:74
+msgid "Image size:"
+msgstr "Μέγεθος αρχείου:"
+
+#: template-parts/content-attachment-image.php:78
+msgid "Image file name:"
+msgstr "Όνομα αρχείου εικόνας:"
+
+#: template-parts/content-none.php:18
+msgid "Nothing Found"
+msgstr "Δε βρέθηκε τίποτα"
+
+#: template-parts/content-none.php:24
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"Έτοιμοι να δημοσιεύσετε την πρώτη σας ανάρτηση; <a href=\"%1$s\">Ξεκινήστε "
+"εδώ</a>."
+
+#: template-parts/content-none.php:28
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Λυπούμαστε, αλλά τίποτα δεν ταιριάζει με τους όρους αναζήτησής σας. Παρακαλώ "
+"δοκιμάστε ξανά με κάποιες διαφορετικές λέξεις-κλειδιά."
+
+#: template-parts/content-none.php:34
+msgid ""
+"It seems we can not find what you are looking for. Perhaps searching can "
+"help."
+msgstr ""
+"Φαίνεται ότι δεν μπορούμε να βρούμε αυτό που ψάχνετε. Ίσως μια αναζήτηση "
+"μπορεί να βοηθήσει."
