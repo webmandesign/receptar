@@ -2,9 +2,6 @@
 
 ## 1.6.0
 
-* **Update**:
-* **Fix**:
-
 * **Update**: Using SVG for social icons
 * **Update**: Icons updated to Genericons Neue
 * **Update**: All theme assets put into dedicated `assets` folder
