@@ -5,7 +5,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.4.1
+ * @version  1.6.0
  */
 
 
@@ -33,9 +33,13 @@
  * 0. Includes
  */
 
-	@import url( 'starter.css' );
-
-	@import url( 'colors.css' );
+	/**
+	 * We need to include also these stylesheets:
+	 * - starter.css
+	 * - colors.css
+	 *
+	 * @see  receptar_setup()
+	 */
 
 
 
@@ -46,7 +50,7 @@
  */
 
 	pre:before {
-		font-family: 'Genericons';
+		font-family: 'Genericons-Neue';
 		font-style: normal;
 		font-weight: normal;
 		font-variant: normal;
@@ -56,10 +60,6 @@
 		 -webkit-font-smoothing: antialiased;
 		speak: none;
 	}
-
-	.genericon.vertical-align-middle:before   { vertical-align: middle;   }
-	.genericon.vertical-align-baseline:before { vertical-align: baseline; }
-	.genericon.vertical-align-bottom:before   { vertical-align: bottom;   }
 
 
 

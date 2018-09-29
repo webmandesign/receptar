@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.4.0
+ * @version  1.6.0
  */
 
 ?>
@@ -35,8 +35,8 @@
 			} else {
 
 				//Fallback to Custom Header image
-					$image_url = ( get_header_image() ) ? ( get_header_image() ) : ( receptar_get_stylesheet_directory_uri( 'images/header.jpg' ) );
-					echo '<img src="' . esc_url( $image_url ) . '" width="' . esc_attr( get_custom_header()->width ) . '" height="' . esc_attr( get_custom_header()->height ) . '" alt="" />';
+					$image_url = ( get_header_image() ) ? ( get_header_image() ) : ( receptar_get_stylesheet_directory_uri( 'assets/images/header.jpg' ) );
+					echo '<img src="' . esc_url( $image_url ) . '" width="' . esc_attr( get_custom_header()->width ) . '" height="' . esc_attr( get_custom_header()->height ) . '" alt="' . the_title_attribute( 'echo=0' ) . '" />';
 
 			}
 

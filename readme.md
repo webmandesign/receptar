@@ -72,8 +72,10 @@ Copyright (c) Huerta Tipográfica
 Licensed under the SIL Open Font License, 1.1
 http://www.google.com/fonts/specimen/Alegreya
 
-**Genericons font icons**
-*Please see `genericons/COPYING.txt` file for more info.*
+**Genericons Neue font icons**
+Copyright (c) Automattic, Inc.
+Distributed under [GPLv2 or later license](https://www.gnu.org/licenses/gpl-2.0.html)
+https://genericons.com
 
 ### Images copyright
 

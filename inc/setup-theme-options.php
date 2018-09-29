@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.4.1
+ * @version  1.6.0
  *
  * Content:
  *
@@ -46,7 +46,7 @@
 	 * Set theme options array
 	 *
 	 * @since    1.0.0
-	 * @version  1.4.0
+	 * @version  1.6.0
 	 *
 	 * @param  array $options
 	 */
@@ -380,7 +380,7 @@
 										. '<code>h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .entry-category, .entry-title .entry-edit</code>'
 									. '</li>'
 									. '<li><strong>' . esc_html_x( 'Logo:', 'CSS selector group name.', 'receptar' ) . '</strong><br />'
-										. '<code>h1, .h1, blockquote</code>'
+										. '<code>.site-title, h1, .h1, blockquote</code>'
 									. '</li>'
 									. '</ol>'
 									. '<p>' . sprintf(
@@ -458,7 +458,7 @@
 	 * where the specific option value should be used.
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.6.0
 	 *
 	 * @param  string $styles
 	 */
@@ -467,8 +467,8 @@
 			//Preparing output
 				ob_start();
 
-				locate_template( 'css/_custom.css',      true );
-				locate_template( 'css/_custom-plus.css', true );
+				locate_template( 'assets/css/_custom.css',      true );
+				locate_template( 'assets/css/_custom-plus.css', true );
 
 				$styles = ob_get_clean();
 

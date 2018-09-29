@@ -6,14 +6,13 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.4.1
+ * @version  1.6.0
  *
  * CONTENT:
  * -   1) Required files
  * -  10) Actions and filters
  * -  20) Branding
- * -  30) SEO
- * -  40) Post/page
+ * -  30) Post/page
  * - 100) Other functions
  */
 
@@ -71,12 +70,8 @@
 			add_filter( 'wmhook_esc_css', 'receptar_esc_css' );
 		//Widgets improvements
 			add_filter( 'widget_title', 'receptar_html_widget_title' );
-			add_filter( 'widget_text',  'do_shortcode'         );
 		//Table of contents
 			add_filter( 'the_content', 'receptar_nextpage_table_of_contents', 10 );
-
-		//Remove filters
-			remove_filter( 'widget_title', 'esc_html' );
 
 
 
@@ -203,83 +198,7 @@
 
 
 /**
- * 30) SEO
- */
-
-	/**
-	 * SEO website meta title
-	 *
-	 * Not needed since WordPress 4.1.
-	 *
-	 * @todo Remove this when WordPress 4.3 is released.
-	 *
-	 * @since    1.0
-	 * @version  1.0
-	 */
-	if ( ! function_exists( '_wp_render_title_tag' ) ) {
-
-		/**
-		 * SEO website meta title
-		 *
-		 * @param  string $title
-		 * @param  string $sep
-		 */
-		if ( ! function_exists( 'receptar_title' ) ) {
-			function receptar_title( $title, $sep ) {
-				//Requirements check
-					if ( is_feed() ) {
-						return $title;
-					}
-
-				//Helper variables
-					$sep = ' ' . trim( $sep ) . ' ';
-
-				//Preparing output
-					$title .= get_bloginfo( 'name', 'display' );
-
-					//Site description
-						if (
-								( $site_description = get_bloginfo( 'description', 'display' ) )
-								&& ( is_home() || is_front_page() )
-							) {
-							$title .= $sep . $site_description;
-						}
-
-					//Pagination / parts
-						if ( receptar_paginated_suffix() && ! is_404() ) {
-							$title .= $sep . receptar_paginated_suffix();
-						}
-
-				//Output
-					return esc_attr( $title );
-			}
-
-			add_filter( 'wp_title', 'receptar_title', 10, 2 );
-		} // /receptar_title
-
-
-
-		/**
-		 * Title shim
-		 *
-		 * @link https://make.wordpress.org/core/2014/10/29/title-tags-in-4-1/
-		 */
-		function _wp_render_title_tag() {
-			?>
-			<title><?php wp_title( '|', true, 'right' ); ?></title>
-			<?php
-		}
-
-		add_action( 'wp_head', '_wp_render_title_tag', -99 );
-
-	} // /receptar_title
-
-
-
-
-
-/**
- * 40) Post/page
+ * 30) Post/page
  */
 
 	/**
@@ -631,46 +550,51 @@
 	 * Paginated heading suffix
 	 *
 	 * @since    1.0
-	 * @version  1.3
+	 * @version  1.6.0
 	 *
 	 * @param  string $tag           Wrapper tag
 	 * @param  string $singular_only Display only on singular posts of specific type
 	 */
 	if ( ! function_exists( 'receptar_paginated_suffix' ) ) {
 		function receptar_paginated_suffix( $tag = '', $singular_only = false ) {
-			//Requirements check
-				if ( $singular_only && ! is_singular( $singular_only ) ) {
+
+			// Requirements check
+
+				if (
+					$singular_only
+					&& ! is_singular( $singular_only )
+				) {
 					return;
 				}
 
-			//Helper variables
+
+
+			// Helper variables
+
 				global $page, $paged;
 
-				$output = '';
-
-				if ( ! isset( $paged ) ) {
-					$paged = 0;
-				}
-				if ( ! isset( $page ) ) {
-					$page = 0;
-				}
-
-				$paged = max( $page, $paged );
+				$output    = '';
+				$paginated = max( absint( $page ), absint( $paged ) );
 
 				$tag = trim( $tag );
 				if ( $tag ) {
-					$tag = array( '<' . $tag . '>', '</' . $tag . '>' );
+					$tag = array( '<' . tag_escape( $tag ) . '>', '</' . tag_escape( $tag ) . '>' );
 				} else {
 					$tag = array( '', '' );
 				}
 
-			//Preparing output
-				if ( 1 < $paged ) {
-					$output = ' ' . $tag[0] . sprintf( esc_html_x( '(page %s)', 'Paginated content title suffix.', 'receptar' ), $paged ) . $tag[1];
+
+			// Processing
+
+				if ( 1 < $paginated ) {
+					$output = ' ' . $tag[0] . sprintf( esc_html_x( '(page %s)', 'Paginated content title suffix.', 'receptar' ), $paginated ) . $tag[1];
 				}
 
-			//Output
+
+			// Output
+
 				return apply_filters( 'wmhook_receptar_paginated_suffix_output', $output );
+
 		}
 	} // /receptar_paginated_suffix
 
@@ -680,29 +604,33 @@
 	 * Checks for <!--more--> tag in post content
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.6.0
 	 *
 	 * @param  obj/absint $post
 	 */
 	if ( ! function_exists( 'receptar_has_more_tag' ) ) {
 		function receptar_has_more_tag( $post = null ) {
-			//Helper variables
+
+			// Helper variables
+
 				if ( empty( $post ) ) {
-					global $post;
+					$post = $GLOBALS['post'];
 				} elseif ( is_numeric( $post ) ) {
 					$post = get_post( absint( $post ) );
 				}
 
-			//Requirements check
-				if (
-						! is_object( $post )
-						|| ! isset( $post->post_content )
-					) {
+
+			// Requirements check
+
+				if ( ! $post instanceof WP_Post ) {
 					return;
 				}
 
-			//Output
+
+			// Output
+
 				return strpos( $post->post_content, '<!--more-->' );
+
 		}
 	} // /receptar_has_more_tag
 

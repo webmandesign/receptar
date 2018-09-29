@@ -5,7 +5,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.5.0
+ * @version  1.6.0
  *
  * CONTENT:
  * -  10) Basics
@@ -91,8 +91,8 @@ jQuery( function() {
 						'slide'          : 'article',
 						'speed'          : 600,
 						'swipeToSlide'   : true,
-						'prevArrow'      : '<div class="slider-nav slider-nav-prev"><button type="button" class="slick-prev"><span class="genericon genericon-previous"></span></button></div>',
-						'nextArrow'      : '<div class="slider-nav slider-nav-next"><button type="button" class="slick-next"><span class="genericon genericon-next"></span></button></div>'
+						'prevArrow'      : '<div class="slider-nav slider-nav-prev"><button type="button" class="slick-prev"><span class="genericons-neue genericons-neue-previous"></span></button></div>',
+						'nextArrow'      : '<div class="slider-nav slider-nav-next"><button type="button" class="slick-next"><span class="genericons-neue genericons-neue-next"></span></button></div>'
 					} );
 
 			} // /slick

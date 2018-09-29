@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.4.0
+ * @version  1.6.0
  *
  * CONTENT:
  * -  1) Required files
@@ -166,13 +166,13 @@
 	 * Sanitize texts
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.6.0
 	 *
 	 * @param  mixed $value WP customizer value to sanitize.
 	 */
 	if ( ! function_exists( 'receptar_sanitize_text' ) ) {
 		function receptar_sanitize_text( $value ) {
-			return apply_filters( 'wmhook_receptar_sanitize_text_output', wp_kses_post( force_balance_tags( $value ) ) );
+			return apply_filters( 'wmhook_receptar_sanitize_text_output', wp_kses_post( $value ) );
 		}
 	} // /receptar_sanitize_text
 
@@ -780,18 +780,22 @@
 	 * Caching $output into 'WM_THEME_SHORTNAME-custom-css' transient.
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.6.0
 	 *
 	 * @param  bool $set_cache  Determines whether the results should be cached or not.
 	 * @param  bool $return     Whether to return a value or just run the process.
 	 */
 	if ( ! function_exists( 'receptar_custom_styles' ) ) {
 		function receptar_custom_styles( $set_cache = false, $return = true ) {
-			//Helper variables
+
+			// Helper variables
+
 				global $wp_customize;
 
-				if ( ! isset( $wp_customize ) || ! is_object( $wp_customize ) ) {
-					$wp_customize = null;
+				if ( $wp_customize instanceof WP_Customize_Manager ) {
+					$is_customizer_preview = ( $wp_customize && $wp_customize->is_preview() );
+				} else {
+					$is_customizer_preview = false;
 				}
 
 				$output        = (string) apply_filters( 'wmhook_custom_styles', '' );
@@ -808,16 +812,19 @@
 					$set_cache = true;
 				}
 
-			//Preparing output
+
+			// Processing
+
 				/**
 				 * Setting up replacements array when no cache exists.
 				 * Also, creates a new cache for replacements values.
 				 * The cache is being created only when saving the Customizer settings.
 				 */
+
 					if (
 							! empty( $theme_options )
 							&& (
-								( $wp_customize && $wp_customize->is_preview() )
+								$is_customizer_preview
 								|| empty( $replacements )
 							)
 						) {
@@ -937,7 +944,7 @@
 
 					if (
 							empty( $output_cached )
-							|| ( $wp_customize && $wp_customize->is_preview() )
+							|| $is_customizer_preview
 						) {
 
 						//Replace tags in custom CSS strings with actual values
@@ -954,10 +961,13 @@
 
 					}
 
-			//Output
+
+			// Output
+
 				if ( $output && $return ) {
 					return (string) apply_filters( 'wmhook_receptar_custom_styles_output', trim( $output ) );
 				}
+
 		}
 	} // /receptar_custom_styles
 

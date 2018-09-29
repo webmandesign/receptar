@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.5.0
+ * @version  1.6.0
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -148,7 +148,7 @@
 	 * Theme setup
 	 *
 	 * @since    1.0.0
-	 * @version  1.4.1
+	 * @version  1.6.0
 	 */
 	if ( ! function_exists( 'receptar_setup' ) ) {
 		function receptar_setup() {
@@ -157,11 +157,14 @@
 				$image_sizes = array_filter( apply_filters( 'wmhook_receptar_setup_image_sizes', array() ) );
 
 				//WordPress visual editor CSS stylesheets
+					$version           = esc_attr( trim( wp_get_theme()->get( 'Version' ) ) );
 					$visual_editor_css = array_filter( (array) apply_filters( 'wmhook_receptar_setup_visual_editor_css', array(
-							str_replace( ',', '%2C', receptar_google_fonts_url() ),
-							esc_url( add_query_arg( array( 'ver' => wp_get_theme()->get( 'Version' ) ), receptar_get_stylesheet_directory_uri( 'genericons/genericons.css' ) ) ),
-							esc_url( add_query_arg( array( 'ver' => wp_get_theme()->get( 'Version' ) ), receptar_get_stylesheet_directory_uri( 'css/editor-style.css' ) ) ),
-						) ) );
+						str_replace( ',', '%2C', receptar_google_fonts_url() ),
+						esc_url( add_query_arg( array( 'ver' => $version ), receptar_get_stylesheet_directory_uri( 'assets/fonts/genericons-neue/genericons-neue.css' ) ) ),
+						esc_url( add_query_arg( array( 'ver' => $version ), receptar_get_stylesheet_directory_uri( 'assets/css/starter.css' ) ) ),
+						esc_url( add_query_arg( array( 'ver' => $version ), receptar_get_stylesheet_directory_uri( 'assets/css/colors.css' ) ) ),
+						esc_url( add_query_arg( array( 'ver' => $version ), receptar_get_stylesheet_directory_uri( 'assets/css/editor-style.css' ) ) ),
+					) ) );
 
 			/**
 			 * Localization
@@ -211,7 +214,7 @@
 
 			//Custom header
 				add_theme_support( 'custom-header', apply_filters( 'wmhook_receptar_setup_custom_background_args', array(
-						'default-image' => receptar_get_stylesheet_directory_uri( 'images/header.jpg' ),
+						'default-image' => receptar_get_stylesheet_directory_uri( 'assets/images/header.jpg' ),
 						'header-text'   => false,
 						'width'         => 1920,
 						'height'        => 640, //Approx. 62% of desktop viewport height (16:9)
@@ -555,7 +558,7 @@
 	 * Registering theme styles and scripts
 	 *
 	 * @since    1.0
-	 * @version  1.2.1
+	 * @version  1.6.0
 	 */
 	if ( ! function_exists( 'receptar_register_assets' ) ) {
 		function receptar_register_assets() {
@@ -569,12 +572,12 @@
 			 */
 
 				$register_styles = apply_filters( 'wmhook_receptar_register_assets_register_styles', array(
-						'receptar-genericons'   => array( receptar_get_stylesheet_directory_uri( 'genericons/genericons.css' ) ),
+						'genericons-neue'       => array( receptar_get_stylesheet_directory_uri( 'assets/fonts/genericons-neue/genericons-neue.css' ) ),
 						'receptar-google-fonts' => array( receptar_google_fonts_url() ),
-						'receptar-starter'      => array( receptar_get_stylesheet_directory_uri( 'css/starter.css' ) ),
-						'receptar-stylesheet'   => array( 'src' => get_stylesheet_uri(), 'deps' => array( 'receptar-genericons', 'receptar-starter' ) ),
-						'receptar-colors'       => array( receptar_get_stylesheet_directory_uri( 'css/colors.css' ), 'deps' => array( 'receptar-stylesheet' ) ),
-						'receptar-slick'        => array( receptar_get_stylesheet_directory_uri( 'css/slick.css' ) ),
+						'receptar-starter'      => array( receptar_get_stylesheet_directory_uri( 'assets/css/starter.css' ) ),
+						'receptar-stylesheet'   => array( 'src' => get_stylesheet_uri(), 'deps' => array( 'genericons-neue', 'receptar-starter' ) ),
+						'receptar-colors'       => array( receptar_get_stylesheet_directory_uri( 'assets/css/colors.css' ), 'deps' => array( 'receptar-stylesheet' ) ),
+						'receptar-slick'        => array( receptar_get_stylesheet_directory_uri( 'assets/css/slick.css' ) ),
 					) );
 
 				foreach ( $register_styles as $handle => $atts ) {
@@ -591,9 +594,9 @@
 			 */
 
 				$register_scripts = apply_filters( 'wmhook_receptar_register_assets_register_scripts', array(
-						'receptar-slick'               => array( receptar_get_stylesheet_directory_uri( 'js/slick.min.js' ) ),
-						'receptar-scripts-global'      => array( receptar_get_stylesheet_directory_uri( 'js/scripts-global.js' ) ),
-						'receptar-skip-link-focus-fix' => array( receptar_get_stylesheet_directory_uri( 'js/skip-link-focus-fix.js' ) ),
+						'receptar-slick'               => array( receptar_get_stylesheet_directory_uri( 'assets/js/slick.min.js' ) ),
+						'receptar-scripts-global'      => array( receptar_get_stylesheet_directory_uri( 'assets/js/scripts-global.js' ) ),
+						'receptar-skip-link-focus-fix' => array( receptar_get_stylesheet_directory_uri( 'assets/js/skip-link-focus-fix.js' ) ),
 					) );
 
 				foreach ( $register_scripts as $handle => $atts ) {
@@ -732,14 +735,14 @@
 	 * Customizer controls assets enqueue
 	 *
 	 * @since    1.0
-	 * @version  1.2.1
+	 * @version  1.6.0
 	 */
 	if ( ! function_exists( 'receptar_customizer_enqueue_assets' ) ) {
 		function receptar_customizer_enqueue_assets() {
 			//Styles
 				wp_enqueue_style(
 						'receptar-customizer',
-						get_template_directory_uri() . '/css/customizer.css',
+						get_template_directory_uri() . '/assets/css/customizer.css',
 						false,
 						esc_attr( trim( wp_get_theme()->get( 'Version' ) ) ),
 						'all'
@@ -753,14 +756,14 @@
 		 * Customizer preview assets enqueue
 		 *
 		 * @since    1.0
-		 * @version  1.2.1
+		 * @version  1.6.0
 		 */
 		if ( ! function_exists( 'receptar_customizer_preview_enqueue_assets' ) ) {
 			function receptar_customizer_preview_enqueue_assets() {
 				//Scripts
 					wp_enqueue_script(
 							'receptar-customizer-preview',
-							receptar_get_stylesheet_directory_uri( 'js/customizer-preview.js' ),
+							receptar_get_stylesheet_directory_uri( 'assets/js/customizer-preview.js' ),
 							array( 'customize-preview' ),
 							esc_attr( trim( wp_get_theme()->get( 'Version' ) ) ),
 							true
@@ -1087,6 +1090,179 @@
 
 
 
+			/**
+			 * Social links supported icons
+			 *
+			 * @since    1.6.0
+			 * @version  1.6.0
+			 */
+			function receptar_social_links_icons() {
+
+				// Output
+
+					return array(
+						'behance.net'       => 'behance',
+						'bitbucket.org'     => 'bitbucket',
+						'codepen.io'        => 'codepen',
+						'deviantart.com'    => 'deviantart',
+						'digg.com'          => 'digg',
+						'docker.com'        => 'dockerhub',
+						'dribbble.com'      => 'dribbble',
+						'dropbox.com'       => 'dropbox',
+						'facebook.com'      => 'facebook',
+						'flickr.com'        => 'flickr',
+						'foursquare.com'    => 'foursquare',
+						'plus.google.com'   => 'google-plus',
+						'github.com'        => 'github',
+						'instagram.com'     => 'instagram',
+						'linkedin.com'      => 'linkedin',
+						'mailto:'           => 'envelope',
+						'medium.com'        => 'medium',
+						'paypal.com'        => 'paypal',
+						'pscp.tv'           => 'periscope',
+						'pinterest.com'     => 'pinterest',
+						'getpocket.com'     => 'get-pocket',
+						'reddit.com'        => 'reddit',
+						'/feed'             => 'rss',
+						'skype.com'         => 'skype',
+						'skype:'            => 'skype',
+						'slack.com'         => 'slack',
+						'slideshare.net'    => 'slideshare',
+						'snapchat.com'      => 'snapchat',
+						'soundcloud.com'    => 'soundcloud',
+						'spotify.com'       => 'spotify',
+						'stackoverflow.com' => 'stack-overflow',
+						'stumbleupon.com'   => 'stumbleupon',
+						'trello.com'        => 'trello',
+						'tripadvisor.'      => 'tripadvisor',
+						'tumblr.com'        => 'tumblr',
+						'twitch.tv'         => 'twitch',
+						'twitter.com'       => 'twitter',
+						'vimeo.com'         => 'vimeo',
+						'vine.co'           => 'vine',
+						'vk.com'            => 'vk',
+						'wordpress.org'     => 'wordpress',
+						'wordpress.com'     => 'wordpress',
+						'xing.com'          => 'xing',
+						'yelp.com'          => 'yelp',
+						'youtube.com'       => 'youtube',
+					);
+
+			} // /receptar_social_links_icons
+
+			add_filter( 'wmhook_receptar_svg_get_social_icons', 'receptar_social_links_icons' );
+
+
+
+			/**
+			 * Display SVG icons in social links menu
+			 *
+			 * @since    1.6.0
+			 * @version  1.6.0
+			 *
+			 * @param  string  $item_output The menu item output.
+			 * @param  WP_Post $item        Menu item object.
+			 * @param  int     $depth       Depth of the menu.
+			 * @param  array   $args        wp_nav_menu() arguments.
+			 */
+			function receptar_nav_menu_social_icons( $item_output, $item, $depth, $args ) {
+
+				// Variables
+
+					$locations = get_nav_menu_locations();
+
+
+				// Processing
+
+					if (
+						isset( $locations['social'] )
+						&& isset( $args->menu->term_id )
+						&& absint( $locations['social'] ) === absint( $args->menu->term_id )
+					) {
+
+						$social_icons = Receptar_SVG::get_social_icons();
+						$social_icon  = 'chain';
+
+						foreach ( $social_icons as $url => $icon ) {
+							if ( false !== strpos( $item_output, $url ) ) {
+								$social_icon = $icon;
+								break;
+							}
+						}
+
+						$item_output = str_replace(
+							$args->link_after,
+							'</span>' . Receptar_SVG::get( array(
+								'icon' => esc_attr( $social_icon ),
+								'base' => 'social-icon',
+							) ),
+							$item_output
+						);
+
+					}
+
+
+				// Output
+
+					return $item_output;
+
+			} // /receptar_nav_menu_social_icons
+
+			add_filter( 'walker_nav_menu_start_el', 'receptar_nav_menu_social_icons', 10, 4 );
+
+
+
+			/**
+			 * Display social links in Navigation Menu widget
+			 *
+			 * @subpackage  Widgets
+			 *
+			 * @since    1.6.0
+			 * @version  1.6.0
+			 *
+			 * @param  array  $nav_menu_args Array of parameters for `wp_nav_menu()` function.
+			 * @param  string $nav_menu      Menu slug assigned in the widget.
+			 * @param  array  $args          Widget parameters.
+			 */
+			function receptar_social_widget( $nav_menu_args, $nav_menu, $args ) {
+
+				// Variables
+
+					$nav_menu_obj = wp_get_nav_menu_object( $nav_menu );
+					$locations    = get_nav_menu_locations();
+
+
+				// Requirements check
+
+					if (
+						! isset( $locations['social'] )
+						|| ! $locations['social']
+						|| absint( $locations['social'] ) !== absint( $nav_menu_obj->term_id )
+					) {
+						return $nav_menu_args;
+					}
+
+
+				// Processing
+
+					$nav_menu_args['container_class'] = 'social-links';
+					$nav_menu_args['menu_class']      = 'social-links-items';
+					$nav_menu_args['depth']           = 1;
+					$nav_menu_args['link_before']     = '<span class="screen-reader-text">';
+					$nav_menu_args['link_after']      = '</span>';
+					$nav_menu_args['items_wrap']      = '<ul id="%1$s" class="%2$s">%3$s</ul>';
+
+
+				// Output
+
+					return $nav_menu_args;
+
+			} // /receptar_social_widget
+
+			add_filter( 'widget_nav_menu_args', 'receptar_social_widget', 10, 3 );
+
+
+
 	/**
 	 * Navigation item improvements
 	 *
@@ -1406,7 +1582,7 @@
 		 * If the post has more tag, display the content appropriately.
 		 *
 		 * @since    1.0
-		 * @version  1.3
+		 * @version  1.6.0
 		 *
 		 * @param  string $excerpt
 		 */
@@ -1429,10 +1605,6 @@
 						/**
 						 * Post has more tag
 						 */
-
-							//Required for <!--more--> tag to work
-								global $more;
-								$more = 0;
 
 							if ( has_excerpt() ) {
 								$excerpt = '<p class="post-excerpt has-more-tag">' . get_the_excerpt() . '</p>';
@@ -1827,12 +1999,12 @@
 	 * Default featured image URL
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.6.0
 	 */
 	if ( ! function_exists( 'receptar_entry_featured_image_fallback_url' ) ) {
 		function receptar_entry_featured_image_fallback_url() {
 			//Helper variables
-				$output = trailingslashit( get_stylesheet_directory_uri() ) . 'images/featured.jpg';
+				$output = trailingslashit( get_stylesheet_directory_uri() ) . 'assets/images/featured.jpg';
 
 				$header_image_data = (array) get_custom_header();
 

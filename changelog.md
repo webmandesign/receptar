@@ -1,5 +1,45 @@
 # Receptar Changelog
 
+## 1.6.0
+
+* **Update**:
+* **Fix**:
+
+* **Update**: Using SVG for social icons
+* **Update**: Icons updated to Genericons Neue
+* **Update**: All theme assets put into dedicated `assets` folder
+* **Update**: Post featured image height made smaller in posts list on mobile screens
+* **Update**: Typography info in customizer
+* **Update**: Documentation
+* **Update**: Localization
+* **Fix**: Horizontal scroll on mobile screens
+* **Fix**: Site title font on singular pages
+* **Fix**: NS Theme Check plugin test warnings
+
+### Files changed:
+
+	changelog.md
+	comments.php
+	functions.php
+	style.css
+	assets/css/editor-style.css
+	assets/css/slick.css
+	assets/fonts/genericons-neue/genericons-neue.css
+	assets/js/scripts-global.js
+	inc/class-svg.php
+	inc/setup-theme-options.php
+	inc/setup.php
+	inc/beaver-builder/beaver-builder.php
+	inc/customizer/customizer.php
+	inc/customizer/controls/class-Customizer_Multiselect.php
+	inc/customizer/controls/class-Customizer_Select.php
+	inc/lib/core.php
+	languages/receptar.pot
+	template-parts/content-custom-header.php
+	template-parts/content-featured-post.php
+	template-parts/menu-social.php
+
+
 ## 1.5.0
 
 * **Update**: WordPress 4.9.6 compatibility (GDPR)

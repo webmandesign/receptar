@@ -3,7 +3,7 @@ Theme Name:   Receptar
 Theme URI:    https://www.webmandesign.eu/portfolio/receptar-wordpress-theme/
 Author:       WebMan Design
 Author URI:   https://www.webmandesign.eu/
-Version:      1.5.0
+Version:      1.6.0
 Text Domain:  receptar
 Domain Path:  /languages
 License:      GNU General Public License v3
@@ -27,7 +27,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 /**
  * CONTENT:
  *
- *   1. Font icons basics
+ *   1. Icons
  *   2. Core styles
  *   3. Typography
  *   4. WordPress styles
@@ -54,7 +54,6 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 	#cancel-comment-reply-link:before,
 	.menu-toggle:before,
 	.site-header-widgets .form-search:after,
-	.social-links a:before,
 	.entry-meta-element:before,
 	.entry-meta .comments-link a:before,
 	.entry-meta .entry-likes a:before,
@@ -71,7 +70,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 	.widget_recent_entries li:before,
 	.nsfp_featured_post_widget li:before,
 	.widget_zilla_likes_widget li:before {
-		font-family: 'Genericons';
+		font-family: 'Genericons-Neue';
 		font-style: normal;
 		font-weight: normal;
 		font-variant: normal;
@@ -82,9 +81,19 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 		speak: none;
 	}
 
-	.genericon.vertical-align-middle:before   { vertical-align: middle;   }
-	.genericon.vertical-align-baseline:before { vertical-align: baseline; }
-	.genericon.vertical-align-bottom:before   { vertical-align: bottom;   }
+	.svgicon {
+		display: inline-block;
+		position: relative;
+		width: 1em;
+		height: 1em;
+		top: -0.0625em;
+		fill: currentColor;
+		vertical-align: middle;
+	}
+
+	.svg-fallback {
+		display: none;
+	}
 
 
 
@@ -211,6 +220,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 		.entry-category,
 		.entry-title .entry-edit { font-family: 'Roboto Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
+		.site-title,
 		h1, .h1,
 		blockquote { font-family: 'Alegreya', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
@@ -876,95 +886,6 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 					}
 						.social-links a:hover { text-decoration: none; }
 
-						.social-links a:before {
-							content: '';
-							display: inline-block;
-							vertical-align: top;
-						}
-
-						.social-links a[href^="http"]:before,
-						.social-links .website a:before                  { content: '\f475'; }
-
-						.social-links a[href*="mailto:"]:before,
-						.social-links .email a:before                    { content: '\f410'; }
-
-						.social-links a[href*="/feed/"]:before,
-						.social-links .rss a:before                      { content: '\f413'; }
-
-
-						.social-links a[href*="codepen.io"]:before,
-						.social-links .codepen a:before                  { content: '\f216'; }
-
-						.social-links a[href*="digg.com"]:before,
-						.social-links .digg a:before                     { content: '\f221'; }
-
-						.social-links a[href*="dribbble.com"]:before,
-						.social-links .dribbble a:before                 { content: '\f201'; }
-
-						.social-links a[href*="dropbox.com"]:before,
-						.social-links .dropbox a:before                  { content: '\f225'; }
-
-						.social-links a[href*="facebook.com"]:before,
-						.social-links .facebook a:before                 { content: '\f204'; }
-
-						.social-links a[href*="flickr.com"]:before,
-						.social-links .flickr a:before                   { content: '\f211'; }
-
-						.social-links a[href*="foursquare.com"]:before,
-						.social-links .foursquare a:before               { content: '\f226'; }
-
-						.social-links a[href*="github.com"]:before,
-						.social-links .github a:before                   { content: '\f200'; }
-
-						.social-links a[href*="instagram.com"]:before,
-						.social-links .instagram a:before                { content: '\f215'; }
-
-						.social-links a[href*="linkedin.com"]:before,
-						.social-links .linkedin a:before                 { content: '\f207'; }
-
-						.social-links a[href*="pinterest.com"]:before,
-						.social-links .pinterest a:before                { content: '\f209'; }
-
-						.social-links a[href*="plus.google.com"]:before,
-						.social-links .google-plus a:before              { content: '\f218'; }
-
-						.social-links a[href*="getpocket.com"]:before,
-						.social-links .pocket a:before                   { content: '\f224'; }
-
-						.social-links a[href*="polldaddy.com"]:before,
-						.social-links .polldaddy a:before                { content: '\f217'; }
-
-						.social-links a[href*="reddit.com"]:before,
-						.social-links .reddit a:before                   { content: '\f222'; }
-
-						.social-links a[href*="skype:"]:before,
-						.social-links .skype a:before                    { content: '\f220'; }
-
-						.social-links a[href*="spotify.com"]:before,
-						.social-links .spotify a:before                  { content: '\f515'; }
-
-						.social-links a[href*="stumbleupon.com"]:before,
-						.social-links .stumbleupon a:before              { content: '\f223'; }
-
-						.social-links a[href*="tumblr.com"]:before,
-						.social-links .tumblr a:before                   { content: '\f214'; }
-
-						.social-links a[href*="twitch.tv"]:before,
-						.social-links .twitch a:before                   { content: '\f516'; }
-
-						.social-links a[href*="twitter.com"]:before,
-						.social-links .twitter a:before                  { content: '\f202'; }
-
-						.social-links a[href*="vimeo.com"]:before,
-						.social-links .vimeo a:before                    { content: '\f212'; }
-
-						.social-links a[href*="wordpress.org"]:before,
-						.social-links a[href*="wordpress.com"]:before,
-						.social-links .wordpress a:before                { content: '\f205'; }
-
-						.social-links a[href*="youtube.com"]:before,
-						.social-links .youtube a:before                  { content: '\f213'; }
-
 
 
 	/**
@@ -1486,7 +1407,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 		.comment-edit-link:before,
 		.comment-reply-link:before {
-			content: '\f467';
+			content: '\f466';
 			margin-right: .19em;
 			font-size: 1.38em;
 			vertical-align: middle;
@@ -1596,6 +1517,35 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 			.textwidget li a { text-decoration: underline; }
 
 			.textwidget li a:hover, .textwidget li a:active, .textwidget li a:focus { text-decoration: none; }
+
+		/**
+		 * Social menu widget
+		 */
+
+			.widget .social-links {
+				float: none;
+			}
+
+				.widget .social-links li {
+					float: none;
+					display: inline-block;
+					padding: 0;
+					border: 0;
+				}
+
+					.widget .social-links li:before {
+						display: none;
+					}
+
+					.widget .social-links li:hover {
+						-webkit-transform: none;
+						    -ms-transform: none;
+						        transform: none;
+					}
+
+				.widget .social-links a {
+					padding: .38em;
+				}
 
 
 
@@ -2028,13 +1978,20 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 						.site-banner h1 { font-size: 2.38rem; }
 
+						.site-banner .slick-slider .slider-nav {
+							top: 0;
+							bottom: auto;
+						}
+
 						.site-banner .slick-prev,
 						.site-banner .slick-next {
 							width: 2em;
 							height: 2em;
-							bottom: 1rem;
+							right: 3em;
+							top: 1rem;
+							bottom: auto;
 						}
-						.site-banner .slick-prev { right: 3.62em; }
+						.site-banner .slick-prev { right: 6em; }
 
 			/**
 			 * Site content
@@ -2200,6 +2157,19 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 							bottom: auto;
 							max-height: 100%;
 						}
+
+						.site .posts .entry .entry-media {
+							height: 62vh;
+							min-height: 240px;
+							overflow: hidden;
+						}
+
+							.site .posts .entry .entry-media img {
+								position: absolute;
+								left: 50%;
+								top: 50%;
+								transform: translateX(-50%) translateY(-50%);
+							}
 
 					/* Description */
 

@@ -12,7 +12,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.3.6
+ * @version  1.6.0
  *
  * @link  http://www.webmandesign.eu
  *
@@ -47,6 +47,9 @@
 
 	//Global functions
 		locate_template( WM_INC_DIR . 'lib/core.php', true );
+
+	// SVG icons
+		locate_template( WM_INC_DIR . 'class-svg.php', true );
 
 	//Theme setup
 		locate_template( WM_INC_DIR . 'setup.php', true );

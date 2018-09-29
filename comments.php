@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.3
+ * @version  1.6.0
  */
 
 
@@ -40,7 +40,7 @@ if (
 		<h2 id="comments-title" class="comments-title"><?php
 
 			printf(
-					esc_html( _nx( '1 comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', get_comments_number(), 'Comments list title.', 'receptar' ) ),
+					esc_html( _nx( '%1$d comment on &ldquo;%2$s&rdquo;', '%1$d comments on &ldquo;%2$s&rdquo;', get_comments_number(), 'Comments list title.', 'receptar' ) ),
 					number_format_i18n( get_comments_number() ),
 					'<span>' . get_the_title() . '</span>'
 				);

@@ -5,7 +5,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.5.0
+ * @version  1.6.0
  */
 
 
@@ -25,6 +25,7 @@
 			     -ms-touch-action: pan-y;
 			         touch-action: pan-y;
 			-webkit-tap-highlight-color: transparent;
+			overflow-x: hidden;
 		}
 
 			.slick-list,
@@ -118,7 +119,7 @@
 		 * Navigation
 		 */
 
-			.slick-slider button .genericon { font-size: 1.62em; }
+			.slick-slider button .genericons-neue { font-size: 1.62em; }
 
 				.slick-prev.slick-disabled,
 				.slick-next.slick-disabled { opacity: .25; }
@@ -179,5 +180,5 @@
 				.site-banner .slick-next:hover,
 				.site-banner .slick-dots .slick-active button { opacity: 1; }
 
-				.site-banner .slick-prev .genericon,
-				.site-banner .slick-next .genericon { vertical-align: middle; }
+				.site-banner .slick-prev .genericons-neue,
+				.site-banner .slick-next .genericons-neue { vertical-align: middle; }

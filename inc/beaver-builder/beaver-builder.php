@@ -10,7 +10,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.3.6
+ * @version  1.6.0
  *
  * CONTENT:
  * -  1) Requirements check
@@ -86,7 +86,7 @@
 	 * Styles and scripts
 	 *
 	 * @since    1.0
-	 * @version  1.2.1
+	 * @version  1.6.0
 	 */
 	if ( ! function_exists( 'receptar_bb_assets' ) ) {
 		function receptar_bb_assets() {
@@ -94,7 +94,7 @@
 				if ( class_exists( 'FLBuilderModel' ) && FLBuilderModel::is_builder_active() ) {
 					wp_enqueue_style(
 							'receptar-bb-addon',
-							receptar_get_stylesheet_directory_uri( 'css/beaver-builder-editor.css' ),
+							receptar_get_stylesheet_directory_uri( 'assets/css/beaver-builder-editor.css' ),
 							false,
 							esc_attr( trim( wp_get_theme()->get( 'Version' ) ) ),
 							'screen'
