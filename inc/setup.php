@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.6.0
+ * @version  1.6.1
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -1077,6 +1077,35 @@
 
 
 		/**
+		 * Social menu args.
+		 *
+		 * @since    1.6.1
+		 * @version  1.6.1
+		 *
+		 * @param  string $items_wrap
+		 */
+		function receptar_social_menu_args( $items_wrap = '<ul data-id="%1$s" class="%2$s">%3$s</ul>' ) {
+
+			// Output
+
+				return (array) apply_filters( 'wmhook_receptar_social_menu_args', array(
+					'theme_location'  => 'social',
+					'container'       => 'div',
+					'container_id'    => '',
+					'container_class' => 'social-links',
+					'menu_class'      => 'social-links-items',
+					'depth'           => 1,
+					'link_before'     => '<span class="screen-reader-text">',
+					'link_after'      => '</span><!--{{icon}}-->',
+					'fallback_cb'     => false,
+					'items_wrap'      => (string) $items_wrap,
+				) );
+
+		} // /receptar_social_menu_args
+
+
+
+		/**
 		 * Display social links
 		 *
 		 * @since    1.0
@@ -1094,7 +1123,7 @@
 			 * Social links supported icons
 			 *
 			 * @since    1.6.0
-			 * @version  1.6.0
+			 * @version  1.6.1
 			 */
 			function receptar_social_links_icons() {
 
@@ -1120,6 +1149,7 @@
 						'medium.com'        => 'medium',
 						'paypal.com'        => 'paypal',
 						'pscp.tv'           => 'periscope',
+						'tel:'              => 'phone',
 						'pinterest.com'     => 'pinterest',
 						'getpocket.com'     => 'get-pocket',
 						'reddit.com'        => 'reddit',
@@ -1158,7 +1188,7 @@
 			 * Display SVG icons in social links menu
 			 *
 			 * @since    1.6.0
-			 * @version  1.6.0
+			 * @version  1.6.1
 			 *
 			 * @param  string  $item_output The menu item output.
 			 * @param  WP_Post $item        Menu item object.
@@ -1167,39 +1197,36 @@
 			 */
 			function receptar_nav_menu_social_icons( $item_output, $item, $depth, $args ) {
 
+				// Requirements check
+
+					if ( false === strpos( $item_output, '<!--{{icon}}-->' ) ) {
+						return $item_output;
+					}
+
+
 				// Variables
 
-					$locations = get_nav_menu_locations();
+					$social_icons = Receptar_SVG::get_social_icons();
+					$social_icon  = 'chain';
 
 
 				// Processing
 
-					if (
-						isset( $locations['social'] )
-						&& isset( $args->menu->term_id )
-						&& absint( $locations['social'] ) === absint( $args->menu->term_id )
-					) {
-
-						$social_icons = Receptar_SVG::get_social_icons();
-						$social_icon  = 'chain';
-
-						foreach ( $social_icons as $url => $icon ) {
-							if ( false !== strpos( $item_output, $url ) ) {
-								$social_icon = $icon;
-								break;
-							}
+					foreach ( $social_icons as $url => $icon ) {
+						if ( false !== strpos( $item_output, $url ) ) {
+							$social_icon = $icon;
+							break;
 						}
-
-						$item_output = str_replace(
-							$args->link_after,
-							'</span>' . Receptar_SVG::get( array(
-								'icon' => esc_attr( $social_icon ),
-								'base' => 'social-icon',
-							) ),
-							$item_output
-						);
-
 					}
+
+					$item_output = str_replace(
+						'<!--{{icon}}-->',
+						'<!--{{icon}}-->' . Receptar_SVG::get( array(
+							'icon' => esc_attr( $social_icon ),
+							'base' => 'social-icon',
+						) ),
+						$item_output
+					);
 
 
 				// Output
@@ -1218,7 +1245,7 @@
 			 * @subpackage  Widgets
 			 *
 			 * @since    1.6.0
-			 * @version  1.6.0
+			 * @version  1.6.1
 			 *
 			 * @param  array  $nav_menu_args Array of parameters for `wp_nav_menu()` function.
 			 * @param  string $nav_menu      Menu slug assigned in the widget.
@@ -1228,16 +1255,19 @@
 
 				// Variables
 
-					$nav_menu_obj = wp_get_nav_menu_object( $nav_menu );
-					$locations    = get_nav_menu_locations();
+					$locations = get_nav_menu_locations();
+
+					$locations['social'] = ( isset( $locations['social'] ) ) ? ( $locations['social'] ) : ( false );
 
 
 				// Requirements check
 
 					if (
-						! isset( $locations['social'] )
-						|| ! $locations['social']
-						|| absint( $locations['social'] ) !== absint( $nav_menu_obj->term_id )
+						! isset( $nav_menu->term_id )
+						|| (
+							false === stripos( $nav_menu->name, '[soc]' )
+							&& $locations['social'] !== $nav_menu->term_id
+						)
 					) {
 						return $nav_menu_args;
 					}
@@ -1245,12 +1275,14 @@
 
 				// Processing
 
+					$menu_args = receptar_social_menu_args();
+
 					$nav_menu_args['container_class'] = 'social-links';
 					$nav_menu_args['menu_class']      = 'social-links-items';
-					$nav_menu_args['depth']           = 1;
-					$nav_menu_args['link_before']     = '<span class="screen-reader-text">';
-					$nav_menu_args['link_after']      = '</span>';
-					$nav_menu_args['items_wrap']      = '<ul id="%1$s" class="%2$s">%3$s</ul>';
+					$nav_menu_args['depth']           = $menu_args['depth'];
+					$nav_menu_args['link_before']     = $menu_args['link_before'];
+					$nav_menu_args['link_after']      = $menu_args['link_after'];
+					$nav_menu_args['items_wrap']      = $menu_args['items_wrap'];
 
 
 				// Output

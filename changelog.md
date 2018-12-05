@@ -1,5 +1,20 @@
 # Receptar Changelog
 
+## 1.6.1
+
+* **Add**: More social icons
+* **Update**: WordPress 5.0 ready
+* **Fix**: Making social icons menu multilingual ready
+
+### Files changed:
+
+	changelog.md
+	style.css
+	inc/class-svg.php
+	inc/setup.php
+	template-parts/menu-social.php
+
+
 ## 1.6.0
 
 * **Update**: Using SVG for social icons
