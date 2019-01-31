@@ -3,18 +3,13 @@
  * Customizer custom controls
  *
  * Customizer image insert.
+ * Adding uploaded images tab to Image control
  *
  * @package    Receptar
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
- */
-
-
-
-/**
- * Add uploaded images tab to Image control
+ * @version  1.7.0
  */
 class Receptar_Customizer_Image extends WP_Customize_Image_Control {
 
@@ -32,12 +27,12 @@ class Receptar_Customizer_Image extends WP_Customize_Image_Control {
 	 */
 	public function tab_uploaded() {
 		$context_uploads = get_posts( array(
-				'post_type'  => 'attachment',
-				'meta_key'   => '_wp_attachment_context',
-				'meta_value' => $this->context,
-				'orderby'    => 'post_date',
-				'nopaging'   => true,
-			) );
+			'post_type'  => 'attachment',
+			'meta_key'   => '_wp_attachment_context',
+			'meta_value' => $this->context,
+			'orderby'    => 'post_date',
+			'nopaging'   => true,
+		) );
 		?>
 
 		<div class="uploaded-target"></div>
@@ -53,5 +48,3 @@ class Receptar_Customizer_Image extends WP_Customize_Image_Control {
 	}
 
 } // /Receptar_Customizer_Image
-
-?>

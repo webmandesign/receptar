@@ -6,25 +6,19 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.7.0
  */
 
 ?>
 
-<div id="site-header-widgets" class="widget-area site-header-widgets">
-
+<aside id="site-header-widgets" class="widget-area site-header-widgets">
 	<?php
 
 	if ( is_active_sidebar( 'header' ) ) {
-
 		dynamic_sidebar( 'header' );
-
 	} else {
-
 		get_search_form();
-
 	}
 
 	?>
-
-</div>
+</aside>

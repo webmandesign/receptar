@@ -5,14 +5,13 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
+ * @version  1.7.0
  */
 
-
-
-
-
 ( function() {
+
+	'use strict';
+
 	var is_webkit = navigator.userAgent.toLowerCase().indexOf( 'webkit' ) > -1,
 	    is_opera  = navigator.userAgent.toLowerCase().indexOf( 'opera' )  > -1,
 	    is_ie     = navigator.userAgent.toLowerCase().indexOf( 'msie' )   > -1;
@@ -30,4 +29,5 @@
 			}
 		}, false );
 	}
+
 })();

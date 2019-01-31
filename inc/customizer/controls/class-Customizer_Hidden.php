@@ -8,13 +8,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.0
- */
-
-
-
-/**
- * Hidden
+ * @version  1.7.0
  */
 class Receptar_Customizer_Hidden extends WP_Customize_Control {
 
@@ -29,5 +23,3 @@ class Receptar_Customizer_Hidden extends WP_Customize_Control {
 	}
 
 } // /Receptar_Customizer_Hidden
-
-?>

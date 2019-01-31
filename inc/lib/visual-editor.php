@@ -164,5 +164,3 @@
 				return apply_filters( 'wmhook_receptar_custom_mce_format_output', $init );
 		}
 	} // /receptar_custom_mce_format
-
-?>

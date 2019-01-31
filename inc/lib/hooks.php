@@ -312,5 +312,3 @@
 			do_action( 'wmhook_footer_bottom' );
 			do_action( 'tha_footer_bottom' );
 		} // /wmhook_footer_bottom
-
-?>

@@ -6,7 +6,7 @@
  * @copyright  WebMan Design, Oliver Juhas
  *
  * @since    1.4.0
- * @version  1.5.0
+ * @version  1.7.0
  */
 
 
@@ -21,13 +21,11 @@
 // Requirements check
 
 	if ( '-' === $site_info_text ) {
-
 		if ( is_customize_preview() ) {
 			echo '<style>.footer-area-site-info { display: none; }</style>';
 		} else {
 			return;
 		}
-
 	}
 
 
@@ -62,7 +60,7 @@
 			<?php else :
 
 				// No need to apply wp_kses_post() on output as it is already validated via Customizer.
-				echo $site_info_text;
+				echo $site_info_text; // WPCS: XSS OK.
 
 			endif; ?>
 		</div>

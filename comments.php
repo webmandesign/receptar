@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.6.0
+ * @version  1.7.0
  */
 
 
@@ -82,7 +82,7 @@ if (
 
 					?>
 
-					<nav id="comment-nav-below" class="comment-navigation" role="navigation">
+					<nav id="comment-nav-below" class="comment-navigation">
 
 						<h3 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'receptar' ); ?></h3>
 

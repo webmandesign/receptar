@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.6.1
+ * @version  1.7.0
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -33,9 +33,7 @@
 			add_action( 'init',                'receptar_register_assets',           10 );
 			add_action( 'wp_enqueue_scripts',  'receptar_enqueue_assets',           100 );
 			add_action( 'wp_enqueue_scripts',  'receptar_singular_featured_image',  110 );
-			add_action( 'wp_footer',           'receptar_footer_custom_scripts',   9998 );
 			add_action( 'comment_form_before', 'receptar_comment_reply_js_enqueue'      );
-			add_action( 'switch_theme',        'receptar_image_sizes_reset'             );
 		//Customizer assets
 			add_action( 'customize_controls_enqueue_scripts', 'receptar_customizer_enqueue_assets'             );
 			add_action( 'customize_preview_init',             'receptar_customizer_preview_enqueue_assets', 10 );
@@ -43,8 +41,6 @@
 			add_action( 'after_setup_theme', 'receptar_setup', 10 );
 		//Register widget areas
 			add_action( 'widgets_init', 'receptar_register_widget_areas', 1 );
-		//Sticky posts
-			// add_action( 'pre_get_posts', 'receptar_posts_query_ignore_sticky_posts' );
 		//Pagination fallback
 			add_action( 'wmhook_postslist_after', 'receptar_pagination', 10 );
 		//Visual Editor addons
@@ -91,8 +87,8 @@
 	 * Filters
 	 */
 
-		//Disable TGMPA - not needed
-			add_filter( 'wmhook_enable_plugins_integration', '__return_false' );
+		add_filter( 'wmhook_esc_css', 'wp_strip_all_tags' );
+
 		//Set up image sizes
 			add_filter( 'wmhook_receptar_setup_image_sizes', 'receptar_image_sizes' );
 		//Set required Google Fonts
@@ -148,113 +144,116 @@
 	 * Theme setup
 	 *
 	 * @since    1.0.0
-	 * @version  1.6.0
+	 * @version  1.7.0
 	 */
 	if ( ! function_exists( 'receptar_setup' ) ) {
 		function receptar_setup() {
 
-			//Helper variables
+			// Variables
+
 				$image_sizes = array_filter( apply_filters( 'wmhook_receptar_setup_image_sizes', array() ) );
 
-				//WordPress visual editor CSS stylesheets
-					$version           = esc_attr( trim( wp_get_theme()->get( 'Version' ) ) );
-					$visual_editor_css = array_filter( (array) apply_filters( 'wmhook_receptar_setup_visual_editor_css', array(
-						str_replace( ',', '%2C', receptar_google_fonts_url() ),
-						esc_url( add_query_arg( array( 'ver' => $version ), receptar_get_stylesheet_directory_uri( 'assets/fonts/genericons-neue/genericons-neue.css' ) ) ),
-						esc_url( add_query_arg( array( 'ver' => $version ), receptar_get_stylesheet_directory_uri( 'assets/css/starter.css' ) ) ),
-						esc_url( add_query_arg( array( 'ver' => $version ), receptar_get_stylesheet_directory_uri( 'assets/css/colors.css' ) ) ),
-						esc_url( add_query_arg( array( 'ver' => $version ), receptar_get_stylesheet_directory_uri( 'assets/css/editor-style.css' ) ) ),
-					) ) );
+				$version = esc_attr( trim( wp_get_theme()->get( 'Version' ) ) );
+				$visual_editor_css = array_filter( (array) apply_filters( 'wmhook_receptar_setup_visual_editor_css', array(
+					str_replace( ',', '%2C', receptar_google_fonts_url() ),
+					esc_url_raw( add_query_arg(
+						array( 'ver' => $version ),
+						get_theme_file_uri( 'assets/fonts/genericons-neue/genericons-neue.css' )
+					) ),
+					esc_url_raw( add_query_arg(
+						array( 'ver' => $version ),
+						get_theme_file_uri( 'assets/css/starter.css' )
+					) ),
+					esc_url_raw( add_query_arg(
+						array( 'ver' => $version ),
+						get_theme_file_uri( 'assets/css/colors.css' )
+					) ),
+					esc_url_raw( add_query_arg(
+						array( 'ver' => $version ),
+						get_theme_file_uri( 'assets/css/editor-style.css' )
+					) ),
+				) ) );
 
-			/**
-			 * Localization
-			 *
-			 * Note: the first-loaded translation file overrides any following ones if the same translation is present.
-			 */
 
-				//wp-content/languages/theme-name/it_IT.mo
+			// Processing
+
+				current_theme_supports( 'child-theme-stylesheet' );
+
+				// Localization
+
+					// Note: the first-loaded translation file overrides any following ones if the same translation is present.
+					// wp-content/languages/theme-name/it_IT.mo
 					load_theme_textdomain( 'receptar', trailingslashit( WP_LANG_DIR ) . 'themes/' . WM_THEME_SHORTNAME );
-
-				//wp-content/themes/child-theme-name/languages/it_IT.mo
+					// wp-content/themes/child-theme-name/languages/it_IT.mo
 					load_theme_textdomain( 'receptar', get_stylesheet_directory() . '/languages' );
-
-				//wp-content/themes/theme-name/languages/it_IT.mo
+					// wp-content/themes/theme-name/languages/it_IT.mo
 					load_theme_textdomain( 'receptar', get_template_directory() . '/languages' );
 
-			//Title tag
+				// Title tag
 				add_theme_support( 'title-tag' );
 
-			// Site logo
-
-				/**
-				 * @link  https://codex.wordpress.org/Theme_Logo
-				 */
+				// Site logo
 				add_theme_support( 'custom-logo' );
 
-			//Visual editor styles
+				// Visual editor styles
 				add_editor_style( $visual_editor_css );
 
-			//Feed links
+				// Feed links
 				add_theme_support( 'automatic-feed-links' );
 
-			//Enable HTML5 markup
+				// Enable HTML5 markup
 				add_theme_support( 'html5', array(
-						'comment-list',
-						'comment-form',
-						'search-form',
-						'gallery',
-						'caption',
-					) );
+					'comment-list',
+					'comment-form',
+					'search-form',
+					'gallery',
+					'caption',
+				) );
 
-			//Custom menus
+				// Custom menus
 				register_nav_menus( apply_filters( 'wmhook_receptar_setup_menus', array(
-						'primary' => esc_html__( 'Primary Menu', 'receptar' ),
-						'social'  => esc_html__( 'Social Links Menu', 'receptar' ),
-					) ) );
+					'primary' => esc_html__( 'Primary Menu', 'receptar' ),
+					'social'  => esc_html__( 'Social Links Menu', 'receptar' ),
+				) ) );
 
-			//Custom header
-				add_theme_support( 'custom-header', apply_filters( 'wmhook_receptar_setup_custom_background_args', array(
-						'default-image' => receptar_get_stylesheet_directory_uri( 'assets/images/header.jpg' ),
-						'header-text'   => false,
-						'width'         => 1920,
-						'height'        => 640, //Approx. 62% of desktop viewport height (16:9)
-						'flex-height'   => false,
-						'flex-width'    => true,
-					) ) );
+				// Custom header
+				add_theme_support( 'custom-header', apply_filters( 'wmhook_receptar_setup_custom_header_args', array(
+					'default-image' => get_theme_file_uri( 'assets/images/header.jpg' ),
+					'header-text'   => false,
+					'width'         => 1920,
+					'height'        => 640, //Approx. 62% of desktop viewport height (16:9)
+					'flex-height'   => false,
+					'flex-width'    => true,
+				) ) );
 
-			//Custom background
+				// Custom background
 				add_theme_support( 'custom-background', apply_filters( 'wmhook_receptar_setup_custom_background_args', array(
-						'default-color' => 'f5f7f9',
-					) ) );
+					'default-color' => 'f5f7f9',
+				) ) );
 
-			//Post types supports
+				// Post types supports
 				add_post_type_support( 'attachment', 'custom-fields' );
 
-			//Thumbnails support
-				add_post_type_support( 'attachment:audio', 'thumbnail' );
-				add_post_type_support( 'attachment:video', 'thumbnail' );
+				// Thumbnails support
 
-				add_theme_support( 'post-thumbnails', array( 'attachment:audio', 'attachment:video' ) );
-				add_theme_support( 'post-thumbnails' );
+					add_post_type_support( 'attachment:audio', 'thumbnail' );
+					add_post_type_support( 'attachment:video', 'thumbnail' );
 
-				//Image sizes (x, y, crop)
+					add_theme_support( 'post-thumbnails', array( 'attachment:audio', 'attachment:video' ) );
+					add_theme_support( 'post-thumbnails' );
+
+					// Image sizes (x, y, crop)
 					if ( ! empty( $image_sizes ) ) {
-
 						foreach ( $image_sizes as $size => $setup ) {
-
 							if ( ! in_array( $size, array( 'thumbnail', 'medium', 'medium_large', 'large' ) ) ) {
-
 								add_image_size(
 									$size,
 									$image_sizes[ $size ][0],
 									$image_sizes[ $size ][1],
 									$image_sizes[ $size ][2]
 								);
-
 							}
-
-						} // /foreach
-
+						}
 					}
 
 		}
@@ -335,71 +334,6 @@
 					return $image_sizes;
 			}
 		} // /receptar_image_sizes
-
-
-
-		/**
-		 * Reset predefined image sizes to their original values
-		 *
-		 * @since    1.3.1
-		 * @version  1.3.1
-		 */
-		if ( ! function_exists( 'receptar_image_sizes_reset' ) ) {
-			function receptar_image_sizes_reset() {
-
-				// Helper variables
-
-					$image_sizes = array( 'thumbnail', 'medium', 'large' );
-					$theme_old   = get_option( 'theme_switched' );
-					$theme_mods  = get_option( 'theme_mods_' . $theme_old );
-
-					$update_theme_mods = false;
-
-
-				// Processing
-
-					foreach ( $image_sizes as $size ) {
-
-						$values = (array) ( isset( $theme_mods[ '__image_size_' . $size ] ) ) ? ( $theme_mods[ '__image_size_' . $size ] ) : ( array() );
-
-						// Skip processing if we do not have the image height and crop value
-
-							if ( ! isset( $values[1] ) || ! isset( $values[2] ) ) {
-								continue;
-							}
-
-						// Old image width
-
-							if ( $values[0] ) {
-								update_option( $size . '_size_w', $values[0] );
-							}
-
-						// Old image height
-
-							if ( $values[1] ) {
-								update_option( $size . '_size_h', $values[1] );
-							}
-
-						// Old image crop
-
-							if ( $values[2] ) {
-								update_option( $size . '_crop', $values[2] );
-							}
-
-						// Remove the image settings from theme mods for future reset
-
-							unset( $theme_mods[ '__image_size_' . $size ] );
-
-							$update_theme_mods = true;
-
-					} // /foreach
-
-					if ( $update_theme_mods ) {
-						update_option( 'theme_mods_' . $theme_old, $theme_mods );
-					}
-
-			}
-		} // /receptar_image_sizes_reset
 
 
 
@@ -558,12 +492,12 @@
 	 * Registering theme styles and scripts
 	 *
 	 * @since    1.0
-	 * @version  1.6.0
+	 * @version  1.7.0
 	 */
 	if ( ! function_exists( 'receptar_register_assets' ) ) {
 		function receptar_register_assets() {
 
-			//Helper variables
+			// Variables
 
 				$version = esc_attr( trim( wp_get_theme()->get( 'Version' ) ) );
 
@@ -572,13 +506,21 @@
 			 */
 
 				$register_styles = apply_filters( 'wmhook_receptar_register_assets_register_styles', array(
-						'genericons-neue'       => array( receptar_get_stylesheet_directory_uri( 'assets/fonts/genericons-neue/genericons-neue.css' ) ),
-						'receptar-google-fonts' => array( receptar_google_fonts_url() ),
-						'receptar-starter'      => array( receptar_get_stylesheet_directory_uri( 'assets/css/starter.css' ) ),
-						'receptar-stylesheet'   => array( 'src' => get_stylesheet_uri(), 'deps' => array( 'genericons-neue', 'receptar-starter' ) ),
-						'receptar-colors'       => array( receptar_get_stylesheet_directory_uri( 'assets/css/colors.css' ), 'deps' => array( 'receptar-stylesheet' ) ),
-						'receptar-slick'        => array( receptar_get_stylesheet_directory_uri( 'assets/css/slick.css' ) ),
-					) );
+
+					'receptar' => array( 'src' => '' ), // For wp_add_inline_style().
+
+					'genericons-neue' => array( 'src' => get_theme_file_uri( 'assets/fonts/genericons-neue/genericons-neue.css' ) ),
+
+					'receptar-google-fonts' => array( 'src' => receptar_google_fonts_url() ),
+					'receptar-slick'        => array( 'src' => get_theme_file_uri( 'assets/css/slick.css' ) ),
+
+					'receptar-starter' => array( 'src' => get_theme_file_uri( 'assets/css/starter.css' ) ),
+					'receptar-main'    => array( 'src' => get_theme_file_uri( 'assets/css/main.css' ), 'deps' => array( 'receptar-starter' ) ),
+					'receptar-colors'  => array( 'src' => get_theme_file_uri( 'assets/css/colors.css' ) ),
+
+					'receptar-stylesheet' => array( 'src' => get_stylesheet_uri() ),
+
+				) );
 
 				foreach ( $register_styles as $handle => $atts ) {
 					$src   = ( isset( $atts['src'] )   ) ? ( $atts['src']   ) : ( $atts[0] );
@@ -594,10 +536,13 @@
 			 */
 
 				$register_scripts = apply_filters( 'wmhook_receptar_register_assets_register_scripts', array(
-						'receptar-slick'               => array( receptar_get_stylesheet_directory_uri( 'assets/js/slick.min.js' ) ),
-						'receptar-scripts-global'      => array( receptar_get_stylesheet_directory_uri( 'assets/js/scripts-global.js' ) ),
-						'receptar-skip-link-focus-fix' => array( receptar_get_stylesheet_directory_uri( 'assets/js/skip-link-focus-fix.js' ) ),
-					) );
+
+					'slick' => array( get_theme_file_uri( 'assets/js/slick.min.js' ) ),
+
+					'receptar-scripts-global'      => array( get_theme_file_uri( 'assets/js/scripts-global.js' ) ),
+					'receptar-skip-link-focus-fix' => array( get_theme_file_uri( 'assets/js/skip-link-focus-fix.js' ) ),
+
+				) );
 
 				foreach ( $register_scripts as $handle => $atts ) {
 					$src       = ( isset( $atts['src'] )       ) ? ( $atts['src']       ) : ( $atts[0]          );
@@ -617,43 +562,46 @@
 	 * Frontend HTML head assets enqueue
 	 *
 	 * @since    1.0
-	 * @version  1.2.1
+	 * @version  1.7.0
 	 */
 	if ( ! function_exists( 'receptar_enqueue_assets' ) ) {
 		function receptar_enqueue_assets() {
 
-			//Helper variables
+			// Variables
+
 				$enqueue_styles = $enqueue_scripts = array();
-
-				$custom_styles = receptar_custom_styles();
-
-				$inline_styles_handle = ( wp_style_is( 'receptar-colors', 'registered' ) ) ? ( 'receptar-colors' ) : ( 'receptar-stylesheet' );
-				$inline_styles_handle = apply_filters( 'wmhook_receptar_enqueue_assets_inline_styles_handle', $inline_styles_handle );
 
 			/**
 			 * Styles
 			 */
 
-				//Google Fonts
-					if ( receptar_google_fonts_url() ) {
-						$enqueue_styles[] = 'receptar-google-fonts';
-					}
+				// Google Fonts
+				if ( receptar_google_fonts_url() ) {
+					$enqueue_styles[] = 'receptar-google-fonts';
+				}
 
-				//Banner slider
-					if (
-							( is_front_page() || is_home() )
-							&& receptar_has_banner_posts( 2 )
-						) {
-						$enqueue_styles[] = 'receptar-slick';
-					}
+				// Banner slider
+				if (
+					( is_front_page() || is_home() )
+					&& receptar_has_banner_posts( 2 )
+				) {
+					$enqueue_styles[] = 'receptar-slick';
+				}
 
-				//Main
-					$enqueue_styles[] = 'receptar-stylesheet';
+				// Genericons Neue
+				$enqueue_styles[] = 'genericons-neue';
 
-				//Colors
-					if ( 'receptar-colors' === $inline_styles_handle ) {
-						$enqueue_styles[] = 'receptar-colors';
-					}
+				// Main
+				$enqueue_styles[] = 'receptar-main';
+
+				// Colors
+				$enqueue_styles[] = 'receptar-colors';
+
+				// Inline styles handle
+				$enqueue_styles[] = 'receptar';
+
+				// Colors
+				$enqueue_styles[] = 'receptar-stylesheet';
 
 				$enqueue_styles = apply_filters( 'wmhook_receptar_enqueue_assets_enqueue_styles', $enqueue_styles );
 
@@ -662,47 +610,22 @@
 				}
 
 			/**
-			 * Styles - inline
-			 */
-
-				//Customizer setup custom styles
-					if ( $custom_styles ) {
-						wp_add_inline_style(
-								$inline_styles_handle,
-								"\r\n" . apply_filters( 'wmhook_esc_css', $custom_styles ) . "\r\n"
-							);
-					}
-
-				//Custom styles set in post/page 'custom-css' custom field
-					if (
-							is_singular()
-							&& $output = get_post_meta( get_the_ID(), 'custom_css', true )
-						) {
-						$output = apply_filters( 'wmhook_receptar_enqueue_assets_styles_inline_singular', "\r\n\r\n/* Custom singular styles */\r\n" . $output . "\r\n" );
-
-						wp_add_inline_style(
-								$inline_styles_handle,
-								apply_filters( 'wmhook_esc_css', $output ) . "\r\n"
-							);
-					}
-
-			/**
 			 * Scripts
 			 */
 
-				//Banner slider
-					if (
-							( is_front_page() || is_home() )
-							&& receptar_has_banner_posts( 2 )
-						) {
-						$enqueue_scripts[] = 'receptar-slick';
-					}
+				// Banner slider
+				if (
+					( is_front_page() || is_home() )
+					&& receptar_has_banner_posts( 2 )
+				) {
+					$enqueue_scripts[] = 'slick';
+				}
 
-				//Global theme scripts
-					$enqueue_scripts[] = 'receptar-scripts-global';
+				// Global theme scripts
+				$enqueue_scripts[] = 'receptar-scripts-global';
 
-				//Skip link focus fix
-					$enqueue_scripts[] = 'receptar-skip-link-focus-fix';
+				// Skip link focus fix
+				$enqueue_scripts[] = 'receptar-skip-link-focus-fix';
 
 				$enqueue_scripts = apply_filters( 'wmhook_receptar_enqueue_assets_enqueue_scripts', $enqueue_scripts );
 
@@ -735,18 +658,21 @@
 	 * Customizer controls assets enqueue
 	 *
 	 * @since    1.0
-	 * @version  1.6.0
+	 * @version  1.7.0
 	 */
 	if ( ! function_exists( 'receptar_customizer_enqueue_assets' ) ) {
 		function receptar_customizer_enqueue_assets() {
-			//Styles
+
+			// Processing
+
 				wp_enqueue_style(
-						'receptar-customizer',
-						get_template_directory_uri() . '/assets/css/customizer.css',
-						false,
-						esc_attr( trim( wp_get_theme()->get( 'Version' ) ) ),
-						'all'
-					);
+					'receptar-customizer',
+					get_theme_file_uri( 'assets/css/customizer.css' ),
+					false,
+					esc_attr( trim( wp_get_theme()->get( 'Version' ) ) ),
+					'all'
+				);
+
 		}
 	} // /receptar_customizer_enqueue_assets
 
@@ -756,18 +682,21 @@
 		 * Customizer preview assets enqueue
 		 *
 		 * @since    1.0
-		 * @version  1.6.0
+		 * @version  1.7.0
 		 */
 		if ( ! function_exists( 'receptar_customizer_preview_enqueue_assets' ) ) {
 			function receptar_customizer_preview_enqueue_assets() {
-				//Scripts
+
+				// Processing
+
 					wp_enqueue_script(
-							'receptar-customizer-preview',
-							receptar_get_stylesheet_directory_uri( 'assets/js/customizer-preview.js' ),
-							array( 'customize-preview' ),
-							esc_attr( trim( wp_get_theme()->get( 'Version' ) ) ),
-							true
-						);
+						'receptar-customizer-preview',
+						get_theme_file_uri( 'assets/js/customizer-preview.js' ),
+						array( 'customize-preview' ),
+						esc_attr( trim( wp_get_theme()->get( 'Version' ) ) ),
+						true
+					);
+
 			}
 		} // /receptar_customizer_preview_enqueue_assets
 
@@ -891,51 +820,55 @@
 	 * Singular view featured image
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.7.0
 	 */
 	if ( ! function_exists( 'receptar_singular_featured_image' ) ) {
 		function receptar_singular_featured_image() {
-			//Requrements check
+
+			// Requrements check
+
 				if (
-						( ! is_singular() && ! is_attachment() )
-						|| is_front_page()
-					) {
+					( ! is_singular() && ! is_attachment() )
+					|| is_front_page()
+				) {
 					return;
 				}
 
-			//Helper variables
+
+			// Variables
+
 				$output = array( apply_filters( 'wmhook_entry_featured_image_fallback_url', '' ) );
 
+
+			// Processing
+
 				if (
-						is_singular()
-						&& has_post_thumbnail()
-					) {
+					is_singular()
+					&& has_post_thumbnail()
+				) {
 
 					$output = wp_get_attachment_image_src(
-							get_post_thumbnail_id( get_the_ID() ),
-							apply_filters( 'wmhook_receptar_enqueue_assets_styles_inline_featured_image_size', 'large' )
-						);
+						get_post_thumbnail_id( get_the_ID() ),
+						apply_filters( 'wmhook_receptar_enqueue_assets_styles_inline_featured_image_size', 'large' )
+					);
 
 				} else if ( is_attachment() ) {
 
 					$output = wp_get_attachment_image_src(
-							get_the_ID(),
-							apply_filters( 'wmhook_receptar_enqueue_assets_styles_inline_featured_image_size', 'large' )
-						);
+						get_the_ID(),
+						apply_filters( 'wmhook_receptar_enqueue_assets_styles_inline_featured_image_size', 'large' )
+					);
 
 				}
 
-			//Preparing output
-
 				$output = "\r\n\r\n/* Singular featured image styles */\r\n.entry-media { background-image: url('" . $output[0] . "'); }\r\n";
-
 				$output = apply_filters( 'wmhook_receptar_singular_featured_image_output', $output );
 
-			//Output
 				wp_add_inline_style(
-						'receptar-stylesheet',
-						apply_filters( 'wmhook_esc_css', $output ) . "\r\n"
-					);
+					'receptar',
+					apply_filters( 'wmhook_esc_css', $output ) . "\r\n"
+				);
+
 		}
 	} // /receptar_singular_featured_image
 
@@ -992,16 +925,16 @@
 	 * Body top
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.7.0
 	 */
 	if ( ! function_exists( 'receptar_site_top' ) ) {
 		function receptar_site_top() {
-			//Helper variables
-				$output  = '<div id="page" class="hfeed site">' . "\r\n";
-				$output .= "\t" . '<div class="site-inner">' . "\r\n";
 
-			//Output
-				echo $output;
+			// Output
+
+				echo '<div id="page" class="hfeed site">' . "\r\n";
+				echo "\t" . '<div class="site-inner">' . "\r\n";
+
 		}
 	} // /receptar_site_top
 
@@ -1011,16 +944,16 @@
 		 * Body bottom
 		 *
 		 * @since    1.0
-		 * @version  1.0
+		 * @version  1.7.0
 		 */
 		if ( ! function_exists( 'receptar_site_bottom' ) ) {
 			function receptar_site_bottom() {
-				//Helper variables
-					$output  = "\r\n\t" . '</div><!-- /.site-inner -->';
-					$output .= "\r\n" . '</div><!-- /#page -->' . "\r\n\r\n";
 
-				//Output
-					echo $output;
+				// Output
+
+					echo "\r\n\t" . '</div><!-- /.site-inner -->';
+					echo "\r\n" . '</div><!-- /#page -->' . "\r\n\r\n";
+
 			}
 		} // /receptar_site_bottom
 
@@ -1037,7 +970,7 @@
 
 			// Output
 
-				echo "\r\n\r\n" . '<header id="masthead" class="site-header" role="banner">' . "\r\n\r\n";
+				echo "\r\n\r\n" . '<header id="masthead" class="site-header">' . "\r\n\r\n";
 
 		}
 	} // /receptar_header_top
@@ -1048,15 +981,15 @@
 		 * Header bottom
 		 *
 		 * @since    1.0
-		 * @version  1.0
+		 * @version  1.7.0
 		 */
 		if ( ! function_exists( 'receptar_header_bottom' ) ) {
 			function receptar_header_bottom() {
-				//Helper variables
-					$output = "\r\n\r\n" . '</header>' . "\r\n\r\n";
 
-				//Output
-					echo $output;
+				// Output
+
+					echo "\r\n\r\n" . '</header>' . "\r\n\r\n";
+
 			}
 		} // /receptar_header_bottom
 
@@ -1421,17 +1354,17 @@
 	 * Content top
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.7.0
 	 */
 	if ( ! function_exists( 'receptar_content_top' ) ) {
 		function receptar_content_top() {
-			//Helper variables
-				$output  = "\r\n\r\n" . '<div id="content" class="site-content">';
-				$output .= "\r\n\t"   . '<div id="primary" class="content-area">';
-				$output .= "\r\n\t\t" . '<main id="main" class="site-main clearfix" role="main">' . "\r\n\r\n";
 
-			//Output
-				echo $output;
+			// Output
+
+				echo "\r\n\r\n" . '<div id="content" class="site-content">';
+				echo "\r\n\t"   . '<div id="primary" class="content-area">';
+				echo "\r\n\t\t" . '<main id="main" class="site-main clearfix">' . "\r\n\r\n";
+
 		}
 	} // /receptar_content_top
 
@@ -1441,17 +1374,17 @@
 		 * Content bottom
 		 *
 		 * @since    1.0
-		 * @version  1.0
+		 * @version  1.7.0
 		 */
 		if ( ! function_exists( 'receptar_content_bottom' ) ) {
 			function receptar_content_bottom() {
-				//Helper variables
-					$output  = "\r\n\r\n\t\t" . '</main><!-- /#main -->';
-					$output .= "\r\n\t"       . '</div><!-- /#primary -->';
-					$output .= "\r\n"         . '</div><!-- /#content -->' . "\r\n\r\n";
 
-				//Output
-					echo $output;
+				// Output
+
+					echo "\r\n\r\n\t\t" . '</main><!-- /#main -->';
+					echo "\r\n\t"       . '</div><!-- /#primary -->';
+					echo "\r\n"         . '</div><!-- /#content -->' . "\r\n\r\n";
+
 			}
 		} // /receptar_content_bottom
 
@@ -1726,32 +1659,43 @@
 		 * @todo  Transfer to WordPress 4.1+ core functionality.
 		 *
 		 * @since    1.0
-		 * @version  1.3.4
+		 * @version  1.7.0
 		 */
 		if ( ! function_exists( 'receptar_post_nav' ) ) {
 			function receptar_post_nav() {
-				//Requirements check
-					if ( ! is_singular() || is_page() ) {
+
+				// Requirements check
+
+					if (
+						! is_singular()
+						|| is_page()
+					) {
 						return;
 					}
 
-				//Helper variables
+
+				// Variables
+
 					$output = $prev_class = $next_class = '';
 
 					$previous = ( is_attachment() ) ? ( get_post( get_post()->post_parent ) ) : ( get_adjacent_post( false, '', true ) );
 					$next     = get_adjacent_post( false, '', false );
 
-				//Requirements check
+
+				// Requirements check
+
 					if (
-							( ! $next && ! $previous )
-							|| ( is_attachment() && 'attachment' == $previous->post_type )
-						) {
+						( ! $next && ! $previous )
+						|| ( is_attachment() && 'attachment' == $previous->post_type )
+					) {
 						return;
 					}
 
 					$links_count = absint( (bool) $next ) + absint( (bool) $previous );
 
-				//Preparing output
+
+				// Processing
+
 					if ( $previous && has_post_thumbnail( $previous->ID ) ) {
 						$prev_class = " has-post-thumbnail";
 					}
@@ -1762,38 +1706,41 @@
 					if ( is_attachment() ) {
 
 						$output .= get_previous_post_link(
-								'<div class="nav-previous nav-link' . esc_attr( $prev_class ) . '">%link</div>',
-								wp_kses(
-									__( '<span class="post-title"><span class="meta-nav">Published In: </span>%title</span>', 'receptar' ),
-									array( 'span' => array( 'class' => array() ) )
-								)
-							);
+							'<div class="nav-previous nav-link' . esc_attr( $prev_class ) . '">%link</div>',
+							wp_kses(
+								__( '<span class="post-title"><span class="meta-nav">Published In: </span>%title</span>', 'receptar' ),
+								array( 'span' => array( 'class' => array() ) )
+							)
+						);
 
 					} else {
 
 						$output .= get_next_post_link(
-								'<div class="nav-next nav-link' . esc_attr( $next_class ) . '">%link</div>',
-								wp_kses(
-									__( '<span class="post-title"><span class="meta-nav">Next: </span>%title</span>', 'receptar' ),
-									array( 'span' => array( 'class' => array() ) )
-								)
-							);
+							'<div class="nav-next nav-link' . esc_attr( $next_class ) . '">%link</div>',
+							wp_kses(
+								__( '<span class="post-title"><span class="meta-nav">Next: </span>%title</span>', 'receptar' ),
+								array( 'span' => array( 'class' => array() ) )
+							)
+						);
 						$output .= get_previous_post_link(
-								'<div class="nav-previous nav-link' . esc_attr( $prev_class ) . '">%link</div>',
-								wp_kses(
-									__( '<span class="post-title"><span class="meta-nav">Previous: </span>%title</span>', 'receptar' ),
-									array( 'span' => array( 'class' => array() ) )
-								)
-							);
+							'<div class="nav-previous nav-link' . esc_attr( $prev_class ) . '">%link</div>',
+							wp_kses(
+								__( '<span class="post-title"><span class="meta-nav">Previous: </span>%title</span>', 'receptar' ),
+								array( 'span' => array( 'class' => array() ) )
+							)
+						);
 
 					}
 
 					if ( $output ) {
-						$output = '<nav class="navigation post-navigation links-count-' . $links_count . '" role="navigation"><h1 class="screen-reader-text">' . esc_html__( 'Post navigation', 'receptar' ) . '</h1><div class="nav-links">' . $output . '</div></nav>';
+						$output = '<nav class="navigation post-navigation links-count-' . $links_count . '"><h1 class="screen-reader-text">' . esc_html__( 'Post navigation', 'receptar' ) . '</h1><div class="nav-links">' . $output . '</div></nav>';
 					}
 
-				//Output
+
+				// Output
+
 					echo apply_filters( 'wmhook_receptar_post_nav_output', $output );
+
 			}
 		} // /receptar_post_nav
 
@@ -1803,33 +1750,40 @@
 		 * Pagination
 		 *
 		 * @since    1.0
-		 * @version  1.1
+		 * @version  1.7.0
 		 */
 		if ( ! function_exists( 'receptar_pagination' ) ) {
 			function receptar_pagination() {
-				//Requirements check
+
+				// Requirements check
+
 					if ( class_exists( 'The_Neverending_Home_Page' ) ) {
-						//Don't display pagination if Jetpack Infinite Scroll in use
-							return;
+						// Don't display pagination if Jetpack Infinite Scroll in use
+						return;
 					}
 
-				//Helper variables
-					global $wp_query, $wp_rewrite;
+
+				// Variables
 
 					$output = '';
 
 					$pagination = array(
-							'prev_text' => '&laquo;',
-							'next_text' => '&raquo;',
-						);
+						'prev_text' => '&laquo;',
+						'next_text' => '&raquo;',
+					);
 
-				//Preparing output
+
+				// Processing
+
 					if ( $output = paginate_links( $pagination ) ) {
 						$output = '<div class="pagination">' . $output . '</div>';
 					}
 
-				//Output
-					echo $output;
+
+				// Output
+
+					echo $output; // WPCS: XSS OK.
+
 			}
 		} // /receptar_pagination
 
@@ -1880,45 +1834,17 @@
 		 * Footer bottom
 		 *
 		 * @since    1.0
-		 * @version  1.0
+		 * @version  1.7.0
 		 */
 		if ( ! function_exists( 'receptar_footer_bottom' ) ) {
 			function receptar_footer_bottom() {
-				//Preparing output
-					$output = "\r\n\r\n" . '</footer>' . "\r\n\r\n";
 
-				//Output
-					echo $output;
+				// Output
+
+					echo "\r\n\r\n" . '</footer>' . "\r\n\r\n";
+
 			}
 		} // /receptar_footer_bottom
-
-
-
-		/**
-		 * Website footer custom scripts
-		 *
-		 * Outputs custom scripts set in post/page 'custom-js' custom field.
-		 *
-		 * @since    1.0
-		 * @version  1.0
-		 */
-		if ( ! function_exists( 'receptar_footer_custom_scripts' ) ) {
-			function receptar_footer_custom_scripts() {
-				//Requirements check
-					if (
-							! is_singular()
-							|| ! ( $output = get_post_meta( get_the_ID(), 'custom_js', true ) )
-						) {
-						return;
-					}
-
-				//Helper variables
-					$output = "\r\n\r\n<!--Custom singular JS -->\r\n<script type='text/javascript'>\r\n/* <![CDATA[ */\r\n" . wp_unslash( esc_js( str_replace( array( "\r", "\n", "\t" ), '', $output ) ) ) . "\r\n/* ]]> */\r\n</script>\r\n";
-
-				//Output
-					echo apply_filters( 'wmhook_receptar_footer_custom_scripts_output', $output );
-			}
-		} // /receptar_footer_custom_scripts
 
 
 
@@ -1932,51 +1858,35 @@
 	 * Register predefined widget areas (sidebars)
 	 *
 	 * @since    1.0
-	 * @version  1.3
+	 * @version  1.7.0
 	 */
 	if ( ! function_exists( 'receptar_register_widget_areas' ) ) {
 		function receptar_register_widget_areas() {
-			//Secondary
-				register_sidebar( array(
-						'id'            => 'sidebar',
-						'name'          => esc_html__( 'Sidebar', 'receptar' ),
-						'description'   => esc_html__( 'Displayed in hidden sidebar on left below the primary navigation.', 'receptar' ),
-						'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-						'after_widget'  => '</aside>',
-						'before_title'  => '<h2 class="widget-title">',
-						'after_title'   => '</h2>'
-					) );
 
-			//Header
+			// Processing
+
 				register_sidebar( array(
-						'id'            => 'header',
-						'name'          => esc_html__( 'Header Widgets', 'receptar' ),
-						'description'   => esc_html__( 'Display widgets in the site header.', 'receptar' ),
-						'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-						'after_widget'  => '</aside>',
-						'before_title'  => '<h2 class="widget-title">',
-						'after_title'   => '</h2>'
-					) );
+					'id'            => 'sidebar',
+					'name'          => esc_html__( 'Sidebar', 'receptar' ),
+					'description'   => esc_html__( 'Displayed in hidden sidebar on left below the primary navigation.', 'receptar' ),
+					'before_widget' => '<section id="%1$s" class="widget %2$s">',
+					'after_widget'  => '</section>',
+					'before_title'  => '<h2 class="widget-title">',
+					'after_title'   => '</h2>'
+				) );
+
+				register_sidebar( array(
+					'id'            => 'header',
+					'name'          => esc_html__( 'Header Widgets', 'receptar' ),
+					'description'   => esc_html__( 'Display widgets in the site header.', 'receptar' ),
+					'before_widget' => '<section id="%1$s" class="widget %2$s">',
+					'after_widget'  => '</section>',
+					'before_title'  => '<h2 class="widget-title">',
+					'after_title'   => '</h2>'
+				) );
+
 		}
 	} // /receptar_register_widget_areas
-
-
-
-	/**
-	 * Ignore sticky posts in main loop
-	 *
-	 * @since    1.0
-	 * @version  1.0
-	 *
-	 * @param  obj $query
-	 */
-	if ( ! function_exists( 'receptar_posts_query_ignore_sticky_posts' ) ) {
-		function receptar_posts_query_ignore_sticky_posts( $query ) {
-			if ( $query->is_main_query() ) {
-				$query->set( 'ignore_sticky_posts', 1 );
-			}
-		}
-	} // /receptar_posts_query_ignore_sticky_posts
 
 
 
@@ -1984,13 +1894,20 @@
 	 * Include Visual Editor addons
 	 *
 	 * @since    1.0
-	 * @version  1.0
+	 * @version  1.7.0
 	 */
 	if ( ! function_exists( 'receptar_visual_editor' ) ) {
 		function receptar_visual_editor() {
-			if ( is_admin() || isset( $_GET['fl_builder'] ) ) {
-				locate_template( WM_INC_DIR . 'lib/visual-editor.php', true );
-			}
+
+			// Processing
+
+				if (
+					is_admin()
+					|| isset( $_GET['fl_builder'] )
+				) {
+					require_once( trailingslashit( get_template_directory() ) . WM_INC_DIR . 'lib/visual-editor.php' );
+				}
+
 		}
 	} // /receptar_visual_editor
 

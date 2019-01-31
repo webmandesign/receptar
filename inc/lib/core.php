@@ -6,37 +6,14 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.6.0
+ * @version  1.7.0
  *
  * CONTENT:
- * -   1) Required files
  * -  10) Actions and filters
  * -  20) Branding
  * -  30) Post/page
  * - 100) Other functions
  */
-
-
-
-
-
-/**
- * 1) Required files
- */
-
-	//Main theme action hooks
-		locate_template( WM_INC_DIR . 'lib/hooks.php', true );
-
-	//Admin required files
-		if ( is_admin() ) {
-
-			//Plugins suggestions
-				if ( apply_filters( 'wmhook_enable_plugins_integration', true ) ) {
-					locate_template( WM_INC_DIR . 'tgmpa/class-tgm-plugin-activation.php', true );
-					locate_template( WM_INC_DIR . 'tgmpa/plugins.php',                     true );
-				}
-
-		}
 
 
 
@@ -50,14 +27,13 @@
 	 * Actions
 	 */
 
-		//Theme upgrade action
-			add_action( 'init', 'receptar_theme_upgrade' );
-		//Remove recent comments <style> from HTML head
-			add_action( 'widgets_init', 'receptar_remove_recent_comments_style' );
-		//Flushing transients
-			add_action( 'switch_theme',  'receptar_image_ids_transient_flusher'      );
-			add_action( 'edit_category', 'receptar_all_categories_transient_flusher' );
-			add_action( 'save_post',     'receptar_all_categories_transient_flusher' );
+		add_action( 'init', 'receptar_theme_upgrade' );
+
+		add_action( 'widgets_init', 'receptar_remove_recent_comments_style' );
+
+		add_action( 'switch_theme',  'receptar_image_ids_transient_flusher'      );
+		add_action( 'edit_category', 'receptar_all_categories_transient_flusher' );
+		add_action( 'save_post',     'receptar_all_categories_transient_flusher' );
 
 
 
@@ -66,12 +42,7 @@
 	 * Filters
 	 */
 
-		//Escape inline CSS
-			add_filter( 'wmhook_esc_css', 'receptar_esc_css' );
-		//Widgets improvements
-			add_filter( 'widget_title', 'receptar_html_widget_title' );
-		//Table of contents
-			add_filter( 'the_content', 'receptar_nextpage_table_of_contents', 10 );
+		add_filter( 'the_content', 'receptar_nextpage_table_of_contents', 10 );
 
 
 
@@ -304,24 +275,23 @@
 
 
 	/**
-	 * Post/page parts pagination
+	 * Parted post navigation
 	 *
-	 * @since    1.0
-	 * @version  1.3
+	 * Shim for passing the Theme Check review.
+	 * Using table of contents generator instead.
 	 *
-	 * @param  boolean $echo
+	 * @since    1.7.0
+	 * @version  1.7.0
 	 */
-	if ( ! function_exists( 'receptar_post_parts' ) ) {
-		function receptar_post_parts( $echo = true ) {
-			wp_link_pages( array(
-				'before'         => '<p class="pagination post-parts">',
-				'after'          => '</p>',
-				'next_or_number' => 'number',
-				'pagelink'       => '<span class="page-numbers">' . esc_html__( 'Part %', 'receptar' ) . '</span>',
-				'echo'           => $echo,
-			) );
+	if ( ! function_exists( 'wm_link_pages_shim' ) ) {
+		function wm_link_pages_shim() {
+
+			// Processing
+
+				wp_link_pages();
+
 		}
-	} // /receptar_post_parts
+	} // /wm_link_pages_shim
 
 
 
@@ -646,83 +616,29 @@
 	 * Do action on theme version change
 	 *
 	 * @since    1.0
-	 * @version  1.2.1
+	 * @version  1.7.0
 	 */
 	if ( ! function_exists( 'receptar_theme_upgrade' ) ) {
 		function receptar_theme_upgrade() {
-			//Helper variables
-				$current_theme_version = get_transient( WM_THEME_SHORTNAME . '-version' );
 
-			//Processing
+			// Variables
+
+				$current_theme_version = get_transient( WM_THEME_SHORTNAME . '-version' );
+				$new_theme_version     = wp_get_theme( get_template() )->get( 'Version' );
+
+
+			// Processing
+
 				if (
-						empty( $current_theme_version )
-						|| wp_get_theme()->get( 'Version' ) != $current_theme_version
-					) {
-					do_action( 'wmhook_theme_upgrade' );
-					set_transient( WM_THEME_SHORTNAME . '-version', wp_get_theme()->get( 'Version' ) );
+					empty( $current_theme_version )
+					|| $new_theme_version != $current_theme_version
+				) {
+					do_action( 'wmhook_theme_upgrade', $new_theme_version, $current_theme_version );
+					set_transient( WM_THEME_SHORTNAME . '-version', $new_theme_version );
 				}
+
 		}
 	} // /receptar_theme_upgrade
-
-
-
-	/**
-	 * CSS escaping
-	 *
-	 * Use this for custom CSS output only!
-	 * Uses `esc_attr()` while keeping quote marks.
-	 *
-	 * @uses  esc_attr()
-	 *
-	 * @since    1.0
-	 * @version  1.0
-	 *
-	 * @param  string $css Code to escape
-	 */
-	if ( ! function_exists( 'receptar_esc_css' ) ) {
-		function receptar_esc_css( $css ) {
-			return str_replace( array( '&gt;', '&quot;', '&#039;' ), array( '>', '"', '\'' ), esc_attr( (string) $css ) );
-		}
-	} // /receptar_esc_css
-
-
-
-	/**
-	 * Outputs URL to a specific file
-	 *
-	 * This function looks for the file in the child theme first.
-	 * If the file is not located in child theme, output the URL from parent theme.
-	 *
-	 * @since    1.0
-	 * @version  1.0
-	 *
-	 * @param   string $file_relative_path File to look for (insert the relative path within the theme folder)
-	 *
-	 * @return  string Actual URL to the file
-	 */
-	if ( ! function_exists( 'receptar_get_stylesheet_directory_uri' ) ) {
-		function receptar_get_stylesheet_directory_uri( $file_relative_path ) {
-			//Helper variables
-				$output = '';
-
-				$file_relative_path = trim( $file_relative_path );
-
-			//Requirements chek
-				if ( ! $file_relative_path ) {
-					return apply_filters( 'wmhook_receptar_get_stylesheet_directory_uri_output', esc_url( $output ), $file_relative_path );
-				}
-
-			//Praparing output
-				if ( file_exists( trailingslashit( get_stylesheet_directory() ) . $file_relative_path ) ) {
-					$output = trailingslashit( get_stylesheet_directory_uri() ) . $file_relative_path;
-				} else {
-					$output = trailingslashit( get_template_directory_uri() ) . $file_relative_path;
-				}
-
-			//Output
-				return apply_filters( 'wmhook_receptar_get_stylesheet_directory_uri_output', esc_url( $output ), $file_relative_path );
-		}
-	} // /receptar_get_stylesheet_directory_uri
 
 
 
@@ -742,37 +658,6 @@
 			return apply_filters( 'wmhook_receptar_remove_shortcodes_output', preg_replace( '|\[(.+?)\]|s', '', $content ) );
 		}
 	} // /receptar_remove_shortcodes
-
-
-
-	/**
-	 * HTML in widget titles
-	 *
-	 * Just replace the "<" and ">" in HTML tag with "[" and "]".
-	 * Examples:
-	 * "[em][/em]" will output "<em></em>"
-	 * "[br /]" will output "<br />"
-	 *
-	 * @since    1.0
-	 * @version  1.0
-	 *
-	 * @param  string $title
-	 */
-	if ( ! function_exists( 'receptar_html_widget_title' ) ) {
-		function receptar_html_widget_title( $title ) {
-			//Helper variables
-				$replacements = array(
-					'[' => '<',
-					']' => '>',
-				);
-
-			//Preparing output
-				$title = strtr( $title, $replacements );
-
-			//Output
-				return apply_filters( 'wmhook_receptar_html_widget_title_output', $title );
-		}
-	} // /receptar_html_widget_title
 
 
 
@@ -827,13 +712,15 @@
 	 * //fonts.googleapis.com/css?family=Alegreya+Sans:300,400|Exo+2:400,700|Allan&subset=latin,latin-ext
 	 *
 	 * @since    1.0
-	 * @version  1.3.5
+	 * @version  1.7.0
 	 *
 	 * @param  array $fonts Fallback fonts.
 	 */
 	if ( ! function_exists( 'receptar_google_fonts_url' ) ) {
 		function receptar_google_fonts_url( $fonts = array() ) {
-			//Helper variables
+
+			// Variables
+
 				$output = '';
 				$family = array();
 				$subset = get_theme_mod( 'font-subset' );
@@ -844,12 +731,18 @@
 					$fonts_setup = (array) $fonts;
 				}
 
-			//Requirements check
+				$http = ( is_ssl() ) ? ( 'https' ) : ( 'http' );
+
+
+			// Requirements check
+
 				if ( empty( $fonts_setup ) ) {
 					return apply_filters( 'wmhook_receptar_google_fonts_url_output', $output );
 				}
 
-			//Preparing output
+
+			// Processing
+
 				foreach ( $fonts_setup as $section ) {
 					$font = trim( $section );
 					if ( $font ) {
@@ -859,13 +752,16 @@
 
 				if ( ! empty( $family ) ) {
 					$output = esc_url_raw( add_query_arg( array(
-							'family' => implode( '|', (array) array_unique( $family ) ),
-							'subset' => implode( ',', (array) $subset ), //Subset can be array if multiselect Customizer input field used
-						), '//fonts.googleapis.com/css' ) );
+						'family' => implode( '|', (array) array_unique( $family ) ),
+						'subset' => implode( ',', (array) $subset ), //Subset can be array if multiselect Customizer input field used
+					), $http . '://fonts.googleapis.com/css' ) );
 				}
 
-			//Output
+
+			// Output
+
 				return apply_filters( 'wmhook_receptar_google_fonts_url_output', $output );
+
 		}
 	} // /receptar_google_fonts_url
 
@@ -989,3 +885,23 @@
 				delete_transient( 'receptar-all-categories' );
 			}
 		} // /receptar_all_categories_transient_flusher
+
+
+
+	/**
+	 * Cache: Get transient key.
+	 *
+	 * @since    1.7.0
+	 * @version  1.7.0
+	 *
+	 * @param  string $context
+	 */
+	if ( ! function_exists( 'receptar_get_transient_key' ) ) {
+		function receptar_get_transient_key( $context = '' ) {
+
+			// Output
+
+				return 'receptar-' . sanitize_title( $context );
+
+		}
+	} // /receptar_get_transient_key

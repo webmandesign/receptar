@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Receptar\n"
-"Report-Msgid-Bugs-To: http://support.webmandesign.eu\n"
-"POT-Creation-Date: 2018-09-29 17:38+0200\n"
+"Report-Msgid-Bugs-To: https://support.webmandesign.eu\n"
+"POT-Creation-Date: 2019-01-31 19:13+0100\n"
 "PO-Revision-Date: 2015-05-11 21:14+0100\n"
 "Last-Translator: WebMan - Oliver Juhas <webmandesigneu@gmail.com>\n"
 "Language-Team: WebMan - Oliver Juhas <webmandesigneu@gmail.com>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -57,7 +57,7 @@ msgstr ""
 msgid "Newer comments &rarr;"
 msgstr ""
 
-#: inc/customizer/controls/class-Customizer_Multiselect.php:42
+#: inc/customizer/controls/class-Customizer_Multiselect.php:32
 msgid "Press CTRL key for multiple selection."
 msgstr ""
 
@@ -65,69 +65,65 @@ msgstr ""
 msgid "Load more&hellip;"
 msgstr ""
 
-#: inc/lib/core.php:132
+#: inc/lib/core.php:103
 #, php-format
 msgctxt "Site logo image \"alt\" HTML attribute text."
 msgid "%s logo"
 msgstr ""
 
 #. translators: %s will be replaced with parted post title. Copy it, do not translate.
-#: inc/lib/core.php:222
+#: inc/lib/core.php:193
 #, php-format
 msgctxt "Parted/paginated post table of content title."
 msgid "\"%s\" table of contents"
 msgstr ""
 
-#: inc/lib/core.php:266
+#: inc/lib/core.php:237
 #, php-format
 msgid "Page %s"
 msgstr ""
 
-#: inc/lib/core.php:320
-msgid "Part %"
-msgstr ""
-
-#: inc/lib/core.php:422
+#: inc/lib/core.php:392
 #, php-format
 msgctxt "%d: number of comments."
 msgid "Comments: %d"
 msgstr ""
 
-#: inc/lib/core.php:422
+#: inc/lib/core.php:392
 msgctxt "Title for number of comments in post meta."
 msgid "Comments:"
 msgstr ""
 
-#: inc/lib/core.php:453 inc/setup.php:1347
+#: inc/lib/core.php:423 inc/setup.php:1312
 #, php-format
 msgid "Edit the \"%s\""
 msgstr ""
 
-#: inc/lib/core.php:453 inc/setup.php:1347
+#: inc/lib/core.php:423 inc/setup.php:1312
 msgctxt "Edit post link."
 msgid "Edit"
 msgstr ""
 
-#: inc/lib/core.php:485
+#: inc/lib/core.php:455
 #, php-format
 msgid "Permalink to \"%s\""
 msgstr ""
 
-#: inc/lib/core.php:511
+#: inc/lib/core.php:481
 msgid "Views count"
 msgstr ""
 
-#: inc/lib/core.php:590
+#: inc/lib/core.php:560
 #, php-format
 msgctxt "Paginated content title suffix."
 msgid "(page %s)"
 msgstr ""
 
-#: inc/lib/core.php:809
+#: inc/lib/core.php:694
 msgid "Skip to content"
 msgstr ""
 
-#: inc/lib/core.php:810
+#: inc/lib/core.php:695
 msgid "Skip to navigation"
 msgstr ""
 
@@ -171,88 +167,88 @@ msgstr ""
 msgid "Button link"
 msgstr ""
 
-#: inc/setup-theme-options.php:73 inc/setup-theme-options.php:104
-#: inc/setup-theme-options.php:147 inc/setup-theme-options.php:183
-#: inc/setup-theme-options.php:303 inc/setup-theme-options.php:341
-#: inc/setup-theme-options.php:365
+#: inc/setup-theme-options.php:47 inc/setup-theme-options.php:78
+#: inc/setup-theme-options.php:134 inc/setup-theme-options.php:183
+#: inc/setup-theme-options.php:394 inc/setup-theme-options.php:447
+#: inc/setup-theme-options.php:471
 msgctxt "Customizer panel title."
 msgid "Theme Options"
 msgstr ""
 
-#: inc/setup-theme-options.php:74
+#: inc/setup-theme-options.php:48
 msgid "Theme Credits"
 msgstr ""
 
-#: inc/setup-theme-options.php:77
+#: inc/setup-theme-options.php:51
 #, php-format
 msgctxt "1: linked theme name, 2: theme author name."
 msgid "%1$s is a WordPress theme developed by %2$s."
 msgstr ""
 
-#: inc/setup-theme-options.php:84
+#: inc/setup-theme-options.php:58
 #, php-format
 msgctxt "%s: theme author link."
 msgid "You can obtain other professional WordPress themes at %s."
 msgstr ""
 
-#: inc/setup-theme-options.php:89
+#: inc/setup-theme-options.php:63
 msgid "Thank you for using a theme by WebMan Design!"
 msgstr ""
 
-#: inc/setup-theme-options.php:103 inc/setup-theme-options.php:146
-#: inc/setup-theme-options.php:182 inc/setup-theme-options.php:302
+#: inc/setup-theme-options.php:77 inc/setup-theme-options.php:133
+#: inc/setup-theme-options.php:182 inc/setup-theme-options.php:393
 #, php-format
 msgctxt "%s = section name. Customizer section title."
 msgid "Colors: %s"
 msgstr ""
 
-#: inc/setup-theme-options.php:103
+#: inc/setup-theme-options.php:77
 msgctxt "Customizer color section title"
 msgid "Accents"
 msgstr ""
 
-#: inc/setup-theme-options.php:115
+#: inc/setup-theme-options.php:86
 msgid "These colors affect links, buttons and other elements."
 msgstr ""
 
-#: inc/setup-theme-options.php:120
+#: inc/setup-theme-options.php:91
 msgid "Primary accent color"
 msgstr ""
 
-#: inc/setup-theme-options.php:126
+#: inc/setup-theme-options.php:97
 msgid "Accent color"
 msgstr ""
 
-#: inc/setup-theme-options.php:127
+#: inc/setup-theme-options.php:98
 msgid "This color affects links, buttons and other elements of the website"
 msgstr ""
 
-#: inc/setup-theme-options.php:133
+#: inc/setup-theme-options.php:112
 msgid "Accent text color"
 msgstr ""
 
-#: inc/setup-theme-options.php:134
+#: inc/setup-theme-options.php:113
 msgid "Color of text over accent color background"
 msgstr ""
 
-#: inc/setup-theme-options.php:146
+#: inc/setup-theme-options.php:133
 msgctxt "Customizer color section title"
 msgid "Header"
 msgstr ""
 
-#: inc/setup-theme-options.php:158
+#: inc/setup-theme-options.php:142
 msgid "Header"
 msgstr ""
 
-#: inc/setup-theme-options.php:164 inc/setup-theme-options.php:200
-#: inc/setup-theme-options.php:236 inc/setup-theme-options.php:272
-#: inc/setup-theme-options.php:320
+#: inc/setup-theme-options.php:148 inc/setup-theme-options.php:197
+#: inc/setup-theme-options.php:264 inc/setup-theme-options.php:331
+#: inc/setup-theme-options.php:410
 msgid "Background color"
 msgstr ""
 
-#: inc/setup-theme-options.php:170 inc/setup-theme-options.php:206
-#: inc/setup-theme-options.php:242 inc/setup-theme-options.php:278
-#: inc/setup-theme-options.php:326
+#: inc/setup-theme-options.php:162 inc/setup-theme-options.php:211
+#: inc/setup-theme-options.php:278 inc/setup-theme-options.php:345
+#: inc/setup-theme-options.php:424
 msgid "Text color"
 msgstr ""
 
@@ -261,70 +257,70 @@ msgctxt "Customizer color section title"
 msgid "Content"
 msgstr ""
 
-#: inc/setup-theme-options.php:194
+#: inc/setup-theme-options.php:191
 msgid "Content"
 msgstr ""
 
-#: inc/setup-theme-options.php:212 inc/setup-theme-options.php:248
-#: inc/setup-theme-options.php:284
+#: inc/setup-theme-options.php:225 inc/setup-theme-options.php:292
+#: inc/setup-theme-options.php:359
 msgid "Headings color"
 msgstr ""
 
-#: inc/setup-theme-options.php:218 inc/setup-theme-options.php:254
-#: inc/setup-theme-options.php:290
+#: inc/setup-theme-options.php:239 inc/setup-theme-options.php:306
+#: inc/setup-theme-options.php:373
 msgid "Borders color"
 msgstr ""
 
-#: inc/setup-theme-options.php:230
+#: inc/setup-theme-options.php:258
 msgid "Secondary content colors"
 msgstr ""
 
-#: inc/setup-theme-options.php:230
+#: inc/setup-theme-options.php:258
 msgid "These colors are used for comments area, pagination."
 msgstr ""
 
-#: inc/setup-theme-options.php:266 inc/setup.php:1910
+#: inc/setup-theme-options.php:325 inc/setup.php:1870
 msgid "Sidebar"
 msgstr ""
 
-#: inc/setup-theme-options.php:302
+#: inc/setup-theme-options.php:393
 msgctxt "Customizer color section title"
 msgid "Footer"
 msgstr ""
 
-#: inc/setup-theme-options.php:314
+#: inc/setup-theme-options.php:404
 msgid "Footer"
 msgstr ""
 
-#: inc/setup-theme-options.php:340
+#: inc/setup-theme-options.php:446
 msgctxt "Customizer section title."
 msgid "Texts"
 msgstr ""
 
-#: inc/setup-theme-options.php:347
+#: inc/setup-theme-options.php:453
 msgid "Footer credits (copyright)"
 msgstr ""
 
-#: inc/setup-theme-options.php:348
+#: inc/setup-theme-options.php:454
 #, php-format
 msgid "Set %s to disable this area."
 msgstr ""
 
-#: inc/setup-theme-options.php:348
+#: inc/setup-theme-options.php:454
 msgid "Leaving the field empty will fall back to default theme setting."
 msgstr ""
 
-#: inc/setup-theme-options.php:348
+#: inc/setup-theme-options.php:454
 #, php-format
 msgid "You can use %s to display dynamic, always current year."
 msgstr ""
 
-#: inc/setup-theme-options.php:364
+#: inc/setup-theme-options.php:470
 msgctxt "Customizer section title."
 msgid "Typography"
 msgstr ""
 
-#: inc/setup-theme-options.php:371
+#: inc/setup-theme-options.php:477
 #, php-format
 msgctxt ""
 "%s is replaced with linked examples of web fonts libraries such as Google "
@@ -335,182 +331,182 @@ msgid ""
 "to the information below."
 msgstr ""
 
-#: inc/setup-theme-options.php:374
+#: inc/setup-theme-options.php:480
 msgid "List of CSS selectors for predefined theme font sets:"
 msgstr ""
 
-#: inc/setup-theme-options.php:376
+#: inc/setup-theme-options.php:482
 msgctxt "CSS selector group name."
 msgid "Texts:"
 msgstr ""
 
-#: inc/setup-theme-options.php:379
+#: inc/setup-theme-options.php:485
 msgctxt "CSS selector group name."
 msgid "Headings:"
 msgstr ""
 
-#: inc/setup-theme-options.php:382
+#: inc/setup-theme-options.php:488
 msgctxt "CSS selector group name."
 msgid "Logo:"
 msgstr ""
 
-#: inc/setup-theme-options.php:387
+#: inc/setup-theme-options.php:493
 #, php-format
 msgid ""
 "By default the theme uses %1$s font for texts, %2$s font for headings and "
 "%3$s font for logo."
 msgstr ""
 
-#: inc/setup.php:211
+#: inc/setup.php:215
 msgid "Primary Menu"
 msgstr ""
 
-#: inc/setup.php:212
+#: inc/setup.php:216
 msgid "Social Links Menu"
 msgstr ""
 
-#: inc/setup.php:307
+#: inc/setup.php:306
 msgid "In posts list."
 msgstr ""
 
-#: inc/setup.php:318
+#: inc/setup.php:317
 msgid "In single post page."
 msgstr ""
 
-#: inc/setup.php:324
+#: inc/setup.php:323
 msgid "In front (and blog) page banner."
 msgstr ""
 
-#: inc/setup.php:330
+#: inc/setup.php:329
 msgid "In single post page on mobile devices only."
 msgstr ""
 
-#: inc/setup.php:452
+#: inc/setup.php:386
 msgctxt "WordPress predefined image size name."
 msgid "Thumbnail size"
 msgstr ""
 
-#: inc/setup.php:453
+#: inc/setup.php:387
 msgctxt "WordPress predefined image size name."
 msgid "Medium size"
 msgstr ""
 
-#: inc/setup.php:454
+#: inc/setup.php:388
 msgctxt "WordPress predefined image size name."
 msgid "Large size"
 msgstr ""
 
-#: inc/setup.php:479
+#: inc/setup.php:413
 msgid "Recommended image sizes"
 msgstr ""
 
-#: inc/setup.php:480
+#: inc/setup.php:414
 msgid ""
 "For the theme to work correctly, please, set these recommended image sizes:"
 msgstr ""
 
-#: inc/setup.php:486
+#: inc/setup.php:420
 msgid "Size name"
 msgstr ""
 
-#: inc/setup.php:487
+#: inc/setup.php:421
 msgid "Size parameters"
 msgstr ""
 
-#: inc/setup.php:488
+#: inc/setup.php:422
 msgid "Theme usage"
 msgstr ""
 
-#: inc/setup.php:496
+#: inc/setup.php:430
 msgid "cropped"
 msgstr ""
 
-#: inc/setup.php:496
+#: inc/setup.php:430
 msgid "scaled"
 msgstr ""
 
-#: inc/setup.php:504
+#: inc/setup.php:438
 msgid ""
 "Additional image size added by the theme. Can not be changed on this page."
 msgstr ""
 
-#: inc/setup.php:509
+#: inc/setup.php:443
 #, php-format
 msgctxt "1: image width, 2: image height, 3: cropped or scaled?"
 msgid "%1$d &times; %2$d, %3$s"
 msgstr ""
 
-#: inc/setup.php:1594
+#: inc/setup.php:1559
 msgid "This content is password protected."
 msgstr ""
 
-#: inc/setup.php:1594
+#: inc/setup.php:1559
 msgid "Enter the password to view it."
 msgstr ""
 
-#: inc/setup.php:1681
+#: inc/setup.php:1646
 #, php-format
 msgid "Continue reading%s&hellip;"
 msgstr ""
 
-#: inc/setup.php:1735
+#: inc/setup.php:1711
 msgid ""
 "<span class=\"post-title\"><span class=\"meta-nav\">Published In: </span>"
 "%title</span>"
 msgstr ""
 
-#: inc/setup.php:1745
+#: inc/setup.php:1721
 msgid ""
 "<span class=\"post-title\"><span class=\"meta-nav\">Next: </span>%title</"
 "span>"
 msgstr ""
 
-#: inc/setup.php:1752
+#: inc/setup.php:1728
 msgid ""
 "<span class=\"post-title\"><span class=\"meta-nav\">Previous: </span>%title</"
 "span>"
 msgstr ""
 
-#: inc/setup.php:1760
+#: inc/setup.php:1736
 msgid "Post navigation"
 msgstr ""
 
-#: inc/setup.php:1911
+#: inc/setup.php:1871
 msgid "Displayed in hidden sidebar on left below the primary navigation."
 msgstr ""
 
-#: inc/setup.php:1921
+#: inc/setup.php:1880
 msgid "Header Widgets"
 msgstr ""
 
-#: inc/setup.php:1922
+#: inc/setup.php:1881
 msgid "Display widgets in the site header."
 msgstr ""
 
-#: inc/setup.php:1979
+#: inc/setup.php:1928
 msgid "Dropcaps"
 msgstr ""
 
-#: inc/setup.php:1983
+#: inc/setup.php:1932
 msgid "Dropcap text"
 msgstr ""
 
-#: inc/setup.php:2054
+#: inc/setup.php:2003
 msgctxt "Comment form field placeholder text."
 msgid "Comment"
 msgstr ""
 
-#: inc/setup.php:2071
+#: inc/setup.php:2020
 msgctxt "Comment form field placeholder text."
 msgid "Name"
 msgstr ""
 
-#: inc/setup.php:2081
+#: inc/setup.php:2030
 msgctxt "Comment form field placeholder text."
 msgid "Email"
 msgstr ""
 
-#: inc/setup.php:2091
+#: inc/setup.php:2040
 msgctxt "Comment form field placeholder text."
 msgid "Website"
 msgstr ""
@@ -529,61 +525,61 @@ msgstr ""
 msgid "Type and press enter"
 msgstr ""
 
-#: sidebar.php:32
+#: sidebar.php:19
 #, php-format
 msgid "%s site navigation"
 msgstr ""
 
-#: sidebar.php:106
+#: sidebar.php:72
 msgctxt "Mobile navigation toggle button title."
 msgid "Menu"
 msgstr ""
 
-#: template-parts/content-attachment-image.php:70
+#: template-parts/content-attachment-image.php:43
 msgctxt "Attachment page publish time."
 msgid "Image published on:"
 msgstr ""
 
-#: template-parts/content-attachment-image.php:74
+#: template-parts/content-attachment-image.php:47
 msgid "Image size:"
 msgstr ""
 
-#: template-parts/content-attachment-image.php:78
+#: template-parts/content-attachment-image.php:51
 msgid "Image file name:"
 msgstr ""
 
-#: template-parts/content-none.php:18
+#: template-parts/content-none.php:17
 msgid "Nothing Found"
 msgstr ""
 
-#: template-parts/content-none.php:24
+#: template-parts/content-none.php:21
 #, php-format
 msgid ""
 "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
 
-#: template-parts/content-none.php:28
+#: template-parts/content-none.php:23
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords."
 msgstr ""
 
-#: template-parts/content-none.php:34
+#: template-parts/content-none.php:26
 msgid ""
 "It seems we can not find what you are looking for. Perhaps searching can "
 "help."
 msgstr ""
 
-#: template-parts/footer/site-info.php:49
+#: template-parts/footer/site-info.php:47
 #, php-format
 msgctxt "1: theme name, 2: linked \"WordPress\" word."
 msgid "Using %1$s %2$s theme."
 msgstr ""
 
-#: template-parts/footer/site-info.php:51
+#: template-parts/footer/site-info.php:49
 msgid "https://wordpress.org/"
 msgstr ""
 
-#: template-parts/footer/site-info.php:60
+#: template-parts/footer/site-info.php:58
 msgid "Back to top &uarr;"
 msgstr ""

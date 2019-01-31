@@ -2,19 +2,14 @@
 /**
  * Receptar WordPress Theme
  *
- * Receptar WordPress Theme, Copyright 2015 WebMan [http://www.webmandesign.eu/]
- * Receptar is distributed under the terms of the GNU GPL
- *
  * @package    Receptar
  * @author     WebMan
  * @license    GPL-2.0+
- * @link       http://www.webmandesign.eu
+ * @link       https://www.webmandesign.eu
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.6.0
- *
- * @link  http://www.webmandesign.eu
+ * @version  1.7.0
  *
  * CONTENT:
  * - 0) Constants
@@ -29,13 +24,8 @@
  * 0) Constants
  */
 
-	// Basic constants
-
-		if ( ! defined( 'WM_THEME_SHORTNAME' ) ) define( 'WM_THEME_SHORTNAME', str_replace( array( '-lite', '-plus' ), '', get_template() ) );
-
-	// Dir constants
-
-		if ( ! defined( 'WM_INC_DIR' ) ) define( 'WM_INC_DIR', trailingslashit( 'inc' ) );
+	if ( ! defined( 'WM_THEME_SHORTNAME' ) ) define( 'WM_THEME_SHORTNAME', str_replace( array( '-lite', '-plus' ), '', get_template() ) );
+	if ( ! defined( 'WM_INC_DIR' ) ) define( 'WM_INC_DIR', trailingslashit( 'inc' ) );
 
 
 
@@ -45,23 +35,30 @@
  * 1) Required files
  */
 
-	//Global functions
-		locate_template( WM_INC_DIR . 'lib/core.php', true );
+	// Sanitizing methods
+	require_once( trailingslashit( get_template_directory() ) . WM_INC_DIR . 'class-sanitize.php' );
+
+	// Main theme action hooks
+	require_once( trailingslashit( get_template_directory() ) . WM_INC_DIR . 'lib/hooks.php' );
+
+	// Global functions
+	require_once( trailingslashit( get_template_directory() ) . WM_INC_DIR . 'lib/core.php' );
 
 	// SVG icons
-		locate_template( WM_INC_DIR . 'class-svg.php', true );
+	require_once( trailingslashit( get_template_directory() ) . WM_INC_DIR . 'class-svg.php' );
 
-	//Theme setup
-		locate_template( WM_INC_DIR . 'setup.php', true );
+	// Theme setup
+	require_once( trailingslashit( get_template_directory() ) . WM_INC_DIR . 'setup.php' );
 
-	//Custom header
-		locate_template( WM_INC_DIR . 'custom-header/custom-header.php', true );
+	// Custom header
+	require_once( trailingslashit( get_template_directory() ) . WM_INC_DIR . 'custom-header/custom-header.php' );
 
-	//Customizer
-		locate_template( WM_INC_DIR . 'customizer/customizer.php', true );
+	// Customizer
+	require_once( trailingslashit( get_template_directory() ) . WM_INC_DIR . 'setup-theme-options.php' );
+	require_once( trailingslashit( get_template_directory() ) . WM_INC_DIR . 'customizer/customizer.php' );
 
-	//Jetpack setup
-		locate_template( WM_INC_DIR . 'jetpack/jetpack.php', true );
+	// Jetpack setup
+	require_once( trailingslashit( get_template_directory() ) . WM_INC_DIR . 'jetpack/jetpack.php' );
 
-	//Beaver Builder setup
-		locate_template( WM_INC_DIR . 'beaver-builder/beaver-builder.php', true );
+	// Beaver Builder setup
+	require_once( trailingslashit( get_template_directory() ) . WM_INC_DIR . 'beaver-builder/beaver-builder.php' );

@@ -10,11 +10,10 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.4.0
+ * @version  1.7.0
  *
  * @uses  Jetpack -> Featured Content
- * @link  http://jetpack.me/support/featured-content/
- * @link  http://www.hongkiat.com/blog/wordpress-featured-content/
+ * @link  https://jetpack.me/support/featured-content/
  *
  * @uses  NS Featured Posts plugin
  * @link  https://wordpress.org/plugins/ns-featured-posts/
@@ -36,8 +35,7 @@
 	 * Actions
 	 */
 
-		//Display the featured area
-			add_action( 'wmhook_header_after', 'receptar_banner_area', 10 );
+		add_action( 'wmhook_header_after', 'receptar_banner_area', 10 );
 
 
 
@@ -45,8 +43,9 @@
 	 * Filters
 	 */
 
-		//NS Featured Posts plugin support
-			add_filter( 'receptar_get_banner_posts', 'receptar_nsfp_get_banner_posts', 98 );
+		add_filter( 'receptar_get_banner_posts', 'receptar_nsfp_get_banner_posts', 98 );
+
+		add_filter( 'theme_mod_header_image', 'receptar_front_page_header_image' );
 
 
 
@@ -201,5 +200,3 @@
 
 		}
 	} // /receptar_front_page_header_image
-
-	add_filter( 'theme_mod_header_image', 'receptar_front_page_header_image' );

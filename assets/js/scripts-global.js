@@ -5,7 +5,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.6.0
+ * @version  1.7.0
  *
  * CONTENT:
  * -  10) Basics
@@ -15,11 +15,9 @@
  * - 100) Others
  */
 
-
-
-
-
 jQuery( function() {
+
+	'use strict';
 
 
 

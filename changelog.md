@@ -1,5 +1,61 @@
 # Receptar Changelog
 
+## 1.7.0
+
+* **Update**: Improving code
+* **Update**: Improving security
+* **Update**: Improving accessibility
+* **Update**: Adding WPCS comments to code
+* **Update**: `.screen-reader-text` CSS class styles
+* **Update**: Improving customizer functionality
+* **Update**: Using CSS variables instead of generating customized stylesheet
+* **Update**: Removing obsolete functionality
+* **Update**: Updating readme file
+* **Update**: Setting `use strict` in JavaScript
+* **Update**: Removing all `locate_template()` function references
+* **Update**: Information URLs
+* **Update**: Localization
+* **Update**: Documentation
+* **Update**: Theme demo content
+
+### Files changed:
+
+	changelog.md
+	comments.php
+	functions.php
+	readme.txt
+	sidebar-header.php
+	sidebar.php
+	style.css
+	assets/css/colors.css
+	assets/css/main.css
+	assets/css/starter.css
+	assets/js/customizer-preview.js
+	assets/js/scripts-global.js
+	assets/js/skip-link-focus-fix.js
+	inc/class-sanitize.php
+	inc/setup-theme-options.php
+	inc/setup.php
+	inc/beaver-builder/beaver-builder.php
+	inc/custom-header/custom-header.php
+	inc/customizer/customizer.php
+	inc/customizer/controls/class-Customizer_Hidden.php
+	inc/customizer/controls/class-Customizer_HTML.php
+	inc/customizer/controls/class-Customizer_Image.php
+	inc/customizer/controls/class-Customizer_Multiselect.php
+	inc/customizer/controls/class-Customizer_Select.php
+	inc/lib/core.php
+	languages/*.*
+	template-parts/content-attachment-image.php
+	template-parts/content-custom-header.php
+	template-parts/content-featured-post.php
+	template-parts/content-none.php
+	template-parts/content.php
+	template-parts/loop-banner.php
+	template-parts/loop.php
+	template-parts/footer/site-info.php
+
+
 ## 1.6.1
 
 * **Add**: More social icons
