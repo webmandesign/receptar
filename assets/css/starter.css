@@ -5,7 +5,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.7.0
+ * @version  1.8.0
  */
 
 
@@ -936,7 +936,7 @@
 					blockquote,
 					.format-link .entry-content,
 					.format-status .entry-content,
-					.posts .format-image .post-excerpt { font-size: 1.38em; }
+					.posts .format-image .entry-summary { font-size: 1.38em; }
 
 					h1,
 					.h1 { font-size: 1.62em; }
@@ -961,8 +961,8 @@
 			th, tfoot td,
 			.pagination .current,
 			.link-more,
-			.is-singular .post-excerpt,
-			.post-excerpt.has-more-tag,
+			.is-singular .entry-summary,
+			.entry-summary.has-more-tag,
 			.comment-form label,
 			.format-link .entry-content a,
 			.format-quote .entry-content a,
@@ -1010,7 +1010,7 @@
 			blockquote,
 			table,
 			.format-link .entry-content,
-			.posts .format-image .post-excerpt,
+			.posts .format-image .entry-summary,
 			.gallery-caption,
 			.wp-caption .wp-caption-text { line-height: 1.38; }
 
@@ -1493,7 +1493,14 @@
 		 */
 
 			.entry-summary,
-			.more-tag-excerpt { margin: 1.62em 0; }
+			.more-tag-excerpt {
+				margin: 0 0 1.62em;
+			}
+
+			.entry-summary:last-child,
+			.more-tag-excerpt:last-child {
+				margin-bottom: 0;
+			}
 
 
 
@@ -1516,7 +1523,7 @@
 				 * Image, Link, Status
 				 */
 
-					.posts .format-image .post-excerpt,
+					.posts .format-image .entry-summary,
 					.posts .format-link p,
 					.posts .format-status p { margin: 0; }
 

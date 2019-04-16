@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.7.0
+ * @version  1.8.0
  *
  * Content:
  *
@@ -26,7 +26,7 @@
 	 * Set theme options array
 	 *
 	 * @since    1.0.0
-	 * @version  1.7.0
+	 * @version  1.8.0
 	 *
 	 * @param  array $options
 	 */
@@ -474,10 +474,10 @@
 						900 . 'typography' . 100 => array(
 							'type'    => 'html',
 							'content' => '<p class="description">' . sprintf(
-									esc_html_x( 'This theme does not restrict you to a predefined set of fonts. Please use any font service (such as %s) plugin you want and set the plugin according to the information below.', '%s is replaced with linked examples of web fonts libraries such as Google Fonts or Adobe Typekit.', 'receptar' ),
-									'<a href="https://fonts.google.com/" target="_blank"><strong>Google Fonts</strong></a>, <a href="https://typekit.com/fonts" target="_blank"><strong>Adobe Typekit</strong></a>'
+									esc_html_x( 'This theme does not restrict you to choose from a predefined set of fonts. Instead, please use any font service (such as %s) plugin you like to load your fonts.', '%s: linked examples of web fonts libraries such as Google Fonts or Adobe Typekit.', 'receptar' ),
+									'<a href="https://fonts.google.com/" target="_blank"><strong>Google Fonts</strong></a>, <a href="https://fonts.adobe.com/fonts" target="_blank"><strong>Adobe Fonts</strong></a>'
 								) . '</p>'
-								. '<p>' . esc_html__( 'List of CSS selectors for predefined theme font sets:', 'receptar' ) . '</p>'
+								. '<p>' . esc_html__( 'Here you can find CSS selectors/variables list associated with each font group in the theme. You can use these in your custom font plugin settings.', 'receptar' ) . '</p>'
 								. '<ol>'
 								. '<li><strong>' . esc_html_x( 'Texts:', 'CSS selector group name.', 'receptar' ) . '</strong><br />'
 									. '<code>--typography-fonts-text</code>'

@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.7.0
+ * @version  1.8.0
  */
 
 $pagination_suffix = receptar_paginated_suffix( 'small', 'post' );
@@ -59,8 +59,9 @@ $pagination_suffix = receptar_paginated_suffix( 'small', 'post' );
 			}
 
 			if ( is_singular() ) {
-				the_content( apply_filters( 'wmhook_receptar_excerpt_continue_reading', '' ) );
+				the_content();
 			}
+
 			?>
 		</div>
 		<?php wmhook_entry_bottom(); ?>

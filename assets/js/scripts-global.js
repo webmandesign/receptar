@@ -5,19 +5,22 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.7.0
+ * @version  1.8.0
  *
- * CONTENT:
- * -  10) Basics
- * -  20) Site header
- * -  30) Banner
- * -  40) Posts
- * - 100) Others
+ * Contents:
+ *
+ *  10) Basics
+ *  20) Site header
+ *  30) Banner
+ *  40) Posts
+ * 100) Others
  */
 
-jQuery( function() {
+( function( $ ) {
 
 	'use strict';
+
+
 
 
 
@@ -25,15 +28,14 @@ jQuery( function() {
 	 * 10) Basics
 	 */
 
-		var $window = jQuery( window );
+		var
+			$window      = $( window ),
+			$siteContent = $( '.is-singular:not(.home) .site-content' );
+
+		$( '.no-js' )
+			.removeClass( 'no-js' );
 
 
-
-		/**
-		 * Tell CSS that JS is enabled...
-		 */
-
-			jQuery( '.no-js' ).removeClass( 'no-js' );
 
 
 
@@ -41,24 +43,20 @@ jQuery( function() {
 	 * 20) Site header
 	 */
 
-
-		/**
-		 * Secondary section toggle
-		 */
-
-			jQuery( '#menu-toggle' ).on( 'click', function( e ) {
+		$( '#menu-toggle' )
+			.on( 'click', function( e ) {
 
 				e.preventDefault();
 
-				jQuery( '#secondary' )
+				$( '#secondary' )
 					.toggleClass( 'active' );
 
-				jQuery( '#secondary.active' )
+				$( '#secondary.active' )
 					.attr( 'aria-expanded', 'true' )
 					.find( '#menu-toggle' )
 						.attr( 'aria-expanded', 'true' );
 
-				jQuery( '#secondary:not(.active)' )
+				$( '#secondary:not(.active)' )
 					.attr( 'aria-expanded', 'false' )
 					.find( '#menu-toggle' )
 						.attr( 'aria-expanded', 'false' );
@@ -67,33 +65,32 @@ jQuery( function() {
 
 
 
+
+
 	/**
 	 * 30) Banner
 	 */
 
-		/**
-		 * Banner slider
-		 */
+		if ( $().slick ) {
+			$( '#site-banner.enable-slider .site-banner-inner' )
+				.slick( {
+					'adaptiveHeight' : false,
+					'autoplay'       : true,
+					'autoplaySpeed'  : ( ! $( '#site-banner' ).data( 'speed' ) ) ? ( 5400 ) : ( $( '#site-banner' ).data( 'speed' ) ),
+					'cssEase'        : 'ease-in-out',
+					'dots'           : false,
+					'easing'         : 'easeInOutBack',
+					'fade'           : true,
+					'pauseOnHover'   : true,
+					'slide'          : 'article',
+					'speed'          : 600,
+					'swipeToSlide'   : true,
+					'prevArrow'      : '<div class="slider-nav slider-nav-prev"><button type="button" class="slick-prev"><span class="genericons-neue genericons-neue-previous"></span></button></div>',
+					'nextArrow'      : '<div class="slider-nav slider-nav-next"><button type="button" class="slick-next"><span class="genericons-neue genericons-neue-next"></span></button></div>'
+				} );
+		}
 
-			if ( jQuery().slick ) {
 
-				jQuery( '#site-banner.enable-slider .site-banner-inner' ).slick( {
-						'adaptiveHeight' : false,
-						'autoplay'       : true,
-						'autoplaySpeed'  : ( ! jQuery( '#site-banner' ).data( 'speed' ) ) ? ( 5400 ) : ( jQuery( '#site-banner' ).data( 'speed' ) ),
-						'cssEase'        : 'ease-in-out',
-						'dots'           : false,
-						'easing'         : 'easeInOutBack',
-						'fade'           : true,
-						'pauseOnHover'   : true,
-						'slide'          : 'article',
-						'speed'          : 600,
-						'swipeToSlide'   : true,
-						'prevArrow'      : '<div class="slider-nav slider-nav-prev"><button type="button" class="slick-prev"><span class="genericons-neue genericons-neue-previous"></span></button></div>',
-						'nextArrow'      : '<div class="slider-nav slider-nav-next"><button type="button" class="slick-next"><span class="genericons-neue genericons-neue-next"></span></button></div>'
-					} );
-
-			} // /slick
 
 
 
@@ -101,17 +98,18 @@ jQuery( function() {
 	 * 40) Posts
 	 */
 
-		/**
-		 * Single post minimal content height
-		 */
+		$siteContent
+			.css( 'min-height', $( '.entry-media' ).outerHeight() + 'px' );
 
-			var $siteContent = jQuery( '.is-singular:not(.home) .site-content' ).css( 'min-height', jQuery( '.entry-media' ).outerHeight() + 'px' );
-
-			$window.on( 'resize orientationchange', function( e ) {
+		$window
+			.on( 'resize orientationchange', function( e ) {
 				if ( 960 < document.body.clientWidth ) {
-					$siteContent.css( 'min-height', jQuery( '.entry-media' ).outerHeight() + 'px' );
+					$siteContent
+						.css( 'min-height', $( '.entry-media' ).outerHeight() + 'px' );
 				}
 			} );
+
+
 
 
 
@@ -119,23 +117,20 @@ jQuery( function() {
 	 * 100) Others
 	 */
 
-		/**
-		 * Page scrolled?
-		 */
+		if ( 0 == $window.scrollTop() ) {
+			$( 'body' )
+				.addClass( 'not-scrolled' );
+		}
 
-			if ( 0 == $window.scrollTop() ) {
-				jQuery( 'body' )
-					.addClass( 'not-scrolled' )
-			}
-
-			$window.on( 'scroll', function( e ) {
+		$window
+			.on( 'scroll', function( e ) {
 
 				if ( 0 == $window.scrollTop() ) {
-					jQuery( 'body' )
+					$( 'body' )
 						.addClass( 'not-scrolled' )
 						.removeClass( 'is-scrolled' );
 				} else {
-					jQuery( 'body' )
+					$( 'body' )
 						.addClass( 'is-scrolled' )
 						.removeClass( 'not-scrolled' );
 				}
@@ -144,50 +139,6 @@ jQuery( function() {
 
 
 
-		/**
-		 * On-page anchor smooth scrolling
-		 *
-		 * Disable this when editing page with Beaver Builder to prevent
-		 * jumps when switching modules settings form tabs.
-		 */
-
-			if ( ! ( 0 < window.location.href.search( 'fl_builder' ) ) ) {
-
-				jQuery( 'body' ).on( 'click', 'a[href^="#"]', function( e ) {
-
-					var $this         = jQuery( this ),
-					    $anchor       = $this.not( '.add-comment-link, .search-toggle, .back-to-top, .skip-link' ).attr( 'href' ),
-					    $scrollObject = jQuery( 'html, body' ),
-					    $scrollSpeed  = ( 960 >= document.body.clientWidth ) ? ( 0 ) : ( 600 );
-
-					if (
-							$anchor
-							&& '#' !== $anchor
-							&& ! $this.parent().parent().hasClass( 'wm-tab-links' )
-							&& ! $this.hasClass( 'no-smooth-scroll' )
-						) {
-						e.preventDefault();
-
-						var $scrollOffset = jQuery( '.do-sticky-header #masthead' ).outerHeight() - 1;
-
-						if ( jQuery( '#wpadminbar' ).length ) {
-							$scrollOffset += jQuery( '#wpadminbar' ).outerHeight();
-						}
-						if ( jQuery( '.fl-row.sticky' ).length ) {
-							$scrollOffset += jQuery( '.fl-row.sticky' ).eq( 0 ).outerHeight();
-						}
-
-						$scrollObject
-							.stop()
-							.animate( {
-								scrollTop : jQuery( $anchor ).offset().top - $scrollOffset + 'px'
-							}, $scrollSpeed );
-					}
-
-				} );
-
-			} //check if Beaver Builder not active
 
 
-
-} );
+} )( jQuery );

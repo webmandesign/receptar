@@ -2,8 +2,8 @@
 Contributors: webmandesign
 Tags: two-columns, four-columns, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, grid-layout, blog, food-and-drink, photography
 Requires at least: 4.7.0
-Tested up to: 5.0.3
-Stable tag: 1.7.0
+Tested up to: 5.1.1
+Stable tag: 1.8.0
 License: GNU General Public License v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -37,8 +37,8 @@ Please see `changelog.md` file.
 
 == Upgrade Notice ==
 
-= 1.7.0 =
-* Using CSS variables instead of generating a customized stylesheet, improving security, improving code.
+= 1.8.0 =
+Adding welcome notice, updating typography info, updating excerpts and continue reading link display, improving CSS variables, updating scripts and localization.
 
 
 == Resources ==

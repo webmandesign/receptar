@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.7.0
+ * @version  1.8.0
  *
  * CONTENT:
  * 10) Assets
@@ -94,7 +94,7 @@
 	 * @uses  `wmhook_theme_options` global hook
 	 *
 	 * @since    1.0
-	 * @version  1.7.0
+	 * @version  1.8.0
 	 */
 	if ( ! function_exists( 'receptar_theme_customizer_js' ) ) {
 		function receptar_theme_customizer_js() {
@@ -214,7 +214,7 @@
 							$output_single .= "\t" . '}'. PHP_EOL;
 							$output_single .= ');'. PHP_EOL;
 
-							$output_single  = (string) apply_filters( 'wmhook_reykjavik_library_customize_preview_scripts_option_' . $option_id, $output_single );
+							$output_single  = (string) apply_filters( 'wmhook_receptar_library_customize_preview_scripts_option_' . $option_id, $output_single );
 
 							$output .= $output_single;
 
@@ -226,7 +226,7 @@
 			// Output
 
 				if ( $output = trim( $output ) ) {
-					echo (string) apply_filters( 'wmhook_reykjavik_library_customize_preview_scripts_output', '<!-- Theme custom scripts -->' . PHP_EOL . '<script type="text/javascript"><!--' . PHP_EOL . '( function( $ ) {' . PHP_EOL.PHP_EOL . trim( $output ) . PHP_EOL.PHP_EOL . '} )( jQuery );' . PHP_EOL . '//--></script>' );
+					echo (string) apply_filters( 'wmhook_receptar_library_customize_preview_scripts_output', '<!-- Theme custom scripts -->' . PHP_EOL . '<script type="text/javascript"><!--' . PHP_EOL . '( function( $ ) {' . PHP_EOL.PHP_EOL . trim( $output ) . PHP_EOL.PHP_EOL . '} )( jQuery );' . PHP_EOL . '//--></script>' );
 				}
 
 		}
@@ -797,7 +797,7 @@
 	 * @link  https://github.com/jhildenbiddle/css-vars-ponyfill
 	 *
 	 * @since    1.7.0
-	 * @version  1.7.0
+	 * @version  1.8.0
 	 */
 	if ( ! function_exists( 'receptar_css_vars_compatibility' ) ) {
 		function receptar_css_vars_compatibility() {
@@ -813,7 +813,12 @@
 
 				wp_add_inline_script(
 					'css-vars-ponyfill',
-					"cssVars( { onlyVars: true, exclude: 'link:not([href^=\"" . esc_url_raw( get_theme_root_uri() ) . "\"])' } );"
+					'window.onload = function() {' . PHP_EOL .
+					"\t" . 'cssVars( {' . PHP_EOL .
+					"\t\t" . 'onlyVars: true,' . PHP_EOL .
+					"\t\t" . 'exclude: \'link:not([href^="' . esc_url_raw( get_theme_root_uri() ) . '"])\'' . PHP_EOL .
+					"\t" . '} );' . PHP_EOL .
+					'};'
 				);
 
 		}
@@ -827,7 +832,7 @@
 	 * Get CSS vars from theme options.
 	 *
 	 * @since    1.7.0
-	 * @version  1.7.0
+	 * @version  1.8.0
 	 */
 	if ( ! function_exists( 'receptar_get_css_vars_from_theme_options' ) ) {
 		function receptar_get_css_vars_from_theme_options() {
@@ -864,10 +869,16 @@
 					}
 
 					$mod = get_theme_mod( $option['id'] );
-					if ( isset( $option['validate'] ) && is_callable( $option['validate'] ) ) {
+					if (
+						isset( $option['validate'] )
+						&& is_callable( $option['validate'] )
+					) {
 						$mod = call_user_func( $option['validate'], $mod );
 					}
-					if ( ! empty( $mod ) || 'checkbox' === $option['type'] ) {
+					if (
+						! empty( $mod )
+						|| 'checkbox' === $option['type']
+					) {
 						if ( 'color' === $option['type'] ) {
 							$value_check = maybe_hash_hex_color( $value );
 							$mod         = maybe_hash_hex_color( $mod );
@@ -899,7 +910,8 @@
 						);
 					}
 
-					$css_vars .= ' --' . $option['id'] . ': ' . $value . ';';
+					// Do not apply `esc_attr()` as it will escape quote marks, such as in background image URL.
+					$css_vars .= ' --' . sanitize_title( $option['id'] ) . ': ' . $value . ';';
 				}
 
 				// Cache the results.

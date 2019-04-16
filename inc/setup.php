@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.7.0
+ * @version  1.8.0
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -28,6 +28,8 @@
 	/**
 	 * Actions
 	 */
+
+		add_action( 'load-themes.php', 'receptar_admin_notice_welcome_activation' );
 
 		//Styles and scripts
 			add_action( 'init',                'receptar_register_assets',           10 );
@@ -100,11 +102,12 @@
 		//Navigation improvements
 			add_filter( 'walker_nav_menu_start_el', 'receptar_nav_item_process', 10, 4 );
 		//Excerpt modifications
-			add_filter( 'the_excerpt',                              'receptar_remove_shortcodes',        10 );
-			add_filter( 'the_excerpt',                              'receptar_excerpt',                  20 );
-			add_filter( 'excerpt_length',                           'receptar_excerpt_length',           10 );
-			add_filter( 'excerpt_more',                             'receptar_excerpt_more',             10 );
-			add_filter( 'wmhook_receptar_excerpt_continue_reading', 'receptar_excerpt_continue_reading', 10 );
+			add_filter( 'the_excerpt', 'receptar_remove_shortcodes', 10 );
+			add_filter( 'the_excerpt', 'receptar_excerpt', 20 );
+			add_filter( 'get_the_excerpt', 'receptar_wrap_excerpt', 20 );
+			add_filter( 'get_the_excerpt', 'receptar_excerpt_continue_reading', 30, 2 );
+			add_filter( 'excerpt_length', 'receptar_excerpt_length', 10 );
+			add_filter( 'excerpt_more', 'receptar_excerpt_more', 10 );
 		//Post thumbnail
 			add_filter( 'wmhook_entry_featured_image_size',         'receptar_post_thumbnail_size'               );
 			add_filter( 'wmhook_entry_featured_image_fallback_url', 'receptar_entry_featured_image_fallback_url' );
@@ -258,6 +261,52 @@
 
 		}
 	} // /receptar_setup
+
+
+
+	/**
+	 * Initiate "Welcome" admin notice
+	 *
+	 * @since    1.8.0
+	 * @version  1.8.0
+	 */
+	if ( ! function_exists( 'receptar_admin_notice_welcome_activation' ) ) {
+		function receptar_admin_notice_welcome_activation() {
+
+			// Processing
+
+				global $pagenow;
+
+				if (
+					is_admin()
+					&& 'themes.php' == $pagenow
+					&& isset( $_GET['activated'] )
+				) {
+
+					add_action( 'admin_notices', 'receptar_admin_notice_welcome', 99 );
+
+				}
+
+		}
+	} // /receptar_admin_notice_welcome_activation
+
+
+
+		/**
+		 * Display "Welcome" admin notice
+		 *
+		 * @since    1.8.0
+		 * @version  1.8.0
+		 */
+		if ( ! function_exists( 'receptar_admin_notice_welcome' ) ) {
+			function receptar_admin_notice_welcome() {
+
+				// Processing
+
+					get_template_part( 'template-parts/component-notice', 'welcome' );
+
+			}
+		} // /receptar_admin_notice_welcome
 
 
 
@@ -1547,57 +1596,184 @@
 		 * If the post has more tag, display the content appropriately.
 		 *
 		 * @since    1.0
-		 * @version  1.6.0
+		 * @version  1.8.0
 		 *
 		 * @param  string $excerpt
 		 */
 		if ( ! function_exists( 'receptar_excerpt' ) ) {
-			function receptar_excerpt( $excerpt ) {
-				//Requirements check
-					if ( post_password_required() ) {
-						if ( ! is_single() ) {
-							return esc_html__( 'This content is password protected.', 'receptar' ) . ' <a href="' . esc_url( get_permalink() ) . '">' . esc_html__( 'Enter the password to view it.', 'receptar' ) . '</a>';
+			function receptar_excerpt( $excerpt = '' ) {
+
+				// Variables
+
+					$post_id = get_the_ID();
+
+
+				// Requirements check
+
+					if ( post_password_required( $post_id ) ) {
+						if ( ! is_single( $post_id ) ) {
+							return esc_html__( 'This content is password protected.', 'receptar' )
+							       . ' <a href="' . esc_url( get_permalink() ) . '">'
+							       . esc_html__( 'Enter the password to view it.', 'receptar' )
+							       . '</a>';
 						}
 						return;
 					}
 
-				//Preparing output
+
+				// Processing
+
 					if (
-							! is_single()
-							&& receptar_has_more_tag()
-						) {
+						! is_single( $post_id )
+						&& receptar_has_more_tag()
+					) {
 
-						/**
-						 * Post has more tag
-						 */
+						if ( has_excerpt( $post_id ) ) {
+							$excerpt = str_replace(
+								'entry-summary',
+								'entry-summary has-more-tag',
+								$excerpt
+							);
+						} else {
+							$excerpt = '';
+						}
 
-							if ( has_excerpt() ) {
-								$excerpt = '<p class="post-excerpt has-more-tag">' . get_the_excerpt() . '</p>';
-							}
-							$excerpt = apply_filters( 'the_content', $excerpt . get_the_content( '' ) );
-
-					} else {
-
-						/**
-						 * Default excerpt for posts without more tag
-						 */
-
-							$excerpt = strtr( $excerpt, apply_filters( 'wmhook_receptar_excerpt_replacements', array( '<p' => '<p class="post-excerpt"' ) ) );
+						$excerpt = apply_filters( 'the_content', $excerpt . get_the_content( '' ) . receptar_get_continue_reading_html() );
 
 					}
 
-					//Adding "Continue reading" link
-						if (
-								! is_single()
-								&& in_array( get_post_type(), apply_filters( 'wmhook_receptar_excerpt_continue_reading_post_type', array( 'post', 'page' ) ) )
-							) {
-							$excerpt .= apply_filters( 'wmhook_receptar_excerpt_continue_reading', '' );
-						}
 
-				//Output
+				// Output
+
 					return $excerpt;
+
 			}
 		} // /receptar_excerpt
+
+
+
+			/**
+			 * Wrap excerpt within a `div.entry-summary`.
+			 *
+			 * Line breaks are required for proper functionality of `wpautop()` later on.
+			 *
+			 * @since    1.8.0
+			 * @version  1.8.0
+			 *
+			 * @param  string $post_excerpt
+			 */
+			if ( ! function_exists( 'receptar_wrap_excerpt' ) ) {
+				function receptar_wrap_excerpt( $post_excerpt = '' ) {
+
+					// Output
+
+						return '<div class="entry-summary">' . PHP_EOL . $post_excerpt . PHP_EOL . '</div>';
+
+				}
+			} // /receptar_wrap_excerpt
+
+
+
+			/**
+			 * Adding "Continue reading" link to excerpt
+			 *
+			 * @since    1.0.0
+			 * @version  1.8.0
+			 *
+			 * @param  string  $post_excerpt  The post excerpt.
+			 * @param  WP_Post $post          Post object.
+			 */
+			if ( ! function_exists( 'receptar_excerpt_continue_reading' ) ) {
+				function receptar_excerpt_continue_reading( $post_excerpt = '', $post = null ) {
+
+					// Variables
+
+						$post_id = get_the_ID();
+
+
+					// Processing
+
+						if (
+							! post_password_required( $post_id )
+							&& ! is_single( $post_id )
+							&& ! receptar_has_more_tag()
+							&& in_array(
+								get_post_type( $post_id ),
+								(array) apply_filters( 'wmhook_receptar_excerpt_continue_reading_post_type', array( 'post', 'page' ) )
+							)
+						) {
+							$post_excerpt .= receptar_get_continue_reading_html( $post );
+						}
+
+
+					// Output
+
+						return $post_excerpt;
+
+				}
+			} // /receptar_excerpt_continue_reading
+
+
+
+			/**
+			 * Get "Continue reading" HTML.
+			 *
+			 * @since    1.8.0
+			 * @version  1.8.0
+			 *
+			 * @param  WP_Post $post   Post object.
+			 * @param  string  $scope  Optional identification of specific "Continue reading" text for better filtering.
+			 */
+			if ( ! function_exists( 'receptar_get_continue_reading_html' ) ) {
+				function receptar_get_continue_reading_html( $post = null, $scope = '' ) {
+
+					// Pre
+
+						$pre = apply_filters( 'wmhook_receptar_get_continue_reading_html_pre', false, $post, $scope );
+
+						if ( false !== $pre ) {
+							return $pre;
+						}
+
+
+					// Variables
+
+						$html     = '';
+						$scope    = (string) $scope;
+						$template = 'template-parts/component-link-more';
+
+
+					// Processing
+
+						ob_start();
+
+						if ( $scope && locate_template( $template . '-' . $scope . '.php' ) ) {
+							get_template_part( $template, $scope );
+						} else {
+							get_template_part( $template, get_post_type() );
+						}
+
+						/**
+						 * Stripping all new line and tab characters to prevent `wpautop()` messing things up later.
+						 *
+						 * "\t" - a tab.
+						 * "\n" - a new line (line feed).
+						 * "\r" - a carriage return.
+						 * "\x0B" - a vertical tab.
+						 */
+						$html = str_replace(
+							array( "\t", "\n", "\r", "\x0B" ),
+							'',
+							ob_get_clean()
+						);
+
+
+					// Output
+
+						return (string) apply_filters( 'wmhook_receptar_get_continue_reading_html', $html, $post, $scope );
+
+				}
+			} // /receptar_get_continue_reading_html
 
 
 
@@ -1630,22 +1806,6 @@
 					return '&hellip;';
 				}
 			} // /receptar_excerpt_more
-
-
-
-			/**
-			 * Excerpt "Continue reading" text
-			 *
-			 * @since    1.0
-			 * @version  1.3
-			 *
-			 * @param  string $continue
-			 */
-			if ( ! function_exists( 'receptar_excerpt_continue_reading' ) ) {
-				function receptar_excerpt_continue_reading( $continue ) {
-					return '<div class="link-more"><a href="' . esc_url( get_permalink() ) . '">' . sprintf( esc_html__( 'Continue reading%s&hellip;', 'receptar' ), '<span class="screen-reader-text"> "' . get_the_title() . '"</span>' ) . '</a></div>';
-				}
-			} // /receptar_excerpt_continue_reading
 
 
 

@@ -6,18 +6,14 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.4.0
+ * @version  1.8.0
  */
 
 
 
 
 
-/**
- * HTML
- */
-
-	wmhook_html_before();
+wmhook_html_before();
 
 ?>
 
@@ -27,15 +23,10 @@
 
 <?php
 
-/**
- * HTML head
- */
+wmhook_head_top();
+wmhook_head_bottom();
 
-	wmhook_head_top();
-
-	wmhook_head_bottom();
-
-	wp_head();
+wp_head();
 
 ?>
 
@@ -46,38 +37,15 @@
 
 <?php
 
-/**
- * Body
- */
+wmhook_body_top();
 
-	wmhook_body_top();
+if ( ! apply_filters( 'wmhook_receptar_disable_header', false ) ) {
+	wmhook_header_before();
+	wmhook_header_top();
+	wmhook_header();
+	wmhook_header_bottom();
+	wmhook_header_after();
+}
 
-
-
-/**
- * Header
- */
-
-	if ( ! apply_filters( 'wmhook_receptar_disable_header', false ) ) {
-
-		wmhook_header_before();
-
-		wmhook_header_top();
-
-		wmhook_header();
-
-		wmhook_header_bottom();
-
-		wmhook_header_after();
-
-	}
-
-
-
-/**
- * Content
- */
-
-	wmhook_content_before();
-
-	wmhook_content_top();
+wmhook_content_before();
+wmhook_content_top();

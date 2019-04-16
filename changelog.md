@@ -1,5 +1,38 @@
 # Receptar Changelog
 
+## 1.8.0
+
+* **Add**: Welcome notice
+* **Update**: Typography info in theme options
+* **Update**: Excerpts display
+* **Update**: Continue reading link display
+* **Update**: Improving CSS variables functionality for browsers with no support
+* **Update**: Improving code
+* **Update**: Removing obsolete JavaScript code
+* **Update**: Slick.js 1.9.0
+* **Update**: Localization
+
+### Files changed:
+
+	changelog.md
+	footer.php
+	header.php
+	readme.txt
+	style.css
+	assets/css/main.css
+	assets/css/starter.css
+	assets/js/scripts-global.js
+	assets/js/slick.min.js
+	assets/js/dev/slick.js
+	inc/setup-theme-options.php
+	inc/setup.php
+	inc/customizer/customizer.php
+	languages/receptar.pot
+	template-parts/component-link-more.php
+	template-parts/component-notice-welcome.php
+	template-parts/content.php
+
+
 ## 1.7.0
 
 * **Update**: Improving code

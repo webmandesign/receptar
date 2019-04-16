@@ -7,7 +7,7 @@
  * @copyright  WebMan Design, Oliver Juhas
  *
  * @since    1.7.0
- * @version  1.7.0
+ * @version  1.8.0
  *
  * CONTENT:
  *
@@ -35,7 +35,7 @@
  * 0. CSS variables
  */
 
-	:root {
+	html {
 
 		--color-accent: #e53739;
 		--color-accent-text: #ffffff;
@@ -317,8 +317,8 @@
 		.comments-title span { font-weight: 300; }
 
 		.link-more,
-		.is-singular .post-excerpt,
-		.post-excerpt.has-more-tag { font-weight: 400; }
+		.is-singular .entry-summary,
+		.entry-summary.has-more-tag { font-weight: 400; }
 
 		abbr { font-weight: 600; }
 
@@ -1034,8 +1034,8 @@
 		 * Post excerpt
 		 */
 
-			.single .post-excerpt,
-			.post-excerpt.has-more-tag { text-transform: uppercase; }
+			.single .entry-summary,
+			.entry-summary.has-more-tag { text-transform: uppercase; }
 
 
 
@@ -1239,7 +1239,6 @@
 							.link-more a {
 								display: inline-block;
 								padding: .62em 1.62em;
-								margin: 1em 0 1.62em;
 								border: 2px solid;
 							}
 
@@ -2250,7 +2249,6 @@
 								.link-more a {
 									display: inline-block;
 									padding: .62em 1.62em;
-									margin: 1em 0 1.62em;
 									border: 2px solid;
 								}
 
