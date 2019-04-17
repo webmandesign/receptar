@@ -1,5 +1,18 @@
 # Receptar Changelog
 
+## 1.8.1
+
+* **Fix**: Homepage slideshow stopped working after 1.8.0 update
+
+### Files changed:
+
+	changelog.md
+	readme.txt
+	style.css
+	assets/js/slick.min.js
+	assets/js/dev/slick.js
+
+
 ## 1.8.0
 
 * **Add**: Welcome notice
