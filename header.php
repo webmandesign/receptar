@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.8.0
+ * @version  1.8.2
  */
 
 
@@ -36,6 +36,12 @@ wp_head();
 <body <?php body_class(); ?>>
 
 <?php
+
+if ( function_exists( 'wp_body_open' ) ) {
+	wp_body_open();
+} else {
+	do_action( 'wp_body_open' );
+}
 
 wmhook_body_top();
 

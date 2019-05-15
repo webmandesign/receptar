@@ -7,7 +7,7 @@
  * @copyright  WebMan Design, Oliver Juhas
  *
  * @since    1.7.0
- * @version  1.8.0
+ * @version  1.8.2
  *
  * CONTENT:
  *
@@ -35,7 +35,7 @@
  * 0. CSS variables
  */
 
-	html {
+	:root {
 
 		--color-accent: #e53739;
 		--color-accent-text: #ffffff;

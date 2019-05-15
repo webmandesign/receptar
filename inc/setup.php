@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.8.0
+ * @version  1.8.2
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -755,7 +755,7 @@
 	 * HTML Body classes
 	 *
 	 * @since    1.0
-	 * @version  1.5.0
+	 * @version  1.8.2
 	 *
 	 * @param  array $classes
 	 */
@@ -777,12 +777,6 @@
 						$body_classes['is-singular'] = ++$i;
 					} else {
 						$body_classes['is-not-singular'] = ++$i;
-					}
-
-				// Privacy Policy page
-
-					if ( (int) get_option( 'wp_page_for_privacy_policy' ) === get_the_ID() ) {
-						$body_classes['page-privacy-policy'] = ++$i;
 					}
 
 				//Has featured image?
@@ -1105,7 +1099,7 @@
 			 * Social links supported icons
 			 *
 			 * @since    1.6.0
-			 * @version  1.6.1
+			 * @version  1.8.2
 			 */
 			function receptar_social_links_icons() {
 
@@ -1123,7 +1117,8 @@
 						'facebook.com'      => 'facebook',
 						'flickr.com'        => 'flickr',
 						'foursquare.com'    => 'foursquare',
-						'plus.google.com'   => 'google-plus',
+						'plus.google.'      => 'google-plus',
+						'google.'           => 'google',
 						'github.com'        => 'github',
 						'instagram.com'     => 'instagram',
 						'linkedin.com'      => 'linkedin',
@@ -1153,6 +1148,7 @@
 						'vimeo.com'         => 'vimeo',
 						'vine.co'           => 'vine',
 						'vk.com'            => 'vk',
+						'wa.me'             => 'whatsapp',
 						'wordpress.org'     => 'wordpress',
 						'wordpress.com'     => 'wordpress',
 						'xing.com'          => 'xing',

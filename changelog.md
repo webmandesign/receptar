@@ -1,5 +1,22 @@
 # Receptar Changelog
 
+## 1.8.2
+
+* **Add**: Adding WhatsApp and Google social icon
+* **Update**: Implementing WordPress 5.2 code updates
+* **Fix**: CSS variables issue in non-compatible web browsers
+
+### Files changed:
+
+	changelog.md
+	header.php
+	readme.txt
+	style.css
+	assets/css/main.css
+	assets/images/svg/social-icons.svg
+	inc/setup.php
+
+
 ## 1.8.1
 
 * **Fix**: Homepage slideshow stopped working after 1.8.0 update
