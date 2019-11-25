@@ -5,7 +5,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.8.0
+ * @version  1.8.3
  */
 
 
@@ -2062,7 +2062,10 @@
 					}
 					.infinite-loader .spinner > div > div { width: 1.62em !important; }
 
-				.infinite-wrap { clear: both; }
+				.infinite-wrap {
+					clear: both;
+					width: 100%;
+				}
 
 			/* Related posts */
 

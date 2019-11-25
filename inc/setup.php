@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.8.2
+ * @version  1.8.3
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -1654,12 +1654,19 @@
 			 * Line breaks are required for proper functionality of `wpautop()` later on.
 			 *
 			 * @since    1.8.0
-			 * @version  1.8.0
+			 * @version  1.8.3
 			 *
 			 * @param  string $post_excerpt
 			 */
 			if ( ! function_exists( 'receptar_wrap_excerpt' ) ) {
 				function receptar_wrap_excerpt( $post_excerpt = '' ) {
+
+					// Requirements check
+
+						if ( empty( $post_excerpt ) ) {
+							return $post_excerpt;
+						}
+
 
 					// Output
 

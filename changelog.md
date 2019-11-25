@@ -1,5 +1,21 @@
 # Receptar Changelog
 
+## 1.8.3
+
+* **Update**: Adding `nofollow` attribute to default site info links
+* **Fix**: Removing post excerpt wrapper when excerpt is empty
+* **Fix**: Jetpack infinite scroll layout
+
+### Files changed:
+
+	changelog.md
+	readme.txt
+	style.css
+	assets/css/starter.css
+	inc/setup.php
+	template-parts/footer/site-info.php
+
+
 ## 1.8.2
 
 * **Add**: Adding WhatsApp and Google social icon

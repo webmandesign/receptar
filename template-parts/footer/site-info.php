@@ -6,7 +6,7 @@
  * @copyright  WebMan Design, Oliver Juhas
  *
  * @since    1.4.0
- * @version  1.7.0
+ * @version  1.8.3
  */
 
 
@@ -45,8 +45,8 @@
 
 				printf(
 					esc_html_x( 'Using %1$s %2$s theme.', '1: theme name, 2: linked "WordPress" word.', 'receptar' ),
-					'<a href="' . esc_url( wp_get_theme( 'receptar' )->get( 'ThemeURI' ) ) . '"><strong>' . wp_get_theme( 'receptar' )->get( 'Name' ) . '</strong></a>',
-					'<a href="' . esc_url( __( 'https://wordpress.org/', 'receptar' ) ) . '">WordPress</a>'
+					'<a rel="nofollow" href="' . esc_url( wp_get_theme( 'receptar' )->get( 'ThemeURI' ) ) . '"><strong>' . wp_get_theme( 'receptar' )->get( 'Name' ) . '</strong></a>',
+					'<a rel="nofollow" href="' . esc_url( __( 'https://wordpress.org/', 'receptar' ) ) . '">WordPress</a>'
 				);
 
 				if ( function_exists( 'the_privacy_policy_link' ) ) {
