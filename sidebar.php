@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.7.0
+ * @version  1.8.4
  */
 
 ?>
@@ -24,8 +24,8 @@
 				wp_nav_menu( apply_filters( 'wmhook_navigation_args', array(
 					'theme_location'  => 'primary',
 					'container'       => 'div',
-					'container_class' => 'menu',
-					'menu_class'      => 'menu', // fallback for pagelist
+					'container_class' => 'menu-main-navigation',
+					'menu_class'      => 'menu-main-navigation', // fallback for pagelist
 					'items_wrap'      => '<ul>%3$s</ul>',
 				) ) );
 

@@ -11,6 +11,7 @@
 	changelog.md
 	readme.txt
 	style.css
+	sidebar.php
 	assets/js/vendor/css-vars-ponyfill/css-vars-ponyfill.js
 	assets/js/vendor/css-vars-ponyfill/css-vars-ponyfill.min.js
 	inc/setup.php
