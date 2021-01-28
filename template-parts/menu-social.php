@@ -6,11 +6,10 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.6.1
+ * @version  1.8.4
  */
 
-
-
 if ( has_nav_menu( 'social' ) ) {
-	wp_nav_menu( receptar_social_menu_args() );
+	$args = receptar_social_menu_args();
+	wp_nav_menu( $args );
 }

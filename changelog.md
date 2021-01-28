@@ -15,6 +15,7 @@
 	assets/js/vendor/css-vars-ponyfill/css-vars-ponyfill.min.js
 	inc/setup.php
 	inc/customizer/customizer.php
+	template-parts/menu-social.php
 
 
 ## 1.8.3

@@ -48,5 +48,5 @@ Improving SEO, updating JavaScript.
 * Header images © http://www.stocksnap.io/, CC0
 * screenshot.jpg images © http://www.stocksnap.io/, CC0
 * social-icons.svg © Based on Font Awesome icons font by Dave Gandy, SIL Open Font License 1.1
-* featured.jpg and header.jpg © https://www.pixabay.com, CC0
-* screenshot.jpg images © https://www.pixabay.com, CC0
+* featured.jpg and header.jpg © https://www.pexels.com, CC0
+* screenshot.jpg images © https://www.pexels.com, CC0
