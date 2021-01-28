@@ -3,13 +3,17 @@ Theme Name:   Receptar
 Theme URI:    https://www.webmandesign.eu/portfolio/receptar-wordpress-theme/
 Author:       WebMan Design
 Author URI:   https://www.webmandesign.eu/
-Version:      1.8.3
+Version:      1.8.4
 Text Domain:  receptar
 Domain Path:  /languages
 License:      GNU General Public License v3
-License URI:  https://www.gnu.org/licenses/gpl-3.0.html
+License URI:  https://www.gnu.org/licenses/gpl-3.0-standalone.html
 Description:  Receptar is simple, modern, responsive, customizable, stylish blog WordPress theme. It features split-screen book-like design inspired by a modern cook book with emphasize on beautiful imagery and typography. It features Beaver Builder page builder and Jetpack plugin support, translation-ready code, front page slideshow, uses Theme Hook Alliance action hooks. More at WebMan Design (https://www.webmandesign.eu)
 Tags:         two-columns, four-columns, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, grid-layout, blog, food-and-drink, photography
+
+Requires at least: 4.8
+Tested up to: 5.6
+Requires PHP: 5.6
 
 GitHub Theme URI:  webmandesign/receptar
 
@@ -18,18 +22,4 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 Receptar is based on Underscores http://underscores.me/, (C) Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
-*/
-
-
-
-
-
-/*!
-IMPORTANT NOTICE:
-
-Do not place your custom CSS styles here in this file! Use WordPress native "Additional CSS"
-field (https://codex.wordpress.org/CSS#Custom_CSS_in_WordPress) or a child theme
-(https://webmandesign.github.io/docs/receptar/#child-theme).
-
-If you place your custom CSS here, it will be lost once you update the theme!
 */

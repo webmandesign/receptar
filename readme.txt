@@ -1,11 +1,10 @@
 === Receptar ===
 Contributors: webmandesign
-Tags: two-columns, four-columns, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, grid-layout, blog, food-and-drink, photography
-Requires at least: 4.7.0
-Tested up to: 5.2
-Stable tag: 1.8.3
-License: GNU General Public License v3
-License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Requires at least: 4.8
+Tested up to: 5.6
+Requires PHP: 5.6
+License: GPL-3.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 Receptar is simple, modern blog WordPress theme featuring split-screen book-like design.
 
@@ -37,8 +36,8 @@ Please see `changelog.md` file.
 
 == Upgrade Notice ==
 
-= 1.8.3 =
-Adding `nofollow` attribute to default site info links, removing post excerpt wrapper when excerpt is empty, fixing Jetpack infinite scroll layout.
+= 1.8.4 =
+Improving SEO, updating JavaScript.
 
 
 == Resources ==

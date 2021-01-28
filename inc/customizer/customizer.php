@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.8.0
+ * @version  1.8.4
  *
  * CONTENT:
  * 10) Assets
@@ -797,7 +797,7 @@
 	 * @link  https://github.com/jhildenbiddle/css-vars-ponyfill
 	 *
 	 * @since    1.7.0
-	 * @version  1.8.0
+	 * @version  1.8.4
 	 */
 	if ( ! function_exists( 'receptar_css_vars_compatibility' ) ) {
 		function receptar_css_vars_compatibility() {
@@ -808,7 +808,7 @@
 					'css-vars-ponyfill',
 					trailingslashit( get_template_directory_uri() ) . 'assets/js/vendor/css-vars-ponyfill/css-vars-ponyfill.min.js',
 					array(),
-					'1.16.1'
+					'v2.4.2'
 				);
 
 				wp_add_inline_script(

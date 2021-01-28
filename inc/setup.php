@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.8.3
+ * @version  1.8.4
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -54,6 +54,7 @@
 			//DOCTYPE
 				add_action( 'wmhook_html_before',               'receptar_doctype',          10 );
 			//HEAD
+				add_action( 'wp_head',                          'receptar_charset',           0 );
 				add_action( 'wp_head',                          'receptar_head',              1 );
 			//Body
 				add_action( 'wmhook_body_top',                  'receptar_site_top',         10 );
@@ -863,7 +864,7 @@
 	 * Singular view featured image
 	 *
 	 * @since    1.0
-	 * @version  1.7.0
+	 * @version  1.8.4
 	 */
 	if ( ! function_exists( 'receptar_singular_featured_image' ) ) {
 		function receptar_singular_featured_image() {
@@ -895,7 +896,7 @@
 						apply_filters( 'wmhook_receptar_enqueue_assets_styles_inline_featured_image_size', 'large' )
 					);
 
-				} else if ( is_attachment() ) {
+				} elseif ( is_attachment() ) {
 
 					$output = wp_get_attachment_image_src(
 						get_the_ID(),
@@ -938,6 +939,23 @@
 
 
 	/**
+	 * Meta charset.
+	 *
+	 * @since  1.8.4
+	 */
+	if ( ! function_exists( 'receptar_charset' ) ) {
+		function receptar_charset() {
+
+			//Output
+
+				echo '<meta charset="' . esc_attr( get_bloginfo( 'charset' ) ) . '" />' . PHP_EOL;
+
+		}
+	} // /receptar_charset
+
+
+
+	/**
 	 * Website HEAD
 	 *
 	 * @since    1.0
@@ -949,10 +967,9 @@
 				$output = array();
 
 			//Preparing output
-				$output[10] = '<meta charset="' . get_bloginfo( 'charset' ) . '" />';
-				$output[20] = '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />';
-				$output[30] = '<link rel="profile" href="http://gmpg.org/xfn/11" />';
-				$output[40] = '<link rel="pingback" href="' . get_bloginfo( 'pingback_url' ) . '" />';
+				$output[10] = '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />';
+				$output[20] = '<link rel="profile" href="http://gmpg.org/xfn/11" />';
+				$output[30] = '<link rel="pingback" href="' . get_bloginfo( 'pingback_url' ) . '" />';
 
 				//Filter output array
 					$output = apply_filters( 'wmhook_receptar_head_output_array', $output );

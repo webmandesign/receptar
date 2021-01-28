@@ -1,5 +1,22 @@
 # Receptar Changelog
 
+## 1.8.4, 20210128
+
+### Updated
+- Updating 3rd party JavaScript
+- Improving PHP code to follow WordPress PHP coding standards (fixing "else if" to "elseif" where needed)
+- Adding meta charset before HTML title tag for improved SEO and HTML validation
+
+### File updates
+	changelog.md
+	readme.txt
+	style.css
+	assets/js/vendor/css-vars-ponyfill/css-vars-ponyfill.js
+	assets/js/vendor/css-vars-ponyfill/css-vars-ponyfill.min.js
+	inc/setup.php
+	inc/customizer/customizer.php
+
+
 ## 1.8.3
 
 * **Update**: Adding `nofollow` attribute to default site info links
