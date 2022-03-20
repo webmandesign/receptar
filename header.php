@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.8.2
+ * @version  1.9.0
  */
 
 
@@ -34,6 +34,7 @@ wp_head();
 
 
 <body <?php body_class(); ?>>
+<a name="top"></a>
 
 <?php
 

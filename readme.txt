@@ -1,7 +1,7 @@
 === Receptar ===
 Contributors: webmandesign
 Requires at least: 4.8
-Tested up to: 5.6
+Tested up to: 5.9
 Requires PHP: 5.6
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
@@ -34,13 +34,7 @@ Please visit support forum at https://support.webmandesign.eu/
 Please see `changelog.md` file.
 
 
-== Upgrade Notice ==
-
-= 1.8.4 =
-Improving SEO, updating JavaScript.
-
-
-== Resources ==
+== Copyright ==
 
 * Normalize.css © Nicolas Gallagher and Jonathan Neal, MIT
 * slick.js © 2014 Ken Wheeler, MIT

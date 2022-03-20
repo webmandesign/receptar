@@ -7,7 +7,7 @@
  * @copyright  WebMan Design, Oliver Juhas
  *
  * @since    1.7.0
- * @version  1.8.2
+ * @version  1.9.0
  *
  * CONTENT:
  *
@@ -603,7 +603,7 @@
 		height: 100%;
 		left: 0;
 		top: 0;
-		opacity: .2;
+		backdrop-filter: blur(5px);
 		z-index: -1;
 	}
 
@@ -684,6 +684,10 @@
 			}
 
 			.site-header-widgets .widget-title { display: none; }
+
+				.site-header-widgets form {
+					margin: 0;
+				}
 
 				.site-header-widgets .form-search {
 					position: relative;
@@ -947,7 +951,19 @@
 			position: fixed;
 			width: 100%;
 			width: calc( 100% - 5rem );
+			height: 61.8vh;
 		}
+
+			.site-banner-inner,
+			.site-banner-content,
+			.site-banner .slick-list,
+			.site-banner .slick-track,
+			.site-banner .entry,
+			.site-banner-media,
+			.site-banner-media figure {
+				height: 100%;
+				max-height: 100%;
+			}
 
 			.no-js .site-banner.enable-slider .entry,
 			.enable-slider .site-banner-inner:not(.slick-slider) .entry { display: none; }
@@ -988,6 +1004,11 @@
 					bottom: 0;
 					z-index: 1;
 				}
+				.site-banner-media img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
 
 
 
@@ -1021,7 +1042,7 @@
 			.home .content-area,
 			.blog .content-area {
 				position: relative;
-				margin-top: 33.33%;
+				margin-top: 61.8vh;
 			}
 
 
@@ -1754,6 +1775,57 @@
  */
 
 	/**
+	 * 1800px min
+	 */
+
+		@media only screen and (min-width: 1800px) {
+
+			/**
+			 * Posts list
+			 */
+
+				.posts .entry {
+					width: 33.33%;
+				}
+
+					.posts .entry:nth-child(4n+3) .entry-media,
+					.posts .entry:nth-child(4n+4) .entry-media {
+						float: left;
+					}
+					.posts .entry:nth-child(4n+3) .entry-inner,
+					.posts .entry:nth-child(4n+4) .entry-inner {
+						left: auto;
+						right: 0;
+					}
+					.posts .entry:nth-child(4n+3) .entry-inner:after,
+					.posts .entry:nth-child(4n+4) .entry-inner:after {
+						left: 0;
+						right: auto;
+					}
+
+					.posts .entry:nth-child(6n+4) .entry-media,
+					.posts .entry:nth-child(6n+5) .entry-media,
+					.posts .entry:nth-child(6n+6) .entry-media {
+						float: right;
+					}
+					.posts .entry:nth-child(6n+4) .entry-inner,
+					.posts .entry:nth-child(6n+5) .entry-inner,
+					.posts .entry:nth-child(6n+6) .entry-inner {
+						left: 0;
+						right: auto;
+					}
+					.posts .entry:nth-child(6n+4) .entry-inner:after,
+					.posts .entry:nth-child(6n+5) .entry-inner:after,
+					.posts .entry:nth-child(6n+6) .entry-inner:after {
+						left: auto;
+						right: 0;
+					}
+
+		} /* /(min-width: 1800px) */
+
+
+
+	/**
 	 * 1600px min
 	 */
 
@@ -2022,11 +2094,16 @@
 					.site-banner {
 						position: relative;
 						width: 100%;
+						height: 38.2vh;
 					}
 
 						.site-banner-header { bottom: 1rem; }
 
-						.site-banner h1 { font-size: 2.38rem; }
+						.site-banner h1 {
+							margin-left: 6%;
+							margin-right: 6%;
+							font-size: 2.38rem;
+						}
 
 						.site-banner .slick-slider .slider-nav {
 							top: 0;

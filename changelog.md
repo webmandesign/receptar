@@ -1,5 +1,28 @@
 # Receptar Changelog
 
+## 1.9.0, 20220320
+
+### Added
+- TikTok social links icon
+
+### Updated
+- Back to top button target
+- HTML5 support
+
+### Fixed
+- Large screen display
+
+### File updates
+	changelog.md
+	header.php
+	readme.txt
+	style.css
+	assets/css/colors.css
+	assets/css/main.css
+	assets/images/svg/social-icons.svg
+	inc/setup.php
+
+
 ## 1.8.4, 20210128
 
 ### Updated

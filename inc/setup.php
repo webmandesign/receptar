@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.8.4
+ * @version  1.9.0
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -148,7 +148,7 @@
 	 * Theme setup
 	 *
 	 * @since    1.0.0
-	 * @version  1.7.0
+	 * @version  1.9.0
 	 */
 	if ( ! function_exists( 'receptar_setup' ) ) {
 		function receptar_setup() {
@@ -207,11 +207,14 @@
 
 				// Enable HTML5 markup
 				add_theme_support( 'html5', array(
-					'comment-list',
-					'comment-form',
-					'search-form',
-					'gallery',
 					'caption',
+					'comment-form',
+					'comment-list',
+					'gallery',
+					'navigation-widgets',
+					'search-form',
+					'script',
+					'style',
 				) );
 
 				// Custom menus
@@ -1116,7 +1119,7 @@
 			 * Social links supported icons
 			 *
 			 * @since    1.6.0
-			 * @version  1.8.2
+			 * @version  1.9.0
 			 */
 			function receptar_social_links_icons() {
 
@@ -1157,6 +1160,7 @@
 						'spotify.com'       => 'spotify',
 						'stackoverflow.com' => 'stack-overflow',
 						'stumbleupon.com'   => 'stumbleupon',
+						'tiktok.'           => 'tiktok',
 						'trello.com'        => 'trello',
 						'tripadvisor.'      => 'tripadvisor',
 						'tumblr.com'        => 'tumblr',
