@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.8.0
+ * @version  2.0.0
  *
  * Content:
  *
@@ -26,7 +26,7 @@
 	 * Set theme options array
 	 *
 	 * @since    1.0.0
-	 * @version  1.8.0
+	 * @version  2.0.0
 	 *
 	 * @param  array $options
 	 */
@@ -498,6 +498,14 @@
 											//Logo
 											'<a href="https://fonts.google.com/specimen/Alegreya" target="_blank">Alegreya</a>'
 										) . '</p>',
+						),
+
+						900 . 'typography' . 110 => array(
+							'type'        => 'checkbox',
+							'id'          => 'typography_custom_fonts',
+							'label'       => esc_html__( 'Use custom fonts', 'receptar' ),
+							'description' => esc_html__( 'Disables theme default fonts loading and lets you set up your own custom fonts.', 'receptar' ),
+							'default'     => false,
 						),
 
 				);

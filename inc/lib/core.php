@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.7.0
+ * @version  2.0.0
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -712,12 +712,19 @@
 	 * //fonts.googleapis.com/css?family=Alegreya+Sans:300,400|Exo+2:400,700|Allan&subset=latin,latin-ext
 	 *
 	 * @since    1.0
-	 * @version  1.7.0
+	 * @version  2.0.0
 	 *
 	 * @param  array $fonts Fallback fonts.
 	 */
 	if ( ! function_exists( 'receptar_google_fonts_url' ) ) {
 		function receptar_google_fonts_url( $fonts = array() ) {
+
+			// Requirements check
+
+				if ( get_theme_mod( 'typography_custom_fonts' ) ) {
+					return '';
+				}
+
 
 			// Variables
 

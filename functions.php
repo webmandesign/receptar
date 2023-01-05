@@ -9,7 +9,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.7.0
+ * @version  2.0.0
  *
  * CONTENT:
  * - 0) Constants
@@ -27,6 +27,8 @@
 	if ( ! defined( 'WM_THEME_SHORTNAME' ) ) define( 'WM_THEME_SHORTNAME', str_replace( array( '-lite', '-plus' ), '', get_template() ) );
 	if ( ! defined( 'WM_INC_DIR' ) ) define( 'WM_INC_DIR', trailingslashit( 'inc' ) );
 
+	define( 'RECEPTAR_THEME_VERSION', wp_get_theme( 'receptar' )->get( 'Version' ) );
+
 
 
 
@@ -34,6 +36,9 @@
 /**
  * 1) Required files
  */
+
+	// Welcome page.
+	require_once( trailingslashit( get_template_directory() ) . WM_INC_DIR . 'welcome/class-welcome.php' );
 
 	// Sanitizing methods
 	require_once( trailingslashit( get_template_directory() ) . WM_INC_DIR . 'class-sanitize.php' );

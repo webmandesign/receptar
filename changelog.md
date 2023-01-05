@@ -1,5 +1,38 @@
 # Receptar Changelog
 
+## 2.0.0, 20230105
+
+### Added
+- Welcome page
+- Option to use custom typography (and thus disable theme Google Fonts)
+
+### Updated
+- CSS Vars Ponyfill JavaScript library
+- Media size info
+- Localization
+
+### File updates
+	changelog.md
+	functions.php
+	readme.txt
+	style.css
+	assets/js/vendor/css-vars-ponyfill/*.*
+	assets/scss/welcome.scss
+	inc/setup-theme-options.php
+	inc/setup.php
+	inc/customizer/customizer.php
+	inc/lib/core.php
+	inc/welcome/class-welcome.php
+	languages/*.*
+	template-parts/admin/media-image-sizes.php
+	template-parts/admin/notice-welcome.php
+	template-parts/admin/welcome-demo.php
+	template-parts/admin/welcome-footer.php
+	template-parts/admin/welcome-guide.php
+	template-parts/admin/welcome-header.php
+	template-parts/admin/welcome-promo.php
+
+
 ## 1.9.0, 20220320
 
 ### Added

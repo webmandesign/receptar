@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  1.9.0
+ * @version  2.0.0
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -28,8 +28,6 @@
 	/**
 	 * Actions
 	 */
-
-		add_action( 'load-themes.php', 'receptar_admin_notice_welcome_activation' );
 
 		//Styles and scripts
 			add_action( 'init',                'receptar_register_assets',           10 );
@@ -148,7 +146,7 @@
 	 * Theme setup
 	 *
 	 * @since    1.0.0
-	 * @version  1.9.0
+	 * @version  2.0.0
 	 */
 	if ( ! function_exists( 'receptar_setup' ) ) {
 		function receptar_setup() {
@@ -255,9 +253,9 @@
 							if ( ! in_array( $size, array( 'thumbnail', 'medium', 'medium_large', 'large' ) ) ) {
 								add_image_size(
 									$size,
-									$image_sizes[ $size ][0],
-									$image_sizes[ $size ][1],
-									$image_sizes[ $size ][2]
+									$image_sizes[ $size ]['width'],
+									$image_sizes[ $size ]['height'],
+									$image_sizes[ $size ]['crop']
 								);
 							}
 						}
@@ -269,122 +267,76 @@
 
 
 	/**
-	 * Initiate "Welcome" admin notice
-	 *
-	 * @since    1.8.0
-	 * @version  1.8.0
-	 */
-	if ( ! function_exists( 'receptar_admin_notice_welcome_activation' ) ) {
-		function receptar_admin_notice_welcome_activation() {
-
-			// Processing
-
-				global $pagenow;
-
-				if (
-					is_admin()
-					&& 'themes.php' == $pagenow
-					&& isset( $_GET['activated'] )
-				) {
-
-					add_action( 'admin_notices', 'receptar_admin_notice_welcome', 99 );
-
-				}
-
-		}
-	} // /receptar_admin_notice_welcome_activation
-
-
-
-		/**
-		 * Display "Welcome" admin notice
-		 *
-		 * @since    1.8.0
-		 * @version  1.8.0
-		 */
-		if ( ! function_exists( 'receptar_admin_notice_welcome' ) ) {
-			function receptar_admin_notice_welcome() {
-
-				// Processing
-
-					get_template_part( 'template-parts/component-notice', 'welcome' );
-
-			}
-		} // /receptar_admin_notice_welcome
-
-
-
-	/**
 	 * Setup images
 	 */
 
 		/**
-		 * Image sizes
-		 *
-		 * @example
-		 *
-		 *   $image_sizes = array(
-		 *     'image_size_id' => array(
-		 *       absint( width ),
-		 *       absint( height ),
-		 *       (bool) cropped?,
-		 *       (string) optional_theme_usage_explanation_text
-		 *     )
-		 *   );
+		 * Image sizes.
 		 *
 		 * @since    1.0
-		 * @version  1.3
+		 * @version  2.0.0
 		 *
 		 * @param  array $image_sizes
 		 */
 		if ( ! function_exists( 'receptar_image_sizes' ) ) {
 			function receptar_image_sizes( $image_sizes ) {
-				//Helper variables
+
+				// Variables
+
 					global $content_width;
 
-				//Preparing output
-					/**
-					 * image_size = array(
-					 *   width,
-					 *   height,
-					 *   cropped?,
-					 *   theme_usage //Optional
-					 * )
-					 */
-					$image_sizes = array(
-							'thumbnail' => array(
-									480,
-									640,
-									true,
-									esc_html__( 'In posts list.', 'receptar' )
-								),
-							'medium' => array(
-									absint( $content_width * .62 ),
-									9999,
-									false
-								),
-							'large' => array(
-									absint( $content_width ),
-									9999,
-									false,
-									esc_html__( 'In single post page.', 'receptar' )
-								),
-							'receptar-banner' => array(
-									1920,
-									640, //Approx. 62% of desktop viewport height (16:9)
-									true,
-									esc_html__( 'In front (and blog) page banner.', 'receptar' )
-								),
-							'receptar-featured' => array(
-									absint( $content_width ),
-									absint( $content_width / 3 * 2 ),
-									true,
-									esc_html__( 'In single post page on mobile devices only.', 'receptar' )
-								),
-						);
 
-				//Output
+				// Processing
+
+					$image_sizes = array(
+
+						'thumbnail' => array(
+							'name'        => esc_html_x( 'Thumbnail size', 'WordPress predefined image size name.', 'receptar' ),
+							'description' => esc_html__( 'In posts list.', 'receptar' ),
+							'width'       => 480,
+							'height'      => 640,
+							'crop'        => true,
+						),
+
+						'medium' => array(
+							'name'        => esc_html_x( 'Medium size', 'WordPress predefined image size name.', 'receptar' ),
+							'description' => esc_html__( 'Not used in the theme.', 'receptar' ),
+							'width'       => absint( $content_width * .62 ),
+							'height'      => 0,
+							'crop'        => false,
+						),
+
+						'large' => array(
+							'name'        => esc_html_x( 'Large size', 'WordPress predefined image size name.', 'receptar' ),
+							'description' => esc_html__( 'In single post page.', 'receptar' ),
+							'width'       => absint( $content_width ),
+							'height'      => 0,
+							'crop'        => false,
+						),
+
+						'receptar-banner' => array(
+							'name'        => esc_html_x( 'Banner size', 'WordPress predefined image size name.', 'receptar' ),
+							'description' => esc_html__( 'In front (and blog) page banner.', 'receptar' ),
+							'width'       => 1920,
+							'height'      => 640, //Approx. 62% of desktop viewport height (16:9)
+							'crop'        => true,
+						),
+
+						'receptar-featured' => array(
+							'name'        => esc_html_x( 'Featured size', 'WordPress predefined image size name.', 'receptar' ),
+							'description' => esc_html__( 'In single post page on mobile devices only.', 'receptar' ),
+							'width'       => absint( $content_width ),
+							'height'      => absint( $content_width / 3 * 2 ),
+							'crop'        => true,
+						),
+
+					);
+
+
+				// Output
+
 					return $image_sizes;
+
 			}
 		} // /receptar_image_sizes
 
@@ -427,89 +379,18 @@
 
 
 		/**
-		 * Display recommended image sizes notice
+		 * Display recommended image sizes notice.
 		 *
 		 * @since    1.0
-		 * @version  1.3
+		 * @version  2.0.0
 		 */
 		if ( ! function_exists( 'receptar_image_size_notice_html' ) ) {
 			function receptar_image_size_notice_html() {
-				//Helper variables
-					$default_image_size_names = array(
-							'thumbnail' => esc_html_x( 'Thumbnail size', 'WordPress predefined image size name.', 'receptar' ),
-							'medium'    => esc_html_x( 'Medium size', 'WordPress predefined image size name.', 'receptar' ),
-							'large'     => esc_html_x( 'Large size', 'WordPress predefined image size name.', 'receptar' ),
-						);
 
-					$image_sizes = array_filter( apply_filters( 'wmhook_receptar_setup_image_sizes', array() ) );
+				// Processing
 
-				//Requirements check
-					if ( empty( $image_sizes ) ) {
-						return;
-					}
+					get_template_part( 'template-parts/admin/media', 'image-sizes' );
 
-				//Output
-					echo '<style type="text/css" media="screen">'
-						. '.recommended-image-sizes { display: inline-block; padding: 1.62em; border: 2px solid #dadcde; }'
-						. '.recommended-image-sizes h3:first-child { margin-top: 0; }'
-						. '.recommended-image-sizes table { margin-top: 1em; }'
-						. '.recommended-image-sizes th, .recommended-image-sizes td { width: auto; padding: .19em 1em; border-bottom: 2px dotted #dadcde; vertical-align: top; }'
-						. '.recommended-image-sizes thead th { padding: .62em 1em; border-bottom-style: solid; }'
-						. '.recommended-image-sizes tr[title] { cursor: help; }'
-						. '.recommended-image-sizes .small, .recommended-image-sizes tr[title] th, .recommended-image-sizes tr[title] td { font-size: .81em; }'
-						. '</style>';
-
-					echo '<div class="recommended-image-sizes">';
-
-						do_action( 'wmhook_receptar_image_size_notice_html_top' );
-
-						echo '<h3>' . esc_html__( 'Recommended image sizes', 'receptar' ) . '</h3>'
-							. '<p>' . esc_html__( 'For the theme to work correctly, please, set these recommended image sizes:', 'receptar' ) . '</p>';
-
-						echo '<table>';
-
-							echo '<thead>'
-								. '<tr>'
-								. '<th>' . esc_html__( 'Size name', 'receptar' ) . '</th>'
-								. '<th>' . esc_html__( 'Size parameters', 'receptar' ) . '</th>'
-								. '<th>' . esc_html__( 'Theme usage', 'receptar' ) . '</th>'
-								. '</tr>'
-								. '</thead>';
-
-							echo '<tbody>';
-
-								foreach ( $image_sizes as $size => $setup ) {
-
-									$crop = ( $setup[2] ) ? ( esc_html__( 'cropped', 'receptar' ) ) : ( esc_html__( 'scaled', 'receptar' ) );
-
-									if ( isset( $default_image_size_names[ $size ] ) ) {
-
-										echo '<tr><th>' . esc_html( $default_image_size_names[ $size ] ) . ':</th>';
-
-									} else {
-
-										echo '<tr title="' . esc_attr__( 'Additional image size added by the theme. Can not be changed on this page.', 'receptar' ) . '"><th><code>' . esc_html( $size ) . '</code>:</th>';
-
-									}
-
-									echo '<td>' . sprintf(
-											esc_html_x( '%1$d &times; %2$d, %3$s', '1: image width, 2: image height, 3: cropped or scaled?', 'receptar' ),
-											absint( $setup[0] ),
-											absint( $setup[1] ),
-											$crop
-										) . '</td>'
-										. '<td class="small">' . ( ( isset( $setup[3] ) ) ? ( $setup[3] ) : ( '&mdash;' ) ) . '</td>'
-										. '</tr>';
-
-								} // /foreach
-
-							echo '</tbody>';
-
-						echo '</table>';
-
-						do_action( 'wmhook_receptar_image_size_notice_html_bottom' );
-
-					echo '</div>';
 			}
 		} // /receptar_image_size_notice_html
 
