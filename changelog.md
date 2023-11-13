@@ -1,5 +1,23 @@
 # Receptar Changelog
 
+## 2.0.1, 20231113
+
+### Updated
+- Twitter/X icon
+
+### Fixed
+- Site title link to homepage on paged blog front page
+
+### File updates
+	changelog.md
+	functions.php
+	readme.txt
+	style.css
+	assets/images/svg/social-icons.svg
+	inc/setup.php
+	inc/lib/core.php
+
+
 ## 2.0.0, 20230105
 
 ### Added

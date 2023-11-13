@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  2.0.0
+ * @version  2.0.1
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -1000,7 +1000,7 @@
 			 * Social links supported icons
 			 *
 			 * @since    1.6.0
-			 * @version  1.9.0
+			 * @version  2.0.1
 			 */
 			function receptar_social_links_icons() {
 
@@ -1046,7 +1046,7 @@
 						'tripadvisor.'      => 'tripadvisor',
 						'tumblr.com'        => 'tumblr',
 						'twitch.tv'         => 'twitch',
-						'twitter.com'       => 'twitter',
+						'twitter.com'       => 'x',
 						'vimeo.com'         => 'vimeo',
 						'vine.co'           => 'vine',
 						'vk.com'            => 'vk',

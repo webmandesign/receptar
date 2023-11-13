@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  2.0.0
+ * @version  2.0.1
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -56,7 +56,7 @@
 	 * Logo
 	 *
 	 * @since    1.0
-	 * @version  1.4.1
+	 * @version  2.0.1
 	 */
 	if ( ! function_exists( 'receptar_logo' ) ) {
 		function receptar_logo( $container_class = 'site-branding' ) {
@@ -123,7 +123,7 @@
 						$output[1] = '<div class="' . esc_attr( trim( $args['container'] ) ) . '">';
 					}
 
-						if ( is_front_page() ) {
+						if ( is_front_page() && ! is_paged() ) {
 							$output[10] = '<h1 id="site-title" class="' . esc_attr( $logo_class ) . '">';
 						} else {
 							$output[10] = '<h2 class="screen-reader-text">' . $document_title . '</h2>'; // To provide BODY heading on subpages
@@ -136,7 +136,7 @@
 								$output[30] = $args['logo_image'] . '<span class="screen-reader-text">' . $blog_info['name'] . '</span>';
 							}
 
-						if ( is_front_page() ) {
+						if ( is_front_page() && ! is_paged() ) {
 							$output[40] = '</h1>';
 						} else {
 							$output[40] = '</a>';
