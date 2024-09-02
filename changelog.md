@@ -1,5 +1,18 @@
 # Receptar Changelog
 
+## 2.0.2, 20240902
+
+### Updated
+- Confirming support with WordPress 6.6
+- Jetpack compatibility
+
+### File updates
+	changelog.md
+	readme.txt
+	style.css
+	inc/jetpack/jetpack.php
+
+
 ## 2.0.1, 20231113
 
 ### Updated

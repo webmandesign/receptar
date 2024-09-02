@@ -10,7 +10,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.3
+ * @version  2.0.2
  *
  * CONTENT:
  * -  1) Requirements check
@@ -67,15 +67,12 @@
 	 * Enables Jetpack features
 	 *
 	 * @since    1.0
-	 * @version  1.3
+	 * @version  2.0.2
 	 */
 	if ( ! function_exists( 'receptar_jetpack' ) ) {
 		function receptar_jetpack() {
 			//Responsive videos
 				add_theme_support( 'jetpack-responsive-videos' );
-
-			//Site logo
-				add_theme_support( 'site-logo' );
 
 			//Featured content
 				add_theme_support( 'featured-content', apply_filters( 'wmhook_receptar_jetpack_featured_content', array(
