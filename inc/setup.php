@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  2.0.1
+ * @version  2.0.3
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -1000,7 +1000,7 @@
 			 * Social links supported icons
 			 *
 			 * @since    1.6.0
-			 * @version  2.0.1
+			 * @version  2.0.3
 			 */
 			function receptar_social_links_icons() {
 
@@ -1053,6 +1053,7 @@
 						'wa.me'             => 'whatsapp',
 						'wordpress.org'     => 'wordpress',
 						'wordpress.com'     => 'wordpress',
+						'x.com'             => 'x',
 						'xing.com'          => 'xing',
 						'yelp.com'          => 'yelp',
 						'youtube.com'       => 'youtube',
@@ -1068,7 +1069,7 @@
 			 * Display SVG icons in social links menu
 			 *
 			 * @since    1.6.0
-			 * @version  1.6.1
+			 * @version  2.0.3
 			 *
 			 * @param  string  $item_output The menu item output.
 			 * @param  WP_Post $item        Menu item object.
@@ -1092,10 +1093,32 @@
 
 				// Processing
 
-					foreach ( $social_icons as $url => $icon ) {
-						if ( false !== strpos( $item_output, $url ) ) {
-							$social_icon = $icon;
-							break;
+					if (
+						! empty( $item->classes )
+						&& false !== stripos( implode( ' ', (array) $item->classes ), 'has-icon-' )
+					) {
+
+						$forced_icon = array_intersect(
+							$social_icons,
+							array_map(
+								function( $item ) {
+									return str_replace( 'has-icon-', '', trim( $item ) );
+								},
+								(array) $item->classes
+							)
+						);
+
+						if ( ! empty( $forced_icon ) ) {
+							$social_icon = reset( $forced_icon );
+						}
+
+					} else {
+
+						foreach ( $social_icons as $url => $icon ) {
+							if ( false !== strpos( $item_output, $url ) ) {
+								$social_icon = $icon;
+								break;
+							}
 						}
 					}
 

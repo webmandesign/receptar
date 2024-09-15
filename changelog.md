@@ -1,5 +1,16 @@
 # Receptar Changelog
 
+## 2.0.3, 20240915
+
+### Updated
+- Improving and fixing social icons (introducing option to force the icon with `has-icon-#` class)
+
+### File updates
+	changelog.md
+	style.css
+	inc/setup.php
+
+
 ## 2.0.2, 20240902
 
 ### Updated
