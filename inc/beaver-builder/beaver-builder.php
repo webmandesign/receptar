@@ -10,7 +10,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0
- * @version  1.7.0
+ * @version  2.0.4
  *
  * CONTENT:
  * -  1) Requirements check
@@ -67,14 +67,17 @@
 	 * Upgrade link URL
 	 *
 	 * @since    1.0
-	 * @version  1.2
+	 * @version  2.0.4
 	 *
 	 * @param  string $url
 	 */
 	if ( ! function_exists( 'receptar_bb_upgrade_url' ) ) {
 		function receptar_bb_upgrade_url( $url ) {
+
 			//Output
-				return esc_url( add_query_arg( 'fla', '67', $url ) );
+
+				return trailingslashit( FL_BUILDER_STORE_URL ) . 'fla/67/';
+
 		}
 	} // /receptar_bb_upgrade_url
 

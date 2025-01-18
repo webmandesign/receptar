@@ -1,5 +1,17 @@
 # Receptar Changelog
 
+## 2.0.4, 20250118
+
+### Updated
+- Beaver Builder upgrade link
+
+### File updates
+	changelog.md
+	readme.txt
+	style.css
+	inc/beaver-builder/beaver-builder.php
+	
+
 ## 2.0.3, 20240915
 
 ### Updated
