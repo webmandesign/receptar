@@ -1,0 +1,328 @@
+/**
+ * WordPress visual editor styles
+ *
+ * @package    Receptar
+ * @copyright  2015 WebMan - Oliver Juhas
+ *
+ * @since    1.0
+ * @version  1.6.0
+ */
+
+
+
+
+
+/**
+ * CONTENT:
+ *
+ *   0. Includes
+ *   1. Font icons basics
+ *   2. Core styles
+ *   3. Typography
+ *   4. Forms
+ *   5. Headings
+ *   6. Site content
+ * 100. Visual Editor specific styles
+ */
+
+
+
+
+
+/**
+ * 0. Includes
+ */
+
+	/**
+	 * We need to include also these stylesheets:
+	 * - starter.css
+	 * - colors.css
+	 *
+	 * @see  receptar_setup()
+	 */
+
+
+
+
+
+/**
+ * 1. Font icons basics
+ */
+
+	pre:before {
+		font-family: 'Genericons-Neue';
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-decoration: inherit;
+		text-transform: none;
+		-moz-osx-font-smoothing: grayscale;
+		 -webkit-font-smoothing: antialiased;
+		speak: none;
+	}
+
+
+
+
+
+/**
+ * 2. Core styles
+ */
+
+	body {
+		width: 100%;
+		max-width: 688px !important;
+		background: #fff;
+		color: #6a6c6e;
+		border-color: #dadcde;
+	}
+	#tinymce {
+		padding: 20px;
+		border-right: 2px dashed #eaecee;
+	}
+	body.wp-autoresize { padding: 20px !important; }
+
+		body * { border-color: inherit; }
+
+
+
+	/**
+	 * Global elements and classes
+	 */
+
+		hr { margin: 3.62em 0; }
+
+
+
+		/**
+		 * Classes
+		 */
+
+			.text-center { text-align: center; }
+			.text-right { text-align: right; }
+
+			.mt0 { margin-top: 0 !important; }
+			.mb0 { margin-bottom: 0 !important; }
+
+			.dropcap-text:first-letter {
+				float: left;
+				display: block;
+				padding: 0 .19em 0 0;
+				line-height: 1;
+				font-size: 3em;
+				color: inherit;
+			}
+
+
+
+
+
+/**
+ * 3. Typography
+ */
+
+	/**
+	 * Base
+	 */
+
+		body { font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+		h1, h2, h3, h4, h5, h6,
+		.h1, .h2, .h3, .h4, .h5, .h6 { font-family: 'Roboto Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+		h1, .h1,
+		blockquote { font-family: 'Alegreya', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+
+
+	/**
+	 * Font sizes
+	 */
+
+		/**
+		 * Basic font size setup
+		 */
+
+			body { font-size: 16px; }
+
+
+
+		/**
+		 * Relative font sizes:
+		 */
+
+			/* Relative to container */
+
+				h1, .h1 { font-size: 3em; }
+
+
+
+	/**
+	 * Font weights
+	 */
+
+		abbr { font-weight: 600; }
+
+		h1, .h1 { font-weight: 700; }
+
+
+
+	/**
+	 * Line heights
+	 */
+
+		h1, h2, h3, h4, h5, h6,
+		.h1, .h2, .h3, .h4, .h5, .h6 { line-height: 1.19; }
+
+
+
+
+
+/**
+ * 4. Forms
+ */
+
+	/**
+	 * Buttons
+	 */
+
+		.button,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"] {
+			padding: 1em;
+			border: 0;
+		}
+			.button:hover,
+			button:hover,
+			input[type="button"]:hover,
+			input[type="reset"]:hover,
+			input[type="submit"]:hover,
+			.button:focus,
+			button:focus,
+			input[type="button"]:focus,
+			input[type="reset"]:focus,
+			input[type="submit"]:focus,
+			.button:active,
+			button:active,
+			input[type="button"]:active,
+			input[type="reset"]:active,
+			input[type="submit"]:active { opacity: .75; }
+
+			.button:active,
+			button:active,
+			input[type="button"]:active,
+			input[type="reset"]:active,
+			input[type="submit"]:active { opacity: .9; }
+
+
+
+
+
+/**
+ * 5. Headings
+ */
+
+	h2, .h2 { text-transform: uppercase; }
+
+		h1 + h2,
+		h1 + h3,
+		h2 + h3,
+		h2 + h4,
+		h3 + h4,
+		h4 + h5,
+		h5 + h6 { margin-top: -2%; }
+
+
+
+
+
+/**
+ * 6. Site content
+ */
+
+	/**
+	 * Main content area
+	 */
+
+		/**
+		 * Content elements
+		 */
+
+			ul,
+			ol { margin: 0 0 1.62em 1.38em; }
+
+			.text-center ul,
+			.text-center ol {
+				margin-left: 0;
+				list-style-position: inside;
+			}
+
+
+
+
+
+/**
+ * 100. Visual Editor specific styles
+ */
+
+	/**
+	 * Media player
+	 */
+
+		body .mejs-container,
+		body .wp-playlist { margin: 0 !important; }
+		.wpview-content { margin: 0 0 1.62em; }
+
+
+
+	/**
+	 * WP Captions
+	 */
+
+		.wp-caption-dd { margin-top: 1em; }
+
+
+
+	/**
+	 * Tables
+	 */
+
+		.mce-item-table,
+		.mce-item-table td,
+		.mce-item-table th,
+		.mce-item-table caption,
+		thead + tbody tr:first-child td,
+		thead + tbody tr:first-child th {
+			border-width: 1px;
+			border-style: solid;
+			border-color: #eaecee;
+		}
+
+
+
+	/**
+	 * Pullquotes
+	 */
+
+			blockquote.alignleft { margin-left: 0; }
+			blockquote.alignright { margin-right: 0; }
+
+
+	/**
+	 * Responsive media
+	 */
+
+		img,
+		embed,
+		iframe,
+		object,
+		video {
+			max-width: 100%;
+			/*height: auto;*/
+		}
+		embed,
+		iframe,
+		object,
+		video { width: 100% !important; }
