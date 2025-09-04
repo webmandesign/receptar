@@ -10,7 +10,7 @@
  * @copyright  WebMan Design, Oliver Juhas
  *
  * @since    1.7.0
- * @version  1.7.0
+ * @version  2.0.5
  *
  * Contents:
  *
@@ -401,7 +401,7 @@ class Receptar_Library_Sanitize {
 		 * Sanitize CSS image URL.
 		 *
 		 * @since    1.7.0
-		 * @version  1.7.0
+		 * @version  2.0.5
 		 *
 		 * @param  mixed $image  Could be a URL, numeric image ID or an array with `id` image ID key.
 		 */
@@ -419,8 +419,8 @@ class Receptar_Library_Sanitize {
 				}
 
 				if ( is_numeric( $image ) ) {
-					$image = wp_get_attachment_image_src( absint( $image ), 'full' );
-					$image = $image[0];
+					$image = (array) wp_get_attachment_image_src( absint( $image ), 'full' );
+					$image = (string) $image[0];
 				}
 
 				if ( ! empty( $image ) ) {

@@ -6,7 +6,7 @@
  * @copyright  2015 WebMan - Oliver Juhas
  *
  * @since    1.0.0
- * @version  2.0.3
+ * @version  2.0.5
  *
  * CONTENT:
  * -  10) Actions and filters
@@ -748,7 +748,7 @@
 	 * Singular view featured image
 	 *
 	 * @since    1.0
-	 * @version  1.8.4
+	 * @version  2.0.5
 	 */
 	if ( ! function_exists( 'receptar_singular_featured_image' ) ) {
 		function receptar_singular_featured_image() {
@@ -775,21 +775,21 @@
 					&& has_post_thumbnail()
 				) {
 
-					$output = wp_get_attachment_image_src(
+					$output = (array) wp_get_attachment_image_src(
 						get_post_thumbnail_id( get_the_ID() ),
 						apply_filters( 'wmhook_receptar_enqueue_assets_styles_inline_featured_image_size', 'large' )
 					);
 
 				} elseif ( is_attachment() ) {
 
-					$output = wp_get_attachment_image_src(
+					$output = (array) wp_get_attachment_image_src(
 						get_the_ID(),
 						apply_filters( 'wmhook_receptar_enqueue_assets_styles_inline_featured_image_size', 'large' )
 					);
 
 				}
 
-				$output = "\r\n\r\n/* Singular featured image styles */\r\n.entry-media { background-image: url('" . $output[0] . "'); }\r\n";
+				$output = "\r\n\r\n/* Singular featured image styles */\r\n.entry-media { background-image: url('" . esc_url( (string) $output[0] ) . "'); }\r\n";
 				$output = apply_filters( 'wmhook_receptar_singular_featured_image_output', $output );
 
 				wp_add_inline_style(
@@ -1517,7 +1517,7 @@
 		 * If the post has more tag, display the content appropriately.
 		 *
 		 * @since    1.0
-		 * @version  1.8.0
+		 * @version  2.0.5
 		 *
 		 * @param  string $excerpt
 		 */
@@ -1545,7 +1545,8 @@
 				// Processing
 
 					if (
-						! is_single( $post_id )
+						false === strpos( $excerpt, 'page-summary' )
+						&& ! is_single( $post_id )
 						&& receptar_has_more_tag()
 					) {
 
@@ -2036,7 +2037,7 @@
 	 * Default featured image URL
 	 *
 	 * @since    1.0
-	 * @version  1.6.0
+	 * @version  2.0.5
 	 */
 	if ( ! function_exists( 'receptar_entry_featured_image_fallback_url' ) ) {
 		function receptar_entry_featured_image_fallback_url() {
@@ -2054,11 +2055,11 @@
 
 					$image_size = ( is_singular() ) ? ( 'full' ) : ( 'thumbnail' ); //Using 'full' because this is a banner-cropped image already.
 
-					$output = wp_get_attachment_image_src(
+					$output = (array) wp_get_attachment_image_src(
 							absint( $header_image_data['attachment_id'] ),
 							apply_filters( 'wmhook_receptar_enqueue_assets_styles_inline_featured_image_size', $image_size )
 						);
-					$output = $output[0];
+					$output = (string) $output[0];
 
 				}
 

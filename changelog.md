@@ -1,5 +1,18 @@
 # Receptar Changelog
 
+## 2.0.5, 20250904
+
+### Fixed
+- Preventing post excerpt bleeding into category description
+- Preventing PHP errors regarding attachment images
+
+### File updates
+	changelog.md
+	style.css
+	inc/class-sanitize.php
+	inc/setup.php
+
+
 ## 2.0.4, 20250118
 
 ### Updated
